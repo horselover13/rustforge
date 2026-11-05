@@ -1,4 +1,4 @@
-use crate::rustforge::rust_ffi::hellforge_mod::{HfApi, HfMod};
+use crate::rust_ffi::{HfApi, HfMod};
 use std::sync::OnceLock;
 
 pub mod log;

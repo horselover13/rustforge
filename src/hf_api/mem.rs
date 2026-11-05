@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
 use super::HellForgeApi;
-use crate::rustforge::rust_ffi::hellforge_mod::HfMod;
+use crate::rust_ffi::HfMod;
 use std::ffi::c_void;
 
 impl HellForgeApi {

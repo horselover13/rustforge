@@ -15,6 +15,3 @@ but usually they're the most up-to-date ones, since they are automatically gener
 - `rustforge::hf_component` - Rust-safe implementations of classes within `hellforge_components.h`
 - `rustforge::hf_content` - Rust-safe implementations of classes within `hellforge_content.h`
 
-## Building
-
-The on-board HellForge's Zig compiler obviously does not compile Rust. Therefore, you must pre-compile the mod yourself with `cargo build`.

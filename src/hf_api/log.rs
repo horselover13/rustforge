@@ -3,7 +3,7 @@
 #![allow(dead_code)]
 
 use super::HellForgeApi;
-use crate::rustforge::rust_ffi::hellforge_mod::HfMod;
+use crate::rust_ffi::HfMod;
 
 impl HellForgeApi {
     pub fn log(&self, msg: &str) {
