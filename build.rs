@@ -24,6 +24,6 @@ fn main() {
     rust_ffi_bindings.write_to_file(out_path.join("rust_ffi.rs"))
         .expect("HF bindings generation failed");
     
-    // Compile Rust closures in callback.rs into FFI-compatible functions
-    println!("cargo:rerun-if-changed=src/hf_mod/callback.rs");
+    // Rebuild when the safe callback trampolines change.
+    println!("cargo:rerun-if-changed=src/hf_api/callback.rs");
 }
