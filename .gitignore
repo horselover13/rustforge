@@ -1,6 +1,7 @@
 /target
 native/
 DOCS.md
+test-mod/
 
 # Added by cargo
 #
