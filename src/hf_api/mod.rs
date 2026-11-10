@@ -17,7 +17,7 @@ pub mod network;
 pub mod session;
 pub mod stats;
 pub mod status;
-mod util;
+pub(crate) mod util;
 
 pub static HF_API: OnceLock<HellForgeApi> = OnceLock::new();
 
