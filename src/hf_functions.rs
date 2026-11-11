@@ -1,27 +1,4 @@
 // Game functions by name, from `native/mod-sdk/hellforge_functions.h`.
-//
-// Each method resolves a mapped game function by its name (the equivalent of
-// `hf_fn_<Name>`) and returns its typed pointer, or `None`: before
-// `HF_EVENT_GAME_LOADED`, on another game build, when the code is not the
-// reviewed one, or on a loader older than SDK 16.
-//
-// Calling a function through one of these pointers runs its whole hook chain
-// (every mod's detour, then HellForge's events, then the game's code), as the
-// game's own calls do: do not call the function you are hooking from its own
-// detour (call the original instead).
-//
-// The `hook_*` methods are the equivalent of `hf_hook_<Name>` and
-// `HF_HOOK`: they hook by name with the compiler checking the detour's and
-// the original's types. Ask from `hellforge_mod_init` on; HellForge puts the
-// hook in once the game's code is decoded and reads as reviewed, and
-// `original` stays null until then.
-//
-// For the checked ways to call some of these functions, see
-// [`heal`](crate::hf_api::HellForgeApi::heal),
-// [`apply_status`](crate::hf_api::HellForgeApi::apply_status),
-// [`add_velocity`](crate::hf_api::HellForgeApi::add_velocity),
-// [`spawn_explosion`](crate::hf_api::HellForgeApi::spawn_explosion) and
-// [`spawn_projectile`](crate::hf_api::HellForgeApi::spawn_projectile).
 
 #![allow(dead_code)]
 

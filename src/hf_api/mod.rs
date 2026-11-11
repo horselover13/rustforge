@@ -21,31 +21,29 @@ pub(crate) mod util;
 
 pub static HF_API: OnceLock<HellForgeApi> = OnceLock::new();
 
-// alias for HF_API.get().unwrap()
-macro_rules! hf_api {
-    () => {
-        *crate::hf_api::HF_API.get().unwrap()
-    };
-}
-
-// rust-analyzer false positive, please ignore
 fn setup_panic_hook() {
-    std::panic::set_hook(Box::new(move |panic_info: &PanicHookInfo<'_>| {
-        let msg = match panic_info.payload().downcast_ref::<&str>() {
-            Some(s) => *s,
+    std::panic::set_hook(Box::new(|panic_info: &PanicHookInfo<'_>| {
+        let reason = match panic_info.payload().downcast_ref::<&str>() {
+            Some(reason) => *reason,
             None => panic_info
                 .payload()
                 .downcast_ref::<String>()
                 .map(String::as_str)
-                .unwrap_or("Unknown panic payload"),
+                .unwrap_or("unknown panic payload"),
         };
 
         let location = panic_info
             .location()
             .map(|l| format!("{}:{}:{}", l.file(), l.line(), l.column()))
-            .unwrap_or_else(|| "Unknown location".to_string());
+            .unwrap_or_else(|| "unknown location".to_string());
 
-        hf_api!().log(format!("Rustforge panicked at {}! {}\n", location, msg).as_str());
+        let message = format!("rustforge panicked at {location}: {reason}");
+
+        // Logging is unavailable before `hellforge_mod_init` installs the API.
+        match HF_API.get() {
+            Some(api) => api.log(&message),
+            None => eprintln!("{message}"),
+        }
     }));
 }
 

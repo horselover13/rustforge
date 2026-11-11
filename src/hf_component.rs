@@ -1,23 +1,10 @@
 // The game's entity component records, from
 // `native/mod-sdk/hellforge_components.h`.
 //
-// Each type below is the `#[repr(C, packed)]` record of one component: its
-// named fields are at their offsets, and the bytes research has not split into
-// fields are `_unknown_XX` padding. The header also has settings-table rows
-// (`HfProjectileSettings`, `HfExplosionSettings`, ...), which are found by id
-// rather than as an entity's record.
-//
-// The game owns these records. A vanilla entity's are the game's read-only
-// data: read them, and change them with
-// [`set_field`](crate::hf_api::HellForgeApi::set_field),
-// [`edit_entity`](crate::hf_api::HellForgeApi::edit_entity) or
-// [`set_live`](crate::hf_api::HellForgeApi::set_live). A record an entity a mod
-// added owns is writable through [`component_mut`](crate::hf_api::HellForgeApi::component_mut).
-//
-// Read and write them on the game thread (an event listener's or
-// `on_game_thread`'s call), after `HF_EVENT_ENTITIES_READY`. Some records are
-// remade each mission, so fetch one each time you use it rather than keeping
-// it.
+// The header also generates the settings-table rows (`HfDifficultySettings`,
+// `HfDamageInfo`, `HfProjectileSettings`, ...). They are re-exported here but
+// are not `Component`s: the game finds them by table and row id, not as an
+// entity's record.
 
 #![allow(dead_code)]
 
@@ -39,7 +26,10 @@ pub use crate::rust_ffi::{
     HfWeaponHeat, HfWeaponMagazine, HfWeaponReload, HfWeaponRounds, HfWeaponWindUp,
 };
 
-/// A component record generated from `hellforge_components.h`.
+/// An entity component record generated from `hellforge_components.h`.
+///
+/// This is implemented only for the 46 component records, not for the
+/// settings-table rows the header also generates.
 ///
 /// # Safety
 /// Implementors must be the `#[repr(C, packed)]` struct the header generated
@@ -74,14 +64,6 @@ impl_components! {
     HfBehavior => "BehaviorComponentData",
     HfLoadoutPackage => "LoadoutPackageComponentData",
     HfDeposit => "DepositComponentData",
-    HfDifficultySettings => "DifficultySettings",
-    HfDamageInfo => "DamageInfo",
-    HfProjectileSettings => "ProjectileSettings",
-    HfStratagemSettings => "StratagemDefinition",
-    HfExplosionSettings => "ExplosionSettings",
-    HfArcSettings => "ArcSettings",
-    HfBeamSettings => "BeamSettings",
-    HfStatusEffectSettings => "StatusEffectSettings",
     HfHealth => "HealthComponentData",
     HfJumppack => "JumppackComponentData",
     HfRecharge => "RechargeComponentData",
@@ -102,9 +84,6 @@ impl_components! {
     HfWeaponReload => "WeaponReloadComponentData",
     HfWeaponRounds => "WeaponRoundsComponentData",
     HfArcWeapon => "ArcWeaponComponentData",
-    HfBoosterSettings => "BoosterSettings",
-    HfPassiveModifier => "PassiveModifier",
-    HfPassiveStat => "PassiveStat",
     HfHiveMind => "HiveMindComponentData",
     HfOrbitalAbility => "OrbitalAbilityComponentData",
     HfRotation => "RotationComponentData",
@@ -114,12 +93,8 @@ impl_components! {
     HfHellpodRack => "HellpodRackComponentData",
     HfAvatar => "AvatarComponentData",
     HfInventory => "InventoryComponentData",
-    HfMeleeHitVolume => "MeleeHitVolume",
     HfMeleeWeapon => "MeleeWeaponComponentData",
     HfAbilityWeapon => "AbilityWeaponComponentData",
-    HfEnemyRoster => "EnemyRoster",
-    HfEnemyRosterLevel11 => "EnemyRosterLevel11",
-    HfEnemyComposition => "EnemyComposition",
     HfUnit => "UnitComponentData",
     HfSquadTransportFormation => "SquadTransportFormationComponentData",
     HfSquadTransport => "SquadTransportComponentData",
@@ -127,7 +102,6 @@ impl_components! {
     HfAiSpawner => "AiSpawnerComponentData",
     HfStratagemBlocker => "StratagemBlockerComponentData",
     HfBughole => "BugholeComponentData",
-    HfDemolitionTemplate => "DemolitionTemplate",
 }
 
 impl HellForgeApi {
@@ -159,10 +133,13 @@ impl HellForgeApi {
     /// The record of component `T` that `resource` owns, after
     /// `HF_EVENT_ENTITIES_READY`.
     ///
-    /// This is [`component_record`](Self::component_record) with the layout
-    /// checked: it returns the record and its stride, or `None` when the
+    /// This is [`component_record`](Self::component_record) with the type
+    /// applied: it returns the record and its stride, or `None` when the
     /// entity owns no such record, owns several, or shares it with another
     /// entity.
+    ///
+    /// Unlike [`component`](Self::component), this lookup has no layout or
+    /// size check, so `T` must match the record the resource actually owns.
     pub fn shared_component<T: Component>(&self, resource: u64) -> Option<(&T, u32)> {
         let (address, stride) = self.component_record(T::NAME, resource)?;
 
