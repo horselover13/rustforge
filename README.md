@@ -1,92 +1,98 @@
-# Rust Forge - HellForge Mod SDK 16 Implementation
+# RustForge
 
-## What This Is
+RustForge is an experimental simple Rust binding library for HellForge, that translates its C structs and functions into semi-functional safe Rust alternatives.
 
-A Rust library for the HellForge modding framework (game build 25480438, SDK 16). It provides safe access to game functions and event callbacks via FFI.
+It is meant for those who do not trust themselves with writing C code (like myself) and want to get their hands on a cleanier (even if weirder) language.
 
-## Key Features
+## Installation
 
-- **Safe Rust Callbacks**: Register closures as event handlers without raw FFI
-- **Compile-time Closure Compilation**: Proc macros convert Rust closures to extern "C" fn pointers
-- **Event Handlers**: Game loaded, mission start, kill credit events
-- **Mod System**: JSON manifest for HellForge modding (SDK 16+ live mods supported)
+At the moment, i will purposefully not get this up on Cargo, so you will have to drop it into your project folder and use as is.
 
-## Project Structure
+1. `git clone` the repository.
 
-```
-.
-├── examples/simple_mod_callbacks.rs       # Example: Using safe closures
-├── src/
-│   ├── lib.rs                             # Main library entry point
-│   ├── rust_ffi.rs                        # C headers from bindings (bindgen'd)
-│   ├── compile_closure.rs                 # Proc macro for closure compilation
-│   └── hf_mod/                            # Event system wrapper
-│       └── callback.rs                    # Safe callbacks + macros
-├── DOCS.md                                # Full SDK documentation
-├── build.rs                              # Build script (bindgen + proc macros)
-└── Cargo.toml                            # Rust dependencies
+```bash 
+git clone https://github.com/horselover13/rustforge.git
 ```
 
-## Quick Start: Registering a Callback
-
-### 1. Write your Rust closure
-```rust
-use rustforge::on_game_loaded; // From hf_mod/callback.rs module
-
-// Your safe Rust logic (no unsafe needed for callbacks!)
-on_game_loaded!(0x12345678u32, |mod_ptr: &mut HfMod| {
-    let fire_rate = mod_ptr.fire_rate;  // Access HellForge API via pointer
-    
-    println!("Game loaded! Fire rate increased to 120 RPM");
-});
-```
-
-### 2. HellForge's init thread calls it automatically
-- The macro `on_game_loaded!()` registers your closure with the event system
-- When the DLL loads, the init thread fires game events and calls our FFI functions
-- Your closures are invoked safely via Box<dyn Fn> - no manual unsafe handling needed
-
-## Using Safe Rust Closures Instead of Raw Extern "C" Functions
-
-### Without Our System (Raw FFI)
-```rust
-// Direct raw function pointer - unsafe, must match exact signature
-my_mod.callbacks.push(unsafe extern "C" fn(_mod_ptr: &mut HfModPtr, _udata_raw: *const c_int));
-```
-
-### With Our System (Safe Closures)
-```rust
-// Your closure is compiled to FFI automatically - safe Rust logic!
-on_game_loaded!(0x12345678u32, |mod_ptr: &mut HfModPtr| {
-    println!("Game loaded!");  // Safe Rust inside callback
-    
-    // Access HellForge API safely via pointer conversions
-});
-```
-
-## Event Types Supported
-
-| Callback | Event ID | Param1 | Action |
-|----------|----------|--------|--------|
-| `on_game_loaded!()` | 6 | 0 | Fire rate increased to 120 RPM |
-| `on_mission_start!()` | 1 | 0 | Damage increased by 50% |
-| `on_kill_credit!()` | - | 0 | Awards kill credits to mod's peer id |
-
-## Documentation
-
-- **Full SDK Guide**: See `DOCS.md` for 2,800+ lines of complete HellForge SDK 16 documentation
-- **API Reference**: All enums, structs, and events documented by file type/offset with timing tags
-- **Component Records**: All entity components + settings tables (SDK 6+)
-
-## Build Requirements
+2. Drop RustForge somewhere in your project directory, add it to `.gitignore` (redistributing code would not be pretty) and manually set its path in `Cargo.toml`:
 
 ```toml
-# Cargo.toml entries:
-[build-dependencies]
-bindgen = "0.73.2"
+[dependencies]
+rustforge = { path = "./rustforge/" }
+```
 
-proc-macro = "1.0"  # For compiling Rust closures to FFI
+3. Grab the latest [HellForge mod SDK](https://github.com/SkyeShade/HellForge/tree/main/native/mod-sdk) and drop it directly into RustForge's root folder.
+
+4. Use it as you wish.
+
+## Getting Rust to build a HellForge mod
+
+All RustForge mods should be precompiled. HellForge's onboard Zig compiler, obviously, does not compile Rust. Second, the library must be compiled as specifically a DLL. 
+
+First of all, your project should be a library. Its a DLL after all.
+
+```bash 
+cargo init --lib
+# OR
+cargo new my_awesome_mod --lib
+```
+
+Now, tell Cargo in `Cargo.toml` that this is a DLL and only a DLL, and that it shouldn't even DARE to compile it as a stupid `.o` file:
+
+```toml
+[dependencies]
+rustforge = { path = "./rustforge/" }
 
 [lib]
-crate-type = ["cdylib"]  # Must be cdylib for load-on-demand mode
+crate-type = ["cdylib", "rlib"]
 ```
+
+### Note for Linux users
+
+You will also have to specify the target as Windows. And also, you will have to use MinGW.
+
+First of all, get MinGW if you haven't already, using your favorite package manager.
+
+```bash
+sudo apt install mingw-w64 # debian or debian based
+sudo dnf install mingw64-gcc mingw32-gcc # fedora
+sudo pacman -S --needed mingw-w64-gcc # arch people (or arch based people)
+```
+
+Then, you need to get Rust to use mingw as linker, and also, by default, compile for Windows. Make a new `.cargo/config.toml` file.
+
+```toml
+[build]
+rustflags= ["-C", "link-args=-Wl,-rpath='$ORIGIN'/native/mod-sdk/"]
+target = "x86_64-pc-windows-gnu"
+
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+```
+
+Theoretically, it should work afterwards. I think.
+
+## Usage
+
+RustForge has, roughly, 2 primary parts:
+
+- `rustforge::rust_ffi` is a direct conversion of HF mod SDK into Rust, via `bindgen`. It is done automatically, when RustForge builds, and is done via `wrapper.h`, header file that merges all other header files. `hellforge_content.h` specifically is not implemented as a part of the second part, so you will have to use `rust_ffi`. However, it will be always the SDK you download, even if unsafe.
+
+- `rustforge::hf_api, rustforge::hf_functions, rustforge::hf_globals, rustforge::hf_component` are Rust safe implementations of their respective header files. It all ties back to `rustforge::rust_ffi`.
+
+### Differences from the normal C SDK
+
+1. HF_API is a singleton that you retrieve with `rustforge::hf_api::HF_API.get().unwrap()`, or with `hf_api!()` macro.
+
+2. External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes either no arguments or one `&HellForgeApi`:
+
+```rust
+use rustforge::{hf_api::HellForgeApi, hf_entry};
+
+#[hf_entry]
+fn init(api: &HellForgeApi) {
+    api.log("hello from RustForge");
+}
+```
+
+3. You don't have to pass that stupid `HfMod` everywhere. RustForge does that for you.

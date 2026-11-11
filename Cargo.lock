@@ -180,7 +180,12 @@ name = "rustforge"
 version = "0.1.0"
 dependencies = [
  "bindgen",
+ "rustforge-macros",
 ]
+
+[[package]]
+name = "rustforge-macros"
+version = "0.1.0"
 
 [[package]]
 name = "shlex"

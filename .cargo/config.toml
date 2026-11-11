@@ -1,5 +1,5 @@
 [build]
-rustflags= ["-C", "link-args=-Wl,-rpath=/home/john/Documents/proj/hf-mods/that-stupid-LEGENDS-prot/native/"]
+rustflags= ["-C", "link-args=-Wl,-rpath='$ORIGIN'/native/mod-sdk/"]
 target = "x86_64-pc-windows-gnu"
 
 [target.x86_64-pc-windows-gnu]
