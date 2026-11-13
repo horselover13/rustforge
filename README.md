@@ -6,6 +6,20 @@ It is meant for those who do not trust themselves with writing C code (like myse
 
 ## Installation
 
+### Versioning
+
+You might want to say, use a different SDK version for some mod that is meant for an older, or even newer (nightly) version. 
+
+The version system for RustForge is pretty simple:
+
+```
+0.[SDK NUMBER].[PATCH NUMBER]
+```
+
+It is kind of similar to SemVer, just its more of a lobotomized version of it. RustForge meant for a newer SDK will not work with older SDK bindings. Newer SDK bindings, if unchanged, may work with older RustForge version, however (except you won't have access to new Rust-safe functions).
+
+### Actual installation
+
 At the moment, i will purposefully not get this up on Cargo, so you will have to drop it into your project folder and use as is.
 
 1. `git clone` the repository.
