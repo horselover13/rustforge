@@ -16,7 +16,7 @@ The version system for RustForge is pretty simple:
 0.[SDK NUMBER].[PATCH NUMBER]
 ```
 
-It is kind of similar to SemVer, just its more of a lobotomized version of it. RustForge meant for a newer SDK will not work with older SDK bindings. Newer SDK bindings, if unchanged, may work with older RustForge version, however (except you won't have access to new Rust-safe functions).
+It is kind of similar to SemVer, just its more of a lobotomized version of it. RustForge meant for a newer SDK will not work with older SDK bindings. Newer SDK bindings, if unchanged, may work with older RustForge version, however, you won't have access to new Rust-safe functions.
 
 ### Actual installation
 
