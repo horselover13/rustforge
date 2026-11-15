@@ -7,5 +7,6 @@ pub mod hf_api;
 pub mod hf_component;
 pub mod hf_functions;
 pub mod hf_globals;
+pub mod hf_ui;
 #[allow(warnings)]
 pub mod rust_ffi;
