@@ -1,14 +1,12 @@
-// Multiplayer: mod sync, the lobby browser, and the mod message/shared table
-// channel.
+// Multiplayer: mod sync and the lobby browser.
+//
+// The mod message and shared-table channel (send, share_set, share_get,
+// share_row, on_message, on_share) is in `crate::hf_net`.
 
 #![allow(dead_code)]
 
 use super::{HellForgeApi, util::cstring};
 use crate::rust_ffi::{HfBrowseLobby, HfBrowseState, HfSyncMod, HfSyncState};
-use std::ffi::c_void;
-
-const SHARE_VALUE_MAX: usize = 64;
-const MESSAGE_MAX: usize = 1024;
 
 impl HellForgeApi {
     /// The current mod-sync offer.
@@ -128,100 +126,5 @@ impl HellForgeApi {
             .map_or(std::ptr::null(), |lobby_id| lobby_id.as_ptr());
 
         unsafe { browse_ask(self.mod_handle(), ask, lobby_id) != 0 }
-    }
-
-    /// Sends a message to the same mod on other machines of the lobby.
-    ///
-    /// `to` is `HF_TO_ALL`, `HF_TO_HOST`, or a peer id from an
-    /// `HF_ON_MESSAGE` event. Returns `true` when the message was queued.
-    pub fn send(&self, to: u64, data: &[u8]) -> bool {
-        if !self.supports(16) || data.len() > MESSAGE_MAX {
-            return false;
-        }
-
-        let Some(send) = self.raw_api().send else {
-            return false;
-        };
-        let Ok(bytes) = u32::try_from(data.len()) else {
-            return false;
-        };
-
-        unsafe { send(self.mod_handle(), to, data.as_ptr() as *const c_void, bytes) == 0 }
-    }
-
-    /// Sets a row of this mod's shared table (host only).
-    ///
-    /// An empty `value` removes the row. Returns `true` when set.
-    pub fn share_set(&self, key: u64, value: &[u8]) -> bool {
-        if !self.supports(16) || value.len() > SHARE_VALUE_MAX {
-            return false;
-        }
-
-        let Some(share_set) = self.raw_api().share_set else {
-            return false;
-        };
-        let Ok(bytes) = u32::try_from(value.len()) else {
-            return false;
-        };
-
-        unsafe {
-            share_set(
-                self.mod_handle(),
-                key,
-                value.as_ptr() as *const c_void,
-                bytes,
-            ) == 0
-        }
-    }
-
-    /// One row of this mod's shared table on this machine.
-    ///
-    /// Returns `None` when the row is absent.
-    pub fn share_get(&self, key: u64) -> Option<Vec<u8>> {
-        if !self.supports(16) {
-            return None;
-        }
-
-        let share_get = self.raw_api().share_get?;
-        let mut value = [0u8; SHARE_VALUE_MAX];
-        let size = unsafe {
-            share_get(
-                self.mod_handle(),
-                key,
-                value.as_mut_ptr() as *mut c_void,
-                SHARE_VALUE_MAX as u32,
-            )
-        } as usize;
-
-        (size != 0).then(|| value[..size.min(SHARE_VALUE_MAX)].to_vec())
-    }
-
-    /// The `index`-th row of this mod's shared table on this machine.
-    ///
-    /// Returns the key and value, or `None` past the last row.
-    pub fn share_row(&self, index: u32) -> Option<(u64, Vec<u8>)> {
-        if !self.supports(16) {
-            return None;
-        }
-
-        let share_row = self.raw_api().share_row?;
-        let mut key = 0u64;
-        let mut value = [0u8; SHARE_VALUE_MAX];
-        let mut bytes = 0u32;
-        let status = unsafe {
-            share_row(
-                self.mod_handle(),
-                index,
-                &mut key,
-                value.as_mut_ptr() as *mut c_void,
-                SHARE_VALUE_MAX as u32,
-                &mut bytes,
-            )
-        };
-
-        (status != 0).then(|| {
-            let bytes = (bytes as usize).min(SHARE_VALUE_MAX);
-            (key, value[..bytes].to_vec())
-        })
     }
 }

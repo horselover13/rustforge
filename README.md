@@ -92,7 +92,7 @@ RustForge has, roughly, 2 primary parts:
 
 - `rustforge::rust_ffi` is a direct conversion of HF mod SDK into Rust, via `bindgen`. It is done automatically, when RustForge builds, and is done via `wrapper.h`, header file that merges all other header files. `hellforge_content.h` specifically is not implemented as a part of the second part, so you will have to use `rust_ffi`. However, it will be always the SDK you download, even if unsafe.
 
-- `rustforge::hf_api, rustforge::hf_functions, rustforge::hf_globals, rustforge::hf_component, rustforge::hf_ui` are Rust safe implementations of their respective header files. It all ties back to `rustforge::rust_ffi`.
+- `rustforge::hf_api, rustforge::hf_functions, rustforge::hf_globals, rustforge::hf_component, rustforge::hf_net, rustforge::hf_ui` are Rust safe implementations of their respective header files. It all ties back to `rustforge::rust_ffi`.
 
 ### Differences from the normal C SDK
 
