@@ -6,14 +6,16 @@ use proc_macro::{Delimiter, TokenStream, TokenTree};
 ///
 /// `hellforge_mod_init` installs the HellForge API and then calls the
 /// annotated function, on the loader's thread, once per set-up. The function
-/// must be safe and take either no arguments or exactly one
-/// `&'static rustforge::hf_api::HellForgeApi` argument.
+/// must be safe and take no arguments; retrieve the API with
+/// `rustforge::hf_api::HF_API.get().unwrap()`.
 ///
 /// ```ignore
+/// use rustforge::hf_api::{HellForgeApi, HF_API};
 /// use rustforge::hf_entry;
 ///
 /// #[hf_entry]
-/// fn init(api: &rustforge::hf_api::HellForgeApi) {
+/// fn init() {
+///     let api: &HellForgeApi = HF_API.get().unwrap();
 ///     api.log("hello from RustForge");
 /// }
 /// ```
@@ -39,30 +41,26 @@ pub fn hf_entry(attr: TokenStream, item: TokenStream) -> TokenStream {
 fn expand(item: TokenStream) -> Result<TokenStream, String> {
     let info = FnInfo::parse(&item)?;
 
-    let (param, call) = match info.arity {
-        0 => ("_api", format!("{}();", info.name)),
-        1 => ("api", format!("{}(api);", info.name)),
-        arity => {
-            return Err(format!(
-                "#[hf_entry] functions must take no arguments or one `&HellForgeApi` argument \
-                 (found {arity} arguments)"
-            ));
-        }
-    };
+    if info.arity != 0 {
+        return Err(format!(
+            "#[hf_entry] functions must take no arguments (found {}); retrieve the API with \
+             `HF_API.get().unwrap()` instead",
+            info.arity
+        ));
+    }
 
     let init_fn = format!("__rustforge_entry_init_{}", info.name);
     let init_static = format!("__RUSTFORGE_ENTRY_INIT_{}", info.name);
+    let name = &info.name;
 
     let generated = format!(
         r##"
 #[doc(hidden)]
 #[allow(non_snake_case)]
 extern "C" fn {init_fn}() {{
-    ::rustforge::hf_api::__register_entry(
-        |{param}: &'static ::rustforge::hf_api::HellForgeApi| {{
-            {call}
-        }},
-    );
+    ::rustforge::hf_api::__register_entry(|| {{
+        {name}();
+    }});
 }}
 
 #[allow(non_upper_case_globals)]

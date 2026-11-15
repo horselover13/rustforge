@@ -98,13 +98,15 @@ RustForge has, roughly, 2 primary parts:
 
 1. HF_API is a singleton that you retrieve with `rustforge::hf_api::HF_API.get().unwrap()`, or with `hf_api!()` macro.
 
-2. External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes either no arguments or one `&HellForgeApi`:
+2. External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes no arguments; retrieve the singleton API inside:
 
 ```rust
-use rustforge::{hf_api::HellForgeApi, hf_entry};
+use rustforge::hf_api::{HellForgeApi, HF_API};
+use rustforge::hf_entry;
 
 #[hf_entry]
-fn init(api: &HellForgeApi) {
+fn init() {
+    let api: &HellForgeApi = HF_API.get().unwrap();
     api.log("hello from RustForge");
 }
 ```

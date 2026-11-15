@@ -23,7 +23,7 @@ pub(crate) mod util;
 pub static HF_API: OnceLock<HellForgeApi> = OnceLock::new();
 
 /// The function shape `#[hf_entry]` registers.
-pub type HfEntryFn = fn(&'static HellForgeApi);
+pub type HfEntryFn = fn();
 
 static HF_ENTRY: OnceLock<HfEntryFn> = OnceLock::new();
 
@@ -160,17 +160,20 @@ extern "C" fn hellforge_mod_init(api: *const HfApi, mod_ptr: *mut HfMod) -> c_in
         return 1;
     };
 
-    run_entry(api)
-}
-
-fn run_entry(api: &'static HellForgeApi) -> c_int {
-    let Some(entry) = HF_ENTRY.get().copied() else {
+    if HF_ENTRY.get().is_none() {
         // No `#[hf_entry]` function: the mod loads but has nothing to set up.
         api.log("rustforge: no #[hf_entry] function was registered");
+    }
+
+    run_entry()
+}
+
+fn run_entry() -> c_int {
+    let Some(entry) = HF_ENTRY.get().copied() else {
         return 0;
     };
 
-    match catch_unwind(AssertUnwindSafe(|| entry(api))) {
+    match catch_unwind(AssertUnwindSafe(entry)) {
         Ok(()) => 0,
         // The panic hook has already logged the reason. Refuse the mod so the
         // loader does not keep a half-initialized set-up.
@@ -180,28 +183,20 @@ fn run_entry(api: &'static HellForgeApi) -> c_int {
 
 #[cfg(test)]
 mod tests {
-    use super::{HF_ENTRY, HellForgeApi, run_entry};
-    use crate::rust_ffi::HfApi;
+    use super::{HF_ENTRY, run_entry};
     use std::sync::atomic::{AtomicBool, Ordering};
 
     static CALLED: AtomicBool = AtomicBool::new(false);
 
     #[crate::hf_entry]
-    fn test_entry(api: &HellForgeApi) {
-        assert!(api.version() >= 1);
+    fn test_entry() {
         CALLED.store(true, Ordering::SeqCst);
     }
 
     #[test]
     fn registered_entry_runs() {
-        let mut raw: Box<HfApi> = Box::new(unsafe { std::mem::zeroed() });
-        raw.version = 16;
-        raw.size = std::mem::size_of::<HfApi>() as u32;
-        let raw = Box::leak(raw);
-        let api = Box::leak(Box::new(HellForgeApi::new(raw, std::ptr::null_mut())));
-
         assert!(HF_ENTRY.get().is_some());
-        assert_eq!(run_entry(api), 0);
+        assert_eq!(run_entry(), 0);
         assert!(CALLED.load(Ordering::SeqCst));
     }
 }
