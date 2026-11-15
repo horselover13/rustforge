@@ -22,11 +22,7 @@ It is kind of similar to SemVer, just its more of a lobotomized version of it. R
 
 At the moment, i will purposefully not get this up on Cargo, so you will have to drop it into your project folder and use as is.
 
-1. `git clone` the repository.
-
-```bash 
-git clone https://github.com/horselover13/rustforge.git
-```
+1. Download the RustForge version for *your* SDK. You can see the versions in the "Releases" tab of GitHub. See Versioning to determine which version fits your SDK.
 
 2. Drop RustForge somewhere in your project directory, add it to `.gitignore` (redistributing code would not be pretty) and manually set its path in `Cargo.toml`:
 
