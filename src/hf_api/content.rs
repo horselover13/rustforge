@@ -5,8 +5,8 @@
 
 use super::{HellForgeApi, util::cstring};
 use crate::rust_ffi::{
-    HfAbility, HfBehaviour, HfContent, HfDamage, HfDifficulty, HfEntity, HfProjectile, HfStratagem,
-    HfStratagemCategory, HfWeapon,
+    HfAbility, HfArc, HfBeam, HfBehaviour, HfContent, HfDamage, HfDifficulty, HfEntity,
+    HfExplosion, HfProjectile, HfStratagem, HfStratagemCategory, HfWeapon,
 };
 
 impl HellForgeApi {
@@ -81,6 +81,99 @@ impl HellForgeApi {
         };
 
         unsafe { projectile_row(projectile_type) }
+    }
+
+    /// Adds a new explosion type (call from `hellforge_mod_init`).
+    ///
+    /// Returns its type (423 and up), or 0 on failure.
+    pub fn add_explosion(&self, explosion: &HfExplosion) -> u32 {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(add_explosion) = self.raw_api().add_explosion else {
+            return 0;
+        };
+
+        unsafe { add_explosion(self.mod_handle(), explosion) }
+    }
+
+    /// The `ExplosionSettings` row of an explosion type a mod added, after
+    /// `HF_EVENT_PROJECTILES_READY`; 0 if there is none.
+    ///
+    /// The row's first field is the type, and must stay.
+    pub fn explosion_row(&self, explosion_type: u32) -> usize {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(explosion_row) = self.raw_api().explosion_row else {
+            return 0;
+        };
+
+        unsafe { explosion_row(explosion_type) }
+    }
+
+    /// Adds a new beam type (call from `hellforge_mod_init`).
+    ///
+    /// Returns its type (31 and up), or 0 on failure.
+    pub fn add_beam(&self, beam: &HfBeam) -> u32 {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(add_beam) = self.raw_api().add_beam else {
+            return 0;
+        };
+
+        unsafe { add_beam(self.mod_handle(), beam) }
+    }
+
+    /// The `BeamSettings` row of a beam type a mod added, after
+    /// `HF_EVENT_PROJECTILES_READY`; 0 if there is none.
+    ///
+    /// The row's first field is the type, and must stay.
+    pub fn beam_row(&self, beam_type: u32) -> usize {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(beam_row) = self.raw_api().beam_row else {
+            return 0;
+        };
+
+        unsafe { beam_row(beam_type) }
+    }
+
+    /// Adds a new arc type (call from `hellforge_mod_init`).
+    ///
+    /// Returns its type (17 and up), or 0 on failure.
+    pub fn add_arc(&self, arc: &HfArc) -> u32 {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(add_arc) = self.raw_api().add_arc else {
+            return 0;
+        };
+
+        unsafe { add_arc(self.mod_handle(), arc) }
+    }
+
+    /// The `ArcSettings` row of an arc type a mod added, after
+    /// `HF_EVENT_PROJECTILES_READY`; 0 if there is none.
+    ///
+    /// The row's first field is the type, and must stay.
+    pub fn arc_row(&self, arc_type: u32) -> usize {
+        if !self.supports(17) {
+            return 0;
+        }
+
+        let Some(arc_row) = self.raw_api().arc_row else {
+            return 0;
+        };
+
+        unsafe { arc_row(arc_type) }
     }
 
     /// Adds a new damage type (call from `hellforge_mod_init`, before the

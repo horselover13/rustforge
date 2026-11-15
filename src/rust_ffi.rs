@@ -91,13 +91,31 @@ pub const WCHAR_MIN: u32 = 0;
 pub const WCHAR_MAX: u32 = 65535;
 pub const WINT_MIN: u32 = 0;
 pub const WINT_MAX: u32 = 65535;
-pub const HF_MOD_SDK_VERSION: u32 = 16;
+pub const HF_MOD_SDK_VERSION: u32 = 19;
 pub const HF_UNLOAD_REMOVE: u32 = 1;
 pub const HF_UNLOAD_REPLACE: u32 = 2;
 pub const HF_LOAD_BOOT: u32 = 0;
 pub const HF_LOAD_LIVE: u32 = 1;
 pub const HF_PACKAGE_LOADING: u32 = 1;
 pub const HF_PACKAGE_RESIDENT: u32 = 2;
+pub const HF_PATTERN_SWAPS: u32 = 16;
+pub const HF_PATTERN_COLOURS: u32 = 8;
+pub const HF_UI_OVERLAY: u32 = 0;
+pub const HF_UI_MENU: u32 = 1;
+pub const HF_ENEMY_TERMINIDS: u32 = 1;
+pub const HF_ENEMY_AUTOMATONS: u32 = 2;
+pub const HF_ENEMY_ILLUMINATE: u32 = 4;
+pub const HF_ENEMY_LEVELS: u32 = 10;
+pub const HF_ENEMY_ALWAYS_LOADED: u32 = 1;
+pub const HF_SQUAD_MEMBERS: u32 = 8;
+pub const HF_SQUAD_PATROL: u32 = 1;
+pub const HF_SQUAD_GUARD: u32 = 2;
+pub const HF_SQUAD_OUTPOST: u32 = 3;
+pub const HF_SQUAD_ENCOUNTER: u32 = 4;
+pub const HF_SQUAD_BORDER: u32 = 5;
+pub const HF_SQUAD_CONVOY: u32 = 6;
+pub const HF_SQUAD_AIR_SUPPORT: u32 = 7;
+pub const HF_SQUAD_STRAGGLER: u32 = 8;
 pub const HF_DIFFICULTY_SECOND_PRIMARY: u32 = 1;
 pub const HF_DIFFICULTY_NO_ERADICATE: u32 = 2;
 pub const HF_DIFFICULTY_NO_RAPID_ACQUISITION: u32 = 4;
@@ -182,6 +200,7 @@ pub const HF_TYPE_WeaponData_stationary_while_firing: u32 = 1;
 pub const HF_TYPE_WeaponData_crosshair_type: u32 = 3;
 pub const HF_TYPE_WeaponData_fire_ability: u32 = 3;
 pub const HF_TYPE_WeaponData_fire_ability_2: u32 = 3;
+pub const HF_TYPE_WeaponData_fire_ability_function: u32 = 3;
 pub const HF_TYPE_WeaponMagazine_magazine_type: u32 = 3;
 pub const HF_TYPE_WeaponMagazine_pattern: u32 = 3;
 pub const HF_TYPE_WeaponMagazine_first_projectile: u32 = 3;
@@ -251,12 +270,19 @@ pub const HF_TYPE_ProjectileSettings_mass: u32 = 5;
 pub const HF_TYPE_ProjectileSettings_drag: u32 = 5;
 pub const HF_TYPE_ProjectileSettings_gravity: u32 = 5;
 pub const HF_TYPE_ProjectileSettings_lifetime: u32 = 5;
+pub const HF_TYPE_ProjectileSettings_lifetime_variance: u32 = 5;
 pub const HF_TYPE_ProjectileSettings_damage: u32 = 3;
 pub const HF_TYPE_ProjectileSettings_penetration_slowdown: u32 = 5;
 pub const HF_TYPE_ProjectileSettings_spawn_effect: u32 = 6;
 pub const HF_TYPE_ProjectileSettings_flight_effect: u32 = 6;
 pub const HF_TYPE_ProjectileSettings_impact_explosion: u32 = 3;
 pub const HF_TYPE_ProjectileSettings_expiry_explosion: u32 = 3;
+pub const HF_TYPE_ProjectileSettings_arming_distance: u32 = 5;
+pub const HF_TYPE_ProjectileSettings_ricochets: u32 = 3;
+pub const HF_TYPE_ProjectileSettings_ricochet_angle: u32 = 5;
+pub const HF_TYPE_ProjectileSettings_ricochet_min_speed: u32 = 5;
+pub const HF_TYPE_StratagemCode_packed: u32 = 3;
+pub const HF_TYPE_StratagemRearm_rearms: u32 = 3;
 pub const HF_TYPE_StratagemSettings_type: u32 = 3;
 pub const HF_TYPE_StratagemSettings_stable_id: u32 = 3;
 pub const HF_TYPE_StratagemSettings_name_text: u32 = 3;
@@ -298,8 +324,10 @@ pub const HF_TYPE_ArcSettings_max_angle_spread: u32 = 5;
 pub const HF_TYPE_ArcSettings_max_angle_spread_first_shot: u32 = 5;
 pub const HF_TYPE_ArcSettings_chain_count: u32 = 3;
 pub const HF_TYPE_ArcSettings_max_split: u32 = 3;
+pub const HF_TYPE_ArcSettings_damage: u32 = 3;
 pub const HF_TYPE_BeamSettings_radius: u32 = 5;
 pub const HF_TYPE_BeamSettings_length: u32 = 5;
+pub const HF_TYPE_BeamSettings_damage: u32 = 3;
 pub const HF_TYPE_StatusEffectSettings_strength: u32 = 5;
 pub const HF_TYPE_StatusEffectSettings_duration: u32 = 5;
 pub const HF_TYPE_Health_health: u32 = 4;
@@ -731,6 +759,8 @@ pub const HF_TYPE_Shield_armor: u32 = 5;
 pub const HF_TYPE_Shield_recharge_delay: u32 = 5;
 pub const HF_TYPE_Shield_broken_recharge_delay: u32 = 5;
 pub const HF_TYPE_Shield_recharge_rate: u32 = 5;
+pub const HF_TYPE_Shield_blocks_grenades: u32 = 1;
+pub const HF_TYPE_Shield_blocks_enemies: u32 = 1;
 pub const HF_TYPE_HellpodPayload_lifetime: u32 = 5;
 pub const HF_TYPE_SensorEye_range: u32 = 5;
 pub const HF_TYPE_SensorEye_side_range: u32 = 5;
@@ -799,6 +829,7 @@ pub const HF_TYPE_Bombardment_walking_speed: u32 = 5;
 pub const HF_TYPE_Explosive_arming_delay: u32 = 5;
 pub const HF_TYPE_Explosive_explosion_delay: u32 = 5;
 pub const HF_TYPE_Explosive_explosion: u32 = 3;
+pub const HF_TYPE_Explosive_impact_explosion: u32 = 3;
 pub const HF_TYPE_Explosive_armed_ability: u32 = 3;
 pub const HF_TYPE_Throwable_launch_distance_min: u32 = 5;
 pub const HF_TYPE_Throwable_launch_distance_max: u32 = 5;
@@ -835,7 +866,27 @@ pub const HF_TYPE_WeaponCharge_burst_shots: u32 = 3;
 pub const HF_TYPE_WeaponCharge_burst_interval_seconds: u32 = 5;
 pub const HF_TYPE_WeaponCharge_overcharge_explosion: u32 = 3;
 pub const HF_TYPE_WeaponCharge_overcharge_limit_seconds: u32 = 5;
+pub const HF_TYPE_WeaponReload_manual_clearing: u32 = 1;
+pub const HF_TYPE_WeaponReload_allow_move: u32 = 1;
+pub const HF_TYPE_WeaponReload_ability: u32 = 3;
+pub const HF_TYPE_WeaponReload_event_type_0: u32 = 3;
+pub const HF_TYPE_WeaponReload_weapon_event_0: u32 = 3;
+pub const HF_TYPE_WeaponReload_wielder_event_0: u32 = 3;
+pub const HF_TYPE_WeaponReload_event_type_1: u32 = 3;
+pub const HF_TYPE_WeaponReload_weapon_event_1: u32 = 3;
+pub const HF_TYPE_WeaponReload_wielder_event_1: u32 = 3;
+pub const HF_TYPE_WeaponReload_event_type_2: u32 = 3;
+pub const HF_TYPE_WeaponReload_weapon_event_2: u32 = 3;
+pub const HF_TYPE_WeaponReload_wielder_event_2: u32 = 3;
+pub const HF_TYPE_WeaponReload_event_type_3: u32 = 3;
+pub const HF_TYPE_WeaponReload_weapon_event_3: u32 = 3;
+pub const HF_TYPE_WeaponReload_wielder_event_3: u32 = 3;
 pub const HF_TYPE_WeaponReload_duration: u32 = 5;
+pub const HF_TYPE_WeaponReload_has_shared_deposit: u32 = 1;
+pub const HF_TYPE_WeaponReload_vo_normal: u32 = 3;
+pub const HF_TYPE_WeaponReload_vo_last_magazine: u32 = 3;
+pub const HF_TYPE_WeaponReload_vo_no_magazines: u32 = 3;
+pub const HF_TYPE_WeaponReload_vo_no_magazines_no_backpack: u32 = 3;
 pub const HF_TYPE_WeaponRounds_primary_projectile: u32 = 3;
 pub const HF_TYPE_WeaponRounds_alternate_projectile: u32 = 3;
 pub const HF_TYPE_WeaponRounds_feed_capacity_1: u32 = 5;
@@ -843,6 +894,7 @@ pub const HF_TYPE_WeaponRounds_feed_capacity_2: u32 = 5;
 pub const HF_TYPE_WeaponRounds_spare_rounds: u32 = 3;
 pub const HF_TYPE_WeaponRounds_rounds_from_supply: u32 = 3;
 pub const HF_TYPE_WeaponRounds_starting_rounds: u32 = 3;
+pub const HF_TYPE_WeaponRounds_rounds_per_reload: u32 = 3;
 pub const HF_TYPE_ArcWeapon_fire_rate: u32 = 5;
 pub const HF_TYPE_BoosterSettings_granted_stratagem: u32 = 3;
 pub const HF_TYPE_BoosterSettings_tuning: u32 = 5;
@@ -1059,6 +1111,7 @@ pub const HF_TYPE_EnemyComposition_minimum_tech_level: u32 = 3;
 pub const HF_TYPE_EnemyComposition_maximum_tech_level: u32 = 3;
 pub const HF_TYPE_EnemyComposition_minimum_players: u32 = 3;
 pub const HF_TYPE_EnemyComposition_maximum_players: u32 = 3;
+pub const HF_TYPE_Unit_unit: u32 = 6;
 pub const HF_TYPE_Unit_scale_min: u32 = 5;
 pub const HF_TYPE_Unit_radius: u32 = 5;
 pub const HF_TYPE_SquadTransportFormation_passenger_formation_0_dimension_0: u32 = 3;
@@ -1082,6 +1135,68 @@ pub const HF_TYPE_StratagemBlocker_initially_enabled: u32 = 1;
 pub const HF_TYPE_Bughole_emission_radius: u32 = 5;
 pub const HF_TYPE_DemolitionTemplate_index: u32 = 3;
 pub const HF_TYPE_DemolitionTemplate_force: u32 = 3;
+pub const HF_TYPE_Equipment_wield_node: u32 = 3;
+pub const HF_TYPE_Equipment_wield_rotation: u32 = 5;
+pub const HF_TYPE_Equipment_wield_position: u32 = 5;
+pub const HF_TYPE_Equipment_holster_node: u32 = 3;
+pub const HF_TYPE_Equipment_holster_rotation: u32 = 5;
+pub const HF_TYPE_Equipment_holster_position: u32 = 5;
+pub const HF_TYPE_Equipment_holster_duration: u32 = 5;
+pub const HF_TYPE_Equipment_wield_duration: u32 = 5;
+pub const HF_TYPE_Equipment_pickup_duration: u32 = 5;
+pub const HF_TYPE_Equipment_wield_animation: u32 = 3;
+pub const HF_TYPE_Equipment_pickup_animation: u32 = 3;
+pub const HF_TYPE_Equipment_holster_animation: u32 = 3;
+pub const HF_TYPE_Equipment_drop_animation: u32 = 3;
+pub const HF_TYPE_Equipment_ammocheck_animation: u32 = 3;
+pub const HF_TYPE_Equipment_holster_duration_attach: u32 = 5;
+pub const HF_TYPE_Equipment_wield_duration_attach: u32 = 5;
+pub const HF_TYPE_Equipment_attach_lerp_time: u32 = 5;
+pub const HF_TYPE_Equipment_wield_animation_self: u32 = 3;
+pub const HF_TYPE_Equipment_pickup_animation_self: u32 = 3;
+pub const HF_TYPE_Equipment_holster_animation_self: u32 = 3;
+pub const HF_TYPE_Equipment_equipment_type: u32 = 3;
+pub const HF_TYPE_Equipment_drop_mode: u32 = 3;
+pub const HF_TYPE_Equipment_drop_icon: u32 = 6;
+pub const HF_TYPE_Equipment_pickup_audio_event: u32 = 3;
+pub const HF_TYPE_Equipment_switch_wield_audio_event: u32 = 3;
+pub const HF_TYPE_Equipment_switch_holster_audio_event: u32 = 3;
+pub const HF_TYPE_Equipment_pickup_ability: u32 = 3;
+pub const HF_TYPE_Equipment_drop_ability: u32 = 3;
+pub const HF_TYPE_Equipment_grip_type: u32 = 3;
+pub const HF_TYPE_Equipment_one_handed: u32 = 1;
+pub const HF_TYPE_Equipment_allow_wield_on_ship: u32 = 1;
+pub const HF_TYPE_Equipment_show_in_pickup_widget: u32 = 1;
+pub const HF_TYPE_Equipment_holster_unit: u32 = 6;
+pub const HF_TYPE_Equipment_wwise_index: u32 = 3;
+pub const HF_TYPE_Equipment_left_hand_node: u32 = 3;
+pub const HF_TYPE_Wieldable_allow_ads: u32 = 1;
+pub const HF_TYPE_Wieldable_wielder_enter_event: u32 = 3;
+pub const HF_TYPE_Wieldable_wielder_exit_event: u32 = 3;
+pub const HF_TYPE_Wieldable_wield_state_audio_event: u32 = 3;
+pub const HF_TYPE_Wieldable_self_enter_event: u32 = 3;
+pub const HF_TYPE_Wieldable_self_exit_event: u32 = 3;
+pub const HF_TYPE_Attachable_dynamic_actor: u32 = 3;
+pub const HF_TYPE_Attachable_attached_dynamic_actor: u32 = 3;
+pub const HF_TYPE_Attachable_use_all_dynamic_actors: u32 = 1;
+pub const HF_TYPE_Attachable_offset: u32 = 5;
+pub const HF_TYPE_Attachable_rotation_offset: u32 = 5;
+pub const HF_TYPE_Attachable_offset_node: u32 = 3;
+pub const HF_TYPE_Attachable_attach_animation: u32 = 3;
+pub const HF_TYPE_Attachable_parent_attach_animation: u32 = 3;
+pub const HF_TYPE_Attachable_detach_animation: u32 = 3;
+pub const HF_TYPE_Attachable_parent_detach_animation: u32 = 3;
+pub const HF_TYPE_Attachable_inherit_angular_momentum: u32 = 1;
+pub const HF_TYPE_WeaponCustomization_defaults: u32 = 3;
+pub const HF_TYPE_WeaponCustomization_slots: u32 = 3;
+pub const HF_TYPE_WeaponCustomization_optics_unit: u32 = 6;
+pub const HF_TYPE_WeaponCustomization_magazine_unit: u32 = 6;
+pub const HF_TYPE_WeaponCustomization_magazine_secondary_unit: u32 = 6;
+pub const HF_TYPE_WeaponCustomization_muzzle_unit: u32 = 6;
+pub const HF_TYPE_WeaponCustomization_optics_crosshair: u32 = 5;
+pub const HF_TYPE_WeaponCustomization_underbarrel_entity: u32 = 6;
+pub const HF_TYPE_WeaponCustomization_trigger_settings: u32 = 3;
+pub const HF_TYPE_WeaponCustomization_magazine_adjusting_nodes: u32 = 3;
 pub const HF_PASSIVE_KIT: u32 = 4294967295;
 pub const HF_SESSION_SOLO: u32 = 0;
 pub const HF_SESSION_HOST: u32 = 1;
@@ -1127,6 +1242,30 @@ pub const HF_SHARE_VALUE_MAX: u32 = 64;
 pub const HF_SHARE_ROWS: u32 = 512;
 pub const HF_TO_ALL: i32 = -1;
 pub const HF_TO_HOST: i32 = -2;
+pub const HF_RPC_KIND_BOOL: u32 = 0;
+pub const HF_RPC_KIND_INT: u32 = 1;
+pub const HF_RPC_KIND_FLOAT: u32 = 2;
+pub const HF_RPC_KIND_VECTOR3: u32 = 3;
+pub const HF_RPC_KIND_QUATERNION: u32 = 4;
+pub const HF_RPC_KIND_STRING: u32 = 5;
+pub const HF_RPC_KIND_U32: u32 = 6;
+pub const HF_RPC_KIND_ID64: u32 = 7;
+pub const HF_RPC_KIND_U64: u32 = 9;
+pub const HF_RPC_KIND_ARRAY: u32 = 10;
+pub const HF_RPC_KIND_DIRECTION: u32 = 11;
+pub const HF_RPC_KIND_VECTOR2: u32 = 12;
+pub const HF_RPC_KEEP: u32 = 0;
+pub const HF_RPC_DROP: u32 = 1;
+pub const HF_RPC_ALL: u32 = 0;
+pub const HF_FACE_BODY: u32 = 0;
+pub const HF_FACE_TITLE: u32 = 1;
+pub const HF_ALIGN_LEFT: u32 = 0;
+pub const HF_ALIGN_CENTRE: u32 = 1;
+pub const HF_ALIGN_RIGHT: u32 = 2;
+pub const HF_MOUSE_LEFT: u32 = 1;
+pub const HF_MOUSE_RIGHT: u32 = 2;
+pub const HF_MOUSE_MIDDLE: u32 = 4;
+pub const HF_SCREEN_MODAL: u32 = 1;
 pub const HF_ACT_DONE: u32 = 1;
 pub const HF_ACT_REQUESTED: u32 = 2;
 pub const HF_ACT_WAITING: u32 = 3;
@@ -1231,6 +1370,9 @@ pub const HF_KIND_TRAIT: u32 = 9;
 pub const HF_KIND_CATEGORY: u32 = 10;
 pub const HF_KIND_BEAM: u32 = 11;
 pub const HF_KIND_BOOSTER: u32 = 12;
+pub const HF_KIND_EXPLOSION: u32 = 13;
+pub const HF_KIND_WEAPON_BEAM: u32 = 14;
+pub const HF_KIND_ARC: u32 = 15;
 pub const HF_ITEM_AR23_LIBERATOR: u32 = 2852344585;
 pub const HF_ITEM_LAS16_SICKLE: u32 = 1794436168;
 pub const HF_ITEM_MG206_HEAVY_MACHINE_GUN: u32 = 533318241;
@@ -1980,7 +2122,348 @@ pub const HF_ENTITY_WARHEAD: u64 = 6279750092088033715;
 pub const HF_ENTITY_WATCHER: i64 = -6025561746410206051;
 pub const HF_ENTITY_WRETCH: i64 = -3740082206676067220;
 pub const HF_ENTITY_XENOBITE_ARDENT: u64 = 641481206831155133;
+pub const HF_DAMAGE_TERMINID_BILE_SPEWING_PROJECTILE: u32 = 1;
+pub const HF_DAMAGE_TERMINID_BILE_PROJECTILE: u32 = 2;
+pub const HF_DAMAGE_SPORE_BURST_BILE_TITAN: u32 = 3;
+pub const HF_DAMAGE_TERMINID_NURSING_SPEWING_PROJECTILE: u32 = 4;
+pub const HF_DAMAGE_TERMINID_LITTLE_BILE_SPITTER_PROJECTILE: u32 = 5;
+pub const HF_DAMAGE_DRAGON_AND_1_OTHER: u32 = 7;
+pub const HF_DAMAGE_AUTOMATON_ROCKET_DEVASTATOR_ROCKET_AND_6_OTHERS: u32 = 8;
+pub const HF_DAMAGE_AUTOMATON_BASIC_PROJECTILE_AND_13_OTHERS: u32 = 9;
+pub const HF_DAMAGE_SOLDIER_FLAMER_AND_1_OTHER: u32 = 10;
+pub const HF_DAMAGE_AUTOMATON_FIRE_BRIGADE_SHOTGUN_ROUND_AND_1_OTHER: u32 = 12;
+pub const HF_DAMAGE_SIEGE_ENGINE: u32 = 13;
+pub const HF_DAMAGE_POSSIBLY_HIVE_LORD_SPEWING_PROJECTILE_AND_1_OTHER: u32 = 18;
+pub const HF_DAMAGE_HIVE_LORD_ABILITY_7: u32 = 20;
+pub const HF_DAMAGE_HIVE_LORD_ABILITY_9: u32 = 21;
+pub const HF_DAMAGE_HIVE_LORD_ABILITY: u32 = 22;
+pub const HF_DAMAGE_G142_PYROTECH_DETONATION: u32 = 26;
+pub const HF_DAMAGE_GP20_ULTIMATUM: u32 = 27;
+pub const HF_DAMAGE_GL28_BELTFED_GRENADE_LAUNCHER: u32 = 30;
+pub const HF_DAMAGE_GL28_BELTFED_GRENADE_LAUNCHER_IMPACT: u32 = 31;
+pub const HF_DAMAGE_GL21_GRENADE_LAUNCHER_AND_8_OTHERS: u32 = 32;
+pub const HF_DAMAGE_GL15_EVICTOR: u32 = 33;
+pub const HF_DAMAGE_GATEKEEPER: u32 = 38;
+pub const HF_DAMAGE_GATEKEEPER_AND_2_OTHERS: u32 = 39;
+pub const HF_DAMAGE_LAS16_SICKLE_AND_1_OTHER: u32 = 48;
+pub const HF_DAMAGE_LAS12_SAI: u32 = 49;
+pub const HF_DAMAGE_LAS17_DOUBLEEDGE_SICKLE: u32 = 50;
+pub const HF_DAMAGE_LAS17_DOUBLEEDGE_SICKLE_51: u32 = 51;
+pub const HF_DAMAGE_LAS17_DOUBLEEDGE_SICKLE_52: u32 = 52;
 pub const HF_DAMAGE_LAS58_TALON: u32 = 54;
+pub const HF_DAMAGE_PLAS1_SCORCHER_AND_1_OTHER: u32 = 56;
+pub const HF_DAMAGE_SG8P_PUNISHER_PLASMA: u32 = 57;
+pub const HF_DAMAGE_PLAS45_EPOCH_AND_1_OTHER: u32 = 58;
+pub const HF_DAMAGE_EPOCH_FULL_CHARGE_ROUND: u32 = 59;
+pub const HF_DAMAGE_PLAS45_EPOCH_IMPACT: u32 = 60;
+pub const HF_DAMAGE_40K_MELTAGUN_AND_1_OTHER: u32 = 61;
+pub const HF_DAMAGE_CHARGED_LOYALIST_ROUND_AND_1_OTHER: u32 = 62;
+pub const HF_DAMAGE_PLAS101_PURIFIER_AND_1_OTHER: u32 = 63;
+pub const HF_DAMAGE_RS422_RAILGUN: u32 = 64;
+pub const HF_DAMAGE_S11_SPEARGUN: u32 = 65;
+pub const HF_DAMAGE_S11_SPEARGUN_EXPIRY: u32 = 66;
+pub const HF_DAMAGE_P35_REEDUCATOR: u32 = 67;
+pub const HF_DAMAGE_P34_BREACHER: u32 = 68;
+pub const HF_DAMAGE_P34_BREACHER_IMPACT: u32 = 69;
+pub const HF_DAMAGE_M7S_SMG: u32 = 71;
+pub const HF_DAMAGE_P19_REDEEMER: u32 = 73;
+pub const HF_DAMAGE_MP98_KNIGHT_AND_1_OTHER: u32 = 74;
+pub const HF_DAMAGE_P2_PEACEMAKER: u32 = 75;
+pub const HF_DAMAGE_VG70_VARIABLE: u32 = 76;
+pub const HF_DAMAGE_SMG203_GALLANT: u32 = 77;
+pub const HF_DAMAGE_SMG37_DEFENDER: u32 = 83;
+pub const HF_DAMAGE_SMG72_PUMMELER: u32 = 90;
+pub const HF_DAMAGE_P113_VERDICT: u32 = 91;
+pub const HF_DAMAGE_P69_VETO: u32 = 92;
+pub const HF_DAMAGE_M6CSOCOM_PISTOL: u32 = 93;
+pub const HF_DAMAGE_P92_WARRANT: u32 = 94;
+pub const HF_DAMAGE_P33_MISSILE_PISTOL: u32 = 95;
+pub const HF_DAMAGE_SMG32_REPRIMAND: u32 = 96;
+pub const HF_DAMAGE_SMGFLAM34_STOKER: u32 = 97;
+pub const HF_DAMAGE_P4_SENATOR: u32 = 99;
+pub const HF_DAMAGE_AR23P_LIBERATOR_PENETRATOR_AND_2_OTHERS: u32 = 105;
+pub const HF_DAMAGE_AR23C_LIBERATOR_CONCUSSIVE: u32 = 107;
+pub const HF_DAMAGE_AR23_LIBERATOR_AND_3_OTHERS: u32 = 108;
+pub const HF_DAMAGE_AR59_SUPPRESSOR: u32 = 114;
+pub const HF_DAMAGE_AR32_PACIFIER: u32 = 116;
+pub const HF_DAMAGE_MGX42_BULLET_STORM_AND_1_OTHER: u32 = 117;
+pub const HF_DAMAGE_AR2_COYOTE: u32 = 118;
+pub const HF_DAMAGE_EXO45_PATRIOT_EXOSUIT_RIGHT_GUN_AND_1_OTHER: u32 = 125;
+pub const HF_DAMAGE_M1000_MAXIGUN: u32 = 127;
+pub const HF_DAMAGE_R72_CENSOR: u32 = 130;
+pub const HF_DAMAGE_ARGL21_ONETWO: u32 = 132;
+pub const HF_DAMAGE_AR11_ARBITRATOR: u32 = 133;
+pub const HF_DAMAGE_BR14_ADJUDICATOR: u32 = 134;
+pub const HF_DAMAGE_AR61_TENDERIZER: u32 = 135;
+pub const HF_DAMAGE_MA5C_ASSAULT_RIFLE: u32 = 136;
+pub const HF_DAMAGE_R2124_CONSTITUTION: u32 = 137;
+pub const HF_DAMAGE_R2_AMENDMENT: u32 = 138;
+pub const HF_DAMAGE_R6_DEADEYE: u32 = 139;
+pub const HF_DAMAGE_R63_DILIGENCE: u32 = 141;
+pub const HF_DAMAGE_R4_HYENA: u32 = 142;
+pub const HF_DAMAGE_R63CS_DILIGENCE_COUNTER_SNIPER: u32 = 143;
+pub const HF_DAMAGE_R36_ERUPTOR: u32 = 149;
+pub const HF_DAMAGE_JAR5_DOMINATOR: u32 = 153;
+pub const HF_DAMAGE_P40K_BOLT_PISTOL: u32 = 156;
+pub const HF_DAMAGE_M90A_SHOTGUN: u32 = 157;
+pub const HF_DAMAGE_SG97_SWEEPER: u32 = 158;
+pub const HF_DAMAGE_DBS2_DOUBLE_FREEDOM: u32 = 159;
+pub const HF_DAMAGE_ARBITRATOR_UNDERBARREL_SHOTGUN_ROUND: u32 = 161;
+pub const HF_DAMAGE_SG22_BUSHWHACKER: u32 = 163;
+pub const HF_DAMAGE_SG451_COOKOUT: u32 = 164;
+pub const HF_DAMAGE_SG20_HALT: u32 = 166;
+pub const HF_DAMAGE_BREAK_ACTION_SHOTGUN_ROUND: u32 = 169;
+pub const HF_DAMAGE_SG20_HALT_175: u32 = 175;
+pub const HF_DAMAGE_SG8S_SLUGGER: u32 = 176;
+pub const HF_DAMAGE_SG225SP_BREAKER_SPRAY_PRAY: u32 = 178;
+pub const HF_DAMAGE_SG225_BREAKER: u32 = 179;
+pub const HF_DAMAGE_SG225IE_BREAKER_INCENDIARY: u32 = 182;
+pub const HF_DAMAGE_EXO55_BREAKTHROUGH_EXOSUIT_RIGHT_GUN: u32 = 188;
+pub const HF_DAMAGE_ORBITAL_AIRBURST_PROJECTILE_I_THINK: u32 = 190;
+pub const HF_DAMAGE_ARC3_ARC_THROWER: u32 = 197;
+pub const HF_DAMAGE_ARC12_BLITZER: u32 = 199;
+pub const HF_DAMAGE_AXARC3_K9_GUN: u32 = 200;
+pub const HF_DAMAGE_AC8_AUTOCANNON: u32 = 202;
+pub const HF_DAMAGE_SMALL_AUTOMATON_PROJECTILE_AND_7_OTHERS: u32 = 203;
+pub const HF_DAMAGE_EMG101_HMG_EMPLACEMENT: u32 = 204;
+pub const HF_DAMAGE_FRV_AND_5_OTHERS: u32 = 205;
+pub const HF_DAMAGE_APW1_ANTIMATERIEL_RIFLE: u32 = 206;
+pub const HF_DAMAGE_CB9_EXPLODING_CROSSBOW: u32 = 208;
+pub const HF_DAMAGE_CB9_EXPLODING_CROSSBOW_IMPACT: u32 = 209;
+pub const HF_DAMAGE_AVATAR_HELLDIVER_BEHAVIOR: u32 = 210;
+pub const HF_DAMAGE_AC8_AUTOCANNON_213: u32 = 213;
+pub const HF_DAMAGE_EXO49_EMANCIPATOR_EXOSUIT_LEFT_GUN_AND_1_OTHER: u32 = 215;
+pub const HF_DAMAGE_GATER_OIL_RIG_TURRET: u32 = 216;
+pub const HF_DAMAGE_EAGLE_SMOKE_STRIKE_AND_2_OTHERS: u32 = 218;
+pub const HF_DAMAGE_AUTOMATON_BIG_PROJECTILE_AND_2_OTHERS: u32 = 220;
+pub const HF_DAMAGE_CYBORG_ELITE_FEMALE: u32 = 222;
+pub const HF_DAMAGE_GP31_GRENADE_PISTOL: u32 = 225;
+pub const HF_DAMAGE_EXO51_LUMBERER_EXOSUIT_RIGHT_GUN: u32 = 226;
+pub const HF_DAMAGE_EAT17_EXPENDABLE_ANTITANK: u32 = 227;
+pub const HF_DAMAGE_GR8_RECOILLESS_RIFLE: u32 = 228;
+pub const HF_DAMAGE_AMLS4X_ROCKET_SENTRY: u32 = 232;
+pub const HF_DAMAGE_EAGLE_AIRSTRIKE_AND_4_OTHERS: u32 = 234;
+pub const HF_DAMAGE_TD220_BASTION_MK_XVI: u32 = 235;
+pub const HF_DAMAGE_MLS4X_COMMANDO_AND_3_OTHERS: u32 = 237;
+pub const HF_DAMAGE_EXO45_PATRIOT_EXOSUIT_LEFT_GUN_AND_1_OTHER: u32 = 239;
+pub const HF_DAMAGE_STAX3_W_A_S_P_LAUNCHER_AND_1_OTHER: u32 = 244;
+pub const HF_DAMAGE_FAF14_SPEAR: u32 = 245;
+pub const HF_DAMAGE_EAGLE_110MM_ROCKET_PODS_AND_1_OTHER: u32 = 248;
+pub const HF_DAMAGE_EAGLE_500KG_BOMB: u32 = 251;
+pub const HF_DAMAGE_TERMINID_BILE_SPEWER_MORTAR_PROJECTILE_AND_5_OTHERS: u32 = 252;
+pub const HF_DAMAGE_AUTOMATON_BIG_TURRET_ROUND_AND_4_OTHERS: u32 = 254;
+pub const HF_DAMAGE_SIEGE_ENGINE_255: u32 = 255;
+pub const HF_DAMAGE_ILLUMINATE_WARMACHINE_BOMBBALL_DETONATION: u32 = 260;
+pub const HF_DAMAGE_ORBITAL_AIRBURST_STRIKE_AND_3_OTHERS: u32 = 261;
+pub const HF_DAMAGE_ORBITAL_120MM_HE_BARRAGE: u32 = 262;
+pub const HF_DAMAGE_HE_ORBITAL_SHELL_AND_1_OTHER: u32 = 263;
+pub const HF_DAMAGE_ORBITAL_PRECISION_STRIKE: u32 = 264;
+pub const HF_DAMAGE_ORBITAL_NAPALM_BARRAGE: u32 = 265;
+pub const HF_DAMAGE_ORBITAL_NAPALM_BARRAGE_SHELL_IMPACT: u32 = 266;
+pub const HF_DAMAGE_ORBITAL_RAILCANNON_STRIKE: u32 = 267;
+pub const HF_DAMAGE_AUTOMATON_380_POWERED_PROJECTILE: u32 = 270;
+pub const HF_DAMAGE_ILLUMINATE_ATTACK_SHIP: u32 = 272;
+pub const HF_DAMAGE_EAT700_EXPENDABLE_NAPALM: u32 = 274;
+pub const HF_DAMAGE_EAT700_EXPENDABLE_NAPALM_IMPACT_SHRAPNEL_IMPACT: u32 = 276;
+pub const HF_DAMAGE_RL77_AIRBURST_ROCKET_LAUNCHER_FUNCTION_EXPIRY: u32 = 277;
+pub const HF_DAMAGE_G23_STUN_DETONATION: u32 = 279;
+pub const HF_DAMAGE_G109_URCHIN_DETONATION: u32 = 280;
+pub const HF_DAMAGE_GP20_ULTIMATUM_AND_1_OTHER: u32 = 281;
+pub const HF_DAMAGE_BOOMER_ABILITY: u32 = 288;
+pub const HF_DAMAGE_RUPTURE_SPEWER_INVENTORY_DETONATION: u32 = 289;
+pub const HF_DAMAGE_BILE_TITAN_AND_2_OTHERS: u32 = 291;
+pub const HF_DAMAGE_CHA_BATTLEFRONT_SEAF_MEDIC_INVENTORY_DETONATION: u32 = 292;
+pub const HF_DAMAGE_SCAVENGER_GLOOM_BEHAVIOR: u32 = 293;
+pub const HF_DAMAGE_SPORE_BURST_HUNTER_BEHAVIOR: u32 = 294;
+pub const HF_DAMAGE_SPORE_BURST_WARRIOR_BEHAVIOR: u32 = 295;
+pub const HF_DAMAGE_SPORE_BURST_BILE_TITAN_BEHAVIOR: u32 = 296;
+pub const HF_DAMAGE_BILE_TITAN_ABILITY: u32 = 297;
+pub const HF_DAMAGE_SPORE_BURST_BILE_TITAN_SPRAY_IMPACT: u32 = 298;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_ABILITY_5: u32 = 300;
+pub const HF_DAMAGE_P40K_BOLT_PISTOL_IMPACT: u32 = 303;
+pub const HF_DAMAGE_PLAS15_LOYALIST_IMPACT: u32 = 305;
+pub const HF_DAMAGE_PLAS1_SCORCHER_IMPACT: u32 = 306;
+pub const HF_DAMAGE_PLAS39_ACCELERATOR_RIFLE: u32 = 308;
+pub const HF_DAMAGE_PLAS39_ACCELERATOR_RIFLE_IMPACT: u32 = 309;
+pub const HF_DAMAGE_SG8P_PUNISHER_PLASMA_IMPACT: u32 = 311;
+pub const HF_DAMAGE_PLAS101_PURIFIER_CHARGE_1_IMPACT: u32 = 312;
+pub const HF_DAMAGE_PLAS101_PURIFIER_IMPACT: u32 = 313;
+pub const HF_DAMAGE_PLAS15_LOYALIST_CHARGE_1_IMPACT: u32 = 314;
+pub const HF_DAMAGE_PLAS15_LOYALIST_CHARGE_2_IMPACT: u32 = 315;
+pub const HF_DAMAGE_EAT700_EXPENDABLE_NAPALM_IMPACT: u32 = 316;
+pub const HF_DAMAGE_PLASMA_CONE: u32 = 317;
+pub const HF_DAMAGE_MLS4X_COMMANDO_BACKBLAST: u32 = 318;
+pub const HF_DAMAGE_EAT17_EXPENDABLE_ANTITANK_BACKBLAST: u32 = 319;
+pub const HF_DAMAGE_GR8_RECOILLESS_RIFLE_AND_1_OTHER: u32 = 320;
+pub const HF_DAMAGE_HELLDIVER_DUMMY_BEHAVIOR: u32 = 321;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_BEHAVIOR: u32 = 324;
+pub const HF_DAMAGE_LAS98_LASER_CANNON_AND_7_OTHERS: u32 = 327;
+pub const HF_DAMAGE_CONSCRIPT_BACKPACK_LMG_AND_1_OTHER: u32 = 328;
+pub const HF_DAMAGE_LIEUTENANT_JETPACK_DETONATION: u32 = 330;
+pub const HF_DAMAGE_POWER_GENERATOR_BEHAVIOR: u32 = 331;
+pub const HF_DAMAGE_G6_FRAG_AND_3_OTHERS: u32 = 335;
+pub const HF_DAMAGE_G7_PINEAPPLE_DETONATION: u32 = 336;
+pub const HF_DAMAGE_G7_PINEAPPLE_DETONATION_SHRAPNEL_EXPIRY: u32 = 337;
+pub const HF_DAMAGE_G10_INCENDIARY_AND_1_OTHER: u32 = 338;
+pub const HF_DAMAGE_G8_IMMOLATION_DETONATION: u32 = 339;
+pub const HF_DAMAGE_G13_INCENDIARY_IMPACT_DETONATION: u32 = 340;
+pub const HF_DAMAGE_LIEUTENANT_IVORY_LEGION_IMPACT: u32 = 341;
+pub const HF_DAMAGE_G123_THERMITE_AND_1_OTHER: u32 = 342;
+pub const HF_DAMAGE_HIVE_LORD_ABILITY_3: u32 = 343;
+pub const HF_DAMAGE_G50_SEEKER_DETONATION: u32 = 344;
+pub const HF_DAMAGE_G60_ANTITANK_SEEKER_DETONATION: u32 = 345;
+pub const HF_DAMAGE_AC8_AUTOCANNON_FUNCTION_IMPACT: u32 = 346;
+pub const HF_DAMAGE_R36_ERUPTOR_IMPACT: u32 = 347;
+pub const HF_DAMAGE_GUNSHIP_AND_2_OTHERS: u32 = 348;
+pub const HF_DAMAGE_CRUSHER_ABILITY: u32 = 349;
+pub const HF_DAMAGE_TANK_ROCKETLAUNCHER_BEHAVIOR: u32 = 350;
+pub const HF_DAMAGE_GUNSHIP_BEHAVIOR_2: u32 = 351;
+pub const HF_DAMAGE_PLAS101_PURIFIER_AND_1_OTHER_352: u32 = 352;
+pub const HF_DAMAGE_GSH39_SHIELD_DETONATION: u32 = 353;
+pub const HF_DAMAGE_ADEPTSHOCKWAVE: u32 = 354;
+pub const HF_DAMAGE_EXO45_PATRIOT_EXOSUIT_VEHICLE_CRASH: u32 = 355;
+pub const HF_DAMAGE_AM23_EMS_MORTAR_SENTRY_AND_3_OTHERS: u32 = 356;
+pub const HF_DAMAGE_G12_HIGH_EXPLOSIVE_DETONATION: u32 = 357;
+pub const HF_DAMAGE_G16_IMPACT_DETONATION: u32 = 358;
+pub const HF_DAMAGE_ASSAULT_WALKER_INVENTORY_DETONATION: u32 = 359;
+pub const HF_DAMAGE_TED63_DYNAMITE_DETONATION: u32 = 360;
+pub const HF_DAMAGE_G48_GIGA_GRENADE_DETONATION: u32 = 362;
+pub const HF_DAMAGE_BMD_C4_PACK_DETONATION: u32 = 363;
+pub const HF_DAMAGE_G31_ARC_DETONATION: u32 = 364;
+pub const HF_DAMAGE_GL52_DEESCALATOR_IMPACT: u32 = 366;
+pub const HF_DAMAGE_EAGLE_110MM_ROCKET_PODS_AND_1_OTHER_367: u32 = 367;
+pub const HF_DAMAGE_AC8_AUTOCANNON_IMPACT: u32 = 370;
+pub const HF_DAMAGE_EXO49_EMANCIPATOR_EXOSUIT_ATTACH_TURRET_L_IMPACT: u32 = 371;
+pub const HF_DAMAGE_AAC8_AUTOCANNON_SENTRY_IMPACT: u32 = 373;
+pub const HF_DAMAGE_ARGL21_ONETWO_UNDERBARREL_IMPACT: u32 = 374;
+pub const HF_DAMAGE_GL21_GRENADE_LAUNCHER_IMPACT: u32 = 375;
+pub const HF_DAMAGE_GL15_EVICTOR_IMPACT: u32 = 376;
+pub const HF_DAMAGE_AM12_MORTAR_SENTRY_IMPACT: u32 = 379;
+pub const HF_DAMAGE_RL77_AIRBURST_ROCKET_LAUNCHER_AND_1_OTHER: u32 = 380;
+pub const HF_DAMAGE_GR8_RECOILLESS_RIFLE_IMPACT: u32 = 381;
+pub const HF_DAMAGE_EAT12_ANTITANK_EMPLACEMENT_AND_1_OTHER: u32 = 382;
+pub const HF_DAMAGE_LAS99_QUASAR_CANNON: u32 = 383;
+pub const HF_DAMAGE_LAS99_QUASAR_CANNON_IMPACT: u32 = 384;
+pub const HF_DAMAGE_EAGLE_CLUSTER_BOMB_AND_1_OTHER: u32 = 388;
+pub const HF_DAMAGE_EAGLE_NAPALM_AIRSTRIKE_AND_2_OTHERS: u32 = 390;
+pub const HF_DAMAGE_EAGLE_GAS_AIRSTRIKE_PAYLOAD_IMPACT: u32 = 391;
+pub const HF_DAMAGE_MLS4X_COMMANDO_IMPACT: u32 = 392;
+pub const HF_DAMAGE_TD110_MAELSTROM_SLOT_3_FIRED_EXPLOSIVE_40: u32 = 394;
+pub const HF_DAMAGE_EXO45_PATRIOT_EXOSUIT_SLOT_0_IMPACT: u32 = 395;
+pub const HF_DAMAGE_STAX3_W_A_S_P_LAUNCHER_FUNCTION_IMPACT: u32 = 397;
+pub const HF_DAMAGE_FAF14_SPEAR_IMPACT: u32 = 398;
+pub const HF_DAMAGE_STINGERMISSILE: u32 = 400;
+pub const HF_DAMAGE_AMLS4X_ROCKET_SENTRY_AND_1_OTHER: u32 = 401;
+pub const HF_DAMAGE_EAGLE_110MM_ROCKET_PODS_MAGAZINE_IMPACT: u32 = 403;
+pub const HF_DAMAGE_CYBORG_ELITE_IMPACT: u32 = 404;
+pub const HF_DAMAGE_MD6_ANTIPERSONNEL_MINEFIELD_MINE: u32 = 406;
+pub const HF_DAMAGE_MDI4_INCENDIARY_MINES_MINE: u32 = 407;
+pub const HF_DAMAGE_CALTROPS_GRENADE_DETONATION: u32 = 408;
+pub const HF_DAMAGE_MD17_ANTITANK_MINES_MINE: u32 = 409;
+pub const HF_DAMAGE_G40K_MELTA_MINE_DETONATION: u32 = 410;
+pub const HF_DAMAGE_TM1_LURE_MINE_DETONATION: u32 = 411;
+pub const HF_DAMAGE_CYBORG_MINE: u32 = 412;
+pub const HF_DAMAGE_GAZER_AND_3_OTHERS: u32 = 413;
+pub const HF_DAMAGE_JET_CHAMPION_GRENADE_HE_DETONATION: u32 = 415;
+pub const HF_DAMAGE_BILE_TITAN_AND_2_OTHERS_416: u32 = 416;
+pub const HF_DAMAGE_SOLDIER_RIOTGUN_IMPACT: u32 = 418;
+pub const HF_DAMAGE_GR8_RECOILLESS_RIFLE_FUNCTION_IMPACT: u32 = 419;
+pub const HF_DAMAGE_EAGLE_500KG_BOMB_AND_1_OTHER: u32 = 421;
+pub const HF_DAMAGE_EAGLE_AIRSTRIKE_PAYLOAD_IMPACT: u32 = 422;
+pub const HF_DAMAGE_EAGLE_MISSILE_MISSILE_IMPACT: u32 = 424;
+pub const HF_DAMAGE_SOLDIER_RPG_AND_3_OTHERS: u32 = 425;
+pub const HF_DAMAGE_HELLPODIMPACT: u32 = 426;
+pub const HF_DAMAGE_HELLPODEXPLOSION: u32 = 429;
+pub const HF_DAMAGE_IMPALER_TENTACLE_AND_2_OTHERS: u32 = 431;
+pub const HF_DAMAGE_DROPSHIP_AND_4_OTHERS: u32 = 432;
+pub const HF_DAMAGE_CYBORG_SIEGE_ENGINE_SARCOPHAGUS_AND_1_OTHER: u32 = 433;
+pub const HF_DAMAGE_PATHFINDER_LIGHTSPEAR_AND_1_OTHER: u32 = 435;
+pub const HF_DAMAGE_GATEKEEPER_IMPACT_2: u32 = 436;
+pub const HF_DAMAGE_GATEKEEPER_AND_2_OTHERS_437: u32 = 437;
+pub const HF_DAMAGE_BEAMER_CHAMPION_GUN_AND_1_OTHER: u32 = 438;
+pub const HF_DAMAGE_ILLUMINATE_ATTACK_SHIP_IMPACT: u32 = 439;
+pub const HF_DAMAGE_PROP_HUGE: u32 = 441;
+pub const HF_DAMAGE_ASSAULT_WALKER_AND_2_OTHERS: u32 = 442;
+pub const HF_DAMAGE_ORBITAL_RAILCANNON_STRIKE_ORBITAL_EXPIRY: u32 = 443;
+pub const HF_DAMAGE_ORBITAL_380MM_HE_BARRAGE_AND_3_OTHERS: u32 = 444;
+pub const HF_DAMAGE_ORBITAL_120MM_HE_BARRAGE_SHELL_IMPACT: u32 = 445;
+pub const HF_DAMAGE_ORBITAL_PRECISION_STRIKE_SHELL_IMPACT: u32 = 446;
+pub const HF_DAMAGE_ORBITAL_GAS_STRIKE_SHELL_IMPACT: u32 = 447;
+pub const HF_DAMAGE_AGM17_GAS_MORTAR_SENTRY_IMPACT: u32 = 448;
+pub const HF_DAMAGE_G4_GAS_AND_1_OTHER: u32 = 449;
+pub const HF_DAMAGE_AM23_EMS_MORTAR_SENTRY_AND_1_OTHER: u32 = 451;
+pub const HF_DAMAGE_EAGLE_500KG_BOMB_AND_1_OTHER_453: u32 = 453;
+pub const HF_DAMAGE_EAT411_LEVELLER: u32 = 454;
+pub const HF_DAMAGE_EAT411_LEVELLER_IMPACT: u32 = 455;
+pub const HF_DAMAGE_MS11_SOLO_SILO_DETONATION: u32 = 456;
+pub const HF_DAMAGE_MS11_SOLO_SILO_EXPLOSIVE_40: u32 = 457;
+pub const HF_DAMAGE_MS11_SOLO_SILO_ABILITY: u32 = 458;
+pub const HF_DAMAGE_ASSAULT_WALKER_IMPACT_2: u32 = 459;
+pub const HF_DAMAGE_RUPTURE_CHARGER_AND_2_OTHERS: u32 = 460;
+pub const HF_DAMAGE_BIG_WALKER_TURRET_CANNON_AND_5_OTHERS: u32 = 461;
+pub const HF_DAMAGE_SIEGE_ENGINE_IMPACT: u32 = 462;
+pub const HF_DAMAGE_CYBORG_ARTILLERY: u32 = 463;
+pub const HF_DAMAGE_SIEGE_ENGINE_IMPACT_2: u32 = 464;
+pub const HF_DAMAGE_BFLAM80_CREMATOR_AND_1_OTHER: u32 = 466;
+pub const HF_DAMAGE_DROPSHIP_AND_2_OTHERS: u32 = 467;
+pub const HF_DAMAGE_SIEGE_ENGINE_ABILITY_4: u32 = 468;
+pub const HF_DAMAGE_BOOMER_AND_4_OTHERS: u32 = 470;
+pub const HF_DAMAGE_HIVE_LORD_IMPACT: u32 = 471;
+pub const HF_DAMAGE_HIVE_LORD_ABILITY_SHRAPNEL_IMPACT: u32 = 473;
+pub const HF_DAMAGE_WORLD_METEOR: u32 = 474;
+pub const HF_DAMAGE_MAPBOUNDARY: u32 = 478;
+pub const HF_DAMAGE_B100_PORTABLE_HELLBOMB_AND_3_OTHERS: u32 = 479;
+pub const HF_DAMAGE_LIFT182_WARP_PACK_DISPLACEMENT: u32 = 480;
+pub const HF_DAMAGE_BUGDRILL: u32 = 481;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_ABILITY_7: u32 = 483;
+pub const HF_DAMAGE_IDLE_SAM_SITE_IMPACT: u32 = 484;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_BEHAVIOR_2: u32 = 490;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_ABILITY_2: u32 = 492;
+pub const HF_DAMAGE_TORNADOSMALL: u32 = 493;
+pub const HF_DAMAGE_TORNADO: u32 = 494;
+pub const HF_DAMAGE_TORNADO_PULL: u32 = 495;
+pub const HF_DAMAGE_CYBORG_PRODUCTION_UNIT_ABILITY: u32 = 497;
+pub const HF_DAMAGE_CORRUPTED_GROWTH: u32 = 499;
+pub const HF_DAMAGE_LAS7_DAGGER_BEAM: u32 = 500;
+pub const HF_DAMAGE_LAS22_SHEAR_AND_1_OTHER: u32 = 501;
+pub const HF_DAMAGE_AXLAS5_ROVER_GUN: u32 = 503;
+pub const HF_DAMAGE_ALAS98_LASER_SENTRY_AND_1_OTHER: u32 = 507;
+pub const HF_DAMAGE_LAS13_TRIDENT: u32 = 508;
+pub const HF_DAMAGE_40K_MELTAGUN: u32 = 509;
+pub const HF_DAMAGE_R40K_HOTSHOT_MARKSMAN_RIFLE: u32 = 510;
+pub const HF_DAMAGE_FUSION_SMELTER_BEAM_BEAM: u32 = 518;
+pub const HF_DAMAGE_DISINTIGRATION_BEAM_AND_1_OTHER: u32 = 534;
+pub const HF_DAMAGE_BEAM_WEAPON_OF_ILLUMINATE_WAR_MACHINE_AND_1_OTHER: u32 = 535;
+pub const HF_DAMAGE_TURRET_01_ILLUMINATE_STRUCTURE_BEAM: u32 = 536;
+pub const HF_DAMAGE_GAZER_SPIRE_AND_1_OTHER: u32 = 537;
+pub const HF_DAMAGE_BEAM_WEAPON_OF_TRIPOD_TRIPOD_TIER_2_ILLUMINATE_ENEMY_BEAM: u32 = 538;
+pub const HF_DAMAGE_40K_MELTAGUN_AND_102_OTHERS: u32 = 548;
+pub const HF_DAMAGE_CQC9_DEFOLIATION_TOOL_MELEE: u32 = 550;
+pub const HF_DAMAGE_CQC5_COMBAT_HATCHET_MELEE: u32 = 551;
+pub const HF_DAMAGE_CQC2_SABER_MELEE: u32 = 552;
+pub const HF_DAMAGE_CQC42_MACHETE_MELEE: u32 = 553;
+pub const HF_DAMAGE_CQC73_ENTRENCHMENT_TOOL_MELEE: u32 = 554;
+pub const HF_DAMAGE_CQC1_ONE_TRUE_FLAG_MELEE: u32 = 557;
+pub const HF_DAMAGE_CQC19_STUN_LANCE_MELEE: u32 = 558;
+pub const HF_DAMAGE_CQC30_STUN_BATON_MELEE: u32 = 559;
+pub const HF_DAMAGE_CQC20_BREACHING_HAMMER_MELEE: u32 = 560;
+pub const HF_DAMAGE_CQC20_BREACHING_HAMMER_ABILITY: u32 = 562;
+pub const HF_DAMAGE_P33_MISSILE_PISTOL_IMPACT: u32 = 563;
+pub const HF_DAMAGE_RUPTURE_CHARGER_ABILITY_3: u32 = 578;
+pub const HF_DAMAGE_DRAGON: u32 = 579;
+pub const HF_DAMAGE_CONTENTOBJECTIVESOBJ_COMMONSHOULDER_MOUNTED_CAMERASHOULDER_MOUNTED_CAMERA_BEAM : u32 = 641 ;
+pub const HF_DAMAGE_TD220_BASTION_MK_XVI_ATTACH_TANK_GUN: u32 = 643;
+pub const HF_DAMAGE_TD220_BASTION_MK_XVI_ATTACH_TANK_GUN_IMPACT: u32 = 645;
+pub const HF_DAMAGE_CALTROPS_MINE_DETONATION: u32 = 646;
+pub const HF_DAMAGE_TURRET_AUTOCANNONS_ABILITY: u32 = 649;
+pub const HF_DAMAGE_EXOSPIRE_TOWER_SHELL: u32 = 475;
+pub const HF_DAMAGE_MONOLITH: u32 = 491;
+pub const HF_DAMAGE_COMBAT_WALKER_MISSILE_LAUNCHER: u32 = 396;
+pub const HF_DAMAGE_MAGMA_GEYSER_01_AND_2_OTHERS: u32 = 193;
+pub const HF_DAMAGE_HAZARD_VENT_01: u32 = 639;
+pub const HF_DAMAGE_ENVIRONMENTAL_HAZARD_ABILITY_1250_AND_2_OTHERS: u32 = 299;
+pub const HF_DAMAGE_SEEKING_MISSILE_UNIT_6C23: u32 = 325;
+pub const HF_DAMAGE_SEEKING_MISSILE_0XC8D6: u32 = 326;
 pub const HF_PACKAGE_PELICAN_GUNSHIP: u64 = 1378068933197170455;
 pub const HF_TAG_NO_KILL_CREDIT: u32 = 268435456;
 pub const HF_TRAIT_SUPPORT_WEAPON: u32 = 1;
@@ -2040,6 +2523,895 @@ pub const HF_BOOSTER_STUN_PODS: u32 = 17;
 pub const HF_BOOSTER_CONCEALED_INSERTION: u32 = 18;
 pub const HF_BOOSTER_INTEGRATED_EXTINGUISHERS: u32 = 19;
 pub const HF_BOOSTER_SURPLUS_EAT_ALLOCATION: u32 = 20;
+pub const HF_EXPLOSION_ADEPTSHOCKWAVE: u32 = 4;
+pub const HF_EXPLOSION_BOOMER_IMPACT: u32 = 6;
+pub const HF_EXPLOSION_RL77_AIRBURST_ROCKET_LAUNCHER_FUNCTION_EXPIRY_SHRAPNEL_EXPIRY: u32 = 7;
+pub const HF_EXPLOSION_G7_PINEAPPLE_DETONATION: u32 = 8;
+pub const HF_EXPLOSION_BIG_WALKER_TURRET_CANNON_IMPACT: u32 = 9;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY: u32 = 10;
+pub const HF_EXPLOSION_TD110_MAELSTROM_SLOT_3_FIRED_EXPLOSIVE_40: u32 = 11;
+pub const HF_EXPLOSION_CYBORG_ELITE_RUSHER_INVENTORY_DETONATION: u32 = 17;
+pub const HF_EXPLOSION_CQC20_BREACHING_HAMMER_ABILITY: u32 = 19;
+pub const HF_EXPLOSION_EAT700_EXPENDABLE_NAPALM_IMPACT_SHRAPNEL_IMPACT: u32 = 26;
+pub const HF_EXPLOSION_G3_SMOKE_DETONATION: u32 = 28;
+pub const HF_EXPLOSION_BUGDRILL: u32 = 29;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY: u32 = 30;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY: u32 = 31;
+pub const HF_EXPLOSION_G8_IMMOLATION_DETONATION: u32 = 32;
+pub const HF_EXPLOSION_GUNSHIP_VEHICLE_CRASH: u32 = 35;
+pub const HF_EXPLOSION_TD110_MAELSTROM_SLOT_2_ABILITY: u32 = 38;
+pub const HF_EXPLOSION_GUNSHIP_BEHAVIOR: u32 = 39;
+pub const HF_EXPLOSION_LIEUTENANT_ARTILLERY_BEHAVIOR: u32 = 40;
+pub const HF_EXPLOSION_GL52_DEESCALATOR_IMPACT: u32 = 41;
+pub const HF_EXPLOSION_SEAF_GUN_IMPACT: u32 = 42;
+pub const HF_EXPLOSION_GUNSHIP_BEHAVIOR_2: u32 = 43;
+pub const HF_EXPLOSION_G7_PINEAPPLE_DETONATION_SHRAPNEL_EXPIRY: u32 = 44;
+pub const HF_EXPLOSION_EAT12_ANTITANK_EMPLACEMENT_IMPACT: u32 = 46;
+pub const HF_EXPLOSION_CANISTER_DETONATION: u32 = 47;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_BEHAVIOR: u32 = 49;
+pub const HF_EXPLOSION_EAGLE_110MM_ROCKET_PODS_IMPACT: u32 = 50;
+pub const HF_EXPLOSION_ORBITAL_RAILCANNON_STRIKE_ORBITAL_EXPIRY: u32 = 52;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_2: u32 = 53;
+pub const HF_EXPLOSION_GAZER_BEHAVIOR: u32 = 57;
+pub const HF_EXPLOSION_ILLUMINATE_ATTACK_SHIP_VEHICLE_CRASH: u32 = 58;
+pub const HF_EXPLOSION_CB9_EXPLODING_CROSSBOW_IMPACT: u32 = 59;
+pub const HF_EXPLOSION_CALTROPS_MINE_DETONATION: u32 = 62;
+pub const HF_EXPLOSION_ORBITAL_NAPALM_BARRAGE_SHELL_IMPACT: u32 = 63;
+pub const HF_EXPLOSION_TORNADO: u32 = 65;
+pub const HF_EXPLOSION_LAS99_QUASAR_CANNON_IMPACT: u32 = 67;
+pub const HF_EXPLOSION_G13_INCENDIARY_IMPACT_DETONATION: u32 = 69;
+pub const HF_EXPLOSION_SCAVENGER_SPITTER_BEHAVIOR: u32 = 71;
+pub const HF_EXPLOSION_MDI4_INCENDIARY_MINES_MINE: u32 = 72;
+pub const HF_EXPLOSION_ORBITAL_NAPALM_BARRAGE_SHELL_IMPACT_2: u32 = 74;
+pub const HF_EXPLOSION_EAGLE_SMOKE_STRIKE_PAYLOAD_IMPACT: u32 = 75;
+pub const HF_EXPLOSION_OBJ_ASSET_HIJACK_TECH_HUB_NEXUS_MACHINE_ABILITY: u32 = 76;
+pub const HF_EXPLOSION_TORNADOSMALL: u32 = 78;
+pub const HF_EXPLOSION_TED63_DYNAMITE_DETONATION: u32 = 80;
+pub const HF_EXPLOSION_DROPSHIP_VEHICLE_CRASH: u32 = 81;
+pub const HF_EXPLOSION_ORBITAL_GAS_STRIKE_SHELL_IMPACT: u32 = 82;
+pub const HF_EXPLOSION_CYBORG_SIEGE_ENGINE_SARCOPHAGUS_LEFT_DOOR_GIB: u32 = 84;
+pub const HF_EXPLOSION_SIEGE_ENGINE_ABILITY: u32 = 85;
+pub const HF_EXPLOSION_STAX3_W_A_S_P_LAUNCHER_FUNCTION_IMPACT: u32 = 87;
+pub const HF_EXPLOSION_MAPBOUNDARY: u32 = 88;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_2: u32 = 89;
+pub const HF_EXPLOSION_SOLDIER_RPG_IMPACT: u32 = 91;
+pub const HF_EXPLOSION_NUKE: u32 = 92;
+pub const HF_EXPLOSION_ILLUMINATE_WAR_MACHINE_RAGDOLL_CRASH: u32 = 93;
+pub const HF_EXPLOSION_ORBITAL_380MM_HE_BARRAGE_SHELL_IMPACT: u32 = 94;
+pub const HF_EXPLOSION_G48_GIGA_GRENADE_DETONATION: u32 = 96;
+pub const HF_EXPLOSION_S11_SPEARGUN_EXPIRY: u32 = 97;
+pub const HF_EXPLOSION_GATEKEEPER_IMPACT: u32 = 99;
+pub const HF_EXPLOSION_CONSCRIPT_BACKPACK_LMG_DETONATION: u32 = 100;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_3: u32 = 105;
+pub const HF_EXPLOSION_ORBITAL_AIRBURST_STRIKE_SHELL_EXPIRY_SHRAPNEL_IMPACT: u32 = 106;
+pub const HF_EXPLOSION_SIEGE_ENGINE_IMPACT: u32 = 107;
+pub const HF_EXPLOSION_EAGLE_110MM_ROCKET_PODS_MAGAZINE_IMPACT: u32 = 109;
+pub const HF_EXPLOSION_HELLPODIMPACT: u32 = 113;
+pub const HF_EXPLOSION_STINGERMISSILE: u32 = 115;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_SHRAPNEL_IMPACT: u32 = 116;
+pub const HF_EXPLOSION_TM1_LURE_MINE_DETONATION: u32 = 117;
+pub const HF_EXPLOSION_BILE_TITAN_SPRAY_IMPACT: u32 = 118;
+pub const HF_EXPLOSION_EXO45_PATRIOT_EXOSUIT_VEHICLE_CRASH: u32 = 119;
+pub const HF_EXPLOSION_EXPLOSIVE_GAS_CHIMNEY_ABILITY: u32 = 120;
+pub const HF_EXPLOSION_CYBORG_SIEGE_ENGINE_SARCOPHAGUS_GIB: u32 = 122;
+pub const HF_EXPLOSION_B100_PORTABLE_HELLBOMB_BEHAVIOR: u32 = 125;
+pub const HF_EXPLOSION_PLAS15_LOYALIST_CHARGE_2_IMPACT: u32 = 126;
+pub const HF_EXPLOSION_P34_BREACHER_FIRED_DETONATION: u32 = 127;
+pub const HF_EXPLOSION_DROPSHIPCRASH: u32 = 130;
+pub const HF_EXPLOSION_CONSCRIPT_SHOTGUN_DETONATION: u32 = 131;
+pub const HF_EXPLOSION_LIEUTENANT_JETPACK_DETONATION: u32 = 132;
+pub const HF_EXPLOSION_CONSCRIPT_JUMPPACK_DETONATION: u32 = 133;
+pub const HF_EXPLOSION_MS11_SOLO_SILO_DETONATION: u32 = 135;
+pub const HF_EXPLOSION_SPORE_BURST_HUNTER_BEHAVIOR: u32 = 138;
+pub const HF_EXPLOSION_IMPALER_TENTACLE_ABILITY: u32 = 139;
+pub const HF_EXPLOSION_TORNADO_PULL: u32 = 141;
+pub const HF_EXPLOSION_JET_CHAMPION_BEHAVIOR: u32 = 143;
+pub const HF_EXPLOSION_SIEGE_ENGINE_ABILITY_2: u32 = 146;
+pub const HF_EXPLOSION_HELLDIVER_DUMMY_BEHAVIOR: u32 = 147;
+pub const HF_EXPLOSION_MLS4X_COMMANDO_IMPACT: u32 = 148;
+pub const HF_EXPLOSION_AM23_EMS_MORTAR_SENTRY_IMPACT: u32 = 150;
+pub const HF_EXPLOSION_DROPSHIP_BEHAVIOR: u32 = 153;
+pub const HF_EXPLOSION_P33_MISSILE_PISTOL_IMPACT: u32 = 154;
+pub const HF_EXPLOSION_PLAS1_SCORCHER_IMPACT: u32 = 155;
+pub const HF_EXPLOSION_G31_ARC_DETONATION: u32 = 157;
+pub const HF_EXPLOSION_R36_ERUPTOR_IMPACT: u32 = 158;
+pub const HF_EXPLOSION_GSH39_SHIELD_DETONATION: u32 = 159;
+pub const HF_EXPLOSION_HABS_BARREL_FUEL_DETONATION: u32 = 161;
+pub const HF_EXPLOSION_EAGLE_CLUSTER_BOMB_PAYLOAD_EXPIRY_SHRAPNEL_IMPACT: u32 = 162;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_4: u32 = 163;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY_2: u32 = 165;
+pub const HF_EXPLOSION_BMD_C4_PACK_DETONATION: u32 = 166;
+pub const HF_EXPLOSION_P34_BREACHER_IMPACT: u32 = 167;
+pub const HF_EXPLOSION_MS11_SOLO_SILO_ABILITY: u32 = 172;
+pub const HF_EXPLOSION_PROP_HUGE: u32 = 173;
+pub const HF_EXPLOSION_ILLUMINATE_WARMACHINE_BOMBBALL_DETONATION: u32 = 174;
+pub const HF_EXPLOSION_G12_HIGH_EXPLOSIVE_DETONATION: u32 = 175;
+pub const HF_EXPLOSION_ORBITAL_120MM_HE_BARRAGE_SHELL_IMPACT: u32 = 176;
+pub const HF_EXPLOSION_G4_GAS_DETONATION: u32 = 177;
+pub const HF_EXPLOSION_MD17_ANTITANK_MINES_MINE: u32 = 178;
+pub const HF_EXPLOSION_M102_GUNNER_FRV_ABILITY: u32 = 179;
+pub const HF_EXPLOSION_AM23_EMS_MORTAR_SENTRY_EXPIRY: u32 = 180;
+pub const HF_EXPLOSION_DUMMY: u32 = 181;
+pub const HF_EXPLOSION_EAT411_LEVELLER_IMPACT: u32 = 184;
+pub const HF_EXPLOSION_AGM17_GAS_MORTAR_SENTRY_IMPACT: u32 = 185;
+pub const HF_EXPLOSION_SOLDIER_RPG_BEHAVIOR: u32 = 187;
+pub const HF_EXPLOSION_ORBITAL_EMS_STRIKE_SHELL_IMPACT: u32 = 188;
+pub const HF_EXPLOSION_BARREL_LARGE: u32 = 189;
+pub const HF_EXPLOSION_LAS98_LASER_CANNON_ABILITY: u32 = 190;
+pub const HF_EXPLOSION_PLAS101_PURIFIER_IMPACT: u32 = 191;
+pub const HF_EXPLOSION_EAGLE_500KG_BOMB_PAYLOAD_IMPACT: u32 = 193;
+pub const HF_EXPLOSION_EAGLE_AIRSTRIKE_PAYLOAD_IMPACT: u32 = 194;
+pub const HF_EXPLOSION_PLAS101_PURIFIER_CHARGE_1_IMPACT: u32 = 195;
+pub const HF_EXPLOSION_RUPTURE_SPEWER_INVENTORY_DETONATION: u32 = 196;
+pub const HF_EXPLOSION_PLAS15_LOYALIST_CHARGE_1_IMPACT: u32 = 197;
+pub const HF_EXPLOSION_G123_THERMITE_DETONATION: u32 = 201;
+pub const HF_EXPLOSION_ILLUMINATE_WAR_MACHINE_RAGDOLL_CRASH_2: u32 = 202;
+pub const HF_EXPLOSION_EAT17_EXPENDABLE_ANTITANK_BACKBLAST: u32 = 204;
+pub const HF_EXPLOSION_CYBORG_ARTILLERY: u32 = 210;
+pub const HF_EXPLOSION_BARREL_SMALL: u32 = 211;
+pub const HF_EXPLOSION_PATHFINDER_LIGHTSPEAR_IMPACT: u32 = 212;
+pub const HF_EXPLOSION_ORBITAL_120MM_HE_BARRAGE_SHELL_IMPACT_2: u32 = 213;
+pub const HF_EXPLOSION_SIEGE_ENGINE_ABILITY_3: u32 = 218;
+pub const HF_EXPLOSION_HELLPODEXPLOSION: u32 = 219;
+pub const HF_EXPLOSION_G23_STUN_DETONATION: u32 = 220;
+pub const HF_EXPLOSION_AVATAR_HELLDIVER_BEHAVIOR: u32 = 221;
+pub const HF_EXPLOSION_G10_INCENDIARY_DETONATION: u32 = 224;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_BEHAVIOR_2: u32 = 226;
+pub const HF_EXPLOSION_PLAS45_EPOCH_IMPACT: u32 = 227;
+pub const HF_EXPLOSION_ILLUMINATE_ATTACK_SHIP_VEHICLE_CRASH_2: u32 = 228;
+pub const HF_EXPLOSION_EAGLE_110MM_ROCKET_PODS_PAYLOAD_IMPACT: u32 = 229;
+pub const HF_EXPLOSION_CALTROPS_GRENADE_DETONATION: u32 = 230;
+pub const HF_EXPLOSION_SPORE_BURST_BILE_TITAN_BEHAVIOR: u32 = 231;
+pub const HF_EXPLOSION_EAGLE_MISSILE_MISSILE_IMPACT: u32 = 232;
+pub const HF_EXPLOSION_AAC8_AUTOCANNON_SENTRY_IMPACT: u32 = 234;
+pub const HF_EXPLOSION_EXO49_EMANCIPATOR_EXOSUIT_ATTACH_TURRET_L_IMPACT: u32 = 235;
+pub const HF_EXPLOSION_G89_SMOKESCREEN_DETONATION: u32 = 237;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY_3: u32 = 239;
+pub const HF_EXPLOSION_AMMO_CACHE: u32 = 240;
+pub const HF_EXPLOSION_ILLUMINATE_ADEPT_CIRCLE_DETONATION: u32 = 241;
+pub const HF_EXPLOSION_NUX223_HELLBOMB_BEHAVIOR: u32 = 242;
+pub const HF_EXPLOSION_SOLDIER_RIOTGUN_IMPACT: u32 = 244;
+pub const HF_EXPLOSION_CRUSHER_ABILITY: u32 = 246;
+pub const HF_EXPLOSION_GR8_RECOILLESS_RIFLE_IMPACT: u32 = 248;
+pub const HF_EXPLOSION_M104_INCINERATOR_FRV_ABILITY: u32 = 250;
+pub const HF_EXPLOSION_ILLUMINATE_MEDIUM: u32 = 251;
+pub const HF_EXPLOSION_LIEUTENANT_IVORY_LEGION_IMPACT: u32 = 252;
+pub const HF_EXPLOSION_LIFT182_WARP_PACK_DISPLACEMENT: u32 = 254;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_5: u32 = 255;
+pub const HF_EXPLOSION_M104_INCINERATOR_FRV_ABILITY_2: u32 = 256;
+pub const HF_EXPLOSION_G6_FRAG_DETONATION: u32 = 257;
+pub const HF_EXPLOSION_PRIMARY_CLUSTER: u32 = 259;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_6: u32 = 260;
+pub const HF_EXPLOSION_BILE_TITAN_ABILITY: u32 = 262;
+pub const HF_EXPLOSION_ASSAULT_WALKER_INVENTORY_DETONATION: u32 = 263;
+pub const HF_EXPLOSION_MLS4X_COMMANDO_BACKBLAST: u32 = 264;
+pub const HF_EXPLOSION_SPORE_BURST_WARRIOR_BEHAVIOR: u32 = 265;
+pub const HF_EXPLOSION_ORBITAL_GATLING_BARRAGE_SHELL_IMPACT: u32 = 266;
+pub const HF_EXPLOSION_TD220_BASTION_MK_XVI_ATTACH_TANK_GUN_IMPACT: u32 = 267;
+pub const HF_EXPLOSION_GL15_EVICTOR_IMPACT: u32 = 268;
+pub const HF_EXPLOSION_PLAS101_PURIFIER_OVERCHARGE: u32 = 269;
+pub const HF_EXPLOSION_MD8_GAS_MINES_MINE: u32 = 270;
+pub const HF_EXPLOSION_CYBORG_MINE: u32 = 271;
+pub const HF_EXPLOSION_TANK_ROCKETLAUNCHER_BEHAVIOR: u32 = 272;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_7: u32 = 274;
+pub const HF_EXPLOSION_BOOMER_ABILITY: u32 = 275;
+pub const HF_EXPLOSION_EAGLE_500KG_BOMB_PAYLOAD_EXPIRY: u32 = 277;
+pub const HF_EXPLOSION_PLASMA_CONE: u32 = 279;
+pub const HF_EXPLOSION_BEAMER_CHAMPION_GUN_DIRECT_IMPACT: u32 = 280;
+pub const HF_EXPLOSION_WORLD_METEOR: u32 = 285;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_8: u32 = 286;
+pub const HF_EXPLOSION_IL_CITY_CANNON_IMPACT: u32 = 287;
+pub const HF_EXPLOSION_WATCHER_ABILITY: u32 = 289;
+pub const HF_EXPLOSION_SG8P_PUNISHER_PLASMA_IMPACT: u32 = 290;
+pub const HF_EXPLOSION_TANK_TURRET_ROCKETLAUNCHER_BACKBLAST: u32 = 291;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY_4: u32 = 292;
+pub const HF_EXPLOSION_CYBORG_PRODUCTION_UNIT_ABILITY: u32 = 293;
+pub const HF_EXPLOSION_GR8_RECOILLESS_RIFLE_FUNCTION_IMPACT: u32 = 294;
+pub const HF_EXPLOSION_SIEGE_ENGINE_ABILITY_4: u32 = 295;
+pub const HF_EXPLOSION_SCAVENGER_GLOOM_BEHAVIOR: u32 = 296;
+pub const HF_EXPLOSION_TD110_MAELSTROM_SLOT_3_FIRED_ABILITY: u32 = 297;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_3: u32 = 298;
+pub const HF_EXPLOSION_RL77_AIRBURST_ROCKET_LAUNCHER_FUNCTION_EXPIRY: u32 = 300;
+pub const HF_EXPLOSION_ORBITAL_380MM_HE_BARRAGE_SHELL_IMPACT_2: u32 = 301;
+pub const HF_EXPLOSION_FAF14_SPEAR_IMPACT: u32 = 304;
+pub const HF_EXPLOSION_GUNSHIP_VEHICLE_CRASH_2: u32 = 306;
+pub const HF_EXPLOSION_GR8_RECOILLESS_RIFLE_BACKBLAST: u32 = 307;
+pub const HF_EXPLOSION_BFLAM80_CREMATOR_ABILITY: u32 = 308;
+pub const HF_EXPLOSION_WARRIOR_ACID_BEHAVIOR: u32 = 310;
+pub const HF_EXPLOSION_SIEGE_ENGINE_ABILITY_5: u32 = 313;
+pub const HF_EXPLOSION_TURRET_MORTAR_IMPACT: u32 = 314;
+pub const HF_EXPLOSION_AMLS4X_ROCKET_SENTRY_IMPACT: u32 = 315;
+pub const HF_EXPLOSION_EAT700_EXPENDABLE_NAPALM_IMPACT: u32 = 316;
+pub const HF_EXPLOSION_CONSCRIPT_GRENADE_INCENDIARY_DETONATION: u32 = 318;
+pub const HF_EXPLOSION_GATEKEEPER_IMPACT_2: u32 = 319;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY_5: u32 = 320;
+pub const HF_EXPLOSION_40K_MELTAGUN_OVERCHARGE: u32 = 321;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_9: u32 = 322;
+pub const HF_EXPLOSION_RL77_AIRBURST_ROCKET_LAUNCHER_IMPACT: u32 = 325;
+pub const HF_EXPLOSION_PLAS39_ACCELERATOR_RIFLE_OVERCHARGE: u32 = 326;
+pub const HF_EXPLOSION_ARGL21_ONETWO_UNDERBARREL_IMPACT: u32 = 327;
+pub const HF_EXPLOSION_CYBORG_ELITE_FEMALE_INVENTORY_DETONATION: u32 = 329;
+pub const HF_EXPLOSION_CHA_BATTLEFRONT_SEAF_MEDIC_INVENTORY_DETONATION: u32 = 330;
+pub const HF_EXPLOSION_EAGLE_GAS_AIRSTRIKE_PAYLOAD_IMPACT: u32 = 331;
+pub const HF_EXPLOSION_WATCHER_VEHICLE_CRASH: u32 = 332;
+pub const HF_EXPLOSION_IDLE_SAM_SITE_IMPACT: u32 = 334;
+pub const HF_EXPLOSION_OILFIELD: u32 = 338;
+pub const HF_EXPLOSION_PRIMARY_AIRBURST: u32 = 339;
+pub const HF_EXPLOSION_GP20_ULTIMATUM_IMPACT: u32 = 341;
+pub const HF_EXPLOSION_G16_IMPACT_DETONATION: u32 = 342;
+pub const HF_EXPLOSION_ORBITAL_PRECISION_STRIKE_SHELL_IMPACT: u32 = 343;
+pub const HF_EXPLOSION_ILLUMINATE_ATTACK_SHIP_IMPACT: u32 = 344;
+pub const HF_EXPLOSION_SPORE_BURST_BILE_TITAN_SPRAY_IMPACT: u32 = 345;
+pub const HF_EXPLOSION_G60_ANTITANK_SEEKER_DETONATION: u32 = 351;
+pub const HF_EXPLOSION_BILE_TITAN_RAGDOLL_CRASH: u32 = 352;
+pub const HF_EXPLOSION_BOMB_IMPACT: u32 = 354;
+pub const HF_EXPLOSION_PLAS15_LOYALIST_IMPACT: u32 = 355;
+pub const HF_EXPLOSION_HIVE_LORD_IMPACT: u32 = 356;
+pub const HF_EXPLOSION_CYBORG_ELITE_IMPACT: u32 = 357;
+pub const HF_EXPLOSION_BEAMER_CHAMPION_GUN_IMPACT: u32 = 358;
+pub const HF_EXPLOSION_EAGLE_NAPALM_AIRSTRIKE_PAYLOAD_IMPACT: u32 = 359;
+pub const HF_EXPLOSION_AM12_MORTAR_SENTRY_IMPACT: u32 = 360;
+pub const HF_EXPLOSION_GL21_GRENADE_LAUNCHER_IMPACT: u32 = 361;
+pub const HF_EXPLOSION_JET_CHAMPION_GRENADE_HE_DETONATION: u32 = 363;
+pub const HF_EXPLOSION_MD6_ANTIPERSONNEL_MINEFIELD_MINE: u32 = 366;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_4: u32 = 367;
+pub const HF_EXPLOSION_G40K_MELTA_MINE_DETONATION: u32 = 368;
+pub const HF_EXPLOSION_G109_URCHIN_DETONATION: u32 = 369;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_5: u32 = 370;
+pub const HF_EXPLOSION_ASSAULT_WALKER_IMPACT: u32 = 372;
+pub const HF_EXPLOSION_STAX3_W_A_S_P_LAUNCHER_IMPACT: u32 = 373;
+pub const HF_EXPLOSION_EAGLE_110MM_ROCKET_PODS_MAGAZINE_IMPACT_2: u32 = 374;
+pub const HF_EXPLOSION_EAT17_EXPENDABLE_ANTITANK_IMPACT: u32 = 376;
+pub const HF_EXPLOSION_HIVE_LORD_ABILITY_10: u32 = 378;
+pub const HF_EXPLOSION_ORBITAL_AIRBURST_STRIKE_SHELL_EXPIRY: u32 = 379;
+pub const HF_EXPLOSION_AC8_AUTOCANNON_FUNCTION_IMPACT: u32 = 380;
+pub const HF_EXPLOSION_TANK_TURRET_BASE_IMPACT: u32 = 381;
+pub const HF_EXPLOSION_CORRUPTED_GROWTH: u32 = 382;
+pub const HF_EXPLOSION_POWER_GENERATOR_BEHAVIOR: u32 = 383;
+pub const HF_EXPLOSION_RUPTURE_CHARGER_ABILITY_6: u32 = 384;
+pub const HF_EXPLOSION_G50_SEEKER_DETONATION: u32 = 385;
+pub const HF_EXPLOSION_DROPSHIP_VEHICLE_CRASH_2: u32 = 386;
+pub const HF_EXPLOSION_P40K_BOLT_PISTOL_IMPACT: u32 = 388;
+pub const HF_EXPLOSION_ORBITALFLARE: u32 = 390;
+pub const HF_EXPLOSION_SIEGE_ENGINE_IMPACT_2: u32 = 391;
+pub const HF_EXPLOSION_GL28_BELTFED_GRENADE_LAUNCHER_IMPACT: u32 = 393;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_6: u32 = 394;
+pub const HF_EXPLOSION_TENTACLEIMPACT: u32 = 395;
+pub const HF_EXPLOSION_ASSAULT_WALKER_IMPACT_2: u32 = 397;
+pub const HF_EXPLOSION_TURRET_AUTOCANNONS_ABILITY_7: u32 = 399;
+pub const HF_EXPLOSION_IMPALER_TENTACLE_ABILITY_2: u32 = 401;
+pub const HF_EXPLOSION_SPAWNER_RAGDOLL_CRASH: u32 = 402;
+pub const HF_EXPLOSION_AC8_AUTOCANNON_IMPACT: u32 = 404;
+pub const HF_EXPLOSION_DRAGON_CRASH: u32 = 405;
+pub const HF_EXPLOSION_PLAS45_EPOCH_CHARGE_2_EXPIRY: u32 = 407;
+pub const HF_EXPLOSION_TANK_TURRET_ROCKETLAUNCHER_IMPACT: u32 = 408;
+pub const HF_EXPLOSION_G142_PYROTECH_DETONATION: u32 = 409;
+pub const HF_EXPLOSION_PLAS39_ACCELERATOR_RIFLE_IMPACT: u32 = 413;
+pub const HF_EXPLOSION_CHA_HIVE_LORD_BACK_SHELL_GIB: u32 = 414;
+pub const HF_EXPLOSION_EXO45_PATRIOT_EXOSUIT_SLOT_0_IMPACT: u32 = 416;
+pub const HF_EXPLOSION_EAGLE_CLUSTER_BOMB_PAYLOAD_EXPIRY: u32 = 417;
+pub const HF_EXPLOSION_BUG_LARVA_CONTAINER_BACKPACK_BEHAVIOR: u32 = 418;
+pub const HF_EXPLOSION_MS11_SOLO_SILO_EXPLOSIVE_40: u32 = 420;
+pub const HF_EXPLOSION_EXO45_PATRIOT_EXOSUIT_VEHICLE_CRASH_2: u32 = 422;
+pub const HF_EXPLOSION_SEAF_GUN_NAPALM_SHELL_IMPACT: u32 = 20;
+pub const HF_EXPLOSION_SEAF_GUN_EMP_SHELL_IMPACT: u32 = 55;
+pub const HF_EXPLOSION_SEAF_GUN_SMOKE_SHELL_IMPACT: u32 = 261;
+pub const HF_EXPLOSION_SEAF_GUN_HIGH_EXPLOSIVE_SHELL_IMPACT: u32 = 278;
+pub const HF_EXPLOSION_SEAF_GUN_MINI_NUKE_SHELL_IMPACT: u32 = 288;
+pub const HF_EXPLOSION_ORBITAL_SHELL_PROJECTILE_84_IMPACT: u32 = 5;
+pub const HF_EXPLOSION_ORBITAL_SHELL_PROJECTILE_93_IMPACT: u32 = 77;
+pub const HF_EXPLOSION_ORBITAL_SHELL_PROJECTILE_316_IMPACT: u32 = 48;
+pub const HF_EXPLOSION_EXOSPIRE_TOWER_SHELL_IMPACT: u32 = 365;
+pub const HF_EXPLOSION_MONOLITH_BEHAVIOR: u32 = 68;
+pub const HF_EXPLOSION_OBTRUDER_ABILITY: u32 = 98;
+pub const HF_EXPLOSION_CANNON_TURRET_IMPACT: u32 = 206;
+pub const HF_EXPLOSION_WARP_SHIP_ABILITY: u32 = 215;
+pub const HF_EXPLOSION_COMBAT_WALKER_MISSILE_LAUNCHER_IMPACT: u32 = 303;
+pub const HF_EXPLOSION_FUSION_BATTERY_DETONATION: u32 = 410;
+pub const HF_EXPLOSION_MAGMA_GEYSER_01_ABILITY: u32 = 317;
+pub const HF_EXPLOSION_MAGMA_GEYSER_02_ABILITY: u32 = 214;
+pub const HF_EXPLOSION_MAGMA_GEYSER_03_ABILITY: u32 = 223;
+pub const HF_EXPLOSION_HAZARD_VENT_01_ABILITY: u32 = 299;
+pub const HF_EXPLOSION_ENVIRONMENTAL_HAZARD_ABILITY_1250: u32 = 129;
+pub const HF_EXPLOSION_ENVIRONMENTAL_HAZARD_ABILITY_1251: u32 = 396;
+pub const HF_EXPLOSION_ENVIRONMENTAL_HAZARD_ABILITY_1252: u32 = 54;
+pub const HF_EXPLOSION_SEEKING_MISSILE_UNIT_6C23_DETONATION: u32 = 86;
+pub const HF_EXPLOSION_SEEKING_MISSILE_0XC8D6_DETONATION: u32 = 283;
+pub const HF_EXPLOSION_SEEKING_MISSILE_UNIT_6C53_DETONATION: u32 = 398;
+pub const HF_WEAPON_BEAM_LAS5_SCYTHE: u32 = 8;
+pub const HF_ARC_ARC12_BLITZER: u32 = 3;
+pub const HF_RPC_OUTPOST_LOCATION_DISCOVERED: u32 = 106343;
+pub const HF_RPC_SET_LIGHT_INTENSITY: u32 = 13345008;
+pub const HF_RPC_SYNC_REMOVE_LOBBY: u32 = 36926055;
+pub const HF_RPC_REMOVE_ALL_AI: u32 = 49844935;
+pub const HF_RPC_STOP_LOOPING_SURFACE_EFFECT: u32 = 58449673;
+pub const HF_RPC_SET_VISIBLE: u32 = 68277851;
+pub const HF_RPC_SET_INTERACTABLE_ZONE_OCCUPANT: u32 = 70569256;
+pub const HF_RPC_PICKUP_ENTITY: u32 = 70671823;
+pub const HF_RPC_FORCE_EXIT_SEAT_COLLECTION_RETRY: u32 = 72379606;
+pub const HF_RPC_SET_ENTRANCE_OPENED: u32 = 76343797;
+pub const HF_RPC_START_THROWING: u32 = 81222923;
+pub const HF_RPC_GAME_OVER: u32 = 104495733;
+pub const HF_RPC_FROM_HOST_SYNCHRONIZED_TASKS_DONE: u32 = 116592458;
+pub const HF_RPC_ON_EQUIPMENT_CHANGED: u32 = 120689458;
+pub const HF_RPC_SET_LIVING_EFFECT: u32 = 121129081;
+pub const HF_RPC_VEHICLE_CRASH: u32 = 124834765;
+pub const HF_RPC_SET_PLAYER_CURSOR_ACTIVE: u32 = 142853859;
+pub const HF_RPC_FROM_PARTYLEADER_JOIN_LOBBY: u32 = 143117739;
+pub const HF_RPC_FROM_HOST_PEER_DISCONNECTED: u32 = 149490600;
+pub const HF_RPC_CLEAR_TAG: u32 = 157209525;
+pub const HF_RPC_RESTOCK: u32 = 159544187;
+pub const HF_RPC_AUDIO_EVENT_NO_SOUNDSCAPE: u32 = 163192485;
+pub const HF_RPC_INTERRUPT_ABILITY: u32 = 176696253;
+pub const HF_RPC_SET_MINIGAME_SWITCHES_SELECTED_INDEX: u32 = 177856147;
+pub const HF_RPC_HOTJOIN_SYNC_OBJECTIVE_LINK_STATES: u32 = 192606371;
+pub const HF_RPC_REQUEST_SKIP_DIALOGUE: u32 = 222385141;
+pub const HF_RPC_FROM_HOST_CLIENT_READY: u32 = 223334999;
+pub const HF_RPC_SET_ZONE_ARMOR: u32 = 231549304;
+pub const HF_RPC_DROP_PAYLOAD: u32 = 232562671;
+pub const HF_RPC_DAMAGE_ZONES_STATE_CHANGED: u32 = 240383908;
+pub const HF_RPC_ON_GORE_DAMAGE: u32 = 240638027;
+pub const HF_RPC_DEFORM_TERRAIN: u32 = 264248663;
+pub const HF_RPC_SHARED_STRATAGEM_STATE: u32 = 264315811;
+pub const HF_RPC_FIRE_MOUNTED_WEAPON: u32 = 266992971;
+pub const HF_RPC_ANIMATION_EVENT_SPEED: u32 = 275916873;
+pub const HF_RPC_SET_MINIGAME_KEYPAD_SELECTED_INDEX: u32 = 281755846;
+pub const HF_RPC_SET_RAGDOLL_PENETRATION_RESOLUTION_VECTOR: u32 = 288000571;
+pub const HF_RPC_REQUEST_HOST_SYNC_INFO: u32 = 291790375;
+pub const HF_RPC_RECORD_DISCOVERY_INTERACT: u32 = 302306656;
+pub const HF_RPC_ON_DESTROYED: u32 = 302543614;
+pub const HF_RPC_WOUND_EVENT_LIST: u32 = 307249865;
+pub const HF_RPC_START_FOLLOW_CURVE: u32 = 318709129;
+pub const HF_RPC_FROM_MIGRATED_HOST_PEER_STATE: u32 = 323415407;
+pub const HF_RPC_FROM_HOST_LEVEL_GENERATION_PASS_COMPLETED: u32 = 323820926;
+pub const HF_RPC_STOP_PARTICLE_EVENT: u32 = 325808896;
+pub const HF_RPC_ENTITY_DELETION_REQUEST: u32 = 347542966;
+pub const HF_RPC_RESET_UOI_INTERACT: u32 = 377663633;
+pub const HF_RPC_REQUEST_INGAME_SHIP_SYNC: u32 = 379357680;
+pub const HF_RPC_JOIN_VOICE_ROOM: u32 = 392853383;
+pub const HF_RPC_REVEAL_MAP: u32 = 400855300;
+pub const HF_RPC_SYNC_PARTY_CLAN: u32 = 408995556;
+pub const HF_RPC_RESET_SHIELD_STATE: u32 = 417275269;
+pub const HF_RPC_SYNC_GALACTIC_WAR_PLANET_CAMPAIGN_INFO: u32 = 422812886;
+pub const HF_RPC_SET_MINIGAME_GRID_MAZE_POSITION: u32 = 429698785;
+pub const HF_RPC_FROM_HOST_LATEST_CONFIG_ALREADY_SYNCED: u32 = 435985084;
+pub const HF_RPC_FROM_HOST_RESET_CONFIRMED_PEERS: u32 = 448210982;
+pub const HF_RPC_FROM_HOST_PEER_REMOVED: u32 = 449826289;
+pub const HF_RPC_CHANGE_CORPSE_COLLISION: u32 = 458679721;
+pub const HF_RPC_SYNC_GALACTIC_WAR_PLANET_EVENT: u32 = 468176751;
+pub const HF_RPC_LOADOUT_SET_STRATAGEM_IN_SLOT: u32 = 478306592;
+pub const HF_RPC_RETURN_TO_MISSION_BRIEFING: u32 = 488946826;
+pub const HF_RPC_ANIMATION_VARIABLE_INT: u32 = 501426147;
+pub const HF_RPC_EQUIPMENT_SLOT_CHANGE_START_PERCENT: u32 = 505893241;
+pub const HF_RPC_ARM_MINES: u32 = 506127123;
+pub const HF_RPC_SET_TARGET_LIST: u32 = 517884007;
+pub const HF_RPC_SET_MINIGAME_REELS_SELECTED_SLOT: u32 = 524155148;
+pub const HF_RPC_DESTRUCTIBLE_ON_DESTROYED: u32 = 525210544;
+pub const HF_RPC_REQUEST_LOADOUT_SYNC: u32 = 525444613;
+pub const HF_RPC_RUN_ABILITY: u32 = 532233275;
+pub const HF_RPC_SET_CAPE_STATE: u32 = 543914087;
+pub const HF_RPC_ON_KILLED_BY_PLAYER: u32 = 545573774;
+pub const HF_RPC_ACTIVATE_EXPLOSIVE_VARIABLE_TIMER: u32 = 550752678;
+pub const HF_RPC_APPLY_MOMENTUM: u32 = 555375358;
+pub const HF_RPC_TRY_ADD_CORPSE: u32 = 560360498;
+pub const HF_RPC_ARCADE_STRATAGEM_LOST_COMBO: u32 = 565630964;
+pub const HF_RPC_DESTROY_UNIT: u32 = 571447055;
+pub const HF_RPC_PLAY_ANIMATION_EVENT_IF_CUTSCENE: u32 = 575646641;
+pub const HF_RPC_SYNC_GALACTIC_WAR_GLOBAL_RESOURCE: u32 = 589352726;
+pub const HF_RPC_STOP_FOLLOW_CURVE: u32 = 592762758;
+pub const HF_RPC_SET_SPAWN_COOLDOWN_OVERRIDE: u32 = 605674528;
+pub const HF_RPC_DO_EXPLOSION: u32 = 614973387;
+pub const HF_RPC_CONVOY_LEFT_MISSION_AREA: u32 = 627716954;
+pub const HF_RPC_SET_SWITCH_STATE_INPUT: u32 = 635072720;
+pub const HF_RPC_DETACH: u32 = 635318155;
+pub const HF_RPC_REQUEST_EXIT_SEAT_COLLECTION: u32 = 638550375;
+pub const HF_RPC_WIELD_WEAPON: u32 = 644996805;
+pub const HF_RPC_FINALIZE_AVATAR_CORPSE: u32 = 646615252;
+pub const HF_RPC_STOP_APPROACH: u32 = 657356546;
+pub const HF_RPC_SET_COLLISION_FILTER: u32 = 666227301;
+pub const HF_RPC_SYNC_GALACTIC_WAR_SELECTION: u32 = 667372310;
+pub const HF_RPC_FROM_HOST_RESPAWN: u32 = 671557846;
+pub const HF_RPC_SYNC_ATTACHMENT: u32 = 673901948;
+pub const HF_RPC_HEAL_ALL_INJURIES: u32 = 674999013;
+pub const HF_RPC_LOADOUT_SET_EQUIPMENT_IN_SLOT: u32 = 678065965;
+pub const HF_RPC_REQUEST_MARK_SQUAD: u32 = 679093588;
+pub const HF_RPC_REVERT_TO_SWITCH_STATE: u32 = 687293927;
+pub const HF_RPC_DIALOGUE_PLAYING: u32 = 690220527;
+pub const HF_RPC_SCORE_SYNC_UNSIGNED: u32 = 697615321;
+pub const HF_RPC_REQUEST_SCORE_SYNC: u32 = 697921626;
+pub const HF_RPC_TERRAIN_DEFORMATION_EVENT_LIST: u32 = 709337488;
+pub const HF_RPC_SET_SHIP_NAME: u32 = 718581314;
+pub const HF_RPC_PLAYER_SHIP_MODULE_SYNCED_DATA: u32 = 718773647;
+pub const HF_RPC_SPAWN_UNIT: u32 = 734426014;
+pub const HF_RPC_SET_CAPE_ENABLED: u32 = 736924497;
+pub const HF_RPC_SET_HELD_CARRYABLE: u32 = 743267684;
+pub const HF_RPC_RESET_LOADED_LOADOUT: u32 = 757685528;
+pub const HF_RPC_FROM_CLIENT_SYNCED_TASK_ABORT: u32 = 760964613;
+pub const HF_RPC_PREPARE_AVATAR_CORPSE: u32 = 766250577;
+pub const HF_RPC_REQUEST_DIALOGUE: u32 = 780125333;
+pub const HF_RPC_REQUEST_SEAT_SUCCESS: u32 = 781741825;
+pub const HF_RPC_FROM_MIGRATION_HOST_MISSING_EVENTS: u32 = 820863292;
+pub const HF_RPC_RECHARGE_ACTIVATE: u32 = 821028950;
+pub const HF_RPC_SET_AIMING_WEAPON: u32 = 833797188;
+pub const HF_RPC_DO_AVATAR_PAIN_EXERTION: u32 = 847214904;
+pub const HF_RPC_REINFORCEMENT_COOLDOWN: u32 = 848551846;
+pub const HF_RPC_FROM_CLIENT_REQUEST_LOADOUT_WEAPON_SWAP: u32 = 853195386;
+pub const HF_RPC_REQUEST_HELLPAD_CONFIRMATION: u32 = 855924216;
+pub const HF_RPC_REQUEST_MISSION_OVER: u32 = 858827679;
+pub const HF_RPC_SET_ANIMATION_STATES: u32 = 884044825;
+pub const HF_RPC_SHARE_TARGET: u32 = 898168225;
+pub const HF_RPC_FROM_PARTYLEADER_JOIN_REQUEST: u32 = 898916862;
+pub const HF_RPC_REQUEST_HOSTABILITY: u32 = 909331746;
+pub const HF_RPC_STORE_ENTITY: u32 = 914196745;
+pub const HF_RPC_START_STATUS_EFFECT_DAMAGE: u32 = 915048997;
+pub const HF_RPC_SET_MINIGAME_PIPE_SLIDE_SELECTED_INDEX: u32 = 921632146;
+pub const HF_RPC_EXPLODE_AFTER_DELAY: u32 = 924949569;
+pub const HF_RPC_ON_MINIGAME_PRESS_ANY_BUTTON_PRESSED: u32 = 930677439;
+pub const HF_RPC_FROM_CLIENT_READY_FOR_NETWORK_PLAY: u32 = 939465383;
+pub const HF_RPC_SYNC_ATTACHMENT_FULL: u32 = 940151894;
+pub const HF_RPC_SET_STICKY_TRANSFORM: u32 = 942168383;
+pub const HF_RPC_MISSION_PROGRESSION_RESULT_RECEIVED: u32 = 959362957;
+pub const HF_RPC_REQUEST_ENTER_SEAT_COLLECTION: u32 = 977592464;
+pub const HF_RPC_ACTIVATE_EXPLOSIVE: u32 = 980385198;
+pub const HF_RPC_START_APPROACH: u32 = 986073083;
+pub const HF_RPC_ABILITY_TARGET: u32 = 993503974;
+pub const HF_RPC_HOTJOIN_ABILITY_TARGET: u32 = 998904701;
+pub const HF_RPC_SYNC_DEBUG_TIME_OF_DAY: u32 = 1000197545;
+pub const HF_RPC_HOST_ABANDONED_MISSION: u32 = 1005956815;
+pub const HF_RPC_EXPLOSIVE_ENTERED_BASKET: u32 = 1013697804;
+pub const HF_RPC_FROM_PARTYMEMBER_RETURN_REJECTED: u32 = 1018413670;
+pub const HF_RPC_DEBUG_FORCE_LOAD_PACKAGE: u32 = 1019605258;
+pub const HF_RPC_OBJECTIVE_DISCOVERED: u32 = 1023101747;
+pub const HF_RPC_PEER_WANTS_TO_LEAVE: u32 = 1024559047;
+pub const HF_RPC_ON_ASSIGNMENT_GAME_OVER: u32 = 1033892842;
+pub const HF_RPC_INFORM_CLIENTS_OF_IMPACT: u32 = 1036828039;
+pub const HF_RPC_APPLY_IMPULSE: u32 = 1044337242;
+pub const HF_RPC_FROM_HOST_PARTY_JOIN_DENIED: u32 = 1044489400;
+pub const HF_RPC_SET_TARGETING_CONSTRAINT_LOCKED: u32 = 1047809384;
+pub const HF_RPC_REQUEST_PLAY_ANIMATION_EVENT_SYNCED: u32 = 1081754665;
+pub const HF_RPC_NAG_FOR_RESPAWN: u32 = 1086148812;
+pub const HF_RPC_DEBUG_FORCE_READY_UP: u32 = 1101451771;
+pub const HF_RPC_UNWIELD_WEAPON: u32 = 1111113780;
+pub const HF_RPC_SET_INVENTORY: u32 = 1114804870;
+pub const HF_RPC_ON_FORCE_TO_LOADOUT: u32 = 1123408287;
+pub const HF_RPC_SET_COUNTDOWN_STATE: u32 = 1126610131;
+pub const HF_RPC_TRIGGER_SHIP_GAME_EVENT: u32 = 1127910848;
+pub const HF_RPC_FROM_CLIENT_REQUEST_LOADOUT_LOAD: u32 = 1133625599;
+pub const HF_RPC_TALK_WITH_TARGET_ABOUT: u32 = 1138327238;
+pub const HF_RPC_SET_AVATAR_IK_ENABLED: u32 = 1146026138;
+pub const HF_RPC_SYNC_STRATAGEM_CHANGES: u32 = 1146392007;
+pub const HF_RPC_SYNC_HIVE_LORD_KILLED: u32 = 1146825662;
+pub const HF_RPC_TRIGGER_UI_AUDIO_EVENT: u32 = 1147845035;
+pub const HF_RPC_REMOVE_INTERESTED_DIALOGUE_TARGET: u32 = 1162775452;
+pub const HF_RPC_SET_COUNTDOWN_TIME_INDEX: u32 = 1165885338;
+pub const HF_RPC_RESTORE_LIMBS: u32 = 1171465513;
+pub const HF_RPC_ON_COMMEND_COUNT_RECEIVED: u32 = 1195047679;
+pub const HF_RPC_BEGIN_DROPIN: u32 = 1196908139;
+pub const HF_RPC_GET_INGAME_SHIP_TIMELINE: u32 = 1200413582;
+pub const HF_RPC_FROM_HOST_PEER_CONFIRMED: u32 = 1208286452;
+pub const HF_RPC_LOADOUT_SELECT_STRATAGEM_SLOT: u32 = 1227156028;
+pub const HF_RPC_TRIGGER_UI_AUDIO_EVENT_FROM_DROP_MENU_3D: u32 = 1230206683;
+pub const HF_RPC_DEBUG_SET_GAME_SESSION_HOST: u32 = 1250433913;
+pub const HF_RPC_ADD_TEAMMATE_NEEDS_RELOAD_MARKER: u32 = 1250851258;
+pub const HF_RPC_REQUEST_EXIT_SEAT_COLLECTION_SUCCESS: u32 = 1255517748;
+pub const HF_RPC_PHYSICS_LOCAL_IMPULSE: u32 = 1257555715;
+pub const HF_RPC_DEBUG_APPLY_EXISTING_CUSTOMIZATION: u32 = 1258285109;
+pub const HF_RPC_ABILITY_REQUEST_DENIED: u32 = 1263420396;
+pub const HF_RPC_FROM_HOST_PARTYMEMBER_JOIN_PRE_CONFIRMED: u32 = 1274753813;
+pub const HF_RPC_SET_TEMPERATURE_LOSS_MODIFIER: u32 = 1290558390;
+pub const HF_RPC_SYNC_UNIT_CUSTOMIZATION: u32 = 1295576964;
+pub const HF_RPC_HOTJOIN_ABILITY: u32 = 1304206639;
+pub const HF_RPC_SET_AVATAR_VISIBILITY: u32 = 1304644590;
+pub const HF_RPC_SYNC_AVATAR_DEATH_STATE: u32 = 1321063598;
+pub const HF_RPC_SET_ACTIVE_AND_RETRACT: u32 = 1322136253;
+pub const HF_RPC_SPAWN_EXTRACTION_BEACON_SFX: u32 = 1351371742;
+pub const HF_RPC_FROM_HOST_PARTY_JOIN_ACCEPTED: u32 = 1355255810;
+pub const HF_RPC_INTERACTION_REQUEST_RESULT: u32 = 1356836948;
+pub const HF_RPC_FROM_PARTYMEMBER_CANCEL_JOIN: u32 = 1362298381;
+pub const HF_RPC_HOSTABILITY: u32 = 1375872932;
+pub const HF_RPC_FROM_HOST_PARTYMEMBER_JOIN_DENIED: u32 = 1377616719;
+pub const HF_RPC_HOTJOIN_ABILITY_PENDING_ABILITY: u32 = 1399450879;
+pub const HF_RPC_ABILITY_REQUEST: u32 = 1419611033;
+pub const HF_RPC_SYNC_GAME_STATE: u32 = 1421170704;
+pub const HF_RPC_LOOT_CONTAINER_PICK_UP_REQUEST: u32 = 1434471162;
+pub const HF_RPC_PLAY_CUTSCENE: u32 = 1453136301;
+pub const HF_RPC_SET_TRANSPORT_PAYLOAD_CURSOR: u32 = 1454085470;
+pub const HF_RPC_PROPOSE_DROP_POINT: u32 = 1477102535;
+pub const HF_RPC_SET_ZONE_ENABLED: u32 = 1479446149;
+pub const HF_RPC_PHYSICS_UNIFORM_IMPULSE: u32 = 1480978716;
+pub const HF_RPC_SCORE_SYNC_BOOL: u32 = 1496255860;
+pub const HF_RPC_SCORE_SYNC_WEAPON_UNSIGNED: u32 = 1508907569;
+pub const HF_RPC_REMOVE_ENCOUNTERS_WITHIN: u32 = 1522207006;
+pub const HF_RPC_HELLPAD_CONFIRMATION_RESULT: u32 = 1522776948;
+pub const HF_RPC_SET_LEVEL_RESTARTING: u32 = 1534675101;
+pub const HF_RPC_CHANGE_DIFFICULTY_TERRAIN: u32 = 1538630361;
+pub const HF_RPC_VALIDATE_EXPLORATION: u32 = 1543755420;
+pub const HF_RPC_OBJECTIVE_ASSET_DESTROYED: u32 = 1551235152;
+pub const HF_RPC_FROM_PARTYMEMBER_JOIN_FAILED: u32 = 1556075682;
+pub const HF_RPC_MATERIAL_VARIABLE_VECTOR3: u32 = 1556860360;
+pub const HF_RPC_ENTITY_BROKEN_COMMAND: u32 = 1558342504;
+pub const HF_RPC_LOADOUT_SET_BOOSTER_ID: u32 = 1565561124;
+pub const HF_RPC_TRIGGER_HOLOGRAM_AUDIO_EVENT: u32 = 1569349010;
+pub const HF_RPC_SYNC_GALACTIC_WAR_PLANET_STATUS: u32 = 1573745210;
+pub const HF_RPC_REQUEST_DEFORM_TERRAIN: u32 = 1581876231;
+pub const HF_RPC_SYNC_PARTY_CLAN_STATION: u32 = 1583280968;
+pub const HF_RPC_HEAL: u32 = 1607231586;
+pub const HF_RPC_DISPLACEMENT_START: u32 = 1612675531;
+pub const HF_RPC_LANDING_STARTED: u32 = 1621626895;
+pub const HF_RPC_SET_WEAPON_FLASHLIGHT_MODE: u32 = 1642875758;
+pub const HF_RPC_SET_STANCE: u32 = 1646056457;
+pub const HF_RPC_EQUIPMENT_SLOT_CHANGE_START: u32 = 1651466983;
+pub const HF_RPC_FROM_HOST_PARTYMEMBER_JOIN_CONFIRMED: u32 = 1656267469;
+pub const HF_RPC_DIALOGUE_FINISHED: u32 = 1670134383;
+pub const HF_RPC_FROM_HOST_JOIN_FAILED: u32 = 1673917497;
+pub const HF_RPC_DYNDEST_ON_HOTJOINED: u32 = 1678845336;
+pub const HF_RPC_FROM_PARTYLEADER_CANCEL_JOIN: u32 = 1683011686;
+pub const HF_RPC_FROM_MIGRATION_HOST_DONE: u32 = 1689931941;
+pub const HF_RPC_PLAY_CHAINED: u32 = 1692902954;
+pub const HF_RPC_ANIMATION_VARIABLE: u32 = 1700301232;
+pub const HF_RPC_SYNC_STRATAGEM_SHARED_USES_LEFT: u32 = 1704104953;
+pub const HF_RPC_TRANSPORT_DROP: u32 = 1746056638;
+pub const HF_RPC_DISPLACEMENT_TELEPORT: u32 = 1754180964;
+pub const HF_RPC_LOADOUT_SELECT_EQUIPMENT_SLOT: u32 = 1765117628;
+pub const HF_RPC_ENCOUNTER_SPAWN_PING: u32 = 1769545397;
+pub const HF_RPC_SET_HELD_THROWABLE: u32 = 1780799865;
+pub const HF_RPC_MODIFIER_SYSTEM_RECIEVE_MODIFIER_FROM_HOST: u32 = 1786980878;
+pub const HF_RPC_HOTJOIN_ABILITY_SET_UNDO_MASK: u32 = 1788322915;
+pub const HF_RPC_ASSISTED_RELOAD_PARTNER_READY_STATE: u32 = 1789395906;
+pub const HF_RPC_ANIMATION_EVENT_PERCENT: u32 = 1794912372;
+pub const HF_RPC_HEAL_INJURY: u32 = 1804935827;
+pub const HF_RPC_HOTJOIN_INFO: u32 = 1820384936;
+pub const HF_RPC_ANIMATION_EVENT_DURATION_PERCENT: u32 = 1822459757;
+pub const HF_RPC_PAWN_DESERTING: u32 = 1825623351;
+pub const HF_RPC_SET_MOVING_HAZARD_TIME_REMAINING: u32 = 1858009165;
+pub const HF_RPC_FROM_MIGRATION_HOST_EVENT_COUNT: u32 = 1859564206;
+pub const HF_RPC_STATE_CHANGED: u32 = 1863994054;
+pub const HF_RPC_WEAPON_LEVEL_UP: u32 = 1872618718;
+pub const HF_RPC_SET_LOCAL_SCALE: u32 = 1873200618;
+pub const HF_RPC_SYNC_GALACTIC_WAR_JOINT_OPERATION: u32 = 1878916255;
+pub const HF_RPC_HOSTABILITY_SCORES: u32 = 1889279548;
+pub const HF_RPC_REQUEST_HOSTINFO: u32 = 1892863723;
+pub const HF_RPC_SET_ENABLED: u32 = 1893150926;
+pub const HF_RPC_HOTJOIN_SYNC_FILM_PROGRESS: u32 = 1893268028;
+pub const HF_RPC_SET_HELLPOD_OCCUPIED: u32 = 1893566721;
+pub const HF_RPC_FROM_HOST_SET_START_POSITION: u32 = 1899097950;
+pub const HF_RPC_FROM_HOST_SET_SHIP_SEED: u32 = 1901741636;
+pub const HF_RPC_FROM_HOST_SET_GENERATION_SEED: u32 = 1902928246;
+pub const HF_RPC_STRATAGEM_CONFIRMATION_RESULT: u32 = 1906206942;
+pub const HF_RPC_REQUEST_BOOSTER: u32 = 1908433349;
+pub const HF_RPC_FROM_HOST_SET_DEBUG_LEVEL: u32 = 1908919291;
+pub const HF_RPC_ABORT_DIALOGUE: u32 = 1911113456;
+pub const HF_RPC_INCREMENT_TOTAL_NUMBER_OF_DROPPED_LOOT: u32 = 1916619347;
+pub const HF_RPC_LOOT_PICK_UP_REQUEST: u32 = 1927417422;
+pub const HF_RPC_SWITCH_SCRIPT_EVENT: u32 = 1928910949;
+pub const HF_RPC_SYNC_MINEFIELD: u32 = 1934015991;
+pub const HF_RPC_MATERIAL_SWAP: u32 = 1940978711;
+pub const HF_RPC_SET_SIGHT_NODE: u32 = 1946581263;
+pub const HF_RPC_ENABLE_AUTOLOAD: u32 = 1946760071;
+pub const HF_RPC_REGISTER_KILL: u32 = 1953206848;
+pub const HF_RPC_SET_ALIGN_STRATEGY: u32 = 1956400895;
+pub const HF_RPC_SET_MINIGAME_VALUE_ALIGNMENT_CORRECTED_VALUE: u32 = 1968089955;
+pub const HF_RPC_RESET_ALIGN_STRATEGY: u32 = 1969051806;
+pub const HF_RPC_TERMINAL_INTERACT_SUCCESS: u32 = 1970727526;
+pub const HF_RPC_DELETE_ALL_PASSENGERS_REQUEST: u32 = 1994737943;
+pub const HF_RPC_TRIGGER_ATTACK_EVENT: u32 = 1996037005;
+pub const HF_RPC_ON_STAGGER: u32 = 2004534091;
+pub const HF_RPC_WEAPON_EXECUTE_CHAMBERING: u32 = 2004951722;
+pub const HF_RPC_ADD_BEAM: u32 = 2011184874;
+pub const HF_RPC_SHUTTLE_EXTRACTION: u32 = 2016230212;
+pub const HF_RPC_FINALIZE_SWAP_REQUEST: u32 = 2019840047;
+pub const HF_RPC_MOUNT_ENTITIES: u32 = 2025229752;
+pub const HF_RPC_ARM_EXPLOSIVE: u32 = 2027280774;
+pub const HF_RPC_REVIVE: u32 = 2034950880;
+pub const HF_RPC_SET_ACTIVE: u32 = 2053598041;
+pub const HF_RPC_REQUEST_TELEPORT_SLOT: u32 = 2054225060;
+pub const HF_RPC_PLAY_HOLOGRAM_EVENT: u32 = 2059961123;
+pub const HF_RPC_ABORT_TERMINAL_INTERACT: u32 = 2074535746;
+pub const HF_RPC_CHANGE_STACK_VALUE: u32 = 2101903683;
+pub const HF_RPC_FROM_HOST_FINISH_SHIP_SPAWN: u32 = 2108544664;
+pub const HF_RPC_ON_SPACE_STATION_MISMATCH_DETECTED: u32 = 2120560700;
+pub const HF_RPC_SELECT_DROP_POINT: u32 = 2128209504;
+pub const HF_RPC_ACTIVATE_COOLDOWN: u32 = 2129369253;
+pub const HF_RPC_SET_EYE_TYPE: u32 = 2133445457;
+pub const HF_RPC_FANCY_EFFECT_SYSTEM_RECIEVE_EFFECT_FROM_HOST: u32 = 2138866454;
+pub const HF_RPC_ON_COMMEND: u32 = 2140247189;
+pub const HF_RPC_REMOTE_TRIGGER_EVENT_ON_ENTITY: u32 = 2140298999;
+pub const HF_RPC_ON_OBJECTIVE_STRATAGEM_DESTROYED: u32 = 2144061089;
+pub const HF_RPC_SET_STICKY_IS_ATTACHED: u32 = 2157150782;
+pub const HF_RPC_REINFORCE_SCORE_INCREASE: u32 = 2166611290;
+pub const HF_RPC_PLAYER_INVITED_TO_CLAN: u32 = 2176232780;
+pub const HF_RPC_MISSION_OVER_RESULT: u32 = 2188055430;
+pub const HF_RPC_SET_PRODUCTION_COOLDOWN_OVERRIDE: u32 = 2194960493;
+pub const HF_RPC_FROM_MIGRATED_HOST_STATE_REQUESTED: u32 = 2210400865;
+pub const HF_RPC_MISSION_END_INFO_REQUEST: u32 = 2211249545;
+pub const HF_RPC_ENABLE_AND_SHOW_SHIELD_ZONE_ACTORS: u32 = 2213911924;
+pub const HF_RPC_REMOVE_ALL_PROPOSED_DROP_POINTS: u32 = 2215098250;
+pub const HF_RPC_SET_CURVE_NAVIGATION_ENABLED: u32 = 2220393333;
+pub const HF_RPC_FROM_CLIENT_VERIFY_MATCHING_LATEST_CONFIG: u32 = 2222661680;
+pub const HF_RPC_NOTIFY_DROPOFF_LOCATION: u32 = 2226143306;
+pub const HF_RPC_ARCADE_STRATAGEM_UPDATED_HIGHSCORES: u32 = 2231719947;
+pub const HF_RPC_REMOVED_LEVEL_ENTITIES: u32 = 2234000218;
+pub const HF_RPC_SYNC_GALACTIC_WAR_BEGIN: u32 = 2234693187;
+pub const HF_RPC_SHARED_WEAPON_STATE: u32 = 2238624363;
+pub const HF_RPC_AVATAR_CHANGE_LOCOMOTION_SET: u32 = 2245536066;
+pub const HF_RPC_STIMED: u32 = 2246192595;
+pub const HF_RPC_SET_CLOAKED: u32 = 2249348809;
+pub const HF_RPC_TRIGGER_ENCOUNTER: u32 = 2249407409;
+pub const HF_RPC_MINIGAME_COMPLETED: u32 = 2258667899;
+pub const HF_RPC_DEDUCT_FROM_DEPOSIT: u32 = 2258952322;
+pub const HF_RPC_IMPACT_PLAY_EFFECT: u32 = 2269198059;
+pub const HF_RPC_HELLPAD_SPAWN_STRATAGEM: u32 = 2271780790;
+pub const HF_RPC_SET_DEBUG_TRANSFORM: u32 = 2286222845;
+pub const HF_RPC_SET_INGAME_SHIP_MOVEMENT: u32 = 2297174894;
+pub const HF_RPC_DESTRUCTIBLE_SET_INVINCIBLE: u32 = 2323200715;
+pub const HF_RPC_CREATE_SMOKE_EFFECT: u32 = 2342540983;
+pub const HF_RPC_SYNC_GALACTIC_WAR_TIME: u32 = 2344613983;
+pub const HF_RPC_MATERIAL_VARIABLE_VECTOR2: u32 = 2356659768;
+pub const HF_RPC_PLAYER_ABANDONED: u32 = 2386355246;
+pub const HF_RPC_SYNC_GALACTIC_WAR_PERSISTED_OPERATION: u32 = 2408600362;
+pub const HF_RPC_FROM_HOST_PEER_ADDED_TO_SESSION: u32 = 2414281110;
+pub const HF_RPC_SYNC_RAGDOLL_TO_POSE: u32 = 2424247493;
+pub const HF_RPC_SKIP_ARMING_TIMER: u32 = 2427628813;
+pub const HF_RPC_SET_VISIBILITY_GROUP: u32 = 2437333650;
+pub const HF_RPC_STRATAGEM_FAILED: u32 = 2445323563;
+pub const HF_RPC_LOAD_AND_PLAY_EXTRACTION_CUTSCENE: u32 = 2450228006;
+pub const HF_RPC_DROP_ENTITY: u32 = 2453499352;
+pub const HF_RPC_MODIFIER_SYSTEM_INITIALISE_SYNC: u32 = 2469306051;
+pub const HF_RPC_REMOVE_PROPOSED_DROP_POINT: u32 = 2476181634;
+pub const HF_RPC_DYNDEST_CLIENT_REQUEST_HIDE_AND_SPAWN: u32 = 2481450147;
+pub const HF_RPC_FROM_CLIENT_READY_FOR_SYNCED_TASKS: u32 = 2481786060;
+pub const HF_RPC_UPDATE_HOLD_MINIGAME_VALUE: u32 = 2484925501;
+pub const HF_RPC_SET_ENTERING: u32 = 2486397372;
+pub const HF_RPC_ATTACH_SIMPLE: u32 = 2491230298;
+pub const HF_RPC_SCORE_SYNC_WEAPON_FLOAT: u32 = 2492112828;
+pub const HF_RPC_EXTRACTION_ZONE_DISCOVERED: u32 = 2511491132;
+pub const HF_RPC_SNAP_ROTATION: u32 = 2513874950;
+pub const HF_RPC_TRIGGER_PARTICLE_EVENT: u32 = 2514020254;
+pub const HF_RPC_SET_INGAME_SHIP_TRANSFORM: u32 = 2519064440;
+pub const HF_RPC_SYNC_SHARED_UNIT_CUSTOMIZATIONS: u32 = 2555636044;
+pub const HF_RPC_MISSION_STARTED: u32 = 2557616784;
+pub const HF_RPC_SET_ABILITY_PAUSED: u32 = 2573506085;
+pub const HF_RPC_PICKUP_PAYLOAD: u32 = 2578497979;
+pub const HF_RPC_FROM_HOST_READY_PEER_ADDED: u32 = 2588906768;
+pub const HF_RPC_ON_AUTO_REINFORCE: u32 = 2604526759;
+pub const HF_RPC_TARGETING_DECAL: u32 = 2613819469;
+pub const HF_RPC_FIRE_SYSTEM_DELTA_CELL_LIST: u32 = 2615850204;
+pub const HF_RPC_FROM_HOST_SET_SHIPNAME_START: u32 = 2616749452;
+pub const HF_RPC_SET_JOB_POSITION: u32 = 2626900797;
+pub const HF_RPC_DELETE_CURRENT_EQUIPMENT: u32 = 2635872761;
+pub const HF_RPC_CORPSED_REATTACH: u32 = 2638239093;
+pub const HF_RPC_GIVE_AMMO: u32 = 2659165626;
+pub const HF_RPC_REPLICATE_OVERRIDE_BATCH: u32 = 2669244588;
+pub const HF_RPC_FROM_HOST_ABORT_NETWORK_PLAY: u32 = 2670670095;
+pub const HF_RPC_SET_ARMOR_MODIFIER: u32 = 2677838015;
+pub const HF_RPC_INGAME_CHAT_MESSAGE: u32 = 2682108046;
+pub const HF_RPC_FROM_HOST_SET_GAME_STATE: u32 = 2688751801;
+pub const HF_RPC_REQUEST_SET_PARENT_ACTIVE: u32 = 2690068559;
+pub const HF_RPC_MISSION_ACTIVITY_RESULT: u32 = 2692888901;
+pub const HF_RPC_LOOT_DESTROYED_MESSAGE: u32 = 2711891492;
+pub const HF_RPC_RADIO: u32 = 2712693562;
+pub const HF_RPC_SPAWN_MINEFIELD_MINES: u32 = 2718299388;
+pub const HF_RPC_TRIGGER_SHIPMASTER_GREETING: u32 = 2722397553;
+pub const HF_RPC_SET_ACTOR_MOTION_PROPERTY: u32 = 2724630250;
+pub const HF_RPC_SET_MINIGAME_REELS_SELECTED_REEL: u32 = 2729529995;
+pub const HF_RPC_SET_INTERESTED_DIALOGUE_TARGET: u32 = 2732468678;
+pub const HF_RPC_TRIGGER_INTEL_ENCOUNTER: u32 = 2741633342;
+pub const HF_RPC_CHANGE_EQUIPMENT: u32 = 2757850480;
+pub const HF_RPC_FROM_HOST_ADDED_TO_SESSION: u32 = 2761401053;
+pub const HF_RPC_SET_ACTIVE_PASSENGER: u32 = 2762382242;
+pub const HF_RPC_FROM_CLIENT_COMPLETED_LOADOUT_LOAD: u32 = 2766466300;
+pub const HF_RPC_ON_NOTIFIED: u32 = 2788060841;
+pub const HF_RPC_SCORE_SYNC_WEAPON_BOOL: u32 = 2814310826;
+pub const HF_RPC_SET_DAMAGE_OWNER: u32 = 2815400562;
+pub const HF_RPC_REQUEST_CYCLE_SEAT: u32 = 2817320566;
+pub const HF_RPC_EXTERNAL_SWITCH_STATE_RESET: u32 = 2828049465;
+pub const HF_RPC_SET_SWITCH_VALUE: u32 = 2831589268;
+pub const HF_RPC_STRATAGEM_BALL_SOUND: u32 = 2833568088;
+pub const HF_RPC_DROP_SELECT_DONE: u32 = 2835970472;
+pub const HF_RPC_DIALOGUE_RESPONSE: u32 = 2847013054;
+pub const HF_RPC_LOOT_PICK_UP: u32 = 2861249555;
+pub const HF_RPC_SCORE_SYNC_FLOAT: u32 = 2862277637;
+pub const HF_RPC_SHIELD_ON_DEPLETED: u32 = 2864105656;
+pub const HF_RPC_ROLL_FOR_STATUS_EFFECT: u32 = 2865110751;
+pub const HF_RPC_RECHARGE_SET_TIMER: u32 = 2866108592;
+pub const HF_RPC_ON_KNOCKBACK: u32 = 2886285744;
+pub const HF_RPC_SET_MINIGAME_PIPE_SLIDE_OFFSET_VALUE: u32 = 2891272076;
+pub const HF_RPC_SET_INVENTORY_VISIBILITY: u32 = 2892007298;
+pub const HF_RPC_SYNCED_ABILITY_HIT: u32 = 2898306377;
+pub const HF_RPC_FROM_HOST_LOADOUT_WEAPON_SWAP_READY: u32 = 2899397635;
+pub const HF_RPC_SET_WANTS_TO_BURROW: u32 = 2899959705;
+pub const HF_RPC_SMOOTH_ATTACH_OFFSET_ROTATION: u32 = 2930277339;
+pub const HF_RPC_REQUEST_EXIT_SEAT_COLLECTION_DENIED: u32 = 2934147092;
+pub const HF_RPC_SET_ANIMATION_TIMES: u32 = 2935699241;
+pub const HF_RPC_TRIGGER_HAZARD: u32 = 2941114418;
+pub const HF_RPC_FANCY_EFFECT_SYSTEM_INITIALISE_SYNC: u32 = 2942527797;
+pub const HF_RPC_DETONATE_C4_CHARGES: u32 = 2946505783;
+pub const HF_RPC_AUDIO_EVENT: u32 = 2967770481;
+pub const HF_RPC_FROM_HOST_SET_GENERATION_HASH: u32 = 2971137615;
+pub const HF_RPC_VOICEOVER_STOP_EVENT: u32 = 2976314300;
+pub const HF_RPC_SHIELD_ZONE_DEPLETED: u32 = 2986555689;
+pub const HF_RPC_MINE_TRIGGERED: u32 = 2996622254;
+pub const HF_RPC_SYNC_STRATAGEMS: u32 = 3001515182;
+pub const HF_RPC_SYNC_STRATAGEM_LOADOUT_TO_HOTJOINER: u32 = 3004681032;
+pub const HF_RPC_DEBUG_LOAD_SOUNDBANK: u32 = 3012102008;
+pub const HF_RPC_OIL_RIG_DRILLING_START: u32 = 3012522380;
+pub const HF_RPC_SET_RAGDOLL_ENABLED: u32 = 3012609158;
+pub const HF_RPC_START_UPLOAD_DISCOVERY: u32 = 3016234701;
+pub const HF_RPC_SET_ANIMATION_STATES_LARGE: u32 = 3021584472;
+pub const HF_RPC_GIVE_STIMS: u32 = 3022162420;
+pub const HF_RPC_OBJECTIVE_LINK_TO_GUARD_FORCE_MEMBER: u32 = 3026020379;
+pub const HF_RPC_LOAD_PLAYER_LOADOUT_FOR_PEER: u32 = 3031236215;
+pub const HF_RPC_RESPOND_TO_EMOTE: u32 = 3034323724;
+pub const HF_RPC_CYCLE_SEAT_DENIED: u32 = 3058200977;
+pub const HF_RPC_CHARGE_MINIGAME_STATE_CHANGE: u32 = 3059888384;
+pub const HF_RPC_HOTJOIN_ABILITY_SYNCED_DATA: u32 = 3067495823;
+pub const HF_RPC_BUILD_WAVE_INFO: u32 = 3073286655;
+pub const HF_RPC_SYNC_GALACTIC_WAR_SPACE_STATION: u32 = 3088792480;
+pub const HF_RPC_TO_MIGRATION_HOST_EVENT_LIST: u32 = 3089786198;
+pub const HF_RPC_ADD_PROJECTILE_TO_MANAGER: u32 = 3091589947;
+pub const HF_RPC_UNMOUNT_ENTITY: u32 = 3092446621;
+pub const HF_RPC_SCORE_SYNC_DONE: u32 = 3110518503;
+pub const HF_RPC_ANIMATION_EVENT_WITH_PARAMS: u32 = 3114352762;
+pub const HF_RPC_FROM_HOST_NOTIFY_NEW_HOST: u32 = 3118955574;
+pub const HF_RPC_EQUIPMENT_CHARGE_UP: u32 = 3127678096;
+pub const HF_RPC_SYNC_MISSION_HISTORY: u32 = 3138899525;
+pub const HF_RPC_MODIFIER_SYSTEM_FINALISE_SYNC: u32 = 3150135225;
+pub const HF_RPC_FROM_HOST_SET_SHIPNAMES: u32 = 3152634307;
+pub const HF_RPC_ADD_WOUND: u32 = 3155937757;
+pub const HF_RPC_SYNC_GALACTIC_WAR_DATA_DONE: u32 = 3168970914;
+pub const HF_RPC_VERIFY_SYNCED: u32 = 3177073369;
+pub const HF_RPC_FROM_PARTYMEMBER_JOIN_FINISHED: u32 = 3177163398;
+pub const HF_RPC_CONVOY_REACHED_GOAL: u32 = 3180503890;
+pub const HF_RPC_ABORT_VALUE_ALIGNMENT_MINIGAME: u32 = 3181640916;
+pub const HF_RPC_ANIMATION_EVENT: u32 = 3185915475;
+pub const HF_RPC_ENTITY_COMMANDED: u32 = 3190018336;
+pub const HF_RPC_SET_POSITION: u32 = 3195440168;
+pub const HF_RPC_DIALOGUE_FAILED_NONE_FOUND: u32 = 3213152344;
+pub const HF_RPC_ON_DESTROYED_DYNAMIC: u32 = 3215067358;
+pub const HF_RPC_MISSION_END_INFO_RESULT: u32 = 3226720247;
+pub const HF_RPC_FIRE_SOURCE_TRIGGER: u32 = 3241690691;
+pub const HF_RPC_FROM_CLIENT_SYNCED_TASK_DONE: u32 = 3258433052;
+pub const HF_RPC_CHANGE_STATUS_EFFECT_MASK: u32 = 3260251627;
+pub const HF_RPC_PANIC_EXIT: u32 = 3264759544;
+pub const HF_RPC_SET_THROWABLE_PATH: u32 = 3289387701;
+pub const HF_RPC_TRANSPORT_DROPPED: u32 = 3307317243;
+pub const HF_RPC_TRIGGER_PROJECTILE_EXPLOSION: u32 = 3326972656;
+pub const HF_RPC_FORCE_EXIT_SEAT_COLLECTION: u32 = 3331858799;
+pub const HF_RPC_SET_FILMING_COMPLETED: u32 = 3331917530;
+pub const HF_RPC_RAGDOLL_SET_VELOCITY: u32 = 3342514071;
+pub const HF_RPC_DROP_CURRENT_EQUIPMENT: u32 = 3342557898;
+pub const HF_RPC_REQUEST_STATE_CHANGE: u32 = 3363304676;
+pub const HF_RPC_HELD_THROWABLE_CANCELLED: u32 = 3364738427;
+pub const HF_RPC_PLAY_LOOPING_SURFACE_EFFECT: u32 = 3371232176;
+pub const HF_RPC_CONVOY_DESTROYED: u32 = 3375040562;
+pub const HF_RPC_SYNC_PLAYER_HISTORY: u32 = 3377716077;
+pub const HF_RPC_DYNDEST_HIDE_AND_SPAWN: u32 = 3390466944;
+pub const HF_RPC_HOTJOIN_ABILITY_TIME_MODIFIERS: u32 = 3405647625;
+pub const HF_RPC_RUN_ABILITY_FRAME: u32 = 3409438550;
+pub const HF_RPC_PLAYER_FEED_EVENT: u32 = 3415033732;
+pub const HF_RPC_ABORT_MINIGAME_INTERACT: u32 = 3419226992;
+pub const HF_RPC_FROM_HOST_SET_TRANSITION_TARGET: u32 = 3419335689;
+pub const HF_RPC_SET_EXTERNAL_SWITCHES_ACTIVATE: u32 = 3422152897;
+pub const HF_RPC_INCREMENT_STRATAGEM_PLACED_COUNT: u32 = 3426592223;
+pub const HF_RPC_FROM_HOST_EXECUTE_LOADOUT_WEAPON_SWAP: u32 = 3435735116;
+pub const HF_RPC_ANIMATION_EVENT_DURATION: u32 = 3440685254;
+pub const HF_RPC_ARCADE_STRATAGEM_SOUND: u32 = 3443059093;
+pub const HF_RPC_TES_77352_MISSING_SHIP_INVENTORY: u32 = 3453541454;
+pub const HF_RPC_SET_INTERPOLATION_TARGET: u32 = 3454561350;
+pub const HF_RPC_LOOT_CONTAINER_PICK_UP: u32 = 3463126259;
+pub const HF_RPC_ADD_TEAMMATE_MARKER: u32 = 3472994335;
+pub const HF_RPC_ANIMATION_EVENT_SPEED_PERCENT: u32 = 3479924735;
+pub const HF_RPC_FROM_HOST_LEVEL_GENERATION_STARTED: u32 = 3497796142;
+pub const HF_RPC_SYNCED_HEALTH_REQUEST: u32 = 3497964210;
+pub const HF_RPC_ATTACH_OFFSET: u32 = 3515075436;
+pub const HF_RPC_ANIMATION_EVENT_BROADCAST: u32 = 3522905508;
+pub const HF_RPC_REMOTE_TRIGGER_EVENT_ON_SPEAKER: u32 = 3530346475;
+pub const HF_RPC_DISPLACEMENT_ACTIVATED: u32 = 3548177446;
+pub const HF_RPC_FIRE_SINGLE_ROUND: u32 = 3553601252;
+pub const HF_RPC_SYNC_UPDATE_OR_ADD_LOBBY: u32 = 3554426267;
+pub const HF_RPC_MIGRATE_OBJECTIVE_CARRY: u32 = 3558379421;
+pub const HF_RPC_TRIGGER_AVATAR_COMMS_NOTIFY: u32 = 3566005682;
+pub const HF_RPC_FROM_PARTYMEMBER_READY_FOR_CONFIRMATION: u32 = 3566959417;
+pub const HF_RPC_SET_MINIGAME_VALUE_ALIGNMENT_INPUT: u32 = 3572010572;
+pub const HF_RPC_SEATER_STATE: u32 = 3573117718;
+pub const HF_RPC_SET_JOB: u32 = 3575386966;
+pub const HF_RPC_SET_PHYSICS_ACTOR_ENABLE: u32 = 3582861299;
+pub const HF_RPC_GIVE_EQUIPMENT: u32 = 3585578834;
+pub const HF_RPC_SYNC_DROPPABLE_INFINITE_MAP_ITEMS: u32 = 3585812103;
+pub const HF_RPC_REMOVE_ENCOUNTERS_BY_CONTROLLER: u32 = 3600854023;
+pub const HF_RPC_FROM_CLIENT_LEFT: u32 = 3607542895;
+pub const HF_RPC_SYNC_ASSIGNMENT_KILL: u32 = 3619851348;
+pub const HF_RPC_MATERIAL_VARIABLE_SCALAR: u32 = 3630718043;
+pub const HF_RPC_SYNC_MISSION_JOIN_TIME: u32 = 3633459456;
+pub const HF_RPC_REMOVE_MEMBER: u32 = 3642124018;
+pub const HF_RPC_TO_MIGRATION_HOST_COUNT: u32 = 3652160616;
+pub const HF_RPC_FROM_CLIENT_REQUESTED_STATE: u32 = 3661907589;
+pub const HF_RPC_SET_TAG: u32 = 3662022184;
+pub const HF_RPC_FROM_HOST_LEVEL_GENERATION_COMPLETED: u32 = 3663961532;
+pub const HF_RPC_SYNC_GALACTIC_WAR_DONE: u32 = 3670988177;
+pub const HF_RPC_SYNC_PLAYER_LOADED_LOADOUT: u32 = 3672638009;
+pub const HF_RPC_MINIGAME_REVERT: u32 = 3676384270;
+pub const HF_RPC_ON_EXPLORATION_REWARD_REQUEST_START: u32 = 3696682246;
+pub const HF_RPC_HOLD_MINIGAME_STATE_CHANGE: u32 = 3697983498;
+pub const HF_RPC_SEATER_SET_ACTION: u32 = 3703775495;
+pub const HF_RPC_SYNC_LOADOUT: u32 = 3704435555;
+pub const HF_RPC_SYNC_CUSTOMIZATION_SEED: u32 = 3708836141;
+pub const HF_RPC_MAP_LOCATION_DISCOVERED: u32 = 3724286863;
+pub const HF_RPC_SYNC_RELOAD_STATE: u32 = 3731493087;
+pub const HF_RPC_SET_DEMATERIALIZED: u32 = 3736041952;
+pub const HF_RPC_SET_PLAYER_INFO: u32 = 3760803221;
+pub const HF_RPC_SET_STRATAGEM_CODE_COMPLETED_COUNT: u32 = 3767904442;
+pub const HF_RPC_RESTORE_TO_PICKUP_POINT: u32 = 3780575734;
+pub const HF_RPC_REQUEST_STRATAGEM_CONFIRMATION: u32 = 3781113522;
+pub const HF_RPC_FROM_HOST_SET_MENU_SCREEN: u32 = 3789843061;
+pub const HF_RPC_FROM_HOST_MISSION_ID: u32 = 3797598377;
+pub const HF_RPC_REQUEST_MIGRATION: u32 = 3801828632;
+pub const HF_RPC_INFLICT_INJURY: u32 = 3806883063;
+pub const HF_RPC_OBJECTIVE_ENTITY_SPOTTED: u32 = 3812058779;
+pub const HF_RPC_SYNC_PLAYER_INFO: u32 = 3815504952;
+pub const HF_RPC_FROM_PARTYMEMBER_LOBBY_JOINED: u32 = 3818211305;
+pub const HF_RPC_ON_ENTITY_DYING: u32 = 3821009666;
+pub const HF_RPC_DISTANT_WAR_PARTICLE: u32 = 3826657975;
+pub const HF_RPC_FANCY_EFFECT_SYSTEM_FINALISE_SYNC: u32 = 3827372952;
+pub const HF_RPC_MINIGAME_RESET: u32 = 3828038849;
+pub const HF_RPC_ADD_SPAWNPOINT: u32 = 3829256399;
+pub const HF_RPC_ATTACH: u32 = 3840852110;
+pub const HF_RPC_BUILD_RANDOM_ORDER: u32 = 3853440005;
+pub const HF_RPC_SYNC_GALACTIC_WAR_PLANET_REGION_STATUS: u32 = 3858734406;
+pub const HF_RPC_PEER_AUTHORIZED_REQUEST: u32 = 3879653425;
+pub const HF_RPC_EXTRACT: u32 = 3884258215;
+pub const HF_RPC_PLAY_COLLISION_SOUND: u32 = 3889384089;
+pub const HF_RPC_SET_SHIPNAME: u32 = 3891414353;
+pub const HF_RPC_STRATAGEM_BALL_STRATAGEM_FAILED: u32 = 3896427186;
+pub const HF_RPC_ATTACHMENT_REMOVED: u32 = 3900316402;
+pub const HF_RPC_COMPLETE_WAIT_MINIGAME: u32 = 3907800213;
+pub const HF_RPC_ON_HOTJOINED_DESTRUCTION: u32 = 3919200362;
+pub const HF_RPC_FROM_CLIENT_COMPLETED_LOADOUT_WEAPON_SWAP: u32 = 3919547501;
+pub const HF_RPC_TRIGGER_PARTICLE_EVENT_FROM_POSITION_ROTATION: u32 = 3921275311;
+pub const HF_RPC_SET_LIGHT_ENABLED: u32 = 3927530550;
+pub const HF_RPC_DISABLE_STRATAGEM_OF_TYPE: u32 = 3930411230;
+pub const HF_RPC_SHIELD_ALMOST_DONE_CHARGING: u32 = 3944964924;
+pub const HF_RPC_DROP_CARRYABLE: u32 = 3951178168;
+pub const HF_RPC_SYNC_GALACTIC_WAR_DATA_SENT: u32 = 3977843657;
+pub const HF_RPC_VOICEOVER_QUEUE_ENTRY: u32 = 4005383686;
+pub const HF_RPC_FIRE_SINGLE_ROUND_ADVANCED: u32 = 4018311495;
+pub const HF_RPC_SET_RAGDOLL_POSE: u32 = 4019218608;
+pub const HF_RPC_GAME_OBJECT_SYNC_DONE_TO: u32 = 4026839063;
+pub const HF_RPC_MATERIAL_VARIABLE_VECTOR4: u32 = 4028322732;
+pub const HF_RPC_SHIELD_ZONES_STATE_CHANGED: u32 = 4034361878;
+pub const HF_RPC_CHANGE_UI_AVATAR_ANIMATION: u32 = 4064764073;
+pub const HF_RPC_REQUEST_ENTER_SEAT_COLLECTION_DENIED: u32 = 4071093220;
+pub const HF_RPC_SYNCED_HEALTH_DAMAGE_REQUEST: u32 = 4071828005;
+pub const HF_RPC_SELECT_LOADOUT_WEAPON: u32 = 4089859435;
+pub const HF_RPC_FROM_HOST_EXECUTE_SYNCED_TASK: u32 = 4092401961;
+pub const HF_RPC_STRATAGEM_TRIGGER_COOLDOWN: u32 = 4095064909;
+pub const HF_RPC_INCREMENT_OBJECTIVE_COUNTER: u32 = 4097313024;
+pub const HF_RPC_INTERACTION_REQUEST: u32 = 4102201114;
+pub const HF_RPC_SYNC_GALACTIC_WAR_GLOBAL_EVENT: u32 = 4111488434;
+pub const HF_RPC_SYNC_SPACE_BATTLE_UNITS: u32 = 4116326544;
+pub const HF_RPC_SET_LIGHT_COLOR: u32 = 4126960593;
+pub const HF_RPC_MINE_STEPPED_ON: u32 = 4130971543;
+pub const HF_RPC_STRATAGEM_USED: u32 = 4137952335;
+pub const HF_RPC_FROM_HOST_KICKED: u32 = 4152768301;
+pub const HF_RPC_HOSTINFO: u32 = 4160798623;
+pub const HF_RPC_SET_MINIGAME_KEYPAD_VALUE: u32 = 4167705832;
+pub const HF_RPC_MIGRATE_GAME_OBJECT_REQUEST: u32 = 4171879984;
+pub const HF_RPC_FROM_HOST_PEER_METRIC_ADDED: u32 = 4179663297;
+pub const HF_RPC_ON_HIT_REACT_EVENT: u32 = 4200698059;
+pub const HF_RPC_ON_DISABLED_WAIT_COMPLETED: u32 = 4206684273;
+pub const HF_RPC_DYNDEST_DESPAWN: u32 = 4216642307;
+pub const HF_RPC_REMOVE_SELECTED_DROP_POINT: u32 = 4224247326;
+pub const HF_RPC_CANCEL_AIM_INTERPOLATION: u32 = 4229266164;
+pub const HF_RPC_LOADOUT_UPDATE_BOOSTER_AVAILABILITY: u32 = 4232754096;
+pub const HF_RPC_STOP_ALL_FOR_ENTITY: u32 = 4238651811;
+pub const HF_RPC_CLEAR_STATUS_EFFECT_IMMEDIATE: u32 = 4240047039;
+pub const HF_RPC_ENCOUNTER_END_PING: u32 = 4247047681;
+pub const HF_RPC_DISPLACEMENT_DESTROYED: u32 = 4250584128;
+pub const HF_RPC_EXIT_SHIP_HELLPOD: u32 = 4254581013;
+pub const HF_RPC_STRATAGEM_BALL_STRATAGEM_SUCCEDED: u32 = 4256779188;
+pub const HF_RPC_FIRE_SYSTEM_DELTA_CELL_LIST_COMPLETE: u32 = 4257169990;
+pub const HF_RPC_DROP_CURRENT_DROPPABLE_SLOT: u32 = 4267440035;
+pub const HF_RPC_FROM_HOST_NOTIFY_JOINED_PEER: u32 = 4274495402;
 pub type wchar_t = ::std::os::raw::c_ushort;
 #[repr(C)]
 #[repr(align(16))]
@@ -2252,10 +3624,12 @@ pub struct HfWeapon {
     pub projectile: u32,
     pub sound_from: u32,
     pub own_all: u32,
+    pub beam: u32,
+    pub arc: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfWeapon"][::std::mem::size_of::<HfWeapon>() - 64usize];
+    ["Size of HfWeapon"][::std::mem::size_of::<HfWeapon>() - 72usize];
     ["Alignment of HfWeapon"][::std::mem::align_of::<HfWeapon>() - 8usize];
     ["Offset of field: HfWeapon::size"][::std::mem::offset_of!(HfWeapon, size) - 0usize];
     ["Offset of field: HfWeapon::base"][::std::mem::offset_of!(HfWeapon, base) - 4usize];
@@ -2272,6 +3646,22 @@ const _: () = {
     ["Offset of field: HfWeapon::sound_from"]
         [::std::mem::offset_of!(HfWeapon, sound_from) - 52usize];
     ["Offset of field: HfWeapon::own_all"][::std::mem::offset_of!(HfWeapon, own_all) - 56usize];
+    ["Offset of field: HfWeapon::beam"][::std::mem::offset_of!(HfWeapon, beam) - 60usize];
+    ["Offset of field: HfWeapon::arc"][::std::mem::offset_of!(HfWeapon, arc) - 64usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEntityPart {
+    pub component: *const ::std::os::raw::c_char,
+    pub from: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEntityPart"][::std::mem::size_of::<HfEntityPart>() - 16usize];
+    ["Alignment of HfEntityPart"][::std::mem::align_of::<HfEntityPart>() - 8usize];
+    ["Offset of field: HfEntityPart::component"]
+        [::std::mem::offset_of!(HfEntityPart, component) - 0usize];
+    ["Offset of field: HfEntityPart::from"][::std::mem::offset_of!(HfEntityPart, from) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2287,10 +3677,11 @@ pub struct HfEntity {
     pub title: *const ::std::os::raw::c_char,
     pub designation: *const ::std::os::raw::c_char,
     pub description: *const ::std::os::raw::c_char,
+    pub parts: *const HfEntityPart,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfEntity"][::std::mem::size_of::<HfEntity>() - 88usize];
+    ["Size of HfEntity"][::std::mem::size_of::<HfEntity>() - 96usize];
     ["Alignment of HfEntity"][::std::mem::align_of::<HfEntity>() - 8usize];
     ["Offset of field: HfEntity::size"][::std::mem::offset_of!(HfEntity, size) - 0usize];
     ["Offset of field: HfEntity::base"][::std::mem::offset_of!(HfEntity, base) - 8usize];
@@ -2307,6 +3698,7 @@ const _: () = {
         [::std::mem::offset_of!(HfEntity, designation) - 72usize];
     ["Offset of field: HfEntity::description"]
         [::std::mem::offset_of!(HfEntity, description) - 80usize];
+    ["Offset of field: HfEntity::parts"][::std::mem::offset_of!(HfEntity, parts) - 88usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2358,6 +3750,304 @@ const _: () = {
     ["Offset of field: HfDamage::base"][::std::mem::offset_of!(HfDamage, base) - 4usize];
     ["Offset of field: HfDamage::name"][::std::mem::offset_of!(HfDamage, name) - 8usize];
     ["Offset of field: HfDamage::scale"][::std::mem::offset_of!(HfDamage, scale) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfExplosion {
+    pub size: u32,
+    pub base: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub damage: u32,
+    pub inner_radius: f32,
+    pub outer_radius: f32,
+    pub shockwave_radius: f32,
+    pub arc: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfExplosion"][::std::mem::size_of::<HfExplosion>() - 40usize];
+    ["Alignment of HfExplosion"][::std::mem::align_of::<HfExplosion>() - 8usize];
+    ["Offset of field: HfExplosion::size"][::std::mem::offset_of!(HfExplosion, size) - 0usize];
+    ["Offset of field: HfExplosion::base"][::std::mem::offset_of!(HfExplosion, base) - 4usize];
+    ["Offset of field: HfExplosion::name"][::std::mem::offset_of!(HfExplosion, name) - 8usize];
+    ["Offset of field: HfExplosion::damage"][::std::mem::offset_of!(HfExplosion, damage) - 16usize];
+    ["Offset of field: HfExplosion::inner_radius"]
+        [::std::mem::offset_of!(HfExplosion, inner_radius) - 20usize];
+    ["Offset of field: HfExplosion::outer_radius"]
+        [::std::mem::offset_of!(HfExplosion, outer_radius) - 24usize];
+    ["Offset of field: HfExplosion::shockwave_radius"]
+        [::std::mem::offset_of!(HfExplosion, shockwave_radius) - 28usize];
+    ["Offset of field: HfExplosion::arc"][::std::mem::offset_of!(HfExplosion, arc) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfBeam {
+    pub size: u32,
+    pub base: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub damage: u32,
+    pub radius: f32,
+    pub length: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfBeam"][::std::mem::size_of::<HfBeam>() - 32usize];
+    ["Alignment of HfBeam"][::std::mem::align_of::<HfBeam>() - 8usize];
+    ["Offset of field: HfBeam::size"][::std::mem::offset_of!(HfBeam, size) - 0usize];
+    ["Offset of field: HfBeam::base"][::std::mem::offset_of!(HfBeam, base) - 4usize];
+    ["Offset of field: HfBeam::name"][::std::mem::offset_of!(HfBeam, name) - 8usize];
+    ["Offset of field: HfBeam::damage"][::std::mem::offset_of!(HfBeam, damage) - 16usize];
+    ["Offset of field: HfBeam::radius"][::std::mem::offset_of!(HfBeam, radius) - 20usize];
+    ["Offset of field: HfBeam::length"][::std::mem::offset_of!(HfBeam, length) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfArc {
+    pub size: u32,
+    pub base: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub damage: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfArc"][::std::mem::size_of::<HfArc>() - 24usize];
+    ["Alignment of HfArc"][::std::mem::align_of::<HfArc>() - 8usize];
+    ["Offset of field: HfArc::size"][::std::mem::offset_of!(HfArc, size) - 0usize];
+    ["Offset of field: HfArc::base"][::std::mem::offset_of!(HfArc, base) - 4usize];
+    ["Offset of field: HfArc::name"][::std::mem::offset_of!(HfArc, name) - 8usize];
+    ["Offset of field: HfArc::damage"][::std::mem::offset_of!(HfArc, damage) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfAttachment {
+    pub size: u32,
+    pub base: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub unit: u64,
+    pub name_text: *const ::std::os::raw::c_char,
+    pub description: *const ::std::os::raw::c_char,
+    pub weapons: *const u32,
+    pub weapon_count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfAttachment"][::std::mem::size_of::<HfAttachment>() - 56usize];
+    ["Alignment of HfAttachment"][::std::mem::align_of::<HfAttachment>() - 8usize];
+    ["Offset of field: HfAttachment::size"][::std::mem::offset_of!(HfAttachment, size) - 0usize];
+    ["Offset of field: HfAttachment::base"][::std::mem::offset_of!(HfAttachment, base) - 4usize];
+    ["Offset of field: HfAttachment::name"][::std::mem::offset_of!(HfAttachment, name) - 8usize];
+    ["Offset of field: HfAttachment::unit"][::std::mem::offset_of!(HfAttachment, unit) - 16usize];
+    ["Offset of field: HfAttachment::name_text"]
+        [::std::mem::offset_of!(HfAttachment, name_text) - 24usize];
+    ["Offset of field: HfAttachment::description"]
+        [::std::mem::offset_of!(HfAttachment, description) - 32usize];
+    ["Offset of field: HfAttachment::weapons"]
+        [::std::mem::offset_of!(HfAttachment, weapons) - 40usize];
+    ["Offset of field: HfAttachment::weapon_count"]
+        [::std::mem::offset_of!(HfAttachment, weapon_count) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfTextureSwap {
+    pub from: u64,
+    pub to: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfTextureSwap"][::std::mem::size_of::<HfTextureSwap>() - 16usize];
+    ["Alignment of HfTextureSwap"][::std::mem::align_of::<HfTextureSwap>() - 8usize];
+    ["Offset of field: HfTextureSwap::from"][::std::mem::offset_of!(HfTextureSwap, from) - 0usize];
+    ["Offset of field: HfTextureSwap::to"][::std::mem::offset_of!(HfTextureSwap, to) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPattern {
+    pub size: u32,
+    pub base: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub name_text: *const ::std::os::raw::c_char,
+    pub description: *const ::std::os::raw::c_char,
+    pub pattern_lut: u64,
+    pub swaps: *const HfTextureSwap,
+    pub swap_count: u32,
+    pub colours: *const [f32; 3usize],
+    pub colour_count: u32,
+    pub weapons: *const u32,
+    pub weapon_count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPattern"][::std::mem::size_of::<HfPattern>() - 88usize];
+    ["Alignment of HfPattern"][::std::mem::align_of::<HfPattern>() - 8usize];
+    ["Offset of field: HfPattern::size"][::std::mem::offset_of!(HfPattern, size) - 0usize];
+    ["Offset of field: HfPattern::base"][::std::mem::offset_of!(HfPattern, base) - 4usize];
+    ["Offset of field: HfPattern::name"][::std::mem::offset_of!(HfPattern, name) - 8usize];
+    ["Offset of field: HfPattern::name_text"]
+        [::std::mem::offset_of!(HfPattern, name_text) - 16usize];
+    ["Offset of field: HfPattern::description"]
+        [::std::mem::offset_of!(HfPattern, description) - 24usize];
+    ["Offset of field: HfPattern::pattern_lut"]
+        [::std::mem::offset_of!(HfPattern, pattern_lut) - 32usize];
+    ["Offset of field: HfPattern::swaps"][::std::mem::offset_of!(HfPattern, swaps) - 40usize];
+    ["Offset of field: HfPattern::swap_count"]
+        [::std::mem::offset_of!(HfPattern, swap_count) - 48usize];
+    ["Offset of field: HfPattern::colours"][::std::mem::offset_of!(HfPattern, colours) - 56usize];
+    ["Offset of field: HfPattern::colour_count"]
+        [::std::mem::offset_of!(HfPattern, colour_count) - 64usize];
+    ["Offset of field: HfPattern::weapons"][::std::mem::offset_of!(HfPattern, weapons) - 72usize];
+    ["Offset of field: HfPattern::weapon_count"]
+        [::std::mem::offset_of!(HfPattern, weapon_count) - 80usize];
+};
+pub type HfUiCallback = ::std::option::Option<
+    unsafe extern "C" fn(
+        mod_: *mut HfMod,
+        screen: ::std::os::raw::c_int,
+        element: *const ::std::os::raw::c_char,
+        user: *mut ::std::os::raw::c_void,
+    ),
+>;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEnemy {
+    pub size: u32,
+    pub factions: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub unit: u64,
+    pub like: u64,
+    pub weight: f32,
+    pub lowest_level: u32,
+    pub highest_level: u32,
+    pub group: *const ::std::os::raw::c_char,
+    pub weights: [f32; 10usize],
+    pub cost: f32,
+    pub budget: f32,
+    pub alive_cap: u32,
+    pub size_class: u32,
+    pub flags: u32,
+    pub with_tags: [*const ::std::os::raw::c_char; 4usize],
+    pub without_tags: [*const ::std::os::raw::c_char; 4usize],
+    pub packages: [u64; 2usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEnemy"][::std::mem::size_of::<HfEnemy>() - 200usize];
+    ["Alignment of HfEnemy"][::std::mem::align_of::<HfEnemy>() - 8usize];
+    ["Offset of field: HfEnemy::size"][::std::mem::offset_of!(HfEnemy, size) - 0usize];
+    ["Offset of field: HfEnemy::factions"][::std::mem::offset_of!(HfEnemy, factions) - 4usize];
+    ["Offset of field: HfEnemy::name"][::std::mem::offset_of!(HfEnemy, name) - 8usize];
+    ["Offset of field: HfEnemy::unit"][::std::mem::offset_of!(HfEnemy, unit) - 16usize];
+    ["Offset of field: HfEnemy::like"][::std::mem::offset_of!(HfEnemy, like) - 24usize];
+    ["Offset of field: HfEnemy::weight"][::std::mem::offset_of!(HfEnemy, weight) - 32usize];
+    ["Offset of field: HfEnemy::lowest_level"]
+        [::std::mem::offset_of!(HfEnemy, lowest_level) - 36usize];
+    ["Offset of field: HfEnemy::highest_level"]
+        [::std::mem::offset_of!(HfEnemy, highest_level) - 40usize];
+    ["Offset of field: HfEnemy::group"][::std::mem::offset_of!(HfEnemy, group) - 48usize];
+    ["Offset of field: HfEnemy::weights"][::std::mem::offset_of!(HfEnemy, weights) - 56usize];
+    ["Offset of field: HfEnemy::cost"][::std::mem::offset_of!(HfEnemy, cost) - 96usize];
+    ["Offset of field: HfEnemy::budget"][::std::mem::offset_of!(HfEnemy, budget) - 100usize];
+    ["Offset of field: HfEnemy::alive_cap"][::std::mem::offset_of!(HfEnemy, alive_cap) - 104usize];
+    ["Offset of field: HfEnemy::size_class"]
+        [::std::mem::offset_of!(HfEnemy, size_class) - 108usize];
+    ["Offset of field: HfEnemy::flags"][::std::mem::offset_of!(HfEnemy, flags) - 112usize];
+    ["Offset of field: HfEnemy::with_tags"][::std::mem::offset_of!(HfEnemy, with_tags) - 120usize];
+    ["Offset of field: HfEnemy::without_tags"]
+        [::std::mem::offset_of!(HfEnemy, without_tags) - 152usize];
+    ["Offset of field: HfEnemy::packages"][::std::mem::offset_of!(HfEnemy, packages) - 184usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEnemySquad {
+    pub size: u32,
+    pub factions: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub kind: u32,
+    pub lowest_level: u32,
+    pub highest_level: u32,
+    pub lowest_players: u32,
+    pub highest_players: u32,
+    pub weight: f32,
+    pub cost: f32,
+    pub members: [HfEnemySquad__bindgen_ty_1; 8usize],
+    pub with_tags: [*const ::std::os::raw::c_char; 8usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEnemySquad__bindgen_ty_1 {
+    pub group: *const ::std::os::raw::c_char,
+    pub count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEnemySquad__bindgen_ty_1"]
+        [::std::mem::size_of::<HfEnemySquad__bindgen_ty_1>() - 16usize];
+    ["Alignment of HfEnemySquad__bindgen_ty_1"]
+        [::std::mem::align_of::<HfEnemySquad__bindgen_ty_1>() - 8usize];
+    ["Offset of field: HfEnemySquad__bindgen_ty_1::group"]
+        [::std::mem::offset_of!(HfEnemySquad__bindgen_ty_1, group) - 0usize];
+    ["Offset of field: HfEnemySquad__bindgen_ty_1::count"]
+        [::std::mem::offset_of!(HfEnemySquad__bindgen_ty_1, count) - 8usize];
+};
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEnemySquad"][::std::mem::size_of::<HfEnemySquad>() - 240usize];
+    ["Alignment of HfEnemySquad"][::std::mem::align_of::<HfEnemySquad>() - 8usize];
+    ["Offset of field: HfEnemySquad::size"][::std::mem::offset_of!(HfEnemySquad, size) - 0usize];
+    ["Offset of field: HfEnemySquad::factions"]
+        [::std::mem::offset_of!(HfEnemySquad, factions) - 4usize];
+    ["Offset of field: HfEnemySquad::name"][::std::mem::offset_of!(HfEnemySquad, name) - 8usize];
+    ["Offset of field: HfEnemySquad::kind"][::std::mem::offset_of!(HfEnemySquad, kind) - 16usize];
+    ["Offset of field: HfEnemySquad::lowest_level"]
+        [::std::mem::offset_of!(HfEnemySquad, lowest_level) - 20usize];
+    ["Offset of field: HfEnemySquad::highest_level"]
+        [::std::mem::offset_of!(HfEnemySquad, highest_level) - 24usize];
+    ["Offset of field: HfEnemySquad::lowest_players"]
+        [::std::mem::offset_of!(HfEnemySquad, lowest_players) - 28usize];
+    ["Offset of field: HfEnemySquad::highest_players"]
+        [::std::mem::offset_of!(HfEnemySquad, highest_players) - 32usize];
+    ["Offset of field: HfEnemySquad::weight"]
+        [::std::mem::offset_of!(HfEnemySquad, weight) - 36usize];
+    ["Offset of field: HfEnemySquad::cost"][::std::mem::offset_of!(HfEnemySquad, cost) - 40usize];
+    ["Offset of field: HfEnemySquad::members"]
+        [::std::mem::offset_of!(HfEnemySquad, members) - 48usize];
+    ["Offset of field: HfEnemySquad::with_tags"]
+        [::std::mem::offset_of!(HfEnemySquad, with_tags) - 176usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEnemySwap {
+    pub size: u32,
+    pub factions: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub unit: u64,
+    pub replacement: u64,
+    pub tag: *const ::std::os::raw::c_char,
+    pub lowest_level: u32,
+    pub highest_level: u32,
+    pub priority: u32,
+    pub budget: f32,
+    pub cost: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEnemySwap"][::std::mem::size_of::<HfEnemySwap>() - 64usize];
+    ["Alignment of HfEnemySwap"][::std::mem::align_of::<HfEnemySwap>() - 8usize];
+    ["Offset of field: HfEnemySwap::size"][::std::mem::offset_of!(HfEnemySwap, size) - 0usize];
+    ["Offset of field: HfEnemySwap::factions"]
+        [::std::mem::offset_of!(HfEnemySwap, factions) - 4usize];
+    ["Offset of field: HfEnemySwap::name"][::std::mem::offset_of!(HfEnemySwap, name) - 8usize];
+    ["Offset of field: HfEnemySwap::unit"][::std::mem::offset_of!(HfEnemySwap, unit) - 16usize];
+    ["Offset of field: HfEnemySwap::replacement"]
+        [::std::mem::offset_of!(HfEnemySwap, replacement) - 24usize];
+    ["Offset of field: HfEnemySwap::tag"][::std::mem::offset_of!(HfEnemySwap, tag) - 32usize];
+    ["Offset of field: HfEnemySwap::lowest_level"]
+        [::std::mem::offset_of!(HfEnemySwap, lowest_level) - 40usize];
+    ["Offset of field: HfEnemySwap::highest_level"]
+        [::std::mem::offset_of!(HfEnemySwap, highest_level) - 44usize];
+    ["Offset of field: HfEnemySwap::priority"]
+        [::std::mem::offset_of!(HfEnemySwap, priority) - 48usize];
+    ["Offset of field: HfEnemySwap::budget"][::std::mem::offset_of!(HfEnemySwap, budget) - 52usize];
+    ["Offset of field: HfEnemySwap::cost"][::std::mem::offset_of!(HfEnemySwap, cost) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2465,10 +4155,12 @@ pub struct HfProjectile {
     pub visual_from: u32,
     pub spawn_effect: u64,
     pub flight_effect: u64,
+    pub impact_explosion: u32,
+    pub expiry_explosion: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfProjectile"][::std::mem::size_of::<HfProjectile>() - 40usize];
+    ["Size of HfProjectile"][::std::mem::size_of::<HfProjectile>() - 48usize];
     ["Alignment of HfProjectile"][::std::mem::align_of::<HfProjectile>() - 8usize];
     ["Offset of field: HfProjectile::size"][::std::mem::offset_of!(HfProjectile, size) - 0usize];
     ["Offset of field: HfProjectile::base"][::std::mem::offset_of!(HfProjectile, base) - 4usize];
@@ -2481,6 +4173,10 @@ const _: () = {
         [::std::mem::offset_of!(HfProjectile, spawn_effect) - 24usize];
     ["Offset of field: HfProjectile::flight_effect"]
         [::std::mem::offset_of!(HfProjectile, flight_effect) - 32usize];
+    ["Offset of field: HfProjectile::impact_explosion"]
+        [::std::mem::offset_of!(HfProjectile, impact_explosion) - 40usize];
+    ["Offset of field: HfProjectile::expiry_explosion"]
+        [::std::mem::offset_of!(HfProjectile, expiry_explosion) - 44usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2770,7 +4466,8 @@ pub struct HfWeaponData {
     pub _unknown_194: [u8; 536usize],
     pub fire_ability: u32,
     pub fire_ability_2: u32,
-    pub _unknown_3B4: [u8; 284usize],
+    pub fire_ability_function: u32,
+    pub _unknown_3B8: [u8; 280usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -2837,8 +4534,10 @@ const _: () = {
         [::std::mem::offset_of!(HfWeaponData, fire_ability) - 940usize];
     ["Offset of field: HfWeaponData::fire_ability_2"]
         [::std::mem::offset_of!(HfWeaponData, fire_ability_2) - 944usize];
-    ["Offset of field: HfWeaponData::_unknown_3B4"]
-        [::std::mem::offset_of!(HfWeaponData, _unknown_3B4) - 948usize];
+    ["Offset of field: HfWeaponData::fire_ability_function"]
+        [::std::mem::offset_of!(HfWeaponData, fire_ability_function) - 948usize];
+    ["Offset of field: HfWeaponData::_unknown_3B8"]
+        [::std::mem::offset_of!(HfWeaponData, _unknown_3B8) - 952usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -3161,7 +4860,7 @@ pub struct HfProjectileSettings {
     pub gravity: f32,
     pub _unknown_30: [u8; 4usize],
     pub lifetime: f32,
-    pub _unknown_38: [u8; 4usize],
+    pub lifetime_variance: f32,
     pub damage: u32,
     pub penetration_slowdown: f32,
     pub _unknown_44: [u8; 4usize],
@@ -3172,7 +4871,12 @@ pub struct HfProjectileSettings {
     pub impact_explosion: u32,
     pub _unknown_94: [u8; 8usize],
     pub expiry_explosion: u32,
-    pub _unknown_A0: [u8; 112usize],
+    pub arming_distance: f32,
+    pub _unknown_A4: [u8; 12usize],
+    pub ricochets: u32,
+    pub ricochet_angle: f32,
+    pub ricochet_min_speed: f32,
+    pub _unknown_BC: [u8; 84usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -3196,8 +4900,8 @@ const _: () = {
         [::std::mem::offset_of!(HfProjectileSettings, _unknown_30) - 48usize];
     ["Offset of field: HfProjectileSettings::lifetime"]
         [::std::mem::offset_of!(HfProjectileSettings, lifetime) - 52usize];
-    ["Offset of field: HfProjectileSettings::_unknown_38"]
-        [::std::mem::offset_of!(HfProjectileSettings, _unknown_38) - 56usize];
+    ["Offset of field: HfProjectileSettings::lifetime_variance"]
+        [::std::mem::offset_of!(HfProjectileSettings, lifetime_variance) - 56usize];
     ["Offset of field: HfProjectileSettings::damage"]
         [::std::mem::offset_of!(HfProjectileSettings, damage) - 60usize];
     ["Offset of field: HfProjectileSettings::penetration_slowdown"]
@@ -3218,8 +4922,42 @@ const _: () = {
         [::std::mem::offset_of!(HfProjectileSettings, _unknown_94) - 148usize];
     ["Offset of field: HfProjectileSettings::expiry_explosion"]
         [::std::mem::offset_of!(HfProjectileSettings, expiry_explosion) - 156usize];
-    ["Offset of field: HfProjectileSettings::_unknown_A0"]
-        [::std::mem::offset_of!(HfProjectileSettings, _unknown_A0) - 160usize];
+    ["Offset of field: HfProjectileSettings::arming_distance"]
+        [::std::mem::offset_of!(HfProjectileSettings, arming_distance) - 160usize];
+    ["Offset of field: HfProjectileSettings::_unknown_A4"]
+        [::std::mem::offset_of!(HfProjectileSettings, _unknown_A4) - 164usize];
+    ["Offset of field: HfProjectileSettings::ricochets"]
+        [::std::mem::offset_of!(HfProjectileSettings, ricochets) - 176usize];
+    ["Offset of field: HfProjectileSettings::ricochet_angle"]
+        [::std::mem::offset_of!(HfProjectileSettings, ricochet_angle) - 180usize];
+    ["Offset of field: HfProjectileSettings::ricochet_min_speed"]
+        [::std::mem::offset_of!(HfProjectileSettings, ricochet_min_speed) - 184usize];
+    ["Offset of field: HfProjectileSettings::_unknown_BC"]
+        [::std::mem::offset_of!(HfProjectileSettings, _unknown_BC) - 188usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfStratagemCode {
+    pub packed: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfStratagemCode"][::std::mem::size_of::<HfStratagemCode>() - 4usize];
+    ["Alignment of HfStratagemCode"][::std::mem::align_of::<HfStratagemCode>() - 1usize];
+    ["Offset of field: HfStratagemCode::packed"]
+        [::std::mem::offset_of!(HfStratagemCode, packed) - 0usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfStratagemRearm {
+    pub rearms: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfStratagemRearm"][::std::mem::size_of::<HfStratagemRearm>() - 4usize];
+    ["Alignment of HfStratagemRearm"][::std::mem::align_of::<HfStratagemRearm>() - 1usize];
+    ["Offset of field: HfStratagemRearm::rearms"]
+        [::std::mem::offset_of!(HfStratagemRearm, rearms) - 0usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -3407,7 +5145,8 @@ pub struct HfArcSettings {
     pub max_angle_spread_first_shot: f32,
     pub chain_count: u32,
     pub max_split: u32,
-    pub _unknown_24: [u8; 68usize],
+    pub damage: u32,
+    pub _unknown_28: [u8; 64usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -3431,8 +5170,10 @@ const _: () = {
         [::std::mem::offset_of!(HfArcSettings, chain_count) - 28usize];
     ["Offset of field: HfArcSettings::max_split"]
         [::std::mem::offset_of!(HfArcSettings, max_split) - 32usize];
-    ["Offset of field: HfArcSettings::_unknown_24"]
-        [::std::mem::offset_of!(HfArcSettings, _unknown_24) - 36usize];
+    ["Offset of field: HfArcSettings::damage"]
+        [::std::mem::offset_of!(HfArcSettings, damage) - 36usize];
+    ["Offset of field: HfArcSettings::_unknown_28"]
+        [::std::mem::offset_of!(HfArcSettings, _unknown_28) - 40usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -3440,7 +5181,8 @@ pub struct HfBeamSettings {
     pub _unknown_00: [u8; 4usize],
     pub radius: f32,
     pub length: f32,
-    pub _unknown_0C: [u8; 100usize],
+    pub damage: u32,
+    pub _unknown_10: [u8; 96usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -3452,8 +5194,10 @@ const _: () = {
         [::std::mem::offset_of!(HfBeamSettings, radius) - 4usize];
     ["Offset of field: HfBeamSettings::length"]
         [::std::mem::offset_of!(HfBeamSettings, length) - 8usize];
-    ["Offset of field: HfBeamSettings::_unknown_0C"]
-        [::std::mem::offset_of!(HfBeamSettings, _unknown_0C) - 12usize];
+    ["Offset of field: HfBeamSettings::damage"]
+        [::std::mem::offset_of!(HfBeamSettings, damage) - 12usize];
+    ["Offset of field: HfBeamSettings::_unknown_10"]
+        [::std::mem::offset_of!(HfBeamSettings, _unknown_10) - 16usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -5613,7 +7357,10 @@ pub struct HfShield {
     pub recharge_delay: f32,
     pub broken_recharge_delay: f32,
     pub recharge_rate: f32,
-    pub _unknown_64: [u8; 244usize],
+    pub _unknown_64: [u8; 237usize],
+    pub blocks_grenades: u8,
+    pub blocks_enemies: u8,
+    pub _unknown_153: [u8; 5usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -5635,6 +7382,12 @@ const _: () = {
         [::std::mem::offset_of!(HfShield, recharge_rate) - 96usize];
     ["Offset of field: HfShield::_unknown_64"]
         [::std::mem::offset_of!(HfShield, _unknown_64) - 100usize];
+    ["Offset of field: HfShield::blocks_grenades"]
+        [::std::mem::offset_of!(HfShield, blocks_grenades) - 337usize];
+    ["Offset of field: HfShield::blocks_enemies"]
+        [::std::mem::offset_of!(HfShield, blocks_enemies) - 338usize];
+    ["Offset of field: HfShield::_unknown_153"]
+        [::std::mem::offset_of!(HfShield, _unknown_153) - 339usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -5990,7 +7743,8 @@ pub struct HfExplosive {
     pub explosion_delay: f32,
     pub _unknown_10: [u8; 20usize],
     pub explosion: u32,
-    pub _unknown_28: [u8; 288usize],
+    pub impact_explosion: u32,
+    pub _unknown_2C: [u8; 284usize],
     pub armed_ability: u32,
     pub _unknown_14C: [u8; 28usize],
 }
@@ -6008,8 +7762,10 @@ const _: () = {
         [::std::mem::offset_of!(HfExplosive, _unknown_10) - 16usize];
     ["Offset of field: HfExplosive::explosion"]
         [::std::mem::offset_of!(HfExplosive, explosion) - 36usize];
-    ["Offset of field: HfExplosive::_unknown_28"]
-        [::std::mem::offset_of!(HfExplosive, _unknown_28) - 40usize];
+    ["Offset of field: HfExplosive::impact_explosion"]
+        [::std::mem::offset_of!(HfExplosive, impact_explosion) - 40usize];
+    ["Offset of field: HfExplosive::_unknown_2C"]
+        [::std::mem::offset_of!(HfExplosive, _unknown_2C) - 44usize];
     ["Offset of field: HfExplosive::armed_ability"]
         [::std::mem::offset_of!(HfExplosive, armed_ability) - 328usize];
     ["Offset of field: HfExplosive::_unknown_14C"]
@@ -6198,20 +7954,80 @@ const _: () = {
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct HfWeaponReload {
-    pub _unknown_00: [u8; 56usize],
+    pub manual_clearing: u8,
+    pub allow_move: u8,
+    pub _unknown_02: [u8; 2usize],
+    pub ability: u32,
+    pub event_type_0: u32,
+    pub weapon_event_0: u32,
+    pub wielder_event_0: u32,
+    pub event_type_1: u32,
+    pub weapon_event_1: u32,
+    pub wielder_event_1: u32,
+    pub event_type_2: u32,
+    pub weapon_event_2: u32,
+    pub wielder_event_2: u32,
+    pub event_type_3: u32,
+    pub weapon_event_3: u32,
+    pub wielder_event_3: u32,
     pub duration: f32,
-    pub _unknown_3C: [u8; 20usize],
+    pub has_shared_deposit: u8,
+    pub _unknown_3D: [u8; 3usize],
+    pub vo_normal: u32,
+    pub vo_last_magazine: u32,
+    pub vo_no_magazines: u32,
+    pub vo_no_magazines_no_backpack: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of HfWeaponReload"][::std::mem::size_of::<HfWeaponReload>() - 80usize];
     ["Alignment of HfWeaponReload"][::std::mem::align_of::<HfWeaponReload>() - 1usize];
-    ["Offset of field: HfWeaponReload::_unknown_00"]
-        [::std::mem::offset_of!(HfWeaponReload, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponReload::manual_clearing"]
+        [::std::mem::offset_of!(HfWeaponReload, manual_clearing) - 0usize];
+    ["Offset of field: HfWeaponReload::allow_move"]
+        [::std::mem::offset_of!(HfWeaponReload, allow_move) - 1usize];
+    ["Offset of field: HfWeaponReload::_unknown_02"]
+        [::std::mem::offset_of!(HfWeaponReload, _unknown_02) - 2usize];
+    ["Offset of field: HfWeaponReload::ability"]
+        [::std::mem::offset_of!(HfWeaponReload, ability) - 4usize];
+    ["Offset of field: HfWeaponReload::event_type_0"]
+        [::std::mem::offset_of!(HfWeaponReload, event_type_0) - 8usize];
+    ["Offset of field: HfWeaponReload::weapon_event_0"]
+        [::std::mem::offset_of!(HfWeaponReload, weapon_event_0) - 12usize];
+    ["Offset of field: HfWeaponReload::wielder_event_0"]
+        [::std::mem::offset_of!(HfWeaponReload, wielder_event_0) - 16usize];
+    ["Offset of field: HfWeaponReload::event_type_1"]
+        [::std::mem::offset_of!(HfWeaponReload, event_type_1) - 20usize];
+    ["Offset of field: HfWeaponReload::weapon_event_1"]
+        [::std::mem::offset_of!(HfWeaponReload, weapon_event_1) - 24usize];
+    ["Offset of field: HfWeaponReload::wielder_event_1"]
+        [::std::mem::offset_of!(HfWeaponReload, wielder_event_1) - 28usize];
+    ["Offset of field: HfWeaponReload::event_type_2"]
+        [::std::mem::offset_of!(HfWeaponReload, event_type_2) - 32usize];
+    ["Offset of field: HfWeaponReload::weapon_event_2"]
+        [::std::mem::offset_of!(HfWeaponReload, weapon_event_2) - 36usize];
+    ["Offset of field: HfWeaponReload::wielder_event_2"]
+        [::std::mem::offset_of!(HfWeaponReload, wielder_event_2) - 40usize];
+    ["Offset of field: HfWeaponReload::event_type_3"]
+        [::std::mem::offset_of!(HfWeaponReload, event_type_3) - 44usize];
+    ["Offset of field: HfWeaponReload::weapon_event_3"]
+        [::std::mem::offset_of!(HfWeaponReload, weapon_event_3) - 48usize];
+    ["Offset of field: HfWeaponReload::wielder_event_3"]
+        [::std::mem::offset_of!(HfWeaponReload, wielder_event_3) - 52usize];
     ["Offset of field: HfWeaponReload::duration"]
         [::std::mem::offset_of!(HfWeaponReload, duration) - 56usize];
-    ["Offset of field: HfWeaponReload::_unknown_3C"]
-        [::std::mem::offset_of!(HfWeaponReload, _unknown_3C) - 60usize];
+    ["Offset of field: HfWeaponReload::has_shared_deposit"]
+        [::std::mem::offset_of!(HfWeaponReload, has_shared_deposit) - 60usize];
+    ["Offset of field: HfWeaponReload::_unknown_3D"]
+        [::std::mem::offset_of!(HfWeaponReload, _unknown_3D) - 61usize];
+    ["Offset of field: HfWeaponReload::vo_normal"]
+        [::std::mem::offset_of!(HfWeaponReload, vo_normal) - 64usize];
+    ["Offset of field: HfWeaponReload::vo_last_magazine"]
+        [::std::mem::offset_of!(HfWeaponReload, vo_last_magazine) - 68usize];
+    ["Offset of field: HfWeaponReload::vo_no_magazines"]
+        [::std::mem::offset_of!(HfWeaponReload, vo_no_magazines) - 72usize];
+    ["Offset of field: HfWeaponReload::vo_no_magazines_no_backpack"]
+        [::std::mem::offset_of!(HfWeaponReload, vo_no_magazines_no_backpack) - 76usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -6224,7 +8040,8 @@ pub struct HfWeaponRounds {
     pub spare_rounds: u32,
     pub rounds_from_supply: u32,
     pub starting_rounds: u32,
-    pub _unknown_5C: [u8; 44usize],
+    pub rounds_per_reload: u32,
+    pub _unknown_60: [u8; 40usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -6246,8 +8063,10 @@ const _: () = {
         [::std::mem::offset_of!(HfWeaponRounds, rounds_from_supply) - 84usize];
     ["Offset of field: HfWeaponRounds::starting_rounds"]
         [::std::mem::offset_of!(HfWeaponRounds, starting_rounds) - 88usize];
-    ["Offset of field: HfWeaponRounds::_unknown_5C"]
-        [::std::mem::offset_of!(HfWeaponRounds, _unknown_5C) - 92usize];
+    ["Offset of field: HfWeaponRounds::rounds_per_reload"]
+        [::std::mem::offset_of!(HfWeaponRounds, rounds_per_reload) - 92usize];
+    ["Offset of field: HfWeaponRounds::_unknown_60"]
+        [::std::mem::offset_of!(HfWeaponRounds, _unknown_60) - 96usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -7242,7 +9061,7 @@ const _: () = {
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct HfUnit {
-    pub _unknown_00: [u8; 8usize],
+    pub unit: u64,
     pub scale_min: f32,
     pub _unknown_0C: [u8; 4usize],
     pub radius: f32,
@@ -7252,7 +9071,7 @@ pub struct HfUnit {
 const _: () = {
     ["Size of HfUnit"][::std::mem::size_of::<HfUnit>() - 136usize];
     ["Alignment of HfUnit"][::std::mem::align_of::<HfUnit>() - 1usize];
-    ["Offset of field: HfUnit::_unknown_00"][::std::mem::offset_of!(HfUnit, _unknown_00) - 0usize];
+    ["Offset of field: HfUnit::unit"][::std::mem::offset_of!(HfUnit, unit) - 0usize];
     ["Offset of field: HfUnit::scale_min"][::std::mem::offset_of!(HfUnit, scale_min) - 8usize];
     ["Offset of field: HfUnit::_unknown_0C"][::std::mem::offset_of!(HfUnit, _unknown_0C) - 12usize];
     ["Offset of field: HfUnit::radius"][::std::mem::offset_of!(HfUnit, radius) - 16usize];
@@ -7431,6 +9250,292 @@ const _: () = {
         [::std::mem::offset_of!(HfDemolitionTemplate, force) - 4usize];
     ["Offset of field: HfDemolitionTemplate::_unknown_08"]
         [::std::mem::offset_of!(HfDemolitionTemplate, _unknown_08) - 8usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEquipment {
+    pub wield_node: u32,
+    pub wield_rotation: [f32; 3usize],
+    pub wield_position: [f32; 3usize],
+    pub holster_node: u32,
+    pub holster_rotation: [f32; 3usize],
+    pub holster_position: [f32; 3usize],
+    pub holster_duration: f32,
+    pub wield_duration: f32,
+    pub pickup_duration: f32,
+    pub _unknown_44: [u8; 4usize],
+    pub wield_animation: u32,
+    pub pickup_animation: u32,
+    pub holster_animation: u32,
+    pub drop_animation: u32,
+    pub ammocheck_animation: u32,
+    pub _unknown_5C: [u8; 4usize],
+    pub holster_duration_attach: f32,
+    pub wield_duration_attach: f32,
+    pub attach_lerp_time: f32,
+    pub _unknown_6C: [u8; 4usize],
+    pub wield_animation_self: u32,
+    pub pickup_animation_self: u32,
+    pub holster_animation_self: u32,
+    pub _unknown_7C: [u8; 4usize],
+    pub equipment_type: u32,
+    pub _unknown_84: [u8; 4usize],
+    pub drop_mode: u32,
+    pub _unknown_8C: [u8; 12usize],
+    pub drop_icon: u64,
+    pub pickup_audio_event: u32,
+    pub _unknown_A4: [u8; 12usize],
+    pub switch_wield_audio_event: u32,
+    pub switch_holster_audio_event: u32,
+    pub pickup_ability: u32,
+    pub drop_ability: u32,
+    pub grip_type: u32,
+    pub one_handed: u8,
+    pub allow_wield_on_ship: u8,
+    pub show_in_pickup_widget: u8,
+    pub _unknown_C7: [u8; 1usize],
+    pub holster_unit: u64,
+    pub _unknown_D0: [u8; 8usize],
+    pub wwise_index: u32,
+    pub _unknown_DC: [u8; 8usize],
+    pub left_hand_node: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEquipment"][::std::mem::size_of::<HfEquipment>() - 232usize];
+    ["Alignment of HfEquipment"][::std::mem::align_of::<HfEquipment>() - 1usize];
+    ["Offset of field: HfEquipment::wield_node"]
+        [::std::mem::offset_of!(HfEquipment, wield_node) - 0usize];
+    ["Offset of field: HfEquipment::wield_rotation"]
+        [::std::mem::offset_of!(HfEquipment, wield_rotation) - 4usize];
+    ["Offset of field: HfEquipment::wield_position"]
+        [::std::mem::offset_of!(HfEquipment, wield_position) - 16usize];
+    ["Offset of field: HfEquipment::holster_node"]
+        [::std::mem::offset_of!(HfEquipment, holster_node) - 28usize];
+    ["Offset of field: HfEquipment::holster_rotation"]
+        [::std::mem::offset_of!(HfEquipment, holster_rotation) - 32usize];
+    ["Offset of field: HfEquipment::holster_position"]
+        [::std::mem::offset_of!(HfEquipment, holster_position) - 44usize];
+    ["Offset of field: HfEquipment::holster_duration"]
+        [::std::mem::offset_of!(HfEquipment, holster_duration) - 56usize];
+    ["Offset of field: HfEquipment::wield_duration"]
+        [::std::mem::offset_of!(HfEquipment, wield_duration) - 60usize];
+    ["Offset of field: HfEquipment::pickup_duration"]
+        [::std::mem::offset_of!(HfEquipment, pickup_duration) - 64usize];
+    ["Offset of field: HfEquipment::_unknown_44"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_44) - 68usize];
+    ["Offset of field: HfEquipment::wield_animation"]
+        [::std::mem::offset_of!(HfEquipment, wield_animation) - 72usize];
+    ["Offset of field: HfEquipment::pickup_animation"]
+        [::std::mem::offset_of!(HfEquipment, pickup_animation) - 76usize];
+    ["Offset of field: HfEquipment::holster_animation"]
+        [::std::mem::offset_of!(HfEquipment, holster_animation) - 80usize];
+    ["Offset of field: HfEquipment::drop_animation"]
+        [::std::mem::offset_of!(HfEquipment, drop_animation) - 84usize];
+    ["Offset of field: HfEquipment::ammocheck_animation"]
+        [::std::mem::offset_of!(HfEquipment, ammocheck_animation) - 88usize];
+    ["Offset of field: HfEquipment::_unknown_5C"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_5C) - 92usize];
+    ["Offset of field: HfEquipment::holster_duration_attach"]
+        [::std::mem::offset_of!(HfEquipment, holster_duration_attach) - 96usize];
+    ["Offset of field: HfEquipment::wield_duration_attach"]
+        [::std::mem::offset_of!(HfEquipment, wield_duration_attach) - 100usize];
+    ["Offset of field: HfEquipment::attach_lerp_time"]
+        [::std::mem::offset_of!(HfEquipment, attach_lerp_time) - 104usize];
+    ["Offset of field: HfEquipment::_unknown_6C"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_6C) - 108usize];
+    ["Offset of field: HfEquipment::wield_animation_self"]
+        [::std::mem::offset_of!(HfEquipment, wield_animation_self) - 112usize];
+    ["Offset of field: HfEquipment::pickup_animation_self"]
+        [::std::mem::offset_of!(HfEquipment, pickup_animation_self) - 116usize];
+    ["Offset of field: HfEquipment::holster_animation_self"]
+        [::std::mem::offset_of!(HfEquipment, holster_animation_self) - 120usize];
+    ["Offset of field: HfEquipment::_unknown_7C"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_7C) - 124usize];
+    ["Offset of field: HfEquipment::equipment_type"]
+        [::std::mem::offset_of!(HfEquipment, equipment_type) - 128usize];
+    ["Offset of field: HfEquipment::_unknown_84"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_84) - 132usize];
+    ["Offset of field: HfEquipment::drop_mode"]
+        [::std::mem::offset_of!(HfEquipment, drop_mode) - 136usize];
+    ["Offset of field: HfEquipment::_unknown_8C"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_8C) - 140usize];
+    ["Offset of field: HfEquipment::drop_icon"]
+        [::std::mem::offset_of!(HfEquipment, drop_icon) - 152usize];
+    ["Offset of field: HfEquipment::pickup_audio_event"]
+        [::std::mem::offset_of!(HfEquipment, pickup_audio_event) - 160usize];
+    ["Offset of field: HfEquipment::_unknown_A4"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_A4) - 164usize];
+    ["Offset of field: HfEquipment::switch_wield_audio_event"]
+        [::std::mem::offset_of!(HfEquipment, switch_wield_audio_event) - 176usize];
+    ["Offset of field: HfEquipment::switch_holster_audio_event"]
+        [::std::mem::offset_of!(HfEquipment, switch_holster_audio_event) - 180usize];
+    ["Offset of field: HfEquipment::pickup_ability"]
+        [::std::mem::offset_of!(HfEquipment, pickup_ability) - 184usize];
+    ["Offset of field: HfEquipment::drop_ability"]
+        [::std::mem::offset_of!(HfEquipment, drop_ability) - 188usize];
+    ["Offset of field: HfEquipment::grip_type"]
+        [::std::mem::offset_of!(HfEquipment, grip_type) - 192usize];
+    ["Offset of field: HfEquipment::one_handed"]
+        [::std::mem::offset_of!(HfEquipment, one_handed) - 196usize];
+    ["Offset of field: HfEquipment::allow_wield_on_ship"]
+        [::std::mem::offset_of!(HfEquipment, allow_wield_on_ship) - 197usize];
+    ["Offset of field: HfEquipment::show_in_pickup_widget"]
+        [::std::mem::offset_of!(HfEquipment, show_in_pickup_widget) - 198usize];
+    ["Offset of field: HfEquipment::_unknown_C7"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_C7) - 199usize];
+    ["Offset of field: HfEquipment::holster_unit"]
+        [::std::mem::offset_of!(HfEquipment, holster_unit) - 200usize];
+    ["Offset of field: HfEquipment::_unknown_D0"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_D0) - 208usize];
+    ["Offset of field: HfEquipment::wwise_index"]
+        [::std::mem::offset_of!(HfEquipment, wwise_index) - 216usize];
+    ["Offset of field: HfEquipment::_unknown_DC"]
+        [::std::mem::offset_of!(HfEquipment, _unknown_DC) - 220usize];
+    ["Offset of field: HfEquipment::left_hand_node"]
+        [::std::mem::offset_of!(HfEquipment, left_hand_node) - 228usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWieldable {
+    pub allow_ads: u8,
+    pub _unknown_01: [u8; 3usize],
+    pub wielder_enter_event: u32,
+    pub wielder_exit_event: u32,
+    pub wield_state_audio_event: u32,
+    pub self_enter_event: u32,
+    pub self_exit_event: u32,
+    pub _unknown_18: [u8; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWieldable"][::std::mem::size_of::<HfWieldable>() - 32usize];
+    ["Alignment of HfWieldable"][::std::mem::align_of::<HfWieldable>() - 1usize];
+    ["Offset of field: HfWieldable::allow_ads"]
+        [::std::mem::offset_of!(HfWieldable, allow_ads) - 0usize];
+    ["Offset of field: HfWieldable::_unknown_01"]
+        [::std::mem::offset_of!(HfWieldable, _unknown_01) - 1usize];
+    ["Offset of field: HfWieldable::wielder_enter_event"]
+        [::std::mem::offset_of!(HfWieldable, wielder_enter_event) - 4usize];
+    ["Offset of field: HfWieldable::wielder_exit_event"]
+        [::std::mem::offset_of!(HfWieldable, wielder_exit_event) - 8usize];
+    ["Offset of field: HfWieldable::wield_state_audio_event"]
+        [::std::mem::offset_of!(HfWieldable, wield_state_audio_event) - 12usize];
+    ["Offset of field: HfWieldable::self_enter_event"]
+        [::std::mem::offset_of!(HfWieldable, self_enter_event) - 16usize];
+    ["Offset of field: HfWieldable::self_exit_event"]
+        [::std::mem::offset_of!(HfWieldable, self_exit_event) - 20usize];
+    ["Offset of field: HfWieldable::_unknown_18"]
+        [::std::mem::offset_of!(HfWieldable, _unknown_18) - 24usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfAttachable {
+    pub dynamic_actor: u32,
+    pub attached_dynamic_actor: u32,
+    pub use_all_dynamic_actors: u8,
+    pub _unknown_09: [u8; 3usize],
+    pub offset: [f32; 3usize],
+    pub rotation_offset: [f32; 3usize],
+    pub offset_node: u32,
+    pub attach_animation: u32,
+    pub parent_attach_animation: u32,
+    pub detach_animation: u32,
+    pub parent_detach_animation: u32,
+    pub _unknown_38: [u8; 2usize],
+    pub inherit_angular_momentum: u8,
+    pub _unknown_3B: [u8; 5usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfAttachable"][::std::mem::size_of::<HfAttachable>() - 64usize];
+    ["Alignment of HfAttachable"][::std::mem::align_of::<HfAttachable>() - 1usize];
+    ["Offset of field: HfAttachable::dynamic_actor"]
+        [::std::mem::offset_of!(HfAttachable, dynamic_actor) - 0usize];
+    ["Offset of field: HfAttachable::attached_dynamic_actor"]
+        [::std::mem::offset_of!(HfAttachable, attached_dynamic_actor) - 4usize];
+    ["Offset of field: HfAttachable::use_all_dynamic_actors"]
+        [::std::mem::offset_of!(HfAttachable, use_all_dynamic_actors) - 8usize];
+    ["Offset of field: HfAttachable::_unknown_09"]
+        [::std::mem::offset_of!(HfAttachable, _unknown_09) - 9usize];
+    ["Offset of field: HfAttachable::offset"]
+        [::std::mem::offset_of!(HfAttachable, offset) - 12usize];
+    ["Offset of field: HfAttachable::rotation_offset"]
+        [::std::mem::offset_of!(HfAttachable, rotation_offset) - 24usize];
+    ["Offset of field: HfAttachable::offset_node"]
+        [::std::mem::offset_of!(HfAttachable, offset_node) - 36usize];
+    ["Offset of field: HfAttachable::attach_animation"]
+        [::std::mem::offset_of!(HfAttachable, attach_animation) - 40usize];
+    ["Offset of field: HfAttachable::parent_attach_animation"]
+        [::std::mem::offset_of!(HfAttachable, parent_attach_animation) - 44usize];
+    ["Offset of field: HfAttachable::detach_animation"]
+        [::std::mem::offset_of!(HfAttachable, detach_animation) - 48usize];
+    ["Offset of field: HfAttachable::parent_detach_animation"]
+        [::std::mem::offset_of!(HfAttachable, parent_detach_animation) - 52usize];
+    ["Offset of field: HfAttachable::_unknown_38"]
+        [::std::mem::offset_of!(HfAttachable, _unknown_38) - 56usize];
+    ["Offset of field: HfAttachable::inherit_angular_momentum"]
+        [::std::mem::offset_of!(HfAttachable, inherit_angular_momentum) - 58usize];
+    ["Offset of field: HfAttachable::_unknown_3B"]
+        [::std::mem::offset_of!(HfAttachable, _unknown_3B) - 59usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponCustomization {
+    pub defaults: [u32; 20usize],
+    pub slots: [u32; 10usize],
+    pub optics_unit: u64,
+    pub magazine_unit: u64,
+    pub _unknown_88: [u8; 8usize],
+    pub magazine_secondary_unit: u64,
+    pub _unknown_98: [u8; 8usize],
+    pub muzzle_unit: u64,
+    pub optics_crosshair: [f32; 2usize],
+    pub _unknown_B0: [u8; 16usize],
+    pub underbarrel_entity: u64,
+    pub _unknown_C8: [u8; 4480usize],
+    pub trigger_settings: [u32; 13usize],
+    pub _unknown_127C: [u8; 4usize],
+    pub magazine_adjusting_nodes: [u32; 24usize],
+    pub _unknown_12E0: [u8; 40usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponCustomization"][::std::mem::size_of::<HfWeaponCustomization>() - 4872usize];
+    ["Alignment of HfWeaponCustomization"]
+        [::std::mem::align_of::<HfWeaponCustomization>() - 1usize];
+    ["Offset of field: HfWeaponCustomization::defaults"]
+        [::std::mem::offset_of!(HfWeaponCustomization, defaults) - 0usize];
+    ["Offset of field: HfWeaponCustomization::slots"]
+        [::std::mem::offset_of!(HfWeaponCustomization, slots) - 80usize];
+    ["Offset of field: HfWeaponCustomization::optics_unit"]
+        [::std::mem::offset_of!(HfWeaponCustomization, optics_unit) - 120usize];
+    ["Offset of field: HfWeaponCustomization::magazine_unit"]
+        [::std::mem::offset_of!(HfWeaponCustomization, magazine_unit) - 128usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_88"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_88) - 136usize];
+    ["Offset of field: HfWeaponCustomization::magazine_secondary_unit"]
+        [::std::mem::offset_of!(HfWeaponCustomization, magazine_secondary_unit) - 144usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_98"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_98) - 152usize];
+    ["Offset of field: HfWeaponCustomization::muzzle_unit"]
+        [::std::mem::offset_of!(HfWeaponCustomization, muzzle_unit) - 160usize];
+    ["Offset of field: HfWeaponCustomization::optics_crosshair"]
+        [::std::mem::offset_of!(HfWeaponCustomization, optics_crosshair) - 168usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_B0"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_B0) - 176usize];
+    ["Offset of field: HfWeaponCustomization::underbarrel_entity"]
+        [::std::mem::offset_of!(HfWeaponCustomization, underbarrel_entity) - 192usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_C8"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_C8) - 200usize];
+    ["Offset of field: HfWeaponCustomization::trigger_settings"]
+        [::std::mem::offset_of!(HfWeaponCustomization, trigger_settings) - 4680usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_127C"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_127C) - 4732usize];
+    ["Offset of field: HfWeaponCustomization::magazine_adjusting_nodes"]
+        [::std::mem::offset_of!(HfWeaponCustomization, magazine_adjusting_nodes) - 4736usize];
+    ["Offset of field: HfWeaponCustomization::_unknown_12E0"]
+        [::std::mem::offset_of!(HfWeaponCustomization, _unknown_12E0) - 4832usize];
 };
 pub type HfRef = u64;
 #[repr(C)]
@@ -7616,10 +9721,12 @@ pub struct HfContent {
     pub category: u32,
     pub entity: u64,
     pub base_entity: u64,
+    pub beam: u32,
+    pub arc: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfContent"][::std::mem::size_of::<HfContent>() - 120usize];
+    ["Size of HfContent"][::std::mem::size_of::<HfContent>() - 128usize];
     ["Alignment of HfContent"][::std::mem::align_of::<HfContent>() - 8usize];
     ["Offset of field: HfContent::size"][::std::mem::offset_of!(HfContent, size) - 0usize];
     ["Offset of field: HfContent::kind"][::std::mem::offset_of!(HfContent, kind) - 4usize];
@@ -7641,6 +9748,8 @@ const _: () = {
     ["Offset of field: HfContent::entity"][::std::mem::offset_of!(HfContent, entity) - 104usize];
     ["Offset of field: HfContent::base_entity"]
         [::std::mem::offset_of!(HfContent, base_entity) - 112usize];
+    ["Offset of field: HfContent::beam"][::std::mem::offset_of!(HfContent, beam) - 120usize];
+    ["Offset of field: HfContent::arc"][::std::mem::offset_of!(HfContent, arc) - 124usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8020,6 +10129,250 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct HfRpcArg {
+    pub kind: u32,
+    pub size: u32,
+    pub value: *const ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpcArg"][::std::mem::size_of::<HfRpcArg>() - 16usize];
+    ["Alignment of HfRpcArg"][::std::mem::align_of::<HfRpcArg>() - 8usize];
+    ["Offset of field: HfRpcArg::kind"][::std::mem::offset_of!(HfRpcArg, kind) - 0usize];
+    ["Offset of field: HfRpcArg::size"][::std::mem::offset_of!(HfRpcArg, size) - 4usize];
+    ["Offset of field: HfRpcArg::value"][::std::mem::offset_of!(HfRpcArg, value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpcEvent {
+    pub sender: u64,
+    pub rpc: u32,
+    pub count: u32,
+    pub args: *const HfRpcArg,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpcEvent"][::std::mem::size_of::<HfRpcEvent>() - 24usize];
+    ["Alignment of HfRpcEvent"][::std::mem::align_of::<HfRpcEvent>() - 8usize];
+    ["Offset of field: HfRpcEvent::sender"][::std::mem::offset_of!(HfRpcEvent, sender) - 0usize];
+    ["Offset of field: HfRpcEvent::rpc"][::std::mem::offset_of!(HfRpcEvent, rpc) - 8usize];
+    ["Offset of field: HfRpcEvent::count"][::std::mem::offset_of!(HfRpcEvent, count) - 12usize];
+    ["Offset of field: HfRpcEvent::args"][::std::mem::offset_of!(HfRpcEvent, args) - 16usize];
+};
+pub type HfRpcListener = ::std::option::Option<
+    unsafe extern "C" fn(
+        mod_: *mut HfMod,
+        event: *const HfRpcEvent,
+        user: *mut ::std::os::raw::c_void,
+    ) -> ::std::os::raw::c_int,
+>;
+pub type HfColour = u32;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPoint {
+    pub x: f32,
+    pub y: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPoint"][::std::mem::size_of::<HfPoint>() - 8usize];
+    ["Alignment of HfPoint"][::std::mem::align_of::<HfPoint>() - 4usize];
+    ["Offset of field: HfPoint::x"][::std::mem::offset_of!(HfPoint, x) - 0usize];
+    ["Offset of field: HfPoint::y"][::std::mem::offset_of!(HfPoint, y) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRect {
+    pub x0: f32,
+    pub y0: f32,
+    pub x1: f32,
+    pub y1: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRect"][::std::mem::size_of::<HfRect>() - 16usize];
+    ["Alignment of HfRect"][::std::mem::align_of::<HfRect>() - 4usize];
+    ["Offset of field: HfRect::x0"][::std::mem::offset_of!(HfRect, x0) - 0usize];
+    ["Offset of field: HfRect::y0"][::std::mem::offset_of!(HfRect, y0) - 4usize];
+    ["Offset of field: HfRect::x1"][::std::mem::offset_of!(HfRect, x1) - 8usize];
+    ["Offset of field: HfRect::y1"][::std::mem::offset_of!(HfRect, y1) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfImage {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfDraw {
+    pub size: u32,
+    pub width: f32,
+    pub height: f32,
+    pub pixels: f32,
+    pub rect: ::std::option::Option<
+        unsafe extern "C" fn(
+            x0: f32,
+            y0: f32,
+            x1: f32,
+            y1: f32,
+            fill: HfColour,
+            outline: HfColour,
+            thickness: f32,
+        ),
+    >,
+    pub lines: ::std::option::Option<
+        unsafe extern "C" fn(
+            points: *const HfPoint,
+            count: u32,
+            colour: HfColour,
+            thickness: f32,
+            closed: ::std::os::raw::c_int,
+        ),
+    >,
+    pub polygon: ::std::option::Option<
+        unsafe extern "C" fn(points: *const HfPoint, count: u32, fill: HfColour),
+    >,
+    pub circle: ::std::option::Option<
+        unsafe extern "C" fn(
+            x: f32,
+            y: f32,
+            radius: f32,
+            fill: HfColour,
+            outline: HfColour,
+            thickness: f32,
+        ),
+    >,
+    pub text: ::std::option::Option<
+        unsafe extern "C" fn(
+            x: f32,
+            y: f32,
+            utf8: *const ::std::os::raw::c_char,
+            size: f32,
+            face: u32,
+            align: u32,
+            colour: HfColour,
+        ) -> f32,
+    >,
+    pub text_width: ::std::option::Option<
+        unsafe extern "C" fn(utf8: *const ::std::os::raw::c_char, size: f32, face: u32) -> f32,
+    >,
+    pub image_create: ::std::option::Option<
+        unsafe extern "C" fn(
+            width: u32,
+            height: u32,
+            rgba: *const ::std::os::raw::c_void,
+        ) -> *mut HfImage,
+    >,
+    pub image_update: ::std::option::Option<
+        unsafe extern "C" fn(image: *mut HfImage, rgba: *const ::std::os::raw::c_void),
+    >,
+    pub image_free: ::std::option::Option<unsafe extern "C" fn(image: *mut HfImage)>,
+    pub image: ::std::option::Option<
+        unsafe extern "C" fn(
+            image: *mut HfImage,
+            box_: *const HfRect,
+            part: *const HfRect,
+            tint: HfColour,
+        ),
+    >,
+    pub clip_push: ::std::option::Option<unsafe extern "C" fn(x0: f32, y0: f32, x1: f32, y1: f32)>,
+    pub clip_pop: ::std::option::Option<unsafe extern "C" fn()>,
+    pub backdrop: ::std::option::Option<unsafe extern "C" fn(dim: f32, desaturate: f32, blur: f32)>,
+    pub hide_pointer: ::std::option::Option<unsafe extern "C" fn()>,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfDraw"][::std::mem::size_of::<HfDraw>() - 128usize];
+    ["Alignment of HfDraw"][::std::mem::align_of::<HfDraw>() - 8usize];
+    ["Offset of field: HfDraw::size"][::std::mem::offset_of!(HfDraw, size) - 0usize];
+    ["Offset of field: HfDraw::width"][::std::mem::offset_of!(HfDraw, width) - 4usize];
+    ["Offset of field: HfDraw::height"][::std::mem::offset_of!(HfDraw, height) - 8usize];
+    ["Offset of field: HfDraw::pixels"][::std::mem::offset_of!(HfDraw, pixels) - 12usize];
+    ["Offset of field: HfDraw::rect"][::std::mem::offset_of!(HfDraw, rect) - 16usize];
+    ["Offset of field: HfDraw::lines"][::std::mem::offset_of!(HfDraw, lines) - 24usize];
+    ["Offset of field: HfDraw::polygon"][::std::mem::offset_of!(HfDraw, polygon) - 32usize];
+    ["Offset of field: HfDraw::circle"][::std::mem::offset_of!(HfDraw, circle) - 40usize];
+    ["Offset of field: HfDraw::text"][::std::mem::offset_of!(HfDraw, text) - 48usize];
+    ["Offset of field: HfDraw::text_width"][::std::mem::offset_of!(HfDraw, text_width) - 56usize];
+    ["Offset of field: HfDraw::image_create"]
+        [::std::mem::offset_of!(HfDraw, image_create) - 64usize];
+    ["Offset of field: HfDraw::image_update"]
+        [::std::mem::offset_of!(HfDraw, image_update) - 72usize];
+    ["Offset of field: HfDraw::image_free"][::std::mem::offset_of!(HfDraw, image_free) - 80usize];
+    ["Offset of field: HfDraw::image"][::std::mem::offset_of!(HfDraw, image) - 88usize];
+    ["Offset of field: HfDraw::clip_push"][::std::mem::offset_of!(HfDraw, clip_push) - 96usize];
+    ["Offset of field: HfDraw::clip_pop"][::std::mem::offset_of!(HfDraw, clip_pop) - 104usize];
+    ["Offset of field: HfDraw::backdrop"][::std::mem::offset_of!(HfDraw, backdrop) - 112usize];
+    ["Offset of field: HfDraw::hide_pointer"]
+        [::std::mem::offset_of!(HfDraw, hide_pointer) - 120usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfInput {
+    pub size: u32,
+    pub x: f32,
+    pub y: f32,
+    pub wheel: f32,
+    pub down: u32,
+    pub pressed: u32,
+    pub released: u32,
+    pub keys: [u32; 16usize],
+    pub key_count: u32,
+    pub closing: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfInput"][::std::mem::size_of::<HfInput>() - 100usize];
+    ["Alignment of HfInput"][::std::mem::align_of::<HfInput>() - 4usize];
+    ["Offset of field: HfInput::size"][::std::mem::offset_of!(HfInput, size) - 0usize];
+    ["Offset of field: HfInput::x"][::std::mem::offset_of!(HfInput, x) - 4usize];
+    ["Offset of field: HfInput::y"][::std::mem::offset_of!(HfInput, y) - 8usize];
+    ["Offset of field: HfInput::wheel"][::std::mem::offset_of!(HfInput, wheel) - 12usize];
+    ["Offset of field: HfInput::down"][::std::mem::offset_of!(HfInput, down) - 16usize];
+    ["Offset of field: HfInput::pressed"][::std::mem::offset_of!(HfInput, pressed) - 20usize];
+    ["Offset of field: HfInput::released"][::std::mem::offset_of!(HfInput, released) - 24usize];
+    ["Offset of field: HfInput::keys"][::std::mem::offset_of!(HfInput, keys) - 28usize];
+    ["Offset of field: HfInput::key_count"][::std::mem::offset_of!(HfInput, key_count) - 92usize];
+    ["Offset of field: HfInput::closing"][::std::mem::offset_of!(HfInput, closing) - 96usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfScreen {
+    pub size: u32,
+    pub name: *const ::std::os::raw::c_char,
+    pub key: u32,
+    pub flags: u32,
+    pub user: *mut ::std::os::raw::c_void,
+    pub draw: ::std::option::Option<
+        unsafe extern "C" fn(
+            user: *mut ::std::os::raw::c_void,
+            draw: *const HfDraw,
+            input: *const HfInput,
+            dt: f32,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub opened: ::std::option::Option<
+        unsafe extern "C" fn(user: *mut ::std::os::raw::c_void, open: ::std::os::raw::c_int),
+    >,
+    pub can_open: ::std::option::Option<
+        unsafe extern "C" fn(user: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_int,
+    >,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfScreen"][::std::mem::size_of::<HfScreen>() - 56usize];
+    ["Alignment of HfScreen"][::std::mem::align_of::<HfScreen>() - 8usize];
+    ["Offset of field: HfScreen::size"][::std::mem::offset_of!(HfScreen, size) - 0usize];
+    ["Offset of field: HfScreen::name"][::std::mem::offset_of!(HfScreen, name) - 8usize];
+    ["Offset of field: HfScreen::key"][::std::mem::offset_of!(HfScreen, key) - 16usize];
+    ["Offset of field: HfScreen::flags"][::std::mem::offset_of!(HfScreen, flags) - 20usize];
+    ["Offset of field: HfScreen::user"][::std::mem::offset_of!(HfScreen, user) - 24usize];
+    ["Offset of field: HfScreen::draw"][::std::mem::offset_of!(HfScreen, draw) - 32usize];
+    ["Offset of field: HfScreen::opened"][::std::mem::offset_of!(HfScreen, opened) - 40usize];
+    ["Offset of field: HfScreen::can_open"][::std::mem::offset_of!(HfScreen, can_open) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct HfLimbState {
     pub health: i32,
     pub max_health: i32,
@@ -8341,10 +10694,11 @@ pub struct HfEntityDef {
     pub title: *const ::std::os::raw::c_char,
     pub designation: *const ::std::os::raw::c_char,
     pub description: *const ::std::os::raw::c_char,
+    pub parts: *const HfEntityPart,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfEntityDef"][::std::mem::size_of::<HfEntityDef>() - 128usize];
+    ["Size of HfEntityDef"][::std::mem::size_of::<HfEntityDef>() - 136usize];
     ["Alignment of HfEntityDef"][::std::mem::align_of::<HfEntityDef>() - 8usize];
     ["Offset of field: HfEntityDef::size"][::std::mem::offset_of!(HfEntityDef, size) - 0usize];
     ["Offset of field: HfEntityDef::name"][::std::mem::offset_of!(HfEntityDef, name) - 8usize];
@@ -8370,6 +10724,7 @@ const _: () = {
         [::std::mem::offset_of!(HfEntityDef, designation) - 112usize];
     ["Offset of field: HfEntityDef::description"]
         [::std::mem::offset_of!(HfEntityDef, description) - 120usize];
+    ["Offset of field: HfEntityDef::parts"][::std::mem::offset_of!(HfEntityDef, parts) - 128usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8394,6 +10749,94 @@ const _: () = {
     ["Offset of field: HfEditDef::remove_tags"]
         [::std::mem::offset_of!(HfEditDef, remove_tags) - 40usize];
     ["Offset of field: HfEditDef::mount"][::std::mem::offset_of!(HfEditDef, mount) - 48usize];
+};
+pub const HF_GEN_LOCATIONS_A: _bindgen_ty_1 = 0;
+pub const HF_GEN_LOCATIONS_B: _bindgen_ty_1 = 1;
+pub const HF_GEN_LOCATION_TYPES: _bindgen_ty_1 = 2;
+pub const HF_GEN_MINIMAP_PROXIES: _bindgen_ty_1 = 3;
+pub const HF_GEN_MINIMAP_SHAPES: _bindgen_ty_1 = 4;
+pub const HF_GEN_MINIMAP_U: _bindgen_ty_1 = 5;
+pub const HF_GEN_MINIMAP_V: _bindgen_ty_1 = 6;
+pub const HF_GEN_MISSION_STAMPS: _bindgen_ty_1 = 7;
+pub const HF_GEN_OBJECTIVE_LIST: _bindgen_ty_1 = 8;
+pub const HF_GEN_PLACES: _bindgen_ty_1 = 9;
+pub const HF_GEN_PLACE_SET: _bindgen_ty_1 = 10;
+pub const HF_GEN_CLUSTERS: _bindgen_ty_1 = 11;
+pub const HF_GEN_IMPORTANT: _bindgen_ty_1 = 12;
+pub const HF_GEN_LINKED: _bindgen_ty_1 = 13;
+pub const HF_GEN_ROUTE_NODES: _bindgen_ty_1 = 14;
+pub const HF_GEN_ROUTE_EDGES: _bindgen_ty_1 = 15;
+pub const HF_GEN_ROUTE_CLASSES: _bindgen_ty_1 = 16;
+pub const HF_GEN_ROUTE_POINTS: _bindgen_ty_1 = 17;
+pub const HF_GEN_REGIONS: _bindgen_ty_1 = 32;
+pub type _bindgen_ty_1 = ::std::os::raw::c_uint;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfGenerationCapacity {
+    pub size: u32,
+    pub locations: u32,
+    pub minimap_proxies: u32,
+    pub mission_stamps: u32,
+    pub places: u32,
+    pub place_set: u32,
+    pub block_bytes: u32,
+    pub moved: u32,
+    pub important_locations: u32,
+    pub linked_locations: u32,
+    pub route_nodes: u32,
+    pub route_edges: u32,
+    pub route_points: u32,
+    pub regions: [HfGenerationCapacity__bindgen_ty_1; 32usize],
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfGenerationCapacity__bindgen_ty_1 {
+    pub at: u32,
+    pub places: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfGenerationCapacity__bindgen_ty_1"]
+        [::std::mem::size_of::<HfGenerationCapacity__bindgen_ty_1>() - 8usize];
+    ["Alignment of HfGenerationCapacity__bindgen_ty_1"]
+        [::std::mem::align_of::<HfGenerationCapacity__bindgen_ty_1>() - 4usize];
+    ["Offset of field: HfGenerationCapacity__bindgen_ty_1::at"]
+        [::std::mem::offset_of!(HfGenerationCapacity__bindgen_ty_1, at) - 0usize];
+    ["Offset of field: HfGenerationCapacity__bindgen_ty_1::places"]
+        [::std::mem::offset_of!(HfGenerationCapacity__bindgen_ty_1, places) - 4usize];
+};
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfGenerationCapacity"][::std::mem::size_of::<HfGenerationCapacity>() - 308usize];
+    ["Alignment of HfGenerationCapacity"][::std::mem::align_of::<HfGenerationCapacity>() - 4usize];
+    ["Offset of field: HfGenerationCapacity::size"]
+        [::std::mem::offset_of!(HfGenerationCapacity, size) - 0usize];
+    ["Offset of field: HfGenerationCapacity::locations"]
+        [::std::mem::offset_of!(HfGenerationCapacity, locations) - 4usize];
+    ["Offset of field: HfGenerationCapacity::minimap_proxies"]
+        [::std::mem::offset_of!(HfGenerationCapacity, minimap_proxies) - 8usize];
+    ["Offset of field: HfGenerationCapacity::mission_stamps"]
+        [::std::mem::offset_of!(HfGenerationCapacity, mission_stamps) - 12usize];
+    ["Offset of field: HfGenerationCapacity::places"]
+        [::std::mem::offset_of!(HfGenerationCapacity, places) - 16usize];
+    ["Offset of field: HfGenerationCapacity::place_set"]
+        [::std::mem::offset_of!(HfGenerationCapacity, place_set) - 20usize];
+    ["Offset of field: HfGenerationCapacity::block_bytes"]
+        [::std::mem::offset_of!(HfGenerationCapacity, block_bytes) - 24usize];
+    ["Offset of field: HfGenerationCapacity::moved"]
+        [::std::mem::offset_of!(HfGenerationCapacity, moved) - 28usize];
+    ["Offset of field: HfGenerationCapacity::important_locations"]
+        [::std::mem::offset_of!(HfGenerationCapacity, important_locations) - 32usize];
+    ["Offset of field: HfGenerationCapacity::linked_locations"]
+        [::std::mem::offset_of!(HfGenerationCapacity, linked_locations) - 36usize];
+    ["Offset of field: HfGenerationCapacity::route_nodes"]
+        [::std::mem::offset_of!(HfGenerationCapacity, route_nodes) - 40usize];
+    ["Offset of field: HfGenerationCapacity::route_edges"]
+        [::std::mem::offset_of!(HfGenerationCapacity, route_edges) - 44usize];
+    ["Offset of field: HfGenerationCapacity::route_points"]
+        [::std::mem::offset_of!(HfGenerationCapacity, route_points) - 48usize];
+    ["Offset of field: HfGenerationCapacity::regions"]
+        [::std::mem::offset_of!(HfGenerationCapacity, regions) - 52usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -8840,10 +11283,101 @@ pub struct HfApi {
     pub unhook: ::std::option::Option<
         unsafe extern "C" fn(mod_: *mut HfMod, target: usize) -> ::std::os::raw::c_int,
     >,
+    pub add_explosion: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, explosion: *const HfExplosion) -> u32,
+    >,
+    pub explosion_row: ::std::option::Option<unsafe extern "C" fn(type_: u32) -> usize>,
+    pub add_beam:
+        ::std::option::Option<unsafe extern "C" fn(mod_: *mut HfMod, beam: *const HfBeam) -> u32>,
+    pub beam_row: ::std::option::Option<unsafe extern "C" fn(type_: u32) -> usize>,
+    pub add_arc:
+        ::std::option::Option<unsafe extern "C" fn(mod_: *mut HfMod, arc: *const HfArc) -> u32>,
+    pub arc_row: ::std::option::Option<unsafe extern "C" fn(type_: u32) -> usize>,
+    pub add_attachment: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, attachment: *const HfAttachment) -> u32,
+    >,
+    pub add_enemy: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, enemy: *const HfEnemy) -> ::std::os::raw::c_int,
+    >,
+    pub add_enemy_swap: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, swap: *const HfEnemySwap) -> ::std::os::raw::c_int,
+    >,
+    pub add_enemy_squad: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, squad: *const HfEnemySquad) -> ::std::os::raw::c_int,
+    >,
+    pub rpc_listen: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            rpc: u32,
+            listener: HfRpcListener,
+            user: *mut ::std::os::raw::c_void,
+            priority: i32,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub rpc_send: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            rpc: u32,
+            to: u64,
+            args: *const HfRpcArg,
+            count: u32,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub add_screen: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, screen: *const HfScreen) -> ::std::os::raw::c_int,
+    >,
+    pub screen_show: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            id: ::std::os::raw::c_int,
+            open: ::std::os::raw::c_int,
+        ),
+    >,
+    pub generation_capacity: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            want: *const HfGenerationCapacity,
+            have: *mut HfGenerationCapacity,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub add_pattern: ::std::option::Option<
+        unsafe extern "C" fn(mod_: *mut HfMod, pattern: *const HfPattern) -> u32,
+    >,
+    pub ui_open: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            xaml: *const ::std::os::raw::c_char,
+            kind: u32,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub ui_set: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            screen: ::std::os::raw::c_int,
+            element: *const ::std::os::raw::c_char,
+            property: *const ::std::os::raw::c_char,
+            value: *const ::std::os::raw::c_char,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub ui_on: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            screen: ::std::os::raw::c_int,
+            element: *const ::std::os::raw::c_char,
+            callback: HfUiCallback,
+            user: *mut ::std::os::raw::c_void,
+        ) -> ::std::os::raw::c_int,
+    >,
+    pub ui_close: ::std::option::Option<
+        unsafe extern "C" fn(
+            mod_: *mut HfMod,
+            screen: ::std::os::raw::c_int,
+        ) -> ::std::os::raw::c_int,
+    >,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfApi"][::std::mem::size_of::<HfApi>() - 736usize];
+    ["Size of HfApi"][::std::mem::size_of::<HfApi>() - 896usize];
     ["Alignment of HfApi"][::std::mem::align_of::<HfApi>() - 8usize];
     ["Offset of field: HfApi::version"][::std::mem::offset_of!(HfApi, version) - 0usize];
     ["Offset of field: HfApi::size"][::std::mem::offset_of!(HfApi, size) - 4usize];
@@ -8972,6 +11506,32 @@ const _: () = {
     ["Offset of field: HfApi::share_row"][::std::mem::offset_of!(HfApi, share_row) - 712usize];
     ["Offset of field: HfApi::load_phase"][::std::mem::offset_of!(HfApi, load_phase) - 720usize];
     ["Offset of field: HfApi::unhook"][::std::mem::offset_of!(HfApi, unhook) - 728usize];
+    ["Offset of field: HfApi::add_explosion"]
+        [::std::mem::offset_of!(HfApi, add_explosion) - 736usize];
+    ["Offset of field: HfApi::explosion_row"]
+        [::std::mem::offset_of!(HfApi, explosion_row) - 744usize];
+    ["Offset of field: HfApi::add_beam"][::std::mem::offset_of!(HfApi, add_beam) - 752usize];
+    ["Offset of field: HfApi::beam_row"][::std::mem::offset_of!(HfApi, beam_row) - 760usize];
+    ["Offset of field: HfApi::add_arc"][::std::mem::offset_of!(HfApi, add_arc) - 768usize];
+    ["Offset of field: HfApi::arc_row"][::std::mem::offset_of!(HfApi, arc_row) - 776usize];
+    ["Offset of field: HfApi::add_attachment"]
+        [::std::mem::offset_of!(HfApi, add_attachment) - 784usize];
+    ["Offset of field: HfApi::add_enemy"][::std::mem::offset_of!(HfApi, add_enemy) - 792usize];
+    ["Offset of field: HfApi::add_enemy_swap"]
+        [::std::mem::offset_of!(HfApi, add_enemy_swap) - 800usize];
+    ["Offset of field: HfApi::add_enemy_squad"]
+        [::std::mem::offset_of!(HfApi, add_enemy_squad) - 808usize];
+    ["Offset of field: HfApi::rpc_listen"][::std::mem::offset_of!(HfApi, rpc_listen) - 816usize];
+    ["Offset of field: HfApi::rpc_send"][::std::mem::offset_of!(HfApi, rpc_send) - 824usize];
+    ["Offset of field: HfApi::add_screen"][::std::mem::offset_of!(HfApi, add_screen) - 832usize];
+    ["Offset of field: HfApi::screen_show"][::std::mem::offset_of!(HfApi, screen_show) - 840usize];
+    ["Offset of field: HfApi::generation_capacity"]
+        [::std::mem::offset_of!(HfApi, generation_capacity) - 848usize];
+    ["Offset of field: HfApi::add_pattern"][::std::mem::offset_of!(HfApi, add_pattern) - 856usize];
+    ["Offset of field: HfApi::ui_open"][::std::mem::offset_of!(HfApi, ui_open) - 864usize];
+    ["Offset of field: HfApi::ui_set"][::std::mem::offset_of!(HfApi, ui_set) - 872usize];
+    ["Offset of field: HfApi::ui_on"][::std::mem::offset_of!(HfApi, ui_on) - 880usize];
+    ["Offset of field: HfApi::ui_close"][::std::mem::offset_of!(HfApi, ui_close) - 888usize];
 };
 pub type HfStateListener = ::std::option::Option<
     unsafe extern "C" fn(
@@ -9152,18 +11712,2256 @@ pub type HfFn_FireProjectile = ::std::option::Option<
         zero2: u64,
     ),
 >;
+pub type HfFn_QueueDamage = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: *mut ::std::os::raw::c_void,
+        kind: u32,
+        a3: u32,
+        target: u32,
+        amount: u32,
+        a6: u8,
+        network: u32,
+        network2: u32,
+        creditor: u64,
+        a10: u32,
+        f11: f32,
+        f12: f32,
+        f13: f32,
+        direction: *const f32,
+        position: *const f32,
+        actor: u32,
+        a17: u32,
+        a18: u32,
+        scale: f32,
+    ),
+>;
+pub type HfFn_NeedsAmmo = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32) -> u8,
+>;
+pub type HfFn_TryStartAction = ::std::option::Option<
+    unsafe extern "C" fn(context: *mut ::std::os::raw::c_void, request: *const u32) -> u8,
+>;
+pub type HfFn_RequestEntitySpawn = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut u32,
+        resource: u64,
+        spawn: *mut ::std::os::raw::c_void,
+    ) -> *mut u32,
+>;
+pub type HfFn_AbilityTick = ::std::option::Option<
+    unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, id: u32, tick: u32) -> u8,
+>;
+pub type HfFn_SiloMissileArmedAbility =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, tick: u32) -> u8>;
+pub type HfFn_LinkedMissile = ::std::option::Option<
+    unsafe extern "C" fn(
+        linkers: *mut ::std::os::raw::c_void,
+        out: *mut u32,
+        remote: u32,
+    ) -> *mut u32,
+>;
+pub type HfFn_LinkerRecord =
+    ::std::option::Option<unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut u8>;
+pub type HfFn_LinkedRack = ::std::option::Option<
+    unsafe extern "C" fn(
+        linkers: *mut ::std::os::raw::c_void,
+        out: *mut u32,
+        remote: u32,
+    ) -> *mut u32,
+>;
+pub type HfFn_SetMissileEngine = ::std::option::Option<
+    unsafe extern "C" fn(missiles: *mut ::std::os::raw::c_void, missile: u32, on: u8),
+>;
+pub type HfFn_LaunchMissile = ::std::option::Option<
+    unsafe extern "C" fn(missiles: *mut ::std::os::raw::c_void, missile: u32),
+>;
+pub type HfFn_SetExplosiveOwner = ::std::option::Option<
+    unsafe extern "C" fn(explosives: *mut ::std::os::raw::c_void, entity: u32, owner: u32),
+>;
+pub type HfFn_SetGuidanceTarget = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, point: *const f32),
+>;
+pub type HfFn_RackReleaseItem = ::std::option::Option<
+    unsafe extern "C" fn(racks: *mut ::std::os::raw::c_void, rack: u32, item: u32),
+>;
+pub type HfFn_StartAbility = ::std::option::Option<
+    unsafe extern "C" fn(
+        abilities: *mut ::std::os::raw::c_void,
+        entity: u32,
+        ability: u32,
+        mode: u32,
+        speed: f32,
+        s6: u64,
+        s7: u64,
+    ) -> u64,
+>;
+pub type HfFn_BehaviourUpdate =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, id: u32, dt: f32)>;
+pub type HfFn_BehaviourStage = ::std::option::Option<
+    unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, id: u32, stage: u32),
+>;
+pub type HfFn_BehaviourEvent = ::std::option::Option<
+    unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, id: u32, hash: u32),
+>;
+pub type HfFn_BehaviourResume =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, id: u32)>;
+pub type HfFn_PelicanTransportUpdate =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_PelicanTransportStage =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, stage: i32)>;
+pub type HfFn_PelicanTransportEvent =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, hash: u32)>;
+pub type HfFn_BehaviourOwnPosition = ::std::option::Option<
+    unsafe extern "C" fn(out: *mut f32, ctx: *mut ::std::os::raw::c_void) -> *mut f32,
+>;
+pub type HfFn_BehaviourOrbitStep = ::std::option::Option<
+    unsafe extern "C" fn(
+        ctx: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        unused: *mut ::std::os::raw::c_void,
+        height: f32,
+        radius: f32,
+    ),
+>;
+pub type HfFn_BehaviourMoveTo = ::std::option::Option<
+    unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, target: *const f32),
+>;
+pub type HfFn_BehaviourFace = ::std::option::Option<
+    unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, direction: *const f32),
+>;
+pub type HfFn_BehaviourTargetPosition = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut f32,
+        ctx: *mut ::std::os::raw::c_void,
+        self_: *const f32,
+    ) -> *mut f32,
+>;
+pub type HfFn_PelicanTurretIdle =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_TurretActive =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void) -> u8>;
+pub type HfFn_TurretHasAmmo =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void) -> u8>;
+pub type HfFn_PelicanTurretStage =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, stage: i32)>;
+pub type HfFn_BehaviourSetTarget =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void, entry: *const u8)>;
+pub type HfFn_WeaponDegreesTo = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: *mut ::std::os::raw::c_void,
+        entity: u32,
+        position: *const f32,
+    ) -> f32,
+>;
+pub type HfFn_IsValidTarget = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: *mut ::std::os::raw::c_void,
+        entity: u32,
+        info: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_FindPerceptionEntry = ::std::option::Option<
+    unsafe extern "C" fn(
+        perception: *mut ::std::os::raw::c_void,
+        perceiver: u32,
+        entity: u32,
+    ) -> *mut u8,
+>;
+pub type HfFn_MagazineRounds = ::std::option::Option<
+    unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, entity: u32) -> i32,
+>;
+pub type HfFn_AddMagazineRounds = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, add: i32),
+>;
+pub type HfFn_MagazineCapacity = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32) -> i32,
+>;
+pub type HfFn_WeaponWithinDegrees = ::std::option::Option<
+    unsafe extern "C" fn(
+        ctx: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        max_degrees: f32,
+    ) -> u8,
+>;
+pub type HfFn_EntityDescriptor =
+    ::std::option::Option<unsafe extern "C" fn(entity: u32) -> *mut u8>;
+pub type HfFn_MarkReplicated = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, mask: u32),
+>;
+pub type HfFn_ShieldRecord =
+    ::std::option::Option<unsafe extern "C" fn(binding: *mut ::std::os::raw::c_void) -> *mut u8>;
+pub type HfFn_MoveObject = ::std::option::Option<
+    unsafe extern "C" fn(
+        motion: *mut ::std::os::raw::c_void,
+        index: u32,
+        dt: f32,
+        r9: u64,
+        s5: u64,
+        s6: u64,
+    ),
+>;
+pub type HfFn_SpawnProjectile = ::std::option::Option<
+    unsafe extern "C" fn(
+        pool: *mut ::std::os::raw::c_void,
+        descriptor: *mut u8,
+        extra: *mut ::std::os::raw::c_void,
+    ) -> u32,
+>;
+pub type HfFn_CatalogueAddItem = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        mix_id: u32,
+        item_id: u32,
+        parent: u32,
+        field: i32,
+        flag: u8,
+        buy: *const ::std::os::raw::c_void,
+        buy_count: u32,
+        sell: *const ::std::os::raw::c_void,
+        sell_count: u32,
+        dwords: *const u32,
+        dword_count: u32,
+        required: *const u32,
+        required_count: u32,
+        category: u32,
+        max_cap: u32,
+    ) -> u64,
+>;
+pub type HfFn_CatalogueSort = ::std::option::Option<unsafe extern "C" fn()>;
+pub type HfFn_AddItemAmount = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        mix_id: u32,
+        amount: u32,
+        source: u32,
+        text: *const u8,
+        extra: i32,
+    ),
+>;
+pub type HfFn_RemoveItemAmount = ::std::option::Option<
+    unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, mix_id: u32, amount: u32),
+>;
+pub type HfFn_LoadEntities =
+    ::std::option::Option<unsafe extern "C" fn(state: *mut ::std::os::raw::c_void)>;
+pub type HfFn_BuildArmoryList =
+    ::std::option::Option<unsafe extern "C" fn(list: *mut ::std::os::raw::c_void)>;
+pub type HfFn_ArmoryEntryOf = ::std::option::Option<unsafe extern "C" fn(id: u32) -> *mut u8>;
+pub type HfFn_EngineText = ::std::option::Option<unsafe extern "C" fn(id: u32) -> *const u8>;
+pub type HfFn_OpenMenuPresenter = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        presenter: i32,
+        arg: *mut ::std::os::raw::c_void,
+    ) -> u64,
+>;
+pub type HfFn_MenuSoundUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_RequestPackages = ::std::option::Option<
+    unsafe extern "C" fn(system: *mut ::std::os::raw::c_void, ids: *const u64, count: u32),
+>;
+pub type HfFn_EntityOfNetwork =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut u32, network: u32) -> *mut u32>;
+pub type HfFn_EntityOfHandle = HfFn_EntityOfNetwork;
+pub type HfFn_QueryLoadoutPreview = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut ::std::os::raw::c_void,
+        alternate: u8,
+        slot: u32,
+        mode: u32,
+        context: *mut ::std::os::raw::c_void,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_PushArmoryLoadout = ::std::option::Option<unsafe extern "C" fn()>;
+pub type HfFn_RollCacheLoot = ::std::option::Option<
+    unsafe extern "C" fn(
+        params: *mut ::std::os::raw::c_void,
+        rdx: u64,
+        context: *mut u8,
+        r9: u64,
+    ) -> u64,
+>;
+pub type HfFn_RequestWarbondPurchase =
+    ::std::option::Option<unsafe extern "C" fn(rcx: u64, item: u32, cost: i32, currency: u32)>;
+pub type HfFn_FinishWarbondPurchase =
+    ::std::option::Option<unsafe extern "C" fn(progression: *mut u8)>;
+pub type HfFn_SpawnWarbondShowcase = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, character: u32),
+>;
+pub type HfFn_UpdateWarbondSpent =
+    ::std::option::Option<unsafe extern "C" fn(widget: *mut u8, a: f32, b: f32)>;
+pub type HfFn_UpdateWarbondPager =
+    ::std::option::Option<unsafe extern "C" fn(pager: *mut u8, dt: f32)>;
+pub type HfFn_WarbondPagerInput =
+    ::std::option::Option<unsafe extern "C" fn(pager: *mut u8, rdx: u64, r8: u64, r9: u64) -> u32>;
+pub type HfFn_SetElementText =
+    ::std::option::Option<unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, text: u32)>;
+pub type HfFn_SetElementTextAlt =
+    ::std::option::Option<unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, text: u32)>;
+pub type HfFn_SetElementNumber = ::std::option::Option<
+    unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, name: u32, value: u32),
+>;
+pub type HfFn_SetWidgetVisible =
+    ::std::option::Option<unsafe extern "C" fn(widget: *mut ::std::os::raw::c_void, visible: u8)>;
+pub type HfFn_SetElementColour = ::std::option::Option<
+    unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, rgb: *const f32),
+>;
+pub type HfFn_SetPickerHeading =
+    ::std::option::Option<unsafe extern "C" fn(widget: *mut u8, key: u32)>;
+pub type HfFn_StratagemAvailable = ::std::option::Option<
+    unsafe extern "C" fn(account: *mut ::std::os::raw::c_void, type_: u32) -> u8,
+>;
+pub type HfFn_SortArray = ::std::option::Option<
+    unsafe extern "C" fn(
+        data: *mut ::std::os::raw::c_void,
+        count: u64,
+        width: u64,
+        compare: *const ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_HighestDifficulty = ::std::option::Option<unsafe extern "C" fn() -> u32>;
+pub type HfFn_FindConfigSetting = ::std::option::Option<
+    unsafe extern "C" fn(config: *mut ::std::os::raw::c_void, online: u32, key: u32) -> *const u8,
+>;
+pub type HfFn_ShowDifficultyWidget =
+    ::std::option::Option<unsafe extern "C" fn(widget: *mut ::std::os::raw::c_void, level: u32)>;
+pub type HfFn_ComputeMissionRating = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: u32,
+        r9: u32,
+    ) -> f32,
+>;
+pub type HfFn_EnemyDirectorTick =
+    ::std::option::Option<unsafe extern "C" fn(hivemind: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ArenaAllocate = ::std::option::Option<
+    unsafe extern "C" fn(
+        arena: *mut ::std::os::raw::c_void,
+        size: u32,
+        alignment: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_GameMemset = ::std::option::Option<
+    unsafe extern "C" fn(
+        dest: *mut ::std::os::raw::c_void,
+        value: i32,
+        size: u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_CreateGenerationBlock = ::std::option::Option<
+    unsafe extern "C" fn(level: *mut ::std::os::raw::c_void, rdx: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_InitLevel = ::std::option::Option<
+    unsafe extern "C" fn(
+        level: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: u32,
+        r9: u64,
+    ),
+>;
+pub type HfFn_GenerateRouteCells = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, rdx: u32, r8: u64, xmm3: f32),
+>;
+pub type HfFn_GenerateRouteCellVoronoi = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateSubregionHeights = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        unused: u64,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateVoronoi = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_FinalizeVoronoi = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_ForceFlattenZones = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        unused: u64,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SelectSubRegionCellsFromHeightGroup = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SampleSubregionNoise = ::std::option::Option<
+    unsafe extern "C" fn(noise: *mut ::std::os::raw::c_void, x: f32, y: f32) -> f32,
+>;
+pub type HfFn_GenerateLocationClusters = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SpreadLocations = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SpreadLocationsCities = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        unused: u64,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateOutpostLocations = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateObjectiveLocations = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_AddImportantLocations = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateMissionStampList = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_FixUnreachableAreas = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_CullUnitsOutsidePlayableArea = ::std::option::Option<
+    unsafe extern "C" fn(
+        level: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: u32,
+        xmm3: f32,
+    ) -> u8,
+>;
+pub type HfFn_GenerateCityRoads = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_CreateCityFootprintList = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        s5: u64,
+        s6: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_FlattenCityRoads = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_StampIndexSize =
+    ::std::option::Option<unsafe extern "C" fn(xmm0: f32, xmm1: f32, xmm2: f32) -> u32>;
+pub type HfFn_StampIndexCheckLayout =
+    ::std::option::Option<unsafe extern "C" fn(xmm0: f32, xmm1: f32, xmm2: f32)>;
+pub type HfFn_HashMapInsert = ::std::option::Option<
+    unsafe extern "C" fn(table: *mut ::std::os::raw::c_void, rdx: u32, r8: u32),
+>;
+pub type HfFn_SetupDestructionRecordMap =
+    ::std::option::Option<unsafe extern "C" fn(owner: *mut ::std::os::raw::c_void)>;
+pub type HfFn_RegisterStaticDestructionRecords = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: u32,
+    ),
+>;
+pub type HfFn_SelectObjectives = ::std::option::Option<
+    unsafe extern "C" fn(inputs: *mut u8, ids: *mut u32, classes: *mut u32) -> u32,
+>;
+pub type HfFn_LaunchMission =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_MissionTimerWidget =
+    ::std::option::Option<unsafe extern "C" fn(widget: *mut ::std::os::raw::c_void)>;
+pub type HfFn_UpdateHudObjectives =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_UpdateMapScreen = ::std::option::Option<
+    unsafe extern "C" fn(map: *mut ::std::os::raw::c_void, xmm1: f32, r8: u32),
+>;
+pub type HfFn_BuildMapMarkerSlots = ::std::option::Option<
+    unsafe extern "C" fn(
+        map: *mut ::std::os::raw::c_void,
+        unused: u64,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_HudMandatoryObjectives =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_MissionHudTopBar =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, xmm1: f32)>;
+pub type HfFn_BuildMissionResult = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_TelemetrySelectedMission =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, rdx: u8) -> u8>;
+pub type HfFn_TelemetryMissionEnd =
+    ::std::option::Option<unsafe extern "C" fn(telemetry: *mut ::std::os::raw::c_void)>;
+pub type HfFn_RollArtilleryShell = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, rdx: *mut ::std::os::raw::c_void, r8: u32, r9: u32),
+>;
+pub type HfFn_ArtilleryAim = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: *mut ::std::os::raw::c_void,
+        r9: u8,
+        s5: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_SolveBallisticAim = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        r9: u8,
+        s5: u8,
+        s6: u32,
+        s7: f32,
+    ) -> f32,
+>;
+pub type HfFn_PredictProjectileLanding = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        xmm2: f32,
+        r9: *mut ::std::os::raw::c_void,
+        s5: u32,
+        s6: *mut f32,
+    ),
+>;
+pub type HfFn_GenerateRegionMissions = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateCampaignPlanetMissions = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_GenerateDefencePlanetMissions = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_DifficultyBarBuild = ::std::option::Option<
+    unsafe extern "C" fn(
+        bar: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        r9: u32,
+    ),
+>;
+pub type HfFn_DifficultyBarDestroy =
+    ::std::option::Option<unsafe extern "C" fn(bar: *mut ::std::os::raw::c_void)>;
+pub type HfFn_DifficultyBarChoose = ::std::option::Option<
+    unsafe extern "C" fn(
+        bar: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: u8,
+        r9: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SetImageSprite = ::std::option::Option<
+    unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, sprite: u64, zero: u8),
+>;
+pub type HfFn_SetImageSpriteOrTexture = ::std::option::Option<
+    unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, resource: u64),
+>;
+pub type HfFn_SetElementResourceSlot = ::std::option::Option<
+    unsafe extern "C" fn(
+        element: *mut ::std::os::raw::c_void,
+        slot: u32,
+        resource: u64,
+        sprite: u8,
+        zero: u8,
+    ),
+>;
+pub type HfFn_SetImageWithBase = ::std::option::Option<
+    unsafe extern "C" fn(element: *mut ::std::os::raw::c_void, base: u64, image: u64, zero: u8),
+>;
+pub type HfFn_UiElementRect = ::std::option::Option<
+    unsafe extern "C" fn(
+        element: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_MissionCardMinimap =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, xmm1: f32)>;
+pub type HfFn_WarTableHologramUpdate = ::std::option::Option<
+    unsafe extern "C" fn(
+        hologram: *mut ::std::os::raw::c_void,
+        xmm1: f32,
+        level: *mut ::std::os::raw::c_void,
+        xmm3: f32,
+    ),
+>;
+pub type HfFn_WarTableHologramZoom =
+    ::std::option::Option<unsafe extern "C" fn(hologram: *mut ::std::os::raw::c_void, xmm1: f32)>;
+pub type HfFn_WarTableHologramHeightAt = ::std::option::Option<
+    unsafe extern "C" fn(hologram: *mut ::std::os::raw::c_void, rdx: u64) -> f32,
+>;
+pub type HfFn_WarTableHologramTerrainHeight = ::std::option::Option<
+    unsafe extern "C" fn(
+        hologram: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        xmm2: f32,
+    ) -> u64,
+>;
+pub type HfFn_EngineRenderStep =
+    ::std::option::Option<unsafe extern "C" fn(game: *mut ::std::os::raw::c_void)>;
+pub type HfFn_UnitSetLocalPose =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, pose: *const f32)>;
+pub type HfFn_UpdateUnit = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, unit: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_UnitFromHandle =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_MainWorld =
+    ::std::option::Option<unsafe extern "C" fn() -> *mut ::std::os::raw::c_void>;
+pub type HfFn_UnitNodeWorldPosition =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> *const f32>;
+pub type HfFn_UnitActorByName =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32, index: *mut u32) -> u32>;
+pub type HfFn_UnitFindActor = HfFn_UnitActorByName;
+pub type HfFn_SetResourceOverride =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64, name: u64, target: u64)>;
+pub type HfFn_ClearResourceOverride =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64, name: u64)>;
+pub type HfFn_CanGetResource =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64, name: u64) -> u8>;
+pub type HfFn_TransportCleanup = ::std::option::Option<
+    unsafe extern "C" fn(
+        transport: *mut ::std::os::raw::c_void,
+        wanted: *mut ::std::os::raw::c_void,
+        removed: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_DestroyConnection = ::std::option::Option<
+    unsafe extern "C" fn(
+        transport: *mut ::std::os::raw::c_void,
+        connection: *mut ::std::os::raw::c_void,
+        r8: u64,
+    ),
+>;
+pub type HfFn_SessionPeersRemoved = ::std::option::Option<
+    unsafe extern "C" fn(
+        session: *mut ::std::os::raw::c_void,
+        removed: *const ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_NetworkManagerUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void)>;
+pub type HfFn_CollisionFilterPairs = ::std::option::Option<
+    unsafe extern "C" fn(
+        filter: *mut ::std::os::raw::c_void,
+        world: *mut ::std::os::raw::c_void,
+        pairs: *mut u32,
+        count: i32,
+    ) -> i32,
+>;
+pub type HfFn_PhysicsHandleBody =
+    ::std::option::Option<unsafe extern "C" fn(handle: u32, body: *mut u32) -> u32>;
+pub type HfFn_CreateNavmeshCut =
+    ::std::option::Option<unsafe extern "C" fn(args: *const ::std::os::raw::c_void) -> u32>;
+pub type HfFn_RemoveNavmeshCuts =
+    ::std::option::Option<unsafe extern "C" fn(cuts: *mut u32, count: u32)>;
+pub type HfFn_EnableNavmeshCuts =
+    ::std::option::Option<unsafe extern "C" fn(cuts: *mut u32, count: u32, on: u32)>;
+pub type HfFn_NavWorldSetup = ::std::option::Option<
+    unsafe extern "C" fn(
+        id: u32,
+        min: *const f32,
+        max: *const f32,
+        r9: *const f32,
+        s5: *const f32,
+        s6: f32,
+        s7: u32,
+        s8: u32,
+    ),
+>;
+pub type HfFn_BuildNavTile = ::std::option::Option<
+    unsafe extern "C" fn(
+        result: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: *const ::std::os::raw::c_void,
+        r9: u32,
+        s5: u64,
+        s6: u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_BuildPhysicsPools = ::std::option::Option<
+    unsafe extern "C" fn(
+        config: *const ::std::os::raw::c_void,
+        block: *mut ::std::os::raw::c_void,
+        size: u32,
+    ),
+>;
+pub type HfFn_EngineAllocatorAllocate = ::std::option::Option<
+    unsafe extern "C" fn(
+        allocator: *mut ::std::os::raw::c_void,
+        size: u64,
+        align: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_DestroyNetworkTypeEntry =
+    ::std::option::Option<unsafe extern "C" fn(entry: *mut ::std::os::raw::c_void)>;
+pub type HfFn_FindPackage = ::std::option::Option<
+    unsafe extern "C" fn(
+        resources: *mut ::std::os::raw::c_void,
+        id: u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_PackageHasLoaded = ::std::option::Option<unsafe extern "C" fn(id: u64) -> u32>;
+pub type HfFn_LobbyMemberData = ::std::option::Option<
+    unsafe extern "C" fn(
+        lobby: *mut ::std::os::raw::c_void,
+        peer: u64,
+        key: *const ::std::os::raw::c_char,
+    ) -> *const ::std::os::raw::c_char,
+>;
+pub type HfFn_LobbySetMemberData = ::std::option::Option<
+    unsafe extern "C" fn(
+        lobby: *mut ::std::os::raw::c_void,
+        count: u32,
+        keys: *const ::std::os::raw::c_void,
+        values: *const ::std::os::raw::c_void,
+    ) -> i32,
+>;
+pub type HfFn_RegistryAllocate = ::std::option::Option<
+    unsafe extern "C" fn(
+        allocator: *mut ::std::os::raw::c_void,
+        out: *mut u64,
+        size: u64,
+        align: u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ProjectileWeaponCopy = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        handle: *mut ::std::os::raw::c_void,
+        delta: *const u32,
+    ),
+>;
+pub type HfFn_MagazineCopy = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        record: *mut ::std::os::raw::c_void,
+        delta: *const u32,
+    ),
+>;
+pub type HfFn_AttachToUnit = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        child: u32,
+        link: u32,
+        node: u32,
+        offset: *const f32,
+        rotation: *const f32,
+        s7: f32,
+    ),
+>;
+pub type HfFn_SetBehaviour = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, behaviour: u32),
+>;
+pub type HfFn_UnlinkRelation = ::std::option::Option<
+    unsafe extern "C" fn(child: u32, owner: *mut ::std::os::raw::c_void, parent: u32),
+>;
+pub type HfFn_RemoveEntity =
+    ::std::option::Option<unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, entity: u32)>;
+pub type HfFn_DestroyEntity = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        record: *mut ::std::os::raw::c_void,
+        forced: u8,
+    ),
+>;
+pub type HfFn_CloseStratagemSelector =
+    ::std::option::Option<unsafe extern "C" fn(ui: *mut ::std::os::raw::c_void)>;
+pub type HfFn_SetStratagemCardEnabled = ::std::option::Option<
+    unsafe extern "C" fn(list: *mut ::std::os::raw::c_void, key: u32, enabled: u8),
+>;
+pub type HfFn_SetLobbySetting = ::std::option::Option<
+    unsafe extern "C" fn(
+        settings: *mut ::std::os::raw::c_void,
+        id: u32,
+        value: *const ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SetQuickplay = ::std::option::Option<
+    unsafe extern "C" fn(
+        matchmaker: *mut ::std::os::raw::c_void,
+        on: u8,
+        r8: i32,
+        r9: i32,
+        s5: u8,
+        s6: u8,
+        s7: u8,
+        s8: u8,
+    ),
+>;
+pub type HfFn_ReleasePackages = ::std::option::Option<
+    unsafe extern "C" fn(system: *mut ::std::os::raw::c_void, ids: *const u64, count: u32),
+>;
+pub type HfFn_BeamInfoOf =
+    ::std::option::Option<unsafe extern "C" fn(type_: u32) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_DamageInfoOf =
+    ::std::option::Option<unsafe extern "C" fn(id: u32) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_ProjectileInfoOf =
+    ::std::option::Option<unsafe extern "C" fn(type_: u32) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_PluginUpdate = ::std::option::Option<unsafe extern "C" fn(dt: f32)>;
+pub type HfFn_GameUpdate =
+    ::std::option::Option<unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_PlayLoadoutSound =
+    ::std::option::Option<unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, key: u32)>;
+pub type HfFn_CreditorOf = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, owner: u32) -> u64,
+>;
+pub type HfFn_Creditor = HfFn_CreditorOf;
+pub type HfFn_PickEnemy = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        group: u32,
+        roster: *mut ::std::os::raw::c_void,
+        r9: u8,
+    ) -> u32,
+>;
+pub type HfFn_EntityAttribute = ::std::option::Option<
+    unsafe extern "C" fn(entity: u32, key: u32, flags: u32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ApplyDamage = ::std::option::Option<
+    unsafe extern "C" fn(
+        health: *mut ::std::os::raw::c_void,
+        target: u32,
+        kind: u32,
+        element: u32,
+        dealer: u32,
+        owner: u32,
+        creditor: u64,
+        amount: i32,
+        s9: u32,
+        s10: f32,
+        position: *mut f32,
+        s12: *mut f32,
+        s13: u32,
+        s14: u8,
+        s15: u8,
+        s16: u32,
+        s17: u32,
+        s18: u32,
+        s19: u8,
+    ),
+>;
+pub type HfFn_IsDead = ::std::option::Option<
+    unsafe extern "C" fn(health: *mut ::std::os::raw::c_void, entity: u32) -> u8,
+>;
+pub type HfFn_HealthRecord = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, entity: u32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_RestoreHealth = ::std::option::Option<
+    unsafe extern "C" fn(
+        health: *mut ::std::os::raw::c_void,
+        entity: u32,
+        unused: u64,
+        fraction: f32,
+    ),
+>;
+pub type HfFn_HealthSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_SetLifeState = ::std::option::Option<
+    unsafe extern "C" fn(
+        health: *mut ::std::os::raw::c_void,
+        index: u32,
+        state: u32,
+        kind: u32,
+        element: u32,
+    ),
+>;
+pub type HfFn_HealthManagerUpdate =
+    ::std::option::Option<unsafe extern "C" fn(health: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_DrainCombatQueues =
+    ::std::option::Option<unsafe extern "C" fn(queues: *mut ::std::os::raw::c_void)>;
+pub type HfFn_EnqueueDamageEvent =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, event: *mut ::std::os::raw::c_void)>;
+pub type HfFn_ProduceDamage = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, values: *mut f32, hit: *mut ::std::os::raw::c_void, key: u32),
+>;
+pub type HfFn_InitHitInfo = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: u64,
+        hit: *mut ::std::os::raw::c_void,
+        kind: u32,
+        r9: u32,
+        s5: u64,
+        source: *mut ::std::os::raw::c_void,
+        s7: u64,
+    ),
+>;
+pub type HfFn_EntityToNetwork = ::std::option::Option<unsafe extern "C" fn(entity: u32) -> u32>;
+pub type HfFn_HealthZoneOfNode = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        settings: *mut ::std::os::raw::c_void,
+        node: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_BuildDamageValues = ::std::option::Option<
+    unsafe extern "C" fn(rcx: u64, values: *mut f32, hit: *mut ::std::os::raw::c_void) -> *mut f32,
+>;
+pub type HfFn_IsBoosterActive =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, booster: u32) -> u8>;
+pub type HfFn_ApplyStatus = ::std::option::Option<
+    unsafe extern "C" fn(
+        receivers: *mut ::std::os::raw::c_void,
+        entity: u32,
+        type_: u32,
+        r9: u32,
+        buildup: f32,
+        s6: u32,
+        s7: u64,
+    ),
+>;
+pub type HfFn_HasStatus = ::std::option::Option<
+    unsafe extern "C" fn(receivers: *mut ::std::os::raw::c_void, entity: u32, type_: i32) -> u8,
+>;
+pub type HfFn_RemoveStatus = ::std::option::Option<
+    unsafe extern "C" fn(receivers: *mut ::std::os::raw::c_void, entity: u32, type_: u32),
+>;
+pub type HfFn_AddStat = ::std::option::Option<
+    unsafe extern "C" fn(
+        stats: *mut ::std::os::raw::c_void,
+        peer: u64,
+        key: u32,
+        amount: u32,
+        source: u32,
+        resource: u64,
+    ),
+>;
+pub type HfFn_StatsPlayerIndex = ::std::option::Option<
+    unsafe extern "C" fn(stats: *mut ::std::os::raw::c_void, peer: u64) -> u32,
+>;
+pub type HfFn_StatMapLookup = ::std::option::Option<
+    unsafe extern "C" fn(map: *mut ::std::os::raw::c_void, key: u32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_BuildScore = ::std::option::Option<
+    unsafe extern "C" fn(stats: *mut ::std::os::raw::c_void, score: *mut u32, index: u32),
+>;
+pub type HfFn_KillCreditListener = ::std::option::Option<
+    unsafe extern "C" fn(
+        listener: *mut ::std::os::raw::c_void,
+        context: *mut ::std::os::raw::c_void,
+        creditor: u64,
+        victim: u32,
+        dealer: u32,
+        kind: u32,
+        element: u32,
+    ),
+>;
+pub type HfFn_PassiveValue =
+    ::std::option::Option<unsafe extern "C" fn(passive: u32, base: f32, key: u32) -> f32>;
+pub type HfFn_ChangeState = ::std::option::Option<
+    unsafe extern "C" fn(
+        game: *mut ::std::os::raw::c_void,
+        state: u32,
+        data: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SetPlayerAvatar = ::std::option::Option<
+    unsafe extern "C" fn(players: *mut ::std::os::raw::c_void, player: u32, avatar: u32),
+>;
+pub type HfFn_SetPlayerState = ::std::option::Option<
+    unsafe extern "C" fn(players: *mut ::std::os::raw::c_void, player: u32, state: u32),
+>;
+pub type HfFn_TurretSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_SensorEyeSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ProjectileWeaponRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponDataRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_BeamWeaponRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponProjectileType =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32) -> u32>;
+pub type HfFn_ResolveFiredType = HfFn_WeaponProjectileType;
+pub type HfFn_ProjectileFire = ::std::option::Option<
+    unsafe extern "C" fn(
+        projectiles: *mut ::std::os::raw::c_void,
+        weapon: u32,
+        r8: u8,
+        r9: u64,
+        s5: u32,
+        type_: u32,
+        s7: u64,
+        s8: u32,
+        s9: f32,
+        s10: f32,
+        s11: f32,
+    ),
+>;
+pub type HfFn_ProjectileWeaponFire = HfFn_ProjectileFire;
+pub type HfFn_GenericFire = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: u64,
+        unused: u64,
+        weapon: u32,
+        r9: u64,
+        s5: u32,
+        type_: u32,
+        s7: u64,
+        s8: u32,
+        s9: f32,
+        s10: f32,
+        s11: f32,
+        s12: u8,
+    ),
+>;
+pub type HfFn_WeaponHeatStep =
+    ::std::option::Option<unsafe extern "C" fn(rcx: u64, weapon: u32, r8: u8)>;
+pub type HfFn_SpendRound =
+    ::std::option::Option<unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, weapon: u32)>;
+pub type HfFn_ProjectileWeaponUpdate = ::std::option::Option<
+    unsafe extern "C" fn(projectiles: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_BeamWeaponUpdate = ::std::option::Option<
+    unsafe extern "C" fn(beams: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_BeamShot = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: u64,
+        rdx: u64,
+        r8: u8,
+        r9: u64,
+        s5: u64,
+        s6: u64,
+        s7: u64,
+        s8: u32,
+        unused: u64,
+        s10: u64,
+    ),
+>;
+pub type HfFn_ReloadMagazine =
+    ::std::option::Option<unsafe extern "C" fn(rcx: u64, weapon: u32, r8: u32, r9: u8)>;
+pub type HfFn_TurretUpdate =
+    ::std::option::Option<unsafe extern "C" fn(turrets: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_TurretSpeedFactor =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, rdx: u64) -> f32>;
+pub type HfFn_SensorEyeRanges = ::std::option::Option<
+    unsafe extern "C" fn(sensors: *mut ::std::os::raw::c_void, entity: u32, scale: f32),
+>;
+pub type HfFn_PerceptionUpdate =
+    ::std::option::Option<unsafe extern "C" fn(perception: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_WindUpUpdate =
+    ::std::option::Option<unsafe extern "C" fn(windups: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ApplyAttribute =
+    ::std::option::Option<unsafe extern "C" fn(entity: u32, key: u32, value: *mut f32)>;
+pub type HfFn_UpdateCustomization = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, index: u32),
+>;
+pub type HfFn_UpdateCustomizations = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, dt: f32),
+>;
+pub type HfFn_SetArmorKit = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, entity: u32, kit: u32),
+>;
+pub type HfFn_SetHelmetKit = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, entity: u32, kit: u32),
+>;
+pub type HfFn_SetCapeKit = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, entity: u32, kit: u32),
+>;
+pub type HfFn_PlayerSlot = ::std::option::Option<
+    unsafe extern "C" fn(players: *mut ::std::os::raw::c_void, player: u32) -> u32,
+>;
+pub type HfFn_BehaviourExplosion = ::std::option::Option<
+    unsafe extern "C" fn(context: *mut ::std::os::raw::c_void, type_: u32, node: u32, r9: u8),
+>;
+pub type HfFn_RequestExplosionAt = ::std::option::Option<
+    unsafe extern "C" fn(
+        queue: *mut ::std::os::raw::c_void,
+        unused: u64,
+        position: *mut f32,
+        type_: u32,
+        s5: u32,
+        s6: u32,
+        s7: u64,
+        s8: u32,
+    ),
+>;
+pub type HfFn_ExplosionKick =
+    ::std::option::Option<unsafe extern "C" fn(explosions: *mut ::std::os::raw::c_void)>;
+pub type HfFn_ExplosionGather =
+    ::std::option::Option<unsafe extern "C" fn(explosions: *mut ::std::os::raw::c_void)>;
+pub type HfFn_ProcessExplosion = ::std::option::Option<
+    unsafe extern "C" fn(explosions: *mut ::std::os::raw::c_void, rdx: u64, offset: u64),
+>;
+pub type HfFn_ProjectileKick =
+    ::std::option::Option<unsafe extern "C" fn(projectiles: *mut ::std::os::raw::c_void)>;
+pub type HfFn_BehaviourStartAbility = ::std::option::Option<
+    unsafe extern "C" fn(context: *mut ::std::os::raw::c_void, ability: u32) -> u64,
+>;
+pub type HfFn_CorpseSource = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, entity: u32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_StatusReceivable = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, entity: u32, type_: i32, r9: u32) -> u8,
+>;
+pub type HfFn_FlushNetworkFields =
+    ::std::option::Option<unsafe extern "C" fn(entities: *mut ::std::os::raw::c_void, rdx: u8)>;
+pub type HfFn_Wield = ::std::option::Option<
+    unsafe extern "C" fn(
+        wielders: *mut ::std::os::raw::c_void,
+        wielder: u32,
+        slot: u32,
+        item: u32,
+        s5: u32,
+    ),
+>;
+pub type HfFn_SwitchWeapon = ::std::option::Option<
+    unsafe extern "C" fn(inventory: *mut ::std::os::raw::c_void, entity: u32, selection: u32),
+>;
+pub type HfFn_QueueFieldWrite = ::std::option::Option<
+    unsafe extern "C" fn(network: u32, field: u32, value: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_BeamTypeOf = ::std::option::Option<
+    unsafe extern "C" fn(beams: *mut ::std::os::raw::c_void, weapon: u32) -> u32,
+>;
+pub type HfFn_OutOfAmmo = ::std::option::Option<
+    unsafe extern "C" fn(weapondata: *mut ::std::os::raw::c_void, weapon: u32),
+>;
+pub type HfFn_ChargeFire =
+    ::std::option::Option<unsafe extern "C" fn(rcx: u64, rdx: u32, type_: u32, r9: u64, s5: u32)>;
+pub type HfFn_EncyclopediaRecord =
+    ::std::option::Option<unsafe extern "C" fn(entity: u64) -> *mut u8>;
+pub type HfFn_PickerCatalogueItem = ::std::option::Option<
+    unsafe extern "C" fn(account: *mut ::std::os::raw::c_void, type_: u32) -> *mut u8,
+>;
+pub type HfFn_NavigationRecord =
+    ::std::option::Option<unsafe extern "C" fn(resource: u64) -> *mut u8>;
+pub type HfFn_BehaviourStageCount = ::std::option::Option<unsafe extern "C" fn(id: u32) -> u32>;
+pub type HfFn_BehaviourEventSlot =
+    ::std::option::Option<unsafe extern "C" fn(id: u32, event: u32) -> u32>;
+pub type HfFn_BehaviourSlotEvent =
+    ::std::option::Option<unsafe extern "C" fn(id: u32, slot: u32) -> u32>;
+pub type HfFn_FillDistancesTo =
+    ::std::option::Option<unsafe extern "C" fn(candidates: *mut f32, count: u32, centre: *mut f32)>;
+pub type HfFn_UpdateImageUv = ::std::option::Option<unsafe extern "C" fn(image: *mut u8)>;
+pub type HfFn_HiveMindDefinition =
+    ::std::option::Option<unsafe extern "C" fn(resource: u64) -> *mut u8>;
+pub type HfFn_UnloadDamageList = ::std::option::Option<unsafe extern "C" fn(clear: u8)>;
+pub type HfFn_CollectOperationsForDifficulty = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        rdx: u32,
+        r8: u32,
+        difficulty: u32,
+        s5: u32,
+        s6: u32,
+        unused2: u64,
+        rows: *mut u32,
+    ) -> u32,
+>;
+pub type HfFn_FinalizeVoronoiStructured = ::std::option::Option<
+    unsafe extern "C" fn(
+        pass: *mut ::std::os::raw::c_void,
+        unused: u64,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_ReVoronoi = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        pass: *mut ::std::os::raw::c_void,
+        s5: *mut ::std::os::raw::c_void,
+        count: *mut u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_PlaceRoadProps = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+        s5: u32,
+        s6: u32,
+        s7: u32,
+        s8: u8,
+        s9: *mut ::std::os::raw::c_void,
+        s10: *mut ::std::os::raw::c_void,
+        s11: *mut ::std::os::raw::c_void,
+        s12: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_StampIndexInit = ::std::option::Option<
+    unsafe extern "C" fn(
+        index: *mut ::std::os::raw::c_void,
+        x0: f32,
+        y0: f32,
+        x1: f32,
+        y1: f32,
+        cell: f32,
+        unused: u64,
+        unused2: u64,
+        unused3: u64,
+        unused4: u64,
+        memory: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_StampIndexInsert = ::std::option::Option<
+    unsafe extern "C" fn(
+        index: *mut ::std::os::raw::c_void,
+        x0: f32,
+        y0: f32,
+        x1: f32,
+        y1: f32,
+        slot: *mut u64,
+    ) -> *mut u32,
+>;
+pub type HfFn_CreateMinimapTexture = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        unused: u64,
+        pass: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_UpdateMissionCardDuration = ::std::option::Option<
+    unsafe extern "C" fn(card: *mut ::std::os::raw::c_void, unused: u64, mission: *const u8),
+>;
+pub type HfFn_SetupPhysicsConfig =
+    ::std::option::Option<unsafe extern "C" fn(get_api: *mut ::std::os::raw::c_void)>;
+pub type HfFn_SiloRemoteLink =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, remote: u32)>;
+pub type HfFn_LaserDesignatorUpdate =
+    ::std::option::Option<unsafe extern "C" fn(designators: *mut ::std::os::raw::c_void)>;
+pub type HfFn_LinkRemoteOnPickup = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, event: *mut u8, r8: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_MissilePreDestroy =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, event: *mut u8)>;
+pub type HfFn_CompactLinkerCopies =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, event: *mut u8) -> u32>;
+pub type HfFn_SiloRemoteCleanup = ::std::option::Option<
+    unsafe extern "C" fn(linkers: *mut ::std::os::raw::c_void, remote: u32, r8: u32, r9: *mut u8),
+>;
+pub type HfFn_PelicanTurretAim =
+    ::std::option::Option<unsafe extern "C" fn(ctx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_RealizePellet = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        index: u32,
+        type_: u32,
+        transform: *const u8,
+        owner: u32,
+        s6: f32,
+        s7: u32,
+        s8: u8,
+        s9: f32,
+        s10: f32,
+        s11: f32,
+        s12: u8,
+    ),
+>;
+pub type HfFn_NetworkApplyState = ::std::option::Option<
+    unsafe extern "C" fn(source: *mut ::std::os::raw::c_void, network_id: u32, full: u8),
+>;
+pub type HfFn_BehaviourSpawnSetup = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        event: *mut u8,
+        r8: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_BehaviourNetworkFill =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, event: *mut u8)>;
+pub type HfFn_LoadProjectileList = ::std::option::Option<unsafe extern "C" fn()>;
+pub type HfFn_UnloadProjectileList = ::std::option::Option<unsafe extern "C" fn(clear: u8)>;
+pub type HfFn_ProjectileLookupA = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        out: *mut ::std::os::raw::c_void,
+        kind: u32,
+        value: u32,
+        s5: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_ProjectileLookupB = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut u8, rdx: u32, r8: u32, r9: u8, s5: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_AttachmentItemById = ::std::option::Option<unsafe extern "C" fn(id: u32) -> *mut u8>;
+pub type HfFn_EntityDelta = ::std::option::Option<unsafe extern "C" fn(resource: u64) -> *mut u8>;
+pub type HfFn_RemoveSessionPeer = ::std::option::Option<
+    unsafe extern "C" fn(session: *mut ::std::os::raw::c_void, peer: u64, r8: u32, r9: u32),
+>;
+pub type HfFn_IsSteamFriend =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, peer: u64) -> u8>;
+pub type HfFn_ApplySpawnDeltas = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        descriptor: *mut u8,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_HiveMindOf =
+    ::std::option::Option<unsafe extern "C" fn(descriptor: *const u8) -> *mut u8>;
+pub type HfFn_RegisterDestructible = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, event: *mut u8, r8: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_LoadDestructibleIndex =
+    ::std::option::Option<unsafe extern "C" fn(level: *mut ::std::os::raw::c_void)>;
+pub type HfFn_DestructibleIndexEntry = ::std::option::Option<
+    unsafe extern "C" fn(index: *mut ::std::os::raw::c_void, unit: u64) -> *mut u8,
+>;
+pub type HfFn_PlayerNearness =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, point: *const f32, radius: f32) -> f32>;
+pub type HfFn_BuildWarbondPager = ::std::option::Option<
+    unsafe extern "C" fn(screen: *mut u8, pair: *mut u32, r8: *mut ::std::os::raw::c_void, r9: u32),
+>;
+pub type HfFn_RefreshWarbondBuyButton =
+    ::std::option::Option<unsafe extern "C" fn(button: *mut u8)>;
+pub type HfFn_UpdateWarbondBuyButton =
+    ::std::option::Option<unsafe extern "C" fn(button: *mut u8, dt: f32)>;
+pub type HfFn_WarbondScreenData = ::std::option::Option<unsafe extern "C" fn(ctx: *mut u8)>;
+pub type HfFn_BuildWarbondList =
+    ::std::option::Option<unsafe extern "C" fn(rcx: i32, rdx: *mut u8, r8: *mut u8)>;
+pub type HfFn_UpdateWarbondPanel = ::std::option::Option<unsafe extern "C" fn(widget: *mut u8)>;
+pub type HfFn_DrawWarbondClaimButton = ::std::option::Option<unsafe extern "C" fn(button: *mut u8)>;
+pub type HfFn_UpdateWarbondPage = ::std::option::Option<unsafe extern "C" fn(page: *mut u8)>;
+pub type HfFn_ItemPresetKit = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, rdx: u32, r8: u32, xmm3: f32, s5: u32) -> u32,
+>;
+pub type HfFn_ValidateBootLoadout =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut ::std::os::raw::c_void)>;
+pub type HfFn_StratagemPackages = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, type_: u32, unused: u64, r9: u32) -> u32,
+>;
+pub type HfFn_ReleaseUnusedSharedStratagems =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void)>;
+pub type HfFn_LoadStratagemSettings = ::std::option::Option<unsafe extern "C" fn()>;
+pub type HfFn_BuildStratagemPicker = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut u8, rdx: u32, r8: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_MasteryPackageOf = ::std::option::Option<unsafe extern "C" fn(id: u32) -> *mut u8>;
+pub type HfFn_BuildCustomizationList =
+    ::std::option::Option<unsafe extern "C" fn(screen: *mut u8, weapon: *const u32)>;
+pub type HfFn_CreateWorld = ::std::option::Option<unsafe extern "C" fn(owner: *mut u8)>;
+pub type HfFn_StretchCityTemplate = ::std::option::Option<
+    unsafe extern "C" fn(
+        arena: *mut ::std::os::raw::c_void,
+        xmm1: f32,
+        r8: u8,
+        r9: *mut u8,
+        s5: *mut ::std::os::raw::c_void,
+        s6: *mut ::std::os::raw::c_void,
+        s7: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_LaySites = ::std::option::Option<
+    unsafe extern "C" fn(
+        grid: u8,
+        rdx: *mut ::std::os::raw::c_void,
+        spacing: f32,
+        r9: *mut ::std::os::raw::c_void,
+        s5: *mut ::std::os::raw::c_void,
+        s6: *mut ::std::os::raw::c_void,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_KeepTownEdges = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+        reach: f32,
+        s6: u8,
+        s7: u32,
+        s8: *mut ::std::os::raw::c_void,
+        s9: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_BuildingPlaced = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, building: *mut u8, r8: u32),
+>;
+pub type HfFn_AreaRimHeight = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        xmm1: f32,
+        r8: *mut ::std::os::raw::c_void,
+    ) -> f32,
+>;
+pub type HfFn_FindPocketNeighbour = ::std::option::Option<
+    unsafe extern "C" fn(
+        rcx: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: *mut ::std::os::raw::c_void,
+        r9: u8,
+        s5: *mut ::std::os::raw::c_void,
+        s6: *mut ::std::os::raw::c_void,
+        s7: *mut ::std::os::raw::c_void,
+    ) -> u8,
+>;
+pub type HfFn_SendMissionEndTelemetry =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, outcome: *const u8, r8: u8, r9: u8)>;
+pub type HfFn_MissionResultReport = ::std::option::Option<
+    unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, rdx: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_ObjectiveSpawnSetup = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        event: *mut u8,
+        r8: *mut ::std::os::raw::c_void,
+        r9: *mut ::std::os::raw::c_void,
+        s5: *mut ::std::os::raw::c_void,
+        s6: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_RateOfFireCycle =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32) -> u32>;
+pub type HfFn_WeaponFunctionPress = ::std::option::Option<
+    unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, weapon: u32, function: u32),
+>;
+pub type HfFn_ProjectileWeaponRateSeed = ::std::option::Option<
+    unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, descriptor: *const u8),
+>;
+pub type HfFn_ProjectileWeaponNetApply = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        weapon: u32,
+        buffer: *const u8,
+        cursor: *mut u32,
+    ),
+>;
+pub type HfFn_ProjectileWeaponSystemPass =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_SetCurrentFireMode = ::std::option::Option<
+    unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, weapon: u32, mode: u32) -> u32,
+>;
+pub type HfFn_WeaponFunctionValue = ::std::option::Option<
+    unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, weapon: u32, input: u32) -> u32,
+>;
+pub type HfFn_WeaponApplyReplicatedTrigger = ::std::option::Option<
+    unsafe extern "C" fn(
+        weapons: *mut ::std::os::raw::c_void,
+        weapon: u32,
+        buffer: *const u8,
+        cursor: *mut u32,
+    ),
+>;
+pub type HfFn_RpcFireSingleRound =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, args: *const u8)>;
+pub type HfFn_RpcFireSingleRoundAdvanced =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, args: *const u8)>;
+pub type HfFn_SendFireSingleRoundAdvanced = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        weapon: u32,
+        direction: *const f32,
+        token: u32,
+        type_: u32,
+        s6: u64,
+        s7: u32,
+        speed: f32,
+        damage: f32,
+        penetration: f32,
+    ),
+>;
+pub type HfFn_RpcAddProjectileToManager =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, args: *const u8)>;
+pub type HfFn_SetWielder =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32, wielder: u32)>;
+pub type HfFn_ProjectileWeaponNetInit = ::std::option::Option<
+    unsafe extern "C" fn(
+        unused: u64,
+        descriptor: *const u8,
+        unused2: u64,
+        fields: *mut u8,
+        count: *mut u32,
+        allocator: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_WeaponBuild = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, descriptor: *const u8, r8: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_ProjectileWeaponEnterOwned =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, descriptor: *const u8)>;
+pub type HfFn_OwnsWarbond =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, warbond: u32) -> u8>;
+pub type HfFn_WarbondCurrencyToken = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, out: *mut u32, warbond: u32, currency: u32),
+>;
+pub type HfFn_HasCatalogueItem = ::std::option::Option<
+    unsafe extern "C" fn(account: *mut ::std::os::raw::c_void, item: u32) -> u8,
+>;
+pub type HfFn_WeaponMagazineRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponWindUpRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_RechargeRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponReloadRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponRoundsRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponChargeRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_EquipmentRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ThrowerRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ArcWeaponRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponHeatRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponCustomizationRecord = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WeaponMagazineTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_RechargeTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_WeaponReloadTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_WeaponRoundsTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_EquipmentTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_ThrowerTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_ThrowableTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_ArcWeaponTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_WeaponHeatTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_AbilityWeaponTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_WeaponCustomizationTypeRecord =
+    ::std::option::Option<unsafe extern "C" fn(type_: u64) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_WeaponUpdate =
+    ::std::option::Option<unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_WeaponDataUpdate = ::std::option::Option<
+    unsafe extern "C" fn(weapondata: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_WeaponHeatUpdate =
+    ::std::option::Option<unsafe extern "C" fn(heats: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_WeaponHeatInstanceStep = ::std::option::Option<
+    unsafe extern "C" fn(heats: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_WeaponChargeUpdate =
+    ::std::option::Option<unsafe extern "C" fn(charges: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ChargeRelease = ::std::option::Option<
+    unsafe extern "C" fn(
+        charges: *mut ::std::os::raw::c_void,
+        descriptor: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_ChargeOvercharge = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, descriptor: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_ChargeMultiplier = ::std::option::Option<
+    unsafe extern "C" fn(
+        charges: *mut ::std::os::raw::c_void,
+        weapon: u32,
+        at_min: f32,
+        at_overcharge: f32,
+    ) -> f32,
+>;
+pub type HfFn_EquipmentUpdate =
+    ::std::option::Option<unsafe extern "C" fn(equipment: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ThrowerUpdate =
+    ::std::option::Option<unsafe extern "C" fn(throwers: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ThrowableUpdate =
+    ::std::option::Option<unsafe extern "C" fn(throwables: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_ArcWeaponUpdate = ::std::option::Option<
+    unsafe extern "C" fn(arcs: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_AbilityWeaponUpdate =
+    ::std::option::Option<unsafe extern "C" fn(abilityweapons: *mut ::std::os::raw::c_void)>;
+pub type HfFn_WeaponCustomizationUpdate = ::std::option::Option<
+    unsafe extern "C" fn(customizations: *mut ::std::os::raw::c_void, dt: f32),
+>;
+pub type HfFn_StartReload = ::std::option::Option<
+    unsafe extern "C" fn(reloads: *mut ::std::os::raw::c_void, weapon: u32, force: u8),
+>;
+pub type HfFn_CanReload = ::std::option::Option<
+    unsafe extern "C" fn(reloads: *mut ::std::os::raw::c_void, weapon: u32, r8: u8, r9: u8) -> u8,
+>;
+pub type HfFn_ReloadStateHas = ::std::option::Option<
+    unsafe extern "C" fn(reloads: *mut ::std::os::raw::c_void, weapon: u32, mask: u32) -> u8,
+>;
+pub type HfFn_WeaponReloadBusy =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32) -> u8>;
+pub type HfFn_OwnSpareAmmo = ::std::option::Option<
+    unsafe extern "C" fn(weapons: *mut ::std::os::raw::c_void, weapon: u32) -> u32,
+>;
+pub type HfFn_WeaponRefill =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32, scale: f32)>;
+pub type HfFn_MagazineRefill =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32, scale: f32)>;
+pub type HfFn_RoundsRefill =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32, scale: f32)>;
+pub type HfFn_HeatsinkRefill =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32, scale: f32)>;
+pub type HfFn_AbilityWeaponModeSettings = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, weapon: u32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_AbilityWeaponFire =
+    ::std::option::Option<unsafe extern "C" fn(unused: u64, weapon: u32)>;
+pub type HfFn_MeleeHitVolumeStart = ::std::option::Option<
+    unsafe extern "C" fn(unused: u64, entity: u32, volume: *const ::std::os::raw::c_void),
+>;
+pub type HfFn_UnitSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_VehicleSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_HellpodPayloadSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_AvatarSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_JumppackSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_DisplacementSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_OrbitalAbilitySettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_RotationSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_EagleSettings = ::std::option::Option<
+    unsafe extern "C" fn(descriptor: *mut ::std::os::raw::c_void) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_VehicleUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_SquadTransportUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_HellpodPayloadUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_AiSpawnerUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_BugholeUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_VehicleMotionUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_AvatarUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_DisplacementUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_OrbitalAbilityUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_EagleUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_EncounterUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_GuardForceUpdate =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_EagleStage =
+    ::std::option::Option<unsafe extern "C" fn(eagles: *mut ::std::os::raw::c_void, index: u32)>;
+pub type HfFn_EagleTrackAim = ::std::option::Option<
+    unsafe extern "C" fn(eagles: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_EagleStrike = ::std::option::Option<
+    unsafe extern "C" fn(eagles: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_EagleFlight = ::std::option::Option<
+    unsafe extern "C" fn(eagles: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_JumppackTimers = ::std::option::Option<
+    unsafe extern "C" fn(jumppacks: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_JumppackFlight = ::std::option::Option<
+    unsafe extern "C" fn(jumppacks: *mut ::std::os::raw::c_void, index: u32, dt: f32),
+>;
+pub type HfFn_SetJumppackActive = ::std::option::Option<
+    unsafe extern "C" fn(jumppacks: *mut ::std::os::raw::c_void, entity: u32, active: u8, r9: u8),
+>;
+pub type HfFn_JumppackTakeOff =
+    ::std::option::Option<unsafe extern "C" fn(rcx: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_PickPatrolComposition = ::std::option::Option<
+    unsafe extern "C" fn(
+        hivemind: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: *mut ::std::os::raw::c_void,
+        r9: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_SpawnSquad = ::std::option::Option<
+    unsafe extern "C" fn(
+        hivemind: *mut ::std::os::raw::c_void,
+        composition: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        r9: u32,
+        flags: u32,
+        s6: u64,
+        s7: u64,
+        s8: u64,
+        s9: f32,
+        s10: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_PatrolClock = ::std::option::Option<
+    unsafe extern "C" fn(
+        hivemind: *mut ::std::os::raw::c_void,
+        dt: f32,
+        r8: *mut ::std::os::raw::c_void,
+    ) -> f32,
+>;
+pub type HfFn_PickReinforcementComposition = ::std::option::Option<
+    unsafe extern "C" fn(
+        hivemind: *mut ::std::os::raw::c_void,
+        rdx: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        r9: u32,
+    ) -> u32,
+>;
+pub type HfFn_DispatchReinforcement = ::std::option::Option<
+    unsafe extern "C" fn(
+        encounters: *mut ::std::os::raw::c_void,
+        rdx: u32,
+        r8: *mut ::std::os::raw::c_void,
+    ) -> f32,
+>;
+pub type HfFn_FillOutpost = ::std::option::Option<
+    unsafe extern "C" fn(guardforces: *mut ::std::os::raw::c_void, outpost: u32),
+>;
+pub type HfFn_UnitSetLocalPosition =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, position: *const f32)>;
+pub type HfFn_UnitSetLocalRotation =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, rotation: *const f32)>;
+pub type HfFn_UnitSetLocalScale =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, scale: *const f32)>;
+pub type HfFn_UnitTeleportLocalPosition =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, position: *const f32)>;
+pub type HfFn_UnitTeleportLocalPose = ::std::option::Option<
+    unsafe extern "C" fn(unit: *mut ::std::os::raw::c_void, node: i32, pose: *const f32),
+>;
+pub type HfFn_WorldSetUnitMoving = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        unit: *mut ::std::os::raw::c_void,
+        frames: u32,
+    ),
+>;
+pub type HfFn_UnitDeltaPosition =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut f32, unit: u32, node: i32) -> *mut f32>;
+pub type HfFn_UnitDeltaRotation =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut f32, unit: u32, node: i32) -> *mut f32>;
+pub type HfFn_UnitDeltaPose =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut f32, unit: u32, node: i32) -> *mut f32>;
+pub type HfFn_UnitTeleportLocalRotation =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, rotation: *const f32)>;
+pub type HfFn_UnitTeleportLocalScale =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32, scale: *const f32)>;
+pub type HfFn_WorldSpawnUnit = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        resource: *const u64,
+        name: *const u64,
+        pose: *const f32,
+        s5: u32,
+        s6: u64,
+        s7: u8,
+        s8: u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WorldDestroyUnit = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, unit: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_WorldQueueUnitsDestroy = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, units: *const u32, count: u32),
+>;
+pub type HfFn_WorldLinkUnitHandles = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        child: u32,
+        child_node: i32,
+        parent: u32,
+        s5: u32,
+    ),
+>;
+pub type HfFn_WorldLinkUnit = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        child: *mut ::std::os::raw::c_void,
+        child_node: i32,
+        parent: *mut ::std::os::raw::c_void,
+        s5: u16,
+    ),
+>;
+pub type HfFn_WorldUnlinkUnit = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, unit: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_WorldMendUnit = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, unit: u32, index: i32) -> u8,
+>;
+pub type HfFn_WorldUpdate =
+    ::std::option::Option<unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_WorldUpdateScene = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, dt: f32, xmm2: f32),
+>;
+pub type HfFn_WorldCreateLineObject = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        no_depth_test: u8,
+        r8: u8,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_LineObjectAddLine = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        from: *const f32,
+        to: *const f32,
+    ),
+>;
+pub type HfFn_LineObjectAddCone = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        from: *const f32,
+        to: *const f32,
+        s5: f32,
+        s6: i32,
+        s7: i32,
+    ),
+>;
+pub type HfFn_LineObjectAddCircle = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        center: *const f32,
+        radius: f32,
+        s5: *const f32,
+        s6: i32,
+    ),
+>;
+pub type HfFn_LineObjectAddSphere = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        center: *const f32,
+        radius: f32,
+        s5: i32,
+        s6: i32,
+    ),
+>;
+pub type HfFn_LineObjectAddHalfSphere = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        center: *const f32,
+        radius: f32,
+        s5: *const f32,
+        s6: i32,
+        s7: i32,
+    ),
+>;
+pub type HfFn_LineObjectAddBox = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        pose: *const f32,
+        extents: *const f32,
+    ),
+>;
+pub type HfFn_LineObjectAddCapsule = ::std::option::Option<
+    unsafe extern "C" fn(
+        line_object: *mut ::std::os::raw::c_void,
+        color: u32,
+        from: *const f32,
+        to: *const f32,
+        s5: f32,
+        s6: i32,
+        unused: i32,
+        s8: i32,
+    ),
+>;
+pub type HfFn_LineObjectDispatch = ::std::option::Option<
+    unsafe extern "C" fn(
+        renderer: *mut ::std::os::raw::c_void,
+        render: *mut ::std::os::raw::c_void,
+        line_object: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_MurmurHash64A = ::std::option::Option<
+    unsafe extern "C" fn(key: *const ::std::os::raw::c_char, len: i32, seed: u64) -> u64,
+>;
+pub type HfFn_MaterialSetScalar = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, variable: u32, value: f32),
+>;
+pub type HfFn_MaterialSetVector2 = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, variable: u32, value: *const f32),
+>;
+pub type HfFn_MaterialSetVector3 = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, variable: u32, value: *const f32),
+>;
+pub type HfFn_MaterialSetVector4 = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, variable: u32, value: *const f32),
+>;
+pub type HfFn_MaterialSetMatrix4x4 = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, variable: u32, value: *const f32),
+>;
+pub type HfFn_MaterialSetTexture = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, slot: u32, texture: u64),
+>;
+pub type HfFn_MaterialSetResource = ::std::option::Option<
+    unsafe extern "C" fn(
+        material: *mut ::std::os::raw::c_void,
+        slot: u32,
+        resource: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_MaterialSetShaderPassFlag = ::std::option::Option<
+    unsafe extern "C" fn(material: *mut ::std::os::raw::c_void, flag: u32, enabled: u32),
+>;
+pub type HfFn_MaterialReinitializeShader =
+    ::std::option::Option<unsafe extern "C" fn(material: *mut ::std::os::raw::c_void)>;
+pub type HfFn_CameraWorldToScreen = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut f32,
+        camera: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        width: i32,
+        s5: i32,
+    ) -> *mut f32,
+>;
+pub type HfFn_CameraScreenToWorld = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut f32,
+        camera: *mut ::std::os::raw::c_void,
+        position: *const f32,
+        depth: f32,
+        s5: i32,
+        s6: i32,
+    ) -> *mut f32,
+>;
+pub type HfFn_CameraSyncRange =
+    ::std::option::Option<unsafe extern "C" fn(camera: *mut ::std::os::raw::c_void)>;
+pub type HfFn_CameraSyncFrustum =
+    ::std::option::Option<unsafe extern "C" fn(camera: *mut ::std::os::raw::c_void)>;
+pub type HfFn_CameraSetLocal = ::std::option::Option<
+    unsafe extern "C" fn(camera: *mut ::std::os::raw::c_void, pose: *const f32, r8: u32),
+>;
+pub type HfFn_CameraInsideFrustum = ::std::option::Option<
+    unsafe extern "C" fn(camera: *mut ::std::os::raw::c_void, point: *const f32) -> f32,
+>;
+pub type HfFn_GuiAddPrimitive = ::std::option::Option<
+    unsafe extern "C" fn(
+        gui: *mut ::std::os::raw::c_void,
+        id: u32,
+        layer: u32,
+        vertices: u32,
+        s5: *mut ::std::os::raw::c_void,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_GuiRect = ::std::option::Option<
+    unsafe extern "C" fn(
+        gui: *mut ::std::os::raw::c_void,
+        id: u32,
+        rect: *const ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_ResourceManagerGet = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        type_: *const u64,
+        name: *const u64,
+        resolved: *mut u64,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_ResourceManagerCanGet = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        type_: *const u64,
+        name: *const u64,
+    ) -> u8,
+>;
+pub type HfFn_ResourceManagerSetOverride = ::std::option::Option<
+    unsafe extern "C" fn(
+        manager: *mut ::std::os::raw::c_void,
+        type_: *const u64,
+        name: *const u64,
+        target: *const u64,
+    ),
+>;
+pub type HfFn_ResourceManagerClearOverride = ::std::option::Option<
+    unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void, type_: *const u64, name: *const u64),
+>;
+pub type HfFn_MurmurHash64ALower = ::std::option::Option<
+    unsafe extern "C" fn(key: *const ::std::os::raw::c_char, len: i32, r8: u64) -> u64,
+>;
+pub type HfFn_RendererWindowSize = ::std::option::Option<
+    unsafe extern "C" fn(
+        renderer: *mut ::std::os::raw::c_void,
+        window: u32,
+        width: *mut u32,
+        height: *mut u32,
+    ),
+>;
+pub type HfFn_ReleaseWorld =
+    ::std::option::Option<unsafe extern "C" fn(world: *mut ::std::os::raw::c_void)>;
+pub type HfFn_CreateViewport = ::std::option::Option<
+    unsafe extern "C" fn(
+        engine: *mut ::std::os::raw::c_void,
+        world: *mut ::std::os::raw::c_void,
+        viewport_template: u32,
+    ) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_WorldDestroyViewport = ::std::option::Option<
+    unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, viewport: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_NetworkCreateGameSession =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void)>;
+pub type HfFn_NetworkShutdownGameSession =
+    ::std::option::Option<unsafe extern "C" fn(manager: *mut ::std::os::raw::c_void)>;
+pub type HfFn_LevelIsPointInsideVolume = ::std::option::Option<
+    unsafe extern "C" fn(level: *mut ::std::os::raw::c_void, volume: u32, point: *const f32) -> u32,
+>;
+pub type HfFn_LevelRandomPointInsideVolume = ::std::option::Option<
+    unsafe extern "C" fn(
+        out: *mut f32,
+        level: *mut ::std::os::raw::c_void,
+        volume: u32,
+    ) -> *mut f32,
+>;
+pub type HfFn_LevelHasVolume = ::std::option::Option<
+    unsafe extern "C" fn(level: *mut ::std::os::raw::c_void, volume: u32) -> u32,
+>;
+pub type HfFn_LevelUnitIndex = ::std::option::Option<
+    unsafe extern "C" fn(
+        level: *mut ::std::os::raw::c_void,
+        unit: *mut ::std::os::raw::c_void,
+    ) -> i32,
+>;
+pub type HfFn_LevelSpawnAllLayers =
+    ::std::option::Option<unsafe extern "C" fn(level: *mut ::std::os::raw::c_void)>;
+pub type HfFn_UnitAnimationFindVariable =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32) -> i32>;
+pub type HfFn_UnitAnimationHasVariable =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32) -> u32>;
+pub type HfFn_UnitAnimationGetVariable =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, index: i32) -> f32>;
+pub type HfFn_UnitAnimationSetVariable =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, index: i32, value: f32)>;
+pub type HfFn_UnitSetUnitVisibility =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, visible: u8, r8: u8)>;
+pub type HfFn_UnitSetVisibilityGroup =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, group: u32, visible: u32)>;
+pub type HfFn_UnitCrossfadeAnimation = ::std::option::Option<
+    unsafe extern "C" fn(
+        unit: u32,
+        animation: u64,
+        layer: i32,
+        blend_time: f32,
+        s5: u32,
+        s6: u32,
+    ) -> i32,
+>;
+pub type HfFn_UnitCrossfadeAnimationSetTime =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, id: u32, time: f32, r9: u32)>;
+pub type HfFn_UnitCopySceneGraphLocalFrom =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, source: u32)>;
+pub type HfFn_UnitSetBonesLod = ::std::option::Option<unsafe extern "C" fn(unit: u32, lod: i32)>;
+pub type HfFn_UnitAnimationFindConstraintTarget =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32) -> i32>;
+pub type HfFn_UnitAnimationSetConstraintTargetPosition =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, index: i32, position: *const f32)>;
+pub type HfFn_LightSync =
+    ::std::option::Option<unsafe extern "C" fn(light: *mut ::std::os::raw::c_void)>;
+pub type HfFn_LightSetEnabled =
+    ::std::option::Option<unsafe extern "C" fn(light: *mut ::std::os::raw::c_void, enabled: u8)>;
+pub type HfFn_WorldDestroyLevel = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        level: *mut ::std::os::raw::c_void,
+        r8: u32,
+    ),
+>;
+pub type HfFn_WorldDestroyPrefab = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        prefab: *mut ::std::os::raw::c_void,
+        r8: u32,
+    ),
+>;
+pub type HfFn_WorldPlayCameraShake = ::std::option::Option<
+    unsafe extern "C" fn(
+        world: *mut ::std::os::raw::c_void,
+        shake: u64,
+        position: *const f32,
+        near: f32,
+        s5: f32,
+    ) -> i32,
+>;
+pub type HfFn_WorldStopCameraShake = ::std::option::Option<
+    unsafe extern "C" fn(shakes: *mut ::std::os::raw::c_void, id: i32, r8: u8),
+>;
+pub type HfFn_WorldUpdateAnimations =
+    ::std::option::Option<unsafe extern "C" fn(world: *mut ::std::os::raw::c_void, dt: f32)>;
+pub type HfFn_GuiManagerDestroyGui = ::std::option::Option<
+    unsafe extern "C" fn(guis: *mut ::std::os::raw::c_void, gui: *mut ::std::os::raw::c_void),
+>;
+pub type HfFn_SpawnEntityAddComponents = ::std::option::Option<
+    unsafe extern "C" fn(
+        components: *mut ::std::os::raw::c_void,
+        record: *mut u8,
+        info: *const u8,
+        ids: *mut ::std::os::raw::c_void,
+    ),
+>;
+pub type HfFn_SpawnEntityFinishComponents = ::std::option::Option<
+    unsafe extern "C" fn(components: *mut ::std::os::raw::c_void, record: *mut u8, info: *const u8),
+>;
+pub type HfFn_ActivateEntity = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, ctx: u64, r9: u64),
+>;
+pub type HfFn_DeactivateEntity = ::std::option::Option<
+    unsafe extern "C" fn(unused: *mut ::std::os::raw::c_void, entity: u32, ctx: u64),
+>;
+pub type HfFn_UnitLocalPosition =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> *const f32>;
+pub type HfFn_UnitLocalRotation =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut f32, unit: u32, node: i32) -> *mut f32>;
+pub type HfFn_UnitLocalScale =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> *const f32>;
+pub type HfFn_UnitLocalPose =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> *const f32>;
+pub type HfFn_UnitWorldPose =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> *const f32>;
+pub type HfFn_UnitWorldRotation =
+    ::std::option::Option<unsafe extern "C" fn(out: *mut f32, unit: u32, node: i32) -> *mut f32>;
+pub type HfFn_UnitNumMeshes = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitMesh = ::std::option::Option<
+    unsafe extern "C" fn(unit: u32, index: i32) -> *mut ::std::os::raw::c_void,
+>;
+pub type HfFn_UnitAlive = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u8>;
+pub type HfFn_UnitHasAnimationBlender =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u8>;
+pub type HfFn_UnitHasAnimationStateMachine =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u8>;
+pub type HfFn_UnitAnimationRootMode = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitAnimationBoneMode = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitNumSceneGraphItems =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitSceneGraphParent =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32, node: i32) -> u32>;
+pub type HfFn_UnitNumTerrains = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitNumLodObjects = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitNumLights = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitNumCameras = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u32>;
+pub type HfFn_UnitHasNode = ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32) -> u8>;
+pub type HfFn_UnitNode = ::std::option::Option<unsafe extern "C" fn(unit: u32, name: u32) -> u32>;
+pub type HfFn_UnitLevel =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> *mut ::std::os::raw::c_void>;
+pub type HfFn_UnitId = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u64>;
+pub type HfFn_UnitResourceName = ::std::option::Option<unsafe extern "C" fn(unit: u32) -> u64>;
+pub type HfFn_UnitDebugName =
+    ::std::option::Option<unsafe extern "C" fn(unit: u32) -> *const ::std::os::raw::c_char>;
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct HfGame {
-    pub _unknown_00: [u8; 705052usize],
+    pub _unknown_00: [u8; 4344usize],
+    pub wwise_world: *mut ::std::os::raw::c_void,
+    pub _unknown_1100: [u8; 700700usize],
     pub state: u32,
+    pub _unknown_AC220: [u8; 8296usize],
+    pub level: *mut ::std::os::raw::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfGame"][::std::mem::size_of::<HfGame>() - 705056usize];
+    ["Size of HfGame"][::std::mem::size_of::<HfGame>() - 713360usize];
     ["Alignment of HfGame"][::std::mem::align_of::<HfGame>() - 1usize];
     ["Offset of field: HfGame::_unknown_00"][::std::mem::offset_of!(HfGame, _unknown_00) - 0usize];
+    ["Offset of field: HfGame::wwise_world"]
+        [::std::mem::offset_of!(HfGame, wwise_world) - 4344usize];
+    ["Offset of field: HfGame::_unknown_1100"]
+        [::std::mem::offset_of!(HfGame, _unknown_1100) - 4352usize];
     ["Offset of field: HfGame::state"][::std::mem::offset_of!(HfGame, state) - 705052usize];
+    ["Offset of field: HfGame::_unknown_AC220"]
+        [::std::mem::offset_of!(HfGame, _unknown_AC220) - 705056usize];
+    ["Offset of field: HfGame::level"][::std::mem::offset_of!(HfGame, level) - 713352usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -9185,14 +13983,20 @@ const _: () = {
 pub struct HfLocalUser {
     pub _unknown_00: [u8; 45976usize],
     pub peer: u64,
+    pub _unknown_B3A0: [u8; 8usize],
+    pub host_peer: u64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfLocalUser"][::std::mem::size_of::<HfLocalUser>() - 45984usize];
+    ["Size of HfLocalUser"][::std::mem::size_of::<HfLocalUser>() - 46000usize];
     ["Alignment of HfLocalUser"][::std::mem::align_of::<HfLocalUser>() - 1usize];
     ["Offset of field: HfLocalUser::_unknown_00"]
         [::std::mem::offset_of!(HfLocalUser, _unknown_00) - 0usize];
     ["Offset of field: HfLocalUser::peer"][::std::mem::offset_of!(HfLocalUser, peer) - 45976usize];
+    ["Offset of field: HfLocalUser::_unknown_B3A0"]
+        [::std::mem::offset_of!(HfLocalUser, _unknown_B3A0) - 45984usize];
+    ["Offset of field: HfLocalUser::host_peer"]
+        [::std::mem::offset_of!(HfLocalUser, host_peer) - 45992usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -9213,11 +14017,33 @@ const _: () = {
         [::std::mem::offset_of!(HfGameMode, _unknown_0C) - 12usize];
     ["Offset of field: HfGameMode::mission"][::std::mem::offset_of!(HfGameMode, mission) - 56usize];
 };
-#[repr(C)]
-#[derive(Debug)]
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
 pub struct HfEntityManager {
-    _unused: [u8; 0],
+    pub _unknown_00: [u8; 15803512usize],
+    pub component_tables: *mut ::std::os::raw::c_void,
+    pub _unknown_F12480: [u8; 2584usize],
+    pub entity_deltas: *mut ::std::os::raw::c_void,
+    pub entity_map: *mut ::std::os::raw::c_void,
+    pub short_ids: *mut ::std::os::raw::c_void,
 }
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEntityManager"][::std::mem::size_of::<HfEntityManager>() - 15806128usize];
+    ["Alignment of HfEntityManager"][::std::mem::align_of::<HfEntityManager>() - 1usize];
+    ["Offset of field: HfEntityManager::_unknown_00"]
+        [::std::mem::offset_of!(HfEntityManager, _unknown_00) - 0usize];
+    ["Offset of field: HfEntityManager::component_tables"]
+        [::std::mem::offset_of!(HfEntityManager, component_tables) - 15803512usize];
+    ["Offset of field: HfEntityManager::_unknown_F12480"]
+        [::std::mem::offset_of!(HfEntityManager, _unknown_F12480) - 15803520usize];
+    ["Offset of field: HfEntityManager::entity_deltas"]
+        [::std::mem::offset_of!(HfEntityManager, entity_deltas) - 15806104usize];
+    ["Offset of field: HfEntityManager::entity_map"]
+        [::std::mem::offset_of!(HfEntityManager, entity_map) - 15806112usize];
+    ["Offset of field: HfEntityManager::short_ids"]
+        [::std::mem::offset_of!(HfEntityManager, short_ids) - 15806120usize];
+};
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct HfHealthManager {
@@ -9257,10 +14083,12 @@ pub struct HfMotionManager {
     pub descriptors: *mut ::std::os::raw::c_void,
     pub _unknown_48C0: [u8; 8usize],
     pub records: *mut ::std::os::raw::c_void,
+    pub positions: *mut ::std::os::raw::c_void,
+    pub sources: *mut ::std::os::raw::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of HfMotionManager"][::std::mem::size_of::<HfMotionManager>() - 18640usize];
+    ["Size of HfMotionManager"][::std::mem::size_of::<HfMotionManager>() - 18656usize];
     ["Alignment of HfMotionManager"][::std::mem::align_of::<HfMotionManager>() - 1usize];
     ["Offset of field: HfMotionManager::_unknown_00"]
         [::std::mem::offset_of!(HfMotionManager, _unknown_00) - 0usize];
@@ -9274,6 +14102,10 @@ const _: () = {
         [::std::mem::offset_of!(HfMotionManager, _unknown_48C0) - 18624usize];
     ["Offset of field: HfMotionManager::records"]
         [::std::mem::offset_of!(HfMotionManager, records) - 18632usize];
+    ["Offset of field: HfMotionManager::positions"]
+        [::std::mem::offset_of!(HfMotionManager, positions) - 18640usize];
+    ["Offset of field: HfMotionManager::sources"]
+        [::std::mem::offset_of!(HfMotionManager, sources) - 18648usize];
 };
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
@@ -9364,26 +14196,12187 @@ const _: () = {
 #[repr(C, packed)]
 #[derive(Debug, Copy, Clone)]
 pub struct HfDestructibles {
-    pub _unknown_00: [u8; 12usize],
+    pub index: *mut ::std::os::raw::c_void,
+    pub _unknown_08: [u8; 4usize],
     pub count: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of HfDestructibles"][::std::mem::size_of::<HfDestructibles>() - 16usize];
     ["Alignment of HfDestructibles"][::std::mem::align_of::<HfDestructibles>() - 1usize];
-    ["Offset of field: HfDestructibles::_unknown_00"]
-        [::std::mem::offset_of!(HfDestructibles, _unknown_00) - 0usize];
+    ["Offset of field: HfDestructibles::index"]
+        [::std::mem::offset_of!(HfDestructibles, index) - 0usize];
+    ["Offset of field: HfDestructibles::_unknown_08"]
+        [::std::mem::offset_of!(HfDestructibles, _unknown_08) - 8usize];
     ["Offset of field: HfDestructibles::count"]
         [::std::mem::offset_of!(HfDestructibles, count) - 12usize];
 };
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfDestructionRecords {
+    pub _unknown_00: [u8; 810824usize],
+    pub slots: *mut ::std::os::raw::c_void,
+    pub slot_count: u32,
+    pub empty_key: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfDestructionRecords"][::std::mem::size_of::<HfDestructionRecords>() - 810840usize];
+    ["Alignment of HfDestructionRecords"][::std::mem::align_of::<HfDestructionRecords>() - 1usize];
+    ["Offset of field: HfDestructionRecords::_unknown_00"]
+        [::std::mem::offset_of!(HfDestructionRecords, _unknown_00) - 0usize];
+    ["Offset of field: HfDestructionRecords::slots"]
+        [::std::mem::offset_of!(HfDestructionRecords, slots) - 810824usize];
+    ["Offset of field: HfDestructionRecords::slot_count"]
+        [::std::mem::offset_of!(HfDestructionRecords, slot_count) - 810832usize];
+    ["Offset of field: HfDestructionRecords::empty_key"]
+        [::std::mem::offset_of!(HfDestructionRecords, empty_key) - 810836usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfDepositManager {
+    pub _unknown_00: [u8; 80usize],
+    pub amounts: *mut ::std::os::raw::c_void,
+    pub _unknown_58: [u8; 72usize],
+    pub definitions: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfDepositManager"][::std::mem::size_of::<HfDepositManager>() - 168usize];
+    ["Alignment of HfDepositManager"][::std::mem::align_of::<HfDepositManager>() - 1usize];
+    ["Offset of field: HfDepositManager::_unknown_00"]
+        [::std::mem::offset_of!(HfDepositManager, _unknown_00) - 0usize];
+    ["Offset of field: HfDepositManager::amounts"]
+        [::std::mem::offset_of!(HfDepositManager, amounts) - 80usize];
+    ["Offset of field: HfDepositManager::_unknown_58"]
+        [::std::mem::offset_of!(HfDepositManager, _unknown_58) - 88usize];
+    ["Offset of field: HfDepositManager::definitions"]
+        [::std::mem::offset_of!(HfDepositManager, definitions) - 160usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfAvatarManager {
+    pub _unknown_00: [u8; 112usize],
+    pub simulated: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfAvatarManager"][::std::mem::size_of::<HfAvatarManager>() - 116usize];
+    ["Alignment of HfAvatarManager"][::std::mem::align_of::<HfAvatarManager>() - 1usize];
+    ["Offset of field: HfAvatarManager::_unknown_00"]
+        [::std::mem::offset_of!(HfAvatarManager, _unknown_00) - 0usize];
+    ["Offset of field: HfAvatarManager::simulated"]
+        [::std::mem::offset_of!(HfAvatarManager, simulated) - 112usize];
+};
+pub type HfActionManager = HfAvatarManager;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWieldableManager {
+    pub _unknown_00: [u8; 56usize],
+    pub wielders: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWieldableManager"][::std::mem::size_of::<HfWieldableManager>() - 64usize];
+    ["Alignment of HfWieldableManager"][::std::mem::align_of::<HfWieldableManager>() - 1usize];
+    ["Offset of field: HfWieldableManager::_unknown_00"]
+        [::std::mem::offset_of!(HfWieldableManager, _unknown_00) - 0usize];
+    ["Offset of field: HfWieldableManager::wielders"]
+        [::std::mem::offset_of!(HfWieldableManager, wielders) - 56usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfFactionManager {
+    pub _unknown_00: [u8; 73848usize],
+    pub masks: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfFactionManager"][::std::mem::size_of::<HfFactionManager>() - 73856usize];
+    ["Alignment of HfFactionManager"][::std::mem::align_of::<HfFactionManager>() - 1usize];
+    ["Offset of field: HfFactionManager::_unknown_00"]
+        [::std::mem::offset_of!(HfFactionManager, _unknown_00) - 0usize];
+    ["Offset of field: HfFactionManager::masks"]
+        [::std::mem::offset_of!(HfFactionManager, masks) - 73848usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfBehaviourManager {
+    pub _unknown_00: [u8; 88usize],
+    pub handles: *mut ::std::os::raw::c_void,
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfBehaviourManager"][::std::mem::size_of::<HfBehaviourManager>() - 104usize];
+    ["Alignment of HfBehaviourManager"][::std::mem::align_of::<HfBehaviourManager>() - 1usize];
+    ["Offset of field: HfBehaviourManager::_unknown_00"]
+        [::std::mem::offset_of!(HfBehaviourManager, _unknown_00) - 0usize];
+    ["Offset of field: HfBehaviourManager::handles"]
+        [::std::mem::offset_of!(HfBehaviourManager, handles) - 88usize];
+    ["Offset of field: HfBehaviourManager::records"]
+        [::std::mem::offset_of!(HfBehaviourManager, records) - 96usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfTagManager {
+    pub _unknown_00: [u8; 56usize],
+    pub tags: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfTagManager"][::std::mem::size_of::<HfTagManager>() - 64usize];
+    ["Alignment of HfTagManager"][::std::mem::align_of::<HfTagManager>() - 1usize];
+    ["Offset of field: HfTagManager::_unknown_00"]
+        [::std::mem::offset_of!(HfTagManager, _unknown_00) - 0usize];
+    ["Offset of field: HfTagManager::tags"][::std::mem::offset_of!(HfTagManager, tags) - 56usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfClock {
+    pub _unknown_00: [u8; 24usize],
+    pub now: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfClock"][::std::mem::size_of::<HfClock>() - 32usize];
+    ["Alignment of HfClock"][::std::mem::align_of::<HfClock>() - 1usize];
+    ["Offset of field: HfClock::_unknown_00"]
+        [::std::mem::offset_of!(HfClock, _unknown_00) - 0usize];
+    ["Offset of field: HfClock::now"][::std::mem::offset_of!(HfClock, now) - 24usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEngineApi {
+    pub _unknown_00: [u8; 16usize],
+    pub application: *mut ::std::os::raw::c_void,
+    pub unit: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEngineApi"][::std::mem::size_of::<HfEngineApi>() - 32usize];
+    ["Alignment of HfEngineApi"][::std::mem::align_of::<HfEngineApi>() - 1usize];
+    ["Offset of field: HfEngineApi::_unknown_00"]
+        [::std::mem::offset_of!(HfEngineApi, _unknown_00) - 0usize];
+    ["Offset of field: HfEngineApi::application"]
+        [::std::mem::offset_of!(HfEngineApi, application) - 16usize];
+    ["Offset of field: HfEngineApi::unit"][::std::mem::offset_of!(HfEngineApi, unit) - 24usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEngineUnitApi {
+    pub _unknown_00: [u8; 16usize],
+    pub actor_by_name: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEngineUnitApi"][::std::mem::size_of::<HfEngineUnitApi>() - 24usize];
+    ["Alignment of HfEngineUnitApi"][::std::mem::align_of::<HfEngineUnitApi>() - 1usize];
+    ["Offset of field: HfEngineUnitApi::_unknown_00"]
+        [::std::mem::offset_of!(HfEngineUnitApi, _unknown_00) - 0usize];
+    ["Offset of field: HfEngineUnitApi::actor_by_name"]
+        [::std::mem::offset_of!(HfEngineUnitApi, actor_by_name) - 16usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWwiseApi {
+    pub _unknown_00: [u8; 824usize],
+    pub post: *mut ::std::os::raw::c_void,
+    pub _unknown_340: [u8; 592usize],
+    pub unit_source: *mut ::std::os::raw::c_void,
+    pub _unknown_598: [u8; 8usize],
+    pub source_object: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWwiseApi"][::std::mem::size_of::<HfWwiseApi>() - 1448usize];
+    ["Alignment of HfWwiseApi"][::std::mem::align_of::<HfWwiseApi>() - 1usize];
+    ["Offset of field: HfWwiseApi::_unknown_00"]
+        [::std::mem::offset_of!(HfWwiseApi, _unknown_00) - 0usize];
+    ["Offset of field: HfWwiseApi::post"][::std::mem::offset_of!(HfWwiseApi, post) - 824usize];
+    ["Offset of field: HfWwiseApi::_unknown_340"]
+        [::std::mem::offset_of!(HfWwiseApi, _unknown_340) - 832usize];
+    ["Offset of field: HfWwiseApi::unit_source"]
+        [::std::mem::offset_of!(HfWwiseApi, unit_source) - 1424usize];
+    ["Offset of field: HfWwiseApi::_unknown_598"]
+        [::std::mem::offset_of!(HfWwiseApi, _unknown_598) - 1432usize];
+    ["Offset of field: HfWwiseApi::source_object"]
+        [::std::mem::offset_of!(HfWwiseApi, source_object) - 1440usize];
+};
 #[repr(C)]
 #[derive(Debug)]
-pub struct HfDestructionRecords {
+pub struct HfAbilityManager {
     _unused: [u8; 0],
 }
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponLinkerManager {
+    pub _unknown_00: [u8; 56usize],
+    pub descriptors: *mut ::std::os::raw::c_void,
+    pub _unknown_40: [u8; 80usize],
+    pub copy_count: u32,
+    pub _unknown_94: [u8; 4usize],
+    pub copies: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponLinkerManager"][::std::mem::size_of::<HfWeaponLinkerManager>() - 160usize];
+    ["Alignment of HfWeaponLinkerManager"]
+        [::std::mem::align_of::<HfWeaponLinkerManager>() - 1usize];
+    ["Offset of field: HfWeaponLinkerManager::_unknown_00"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponLinkerManager::descriptors"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, descriptors) - 56usize];
+    ["Offset of field: HfWeaponLinkerManager::_unknown_40"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, _unknown_40) - 64usize];
+    ["Offset of field: HfWeaponLinkerManager::copy_count"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, copy_count) - 144usize];
+    ["Offset of field: HfWeaponLinkerManager::_unknown_94"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, _unknown_94) - 148usize];
+    ["Offset of field: HfWeaponLinkerManager::copies"]
+        [::std::mem::offset_of!(HfWeaponLinkerManager, copies) - 152usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfSeekingMissileManager {
+    pub _unknown_00: [u8; 72usize],
+    pub rows: *mut ::std::os::raw::c_void,
+    pub instances: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfSeekingMissileManager"][::std::mem::size_of::<HfSeekingMissileManager>() - 88usize];
+    ["Alignment of HfSeekingMissileManager"]
+        [::std::mem::align_of::<HfSeekingMissileManager>() - 1usize];
+    ["Offset of field: HfSeekingMissileManager::_unknown_00"]
+        [::std::mem::offset_of!(HfSeekingMissileManager, _unknown_00) - 0usize];
+    ["Offset of field: HfSeekingMissileManager::rows"]
+        [::std::mem::offset_of!(HfSeekingMissileManager, rows) - 72usize];
+    ["Offset of field: HfSeekingMissileManager::instances"]
+        [::std::mem::offset_of!(HfSeekingMissileManager, instances) - 80usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfLaserDesignatorManager {
+    pub _unknown_00: [u8; 88usize],
+    pub instances: *mut ::std::os::raw::c_void,
+    pub on: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfLaserDesignatorManager"]
+        [::std::mem::size_of::<HfLaserDesignatorManager>() - 104usize];
+    ["Alignment of HfLaserDesignatorManager"]
+        [::std::mem::align_of::<HfLaserDesignatorManager>() - 1usize];
+    ["Offset of field: HfLaserDesignatorManager::_unknown_00"]
+        [::std::mem::offset_of!(HfLaserDesignatorManager, _unknown_00) - 0usize];
+    ["Offset of field: HfLaserDesignatorManager::instances"]
+        [::std::mem::offset_of!(HfLaserDesignatorManager, instances) - 88usize];
+    ["Offset of field: HfLaserDesignatorManager::on"]
+        [::std::mem::offset_of!(HfLaserDesignatorManager, on) - 96usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfGuidanceTargets {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfExplosiveManager {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEquipmentManager {
+    pub _unknown_00: [u8; 64usize],
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEquipmentManager"][::std::mem::size_of::<HfEquipmentManager>() - 72usize];
+    ["Alignment of HfEquipmentManager"][::std::mem::align_of::<HfEquipmentManager>() - 1usize];
+    ["Offset of field: HfEquipmentManager::_unknown_00"]
+        [::std::mem::offset_of!(HfEquipmentManager, _unknown_00) - 0usize];
+    ["Offset of field: HfEquipmentManager::records"]
+        [::std::mem::offset_of!(HfEquipmentManager, records) - 64usize];
+};
+pub type HfRemoteOwners = HfEquipmentManager;
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfHellpodRackManager {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfAttachableManager {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfMountManager {
+    pub _unknown_00: [u8; 72usize],
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfMountManager"][::std::mem::size_of::<HfMountManager>() - 80usize];
+    ["Alignment of HfMountManager"][::std::mem::align_of::<HfMountManager>() - 1usize];
+    ["Offset of field: HfMountManager::_unknown_00"]
+        [::std::mem::offset_of!(HfMountManager, _unknown_00) - 0usize];
+    ["Offset of field: HfMountManager::records"]
+        [::std::mem::offset_of!(HfMountManager, records) - 72usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfDropAnchors {
+    pub _unknown_00: [u8; 96usize],
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfDropAnchors"][::std::mem::size_of::<HfDropAnchors>() - 104usize];
+    ["Alignment of HfDropAnchors"][::std::mem::align_of::<HfDropAnchors>() - 1usize];
+    ["Offset of field: HfDropAnchors::_unknown_00"]
+        [::std::mem::offset_of!(HfDropAnchors, _unknown_00) - 0usize];
+    ["Offset of field: HfDropAnchors::records"]
+        [::std::mem::offset_of!(HfDropAnchors, records) - 96usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPerceptionManager {
+    pub _unknown_00: [u8; 80usize],
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPerceptionManager"][::std::mem::size_of::<HfPerceptionManager>() - 88usize];
+    ["Alignment of HfPerceptionManager"][::std::mem::align_of::<HfPerceptionManager>() - 1usize];
+    ["Offset of field: HfPerceptionManager::_unknown_00"]
+        [::std::mem::offset_of!(HfPerceptionManager, _unknown_00) - 0usize];
+    ["Offset of field: HfPerceptionManager::records"]
+        [::std::mem::offset_of!(HfPerceptionManager, records) - 80usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponManager {
+    _unused: [u8; 0],
+}
+pub type HfMagazineManager = HfWeaponManager;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponMagazines {
+    pub _unknown_00: [u8; 32usize],
+    pub hash: *mut ::std::os::raw::c_void,
+    pub _unknown_28: [u8; 16usize],
+    pub descriptors: *mut ::std::os::raw::c_void,
+    pub _unknown_40: [u8; 16usize],
+    pub live: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponMagazines"][::std::mem::size_of::<HfWeaponMagazines>() - 88usize];
+    ["Alignment of HfWeaponMagazines"][::std::mem::align_of::<HfWeaponMagazines>() - 1usize];
+    ["Offset of field: HfWeaponMagazines::_unknown_00"]
+        [::std::mem::offset_of!(HfWeaponMagazines, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponMagazines::hash"]
+        [::std::mem::offset_of!(HfWeaponMagazines, hash) - 32usize];
+    ["Offset of field: HfWeaponMagazines::_unknown_28"]
+        [::std::mem::offset_of!(HfWeaponMagazines, _unknown_28) - 40usize];
+    ["Offset of field: HfWeaponMagazines::descriptors"]
+        [::std::mem::offset_of!(HfWeaponMagazines, descriptors) - 56usize];
+    ["Offset of field: HfWeaponMagazines::_unknown_40"]
+        [::std::mem::offset_of!(HfWeaponMagazines, _unknown_40) - 64usize];
+    ["Offset of field: HfWeaponMagazines::live"]
+        [::std::mem::offset_of!(HfWeaponMagazines, live) - 80usize];
+};
+pub type HfMagazineRefills = HfWeaponMagazines;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponTargeting {
+    pub _unknown_00: [u8; 376usize],
+    pub records: *mut ::std::os::raw::c_void,
+    pub network: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponTargeting"][::std::mem::size_of::<HfWeaponTargeting>() - 392usize];
+    ["Alignment of HfWeaponTargeting"][::std::mem::align_of::<HfWeaponTargeting>() - 1usize];
+    ["Offset of field: HfWeaponTargeting::_unknown_00"]
+        [::std::mem::offset_of!(HfWeaponTargeting, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponTargeting::records"]
+        [::std::mem::offset_of!(HfWeaponTargeting, records) - 376usize];
+    ["Offset of field: HfWeaponTargeting::network"]
+        [::std::mem::offset_of!(HfWeaponTargeting, network) - 384usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfShieldManager {
+    pub _unknown_00: [u8; 48usize],
+    pub map: *mut ::std::os::raw::c_void,
+    pub capacity: u32,
+    pub empty: u32,
+    pub _unknown_40: [u8; 8usize],
+    pub bindings: *mut ::std::os::raw::c_void,
+    pub rows: *mut ::std::os::raw::c_void,
+    pub live: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfShieldManager"][::std::mem::size_of::<HfShieldManager>() - 96usize];
+    ["Alignment of HfShieldManager"][::std::mem::align_of::<HfShieldManager>() - 1usize];
+    ["Offset of field: HfShieldManager::_unknown_00"]
+        [::std::mem::offset_of!(HfShieldManager, _unknown_00) - 0usize];
+    ["Offset of field: HfShieldManager::map"]
+        [::std::mem::offset_of!(HfShieldManager, map) - 48usize];
+    ["Offset of field: HfShieldManager::capacity"]
+        [::std::mem::offset_of!(HfShieldManager, capacity) - 56usize];
+    ["Offset of field: HfShieldManager::empty"]
+        [::std::mem::offset_of!(HfShieldManager, empty) - 60usize];
+    ["Offset of field: HfShieldManager::_unknown_40"]
+        [::std::mem::offset_of!(HfShieldManager, _unknown_40) - 64usize];
+    ["Offset of field: HfShieldManager::bindings"]
+        [::std::mem::offset_of!(HfShieldManager, bindings) - 72usize];
+    ["Offset of field: HfShieldManager::rows"]
+        [::std::mem::offset_of!(HfShieldManager, rows) - 80usize];
+    ["Offset of field: HfShieldManager::live"]
+        [::std::mem::offset_of!(HfShieldManager, live) - 88usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfCustomizationManager {
+    pub kits: *mut ::std::os::raw::c_void,
+    pub kit_count: u32,
+    pub _unknown_0C: [u8; 20usize],
+    pub passives: *mut ::std::os::raw::c_void,
+    pub passive_count: u32,
+    pub _unknown_2C: [u8; 2236usize],
+    pub record_count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfCustomizationManager"][::std::mem::size_of::<HfCustomizationManager>() - 2284usize];
+    ["Alignment of HfCustomizationManager"]
+        [::std::mem::align_of::<HfCustomizationManager>() - 1usize];
+    ["Offset of field: HfCustomizationManager::kits"]
+        [::std::mem::offset_of!(HfCustomizationManager, kits) - 0usize];
+    ["Offset of field: HfCustomizationManager::kit_count"]
+        [::std::mem::offset_of!(HfCustomizationManager, kit_count) - 8usize];
+    ["Offset of field: HfCustomizationManager::_unknown_0C"]
+        [::std::mem::offset_of!(HfCustomizationManager, _unknown_0C) - 12usize];
+    ["Offset of field: HfCustomizationManager::passives"]
+        [::std::mem::offset_of!(HfCustomizationManager, passives) - 32usize];
+    ["Offset of field: HfCustomizationManager::passive_count"]
+        [::std::mem::offset_of!(HfCustomizationManager, passive_count) - 40usize];
+    ["Offset of field: HfCustomizationManager::_unknown_2C"]
+        [::std::mem::offset_of!(HfCustomizationManager, _unknown_2C) - 44usize];
+    ["Offset of field: HfCustomizationManager::record_count"]
+        [::std::mem::offset_of!(HfCustomizationManager, record_count) - 2280usize];
+};
+pub type HfKitList = HfCustomizationManager;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfBombardmentManager {
+    pub _unknown_00: [u8; 96usize],
+    pub blocks: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfBombardmentManager"][::std::mem::size_of::<HfBombardmentManager>() - 104usize];
+    ["Alignment of HfBombardmentManager"][::std::mem::align_of::<HfBombardmentManager>() - 1usize];
+    ["Offset of field: HfBombardmentManager::_unknown_00"]
+        [::std::mem::offset_of!(HfBombardmentManager, _unknown_00) - 0usize];
+    ["Offset of field: HfBombardmentManager::blocks"]
+        [::std::mem::offset_of!(HfBombardmentManager, blocks) - 96usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfProgression {
+    pub _unknown_00: [u8; 887384usize],
+    pub bought_count: u32,
+    pub _unknown_D8A5C: [u8; 21148usize],
+    pub login: u32,
+    pub _unknown_DDCFC: [u8; 23706844usize],
+    pub pending_buy: u8,
+    pub _unknown_17799D9: [u8; 3usize],
+    pub pending_item: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfProgression"][::std::mem::size_of::<HfProgression>() - 24615392usize];
+    ["Alignment of HfProgression"][::std::mem::align_of::<HfProgression>() - 1usize];
+    ["Offset of field: HfProgression::_unknown_00"]
+        [::std::mem::offset_of!(HfProgression, _unknown_00) - 0usize];
+    ["Offset of field: HfProgression::bought_count"]
+        [::std::mem::offset_of!(HfProgression, bought_count) - 887384usize];
+    ["Offset of field: HfProgression::_unknown_D8A5C"]
+        [::std::mem::offset_of!(HfProgression, _unknown_D8A5C) - 887388usize];
+    ["Offset of field: HfProgression::login"]
+        [::std::mem::offset_of!(HfProgression, login) - 908536usize];
+    ["Offset of field: HfProgression::_unknown_DDCFC"]
+        [::std::mem::offset_of!(HfProgression, _unknown_DDCFC) - 908540usize];
+    ["Offset of field: HfProgression::pending_buy"]
+        [::std::mem::offset_of!(HfProgression, pending_buy) - 24615384usize];
+    ["Offset of field: HfProgression::_unknown_17799D9"]
+        [::std::mem::offset_of!(HfProgression, _unknown_17799D9) - 24615385usize];
+    ["Offset of field: HfProgression::pending_item"]
+        [::std::mem::offset_of!(HfProgression, pending_item) - 24615388usize];
+};
+pub type HfProgressionManager = HfProgression;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPlayerHistory {
+    pub _unknown_00: [u8; 184832usize],
+    pub count: u32,
+    pub _unknown_2D204: [u8; 11016usize],
+    pub left_count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPlayerHistory"][::std::mem::size_of::<HfPlayerHistory>() - 195856usize];
+    ["Alignment of HfPlayerHistory"][::std::mem::align_of::<HfPlayerHistory>() - 1usize];
+    ["Offset of field: HfPlayerHistory::_unknown_00"]
+        [::std::mem::offset_of!(HfPlayerHistory, _unknown_00) - 0usize];
+    ["Offset of field: HfPlayerHistory::count"]
+        [::std::mem::offset_of!(HfPlayerHistory, count) - 184832usize];
+    ["Offset of field: HfPlayerHistory::_unknown_2D204"]
+        [::std::mem::offset_of!(HfPlayerHistory, _unknown_2D204) - 184836usize];
+    ["Offset of field: HfPlayerHistory::left_count"]
+        [::std::mem::offset_of!(HfPlayerHistory, left_count) - 195852usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfProfile {
+    pub _unknown_00: [u8; 64usize],
+    pub primary: u32,
+    pub secondary: u32,
+    pub throwable: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfProfile"][::std::mem::size_of::<HfProfile>() - 76usize];
+    ["Alignment of HfProfile"][::std::mem::align_of::<HfProfile>() - 1usize];
+    ["Offset of field: HfProfile::_unknown_00"]
+        [::std::mem::offset_of!(HfProfile, _unknown_00) - 0usize];
+    ["Offset of field: HfProfile::primary"][::std::mem::offset_of!(HfProfile, primary) - 64usize];
+    ["Offset of field: HfProfile::secondary"]
+        [::std::mem::offset_of!(HfProfile, secondary) - 68usize];
+    ["Offset of field: HfProfile::throwable"]
+        [::std::mem::offset_of!(HfProfile, throwable) - 72usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfMenuStates {
+    pub _unknown_00: [u8; 17044usize],
+    pub presenter: u32,
+    pub _unknown_4298: [u8; 24usize],
+    pub depth: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfMenuStates"][::std::mem::size_of::<HfMenuStates>() - 17076usize];
+    ["Alignment of HfMenuStates"][::std::mem::align_of::<HfMenuStates>() - 1usize];
+    ["Offset of field: HfMenuStates::_unknown_00"]
+        [::std::mem::offset_of!(HfMenuStates, _unknown_00) - 0usize];
+    ["Offset of field: HfMenuStates::presenter"]
+        [::std::mem::offset_of!(HfMenuStates, presenter) - 17044usize];
+    ["Offset of field: HfMenuStates::_unknown_4298"]
+        [::std::mem::offset_of!(HfMenuStates, _unknown_4298) - 17048usize];
+    ["Offset of field: HfMenuStates::depth"]
+        [::std::mem::offset_of!(HfMenuStates, depth) - 17072usize];
+};
+pub type HfUiManager = HfMenuStates;
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfMenuStack {
+    pub top: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfMenuStack"][::std::mem::size_of::<HfMenuStack>() - 4usize];
+    ["Alignment of HfMenuStack"][::std::mem::align_of::<HfMenuStack>() - 1usize];
+    ["Offset of field: HfMenuStack::top"][::std::mem::offset_of!(HfMenuStack, top) - 0usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfArmory {
+    pub _unknown_00: [u8; 6948usize],
+    pub starts: u32,
+    pub _unknown_1B28: [u8; 24usize],
+    pub counts: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfArmory"][::std::mem::size_of::<HfArmory>() - 6980usize];
+    ["Alignment of HfArmory"][::std::mem::align_of::<HfArmory>() - 1usize];
+    ["Offset of field: HfArmory::_unknown_00"]
+        [::std::mem::offset_of!(HfArmory, _unknown_00) - 0usize];
+    ["Offset of field: HfArmory::starts"][::std::mem::offset_of!(HfArmory, starts) - 6948usize];
+    ["Offset of field: HfArmory::_unknown_1B28"]
+        [::std::mem::offset_of!(HfArmory, _unknown_1B28) - 6952usize];
+    ["Offset of field: HfArmory::counts"][::std::mem::offset_of!(HfArmory, counts) - 6976usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfThumbnailManager {
+    pub _unknown_00: [u8; 11064usize],
+    pub active_card: u32,
+    pub _unknown_2B3C: [u8; 28usize],
+    pub phase: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfThumbnailManager"][::std::mem::size_of::<HfThumbnailManager>() - 11100usize];
+    ["Alignment of HfThumbnailManager"][::std::mem::align_of::<HfThumbnailManager>() - 1usize];
+    ["Offset of field: HfThumbnailManager::_unknown_00"]
+        [::std::mem::offset_of!(HfThumbnailManager, _unknown_00) - 0usize];
+    ["Offset of field: HfThumbnailManager::active_card"]
+        [::std::mem::offset_of!(HfThumbnailManager, active_card) - 11064usize];
+    ["Offset of field: HfThumbnailManager::_unknown_2B3C"]
+        [::std::mem::offset_of!(HfThumbnailManager, _unknown_2B3C) - 11068usize];
+    ["Offset of field: HfThumbnailManager::phase"]
+        [::std::mem::offset_of!(HfThumbnailManager, phase) - 11096usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPackageSystem {
+    pub map: *mut ::std::os::raw::c_void,
+    pub capacity: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPackageSystem"][::std::mem::size_of::<HfPackageSystem>() - 12usize];
+    ["Alignment of HfPackageSystem"][::std::mem::align_of::<HfPackageSystem>() - 1usize];
+    ["Offset of field: HfPackageSystem::map"]
+        [::std::mem::offset_of!(HfPackageSystem, map) - 0usize];
+    ["Offset of field: HfPackageSystem::capacity"]
+        [::std::mem::offset_of!(HfPackageSystem, capacity) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfGameConfig {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfNavigationSystem {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfPhysicsPlugin {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfObjectiveManager {
+    pub _unknown_00: [u8; 36usize],
+    pub instance_count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfObjectiveManager"][::std::mem::size_of::<HfObjectiveManager>() - 40usize];
+    ["Alignment of HfObjectiveManager"][::std::mem::align_of::<HfObjectiveManager>() - 1usize];
+    ["Offset of field: HfObjectiveManager::_unknown_00"]
+        [::std::mem::offset_of!(HfObjectiveManager, _unknown_00) - 0usize];
+    ["Offset of field: HfObjectiveManager::instance_count"]
+        [::std::mem::offset_of!(HfObjectiveManager, instance_count) - 36usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfHiveMindManager {
+    pub _unknown_00: [u8; 1616usize],
+    pub level: *mut ::std::os::raw::c_void,
+    pub _unknown_658: [u8; 36usize],
+    pub timer_count: u32,
+    pub _unknown_680: [u8; 48usize],
+    pub director: *mut ::std::os::raw::c_void,
+    pub _unknown_6B8: [u8; 332236usize],
+    pub guard_compositions: u32,
+    pub _unknown_51888: [u8; 4usize],
+    pub reinforcement_compositions: u32,
+    pub _unknown_51890: [u8; 36usize],
+    pub guard_budget: f32,
+    pub _unknown_518B8: [u8; 144usize],
+    pub countdown_left: f32,
+    pub expired: u8,
+    pub _unknown_5194D: [u8; 1usize],
+    pub paused: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfHiveMindManager"][::std::mem::size_of::<HfHiveMindManager>() - 334159usize];
+    ["Alignment of HfHiveMindManager"][::std::mem::align_of::<HfHiveMindManager>() - 1usize];
+    ["Offset of field: HfHiveMindManager::_unknown_00"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_00) - 0usize];
+    ["Offset of field: HfHiveMindManager::level"]
+        [::std::mem::offset_of!(HfHiveMindManager, level) - 1616usize];
+    ["Offset of field: HfHiveMindManager::_unknown_658"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_658) - 1624usize];
+    ["Offset of field: HfHiveMindManager::timer_count"]
+        [::std::mem::offset_of!(HfHiveMindManager, timer_count) - 1660usize];
+    ["Offset of field: HfHiveMindManager::_unknown_680"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_680) - 1664usize];
+    ["Offset of field: HfHiveMindManager::director"]
+        [::std::mem::offset_of!(HfHiveMindManager, director) - 1712usize];
+    ["Offset of field: HfHiveMindManager::_unknown_6B8"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_6B8) - 1720usize];
+    ["Offset of field: HfHiveMindManager::guard_compositions"]
+        [::std::mem::offset_of!(HfHiveMindManager, guard_compositions) - 333956usize];
+    ["Offset of field: HfHiveMindManager::_unknown_51888"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_51888) - 333960usize];
+    ["Offset of field: HfHiveMindManager::reinforcement_compositions"]
+        [::std::mem::offset_of!(HfHiveMindManager, reinforcement_compositions) - 333964usize];
+    ["Offset of field: HfHiveMindManager::_unknown_51890"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_51890) - 333968usize];
+    ["Offset of field: HfHiveMindManager::guard_budget"]
+        [::std::mem::offset_of!(HfHiveMindManager, guard_budget) - 334004usize];
+    ["Offset of field: HfHiveMindManager::_unknown_518B8"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_518B8) - 334008usize];
+    ["Offset of field: HfHiveMindManager::countdown_left"]
+        [::std::mem::offset_of!(HfHiveMindManager, countdown_left) - 334152usize];
+    ["Offset of field: HfHiveMindManager::expired"]
+        [::std::mem::offset_of!(HfHiveMindManager, expired) - 334156usize];
+    ["Offset of field: HfHiveMindManager::_unknown_5194D"]
+        [::std::mem::offset_of!(HfHiveMindManager, _unknown_5194D) - 334157usize];
+    ["Offset of field: HfHiveMindManager::paused"]
+        [::std::mem::offset_of!(HfHiveMindManager, paused) - 334158usize];
+};
+pub type HfMissionTimers = HfHiveMindManager;
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfTelemetry {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfGuardForces {
+    pub _unknown_00: [u8; 12usize],
+    pub count: u32,
+    pub _unknown_10: [u8; 56usize],
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfGuardForces"][::std::mem::size_of::<HfGuardForces>() - 80usize];
+    ["Alignment of HfGuardForces"][::std::mem::align_of::<HfGuardForces>() - 1usize];
+    ["Offset of field: HfGuardForces::_unknown_00"]
+        [::std::mem::offset_of!(HfGuardForces, _unknown_00) - 0usize];
+    ["Offset of field: HfGuardForces::count"]
+        [::std::mem::offset_of!(HfGuardForces, count) - 12usize];
+    ["Offset of field: HfGuardForces::_unknown_10"]
+        [::std::mem::offset_of!(HfGuardForces, _unknown_10) - 16usize];
+    ["Offset of field: HfGuardForces::records"]
+        [::std::mem::offset_of!(HfGuardForces, records) - 72usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfUnitRegistry {
+    pub _unknown_00: [u8; 136usize],
+    pub objects: *mut ::std::os::raw::c_void,
+    pub _unknown_90: [u8; 8usize],
+    pub count: u32,
+    pub _unknown_9C: [u8; 4usize],
+    pub generations: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfUnitRegistry"][::std::mem::size_of::<HfUnitRegistry>() - 168usize];
+    ["Alignment of HfUnitRegistry"][::std::mem::align_of::<HfUnitRegistry>() - 1usize];
+    ["Offset of field: HfUnitRegistry::_unknown_00"]
+        [::std::mem::offset_of!(HfUnitRegistry, _unknown_00) - 0usize];
+    ["Offset of field: HfUnitRegistry::objects"]
+        [::std::mem::offset_of!(HfUnitRegistry, objects) - 136usize];
+    ["Offset of field: HfUnitRegistry::_unknown_90"]
+        [::std::mem::offset_of!(HfUnitRegistry, _unknown_90) - 144usize];
+    ["Offset of field: HfUnitRegistry::count"]
+        [::std::mem::offset_of!(HfUnitRegistry, count) - 152usize];
+    ["Offset of field: HfUnitRegistry::_unknown_9C"]
+        [::std::mem::offset_of!(HfUnitRegistry, _unknown_9C) - 156usize];
+    ["Offset of field: HfUnitRegistry::generations"]
+        [::std::mem::offset_of!(HfUnitRegistry, generations) - 160usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEngineCore {
+    pub _unknown_00: [u8; 1016usize],
+    pub overrides: *mut ::std::os::raw::c_void,
+    pub resource_manager: *mut ::std::os::raw::c_void,
+    pub _unknown_408: [u8; 392usize],
+    pub world_count: u32,
+    pub _unknown_594: [u8; 4usize],
+    pub worlds: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEngineCore"][::std::mem::size_of::<HfEngineCore>() - 1440usize];
+    ["Alignment of HfEngineCore"][::std::mem::align_of::<HfEngineCore>() - 1usize];
+    ["Offset of field: HfEngineCore::_unknown_00"]
+        [::std::mem::offset_of!(HfEngineCore, _unknown_00) - 0usize];
+    ["Offset of field: HfEngineCore::overrides"]
+        [::std::mem::offset_of!(HfEngineCore, overrides) - 1016usize];
+    ["Offset of field: HfEngineCore::resource_manager"]
+        [::std::mem::offset_of!(HfEngineCore, resource_manager) - 1024usize];
+    ["Offset of field: HfEngineCore::_unknown_408"]
+        [::std::mem::offset_of!(HfEngineCore, _unknown_408) - 1032usize];
+    ["Offset of field: HfEngineCore::world_count"]
+        [::std::mem::offset_of!(HfEngineCore, world_count) - 1424usize];
+    ["Offset of field: HfEngineCore::_unknown_594"]
+        [::std::mem::offset_of!(HfEngineCore, _unknown_594) - 1428usize];
+    ["Offset of field: HfEngineCore::worlds"]
+        [::std::mem::offset_of!(HfEngineCore, worlds) - 1432usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfNetworkManager {
+    pub config: *mut ::std::os::raw::c_void,
+    pub _unknown_08: [u8; 144usize],
+    pub transport: *mut ::std::os::raw::c_void,
+    pub _unknown_A0: [u8; 8usize],
+    pub session: *mut ::std::os::raw::c_void,
+    pub _unknown_B0: [u8; 32usize],
+    pub kept_count: u32,
+    pub _unknown_D4: [u8; 4usize],
+    pub kept: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfNetworkManager"][::std::mem::size_of::<HfNetworkManager>() - 224usize];
+    ["Alignment of HfNetworkManager"][::std::mem::align_of::<HfNetworkManager>() - 1usize];
+    ["Offset of field: HfNetworkManager::config"]
+        [::std::mem::offset_of!(HfNetworkManager, config) - 0usize];
+    ["Offset of field: HfNetworkManager::_unknown_08"]
+        [::std::mem::offset_of!(HfNetworkManager, _unknown_08) - 8usize];
+    ["Offset of field: HfNetworkManager::transport"]
+        [::std::mem::offset_of!(HfNetworkManager, transport) - 152usize];
+    ["Offset of field: HfNetworkManager::_unknown_A0"]
+        [::std::mem::offset_of!(HfNetworkManager, _unknown_A0) - 160usize];
+    ["Offset of field: HfNetworkManager::session"]
+        [::std::mem::offset_of!(HfNetworkManager, session) - 168usize];
+    ["Offset of field: HfNetworkManager::_unknown_B0"]
+        [::std::mem::offset_of!(HfNetworkManager, _unknown_B0) - 176usize];
+    ["Offset of field: HfNetworkManager::kept_count"]
+        [::std::mem::offset_of!(HfNetworkManager, kept_count) - 208usize];
+    ["Offset of field: HfNetworkManager::_unknown_D4"]
+        [::std::mem::offset_of!(HfNetworkManager, _unknown_D4) - 212usize];
+    ["Offset of field: HfNetworkManager::kept"]
+        [::std::mem::offset_of!(HfNetworkManager, kept) - 216usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfNetworkConfigOwner {
+    pub config: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfNetworkConfigOwner"][::std::mem::size_of::<HfNetworkConfigOwner>() - 8usize];
+    ["Alignment of HfNetworkConfigOwner"][::std::mem::align_of::<HfNetworkConfigOwner>() - 1usize];
+    ["Offset of field: HfNetworkConfigOwner::config"]
+        [::std::mem::offset_of!(HfNetworkConfigOwner, config) - 0usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEngineEntityIndex {
+    pub _unknown_00: [u8; 128usize],
+    pub size: u32,
+    pub _unknown_84: [u8; 4usize],
+    pub generations: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEngineEntityIndex"][::std::mem::size_of::<HfEngineEntityIndex>() - 144usize];
+    ["Alignment of HfEngineEntityIndex"][::std::mem::align_of::<HfEngineEntityIndex>() - 1usize];
+    ["Offset of field: HfEngineEntityIndex::_unknown_00"]
+        [::std::mem::offset_of!(HfEngineEntityIndex, _unknown_00) - 0usize];
+    ["Offset of field: HfEngineEntityIndex::size"]
+        [::std::mem::offset_of!(HfEngineEntityIndex, size) - 128usize];
+    ["Offset of field: HfEngineEntityIndex::_unknown_84"]
+        [::std::mem::offset_of!(HfEngineEntityIndex, _unknown_84) - 132usize];
+    ["Offset of field: HfEngineEntityIndex::generations"]
+        [::std::mem::offset_of!(HfEngineEntityIndex, generations) - 136usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfNavWorlds {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfPhysicsProperties {
+    pub _unknown_00: [u8; 248usize],
+    pub filter_count: u32,
+    pub _unknown_FC: [u8; 4usize],
+    pub filter_names: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfPhysicsProperties"][::std::mem::size_of::<HfPhysicsProperties>() - 264usize];
+    ["Alignment of HfPhysicsProperties"][::std::mem::align_of::<HfPhysicsProperties>() - 1usize];
+    ["Offset of field: HfPhysicsProperties::_unknown_00"]
+        [::std::mem::offset_of!(HfPhysicsProperties, _unknown_00) - 0usize];
+    ["Offset of field: HfPhysicsProperties::filter_count"]
+        [::std::mem::offset_of!(HfPhysicsProperties, filter_count) - 248usize];
+    ["Offset of field: HfPhysicsProperties::_unknown_FC"]
+        [::std::mem::offset_of!(HfPhysicsProperties, _unknown_FC) - 252usize];
+    ["Offset of field: HfPhysicsProperties::filter_names"]
+        [::std::mem::offset_of!(HfPhysicsProperties, filter_names) - 256usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfCollisionFilterA {
+    pub _unknown_00: [u8; 40usize],
+    pub matrix: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfCollisionFilterA"][::std::mem::size_of::<HfCollisionFilterA>() - 44usize];
+    ["Alignment of HfCollisionFilterA"][::std::mem::align_of::<HfCollisionFilterA>() - 1usize];
+    ["Offset of field: HfCollisionFilterA::_unknown_00"]
+        [::std::mem::offset_of!(HfCollisionFilterA, _unknown_00) - 0usize];
+    ["Offset of field: HfCollisionFilterA::matrix"]
+        [::std::mem::offset_of!(HfCollisionFilterA, matrix) - 40usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfCollisionFilterB {
+    pub _unknown_00: [u8; 40usize],
+    pub matrix: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfCollisionFilterB"][::std::mem::size_of::<HfCollisionFilterB>() - 44usize];
+    ["Alignment of HfCollisionFilterB"][::std::mem::align_of::<HfCollisionFilterB>() - 1usize];
+    ["Offset of field: HfCollisionFilterB::_unknown_00"]
+        [::std::mem::offset_of!(HfCollisionFilterB, _unknown_00) - 0usize];
+    ["Offset of field: HfCollisionFilterB::matrix"]
+        [::std::mem::offset_of!(HfCollisionFilterB, matrix) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfStatusReceivers {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfComponentWorld {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfGameModeMission {
+    pub _unknown_00: [u8; 72usize],
+    pub max: u32,
+    pub _unknown_4C: [u8; 4usize],
+    pub count: u32,
+    pub _unknown_54: [u8; 44usize],
+    pub descriptor: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfGameModeMission"][::std::mem::size_of::<HfGameModeMission>() - 136usize];
+    ["Alignment of HfGameModeMission"][::std::mem::align_of::<HfGameModeMission>() - 1usize];
+    ["Offset of field: HfGameModeMission::_unknown_00"]
+        [::std::mem::offset_of!(HfGameModeMission, _unknown_00) - 0usize];
+    ["Offset of field: HfGameModeMission::max"]
+        [::std::mem::offset_of!(HfGameModeMission, max) - 72usize];
+    ["Offset of field: HfGameModeMission::_unknown_4C"]
+        [::std::mem::offset_of!(HfGameModeMission, _unknown_4C) - 76usize];
+    ["Offset of field: HfGameModeMission::count"]
+        [::std::mem::offset_of!(HfGameModeMission, count) - 80usize];
+    ["Offset of field: HfGameModeMission::_unknown_54"]
+        [::std::mem::offset_of!(HfGameModeMission, _unknown_54) - 84usize];
+    ["Offset of field: HfGameModeMission::descriptor"]
+        [::std::mem::offset_of!(HfGameModeMission, descriptor) - 128usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfCareerStats {
+    pub _unknown_00: [u8; 20usize],
+    pub kills: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfCareerStats"][::std::mem::size_of::<HfCareerStats>() - 24usize];
+    ["Alignment of HfCareerStats"][::std::mem::align_of::<HfCareerStats>() - 1usize];
+    ["Offset of field: HfCareerStats::_unknown_00"]
+        [::std::mem::offset_of!(HfCareerStats, _unknown_00) - 0usize];
+    ["Offset of field: HfCareerStats::kills"]
+        [::std::mem::offset_of!(HfCareerStats, kills) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfProjectileWeapons {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponDatas {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfBeamWeapons {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfLinkedAmmo {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfCorpses {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponWindUps {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfRecharges {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponReloads {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponRoundsManager {
+    pub _unknown_00: [u8; 24usize],
+    pub count: u32,
+    pub _unknown_1C: [u8; 36usize],
+    pub descriptors: *mut ::std::os::raw::c_void,
+    pub _unknown_48: [u8; 16usize],
+    pub live: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponRoundsManager"][::std::mem::size_of::<HfWeaponRoundsManager>() - 96usize];
+    ["Alignment of HfWeaponRoundsManager"]
+        [::std::mem::align_of::<HfWeaponRoundsManager>() - 1usize];
+    ["Offset of field: HfWeaponRoundsManager::_unknown_00"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponRoundsManager::count"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, count) - 24usize];
+    ["Offset of field: HfWeaponRoundsManager::_unknown_1C"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, _unknown_1C) - 28usize];
+    ["Offset of field: HfWeaponRoundsManager::descriptors"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, descriptors) - 64usize];
+    ["Offset of field: HfWeaponRoundsManager::_unknown_48"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, _unknown_48) - 72usize];
+    ["Offset of field: HfWeaponRoundsManager::live"]
+        [::std::mem::offset_of!(HfWeaponRoundsManager, live) - 88usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponCharges {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfThrowers {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfThrowables {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfArcWeapons {
+    pub _unknown_00: [u8; 56usize],
+    pub count: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfArcWeapons"][::std::mem::size_of::<HfArcWeapons>() - 60usize];
+    ["Alignment of HfArcWeapons"][::std::mem::align_of::<HfArcWeapons>() - 1usize];
+    ["Offset of field: HfArcWeapons::_unknown_00"]
+        [::std::mem::offset_of!(HfArcWeapons, _unknown_00) - 0usize];
+    ["Offset of field: HfArcWeapons::count"][::std::mem::offset_of!(HfArcWeapons, count) - 56usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfWeaponHeats {
+    pub _unknown_00: [u8; 24usize],
+    pub count: u32,
+    pub _unknown_1C: [u8; 36usize],
+    pub descriptors: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfWeaponHeats"][::std::mem::size_of::<HfWeaponHeats>() - 72usize];
+    ["Alignment of HfWeaponHeats"][::std::mem::align_of::<HfWeaponHeats>() - 1usize];
+    ["Offset of field: HfWeaponHeats::_unknown_00"]
+        [::std::mem::offset_of!(HfWeaponHeats, _unknown_00) - 0usize];
+    ["Offset of field: HfWeaponHeats::count"]
+        [::std::mem::offset_of!(HfWeaponHeats, count) - 24usize];
+    ["Offset of field: HfWeaponHeats::_unknown_1C"]
+        [::std::mem::offset_of!(HfWeaponHeats, _unknown_1C) - 28usize];
+    ["Offset of field: HfWeaponHeats::descriptors"]
+        [::std::mem::offset_of!(HfWeaponHeats, descriptors) - 64usize];
+};
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfAbilityWeapons {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfMeleeWeapons {
+    _unused: [u8; 0],
+}
+#[repr(C)]
+#[derive(Debug)]
+pub struct HfWeaponCustomizations {
+    _unused: [u8; 0],
+}
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfAiSpawnerManager {
+    pub _unknown_00: [u8; 40usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfAiSpawnerManager"][::std::mem::size_of::<HfAiSpawnerManager>() - 48usize];
+    ["Alignment of HfAiSpawnerManager"][::std::mem::align_of::<HfAiSpawnerManager>() - 1usize];
+    ["Offset of field: HfAiSpawnerManager::_unknown_00"]
+        [::std::mem::offset_of!(HfAiSpawnerManager, _unknown_00) - 0usize];
+    ["Offset of field: HfAiSpawnerManager::map"]
+        [::std::mem::offset_of!(HfAiSpawnerManager, map) - 40usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfBugholeManager {
+    pub _unknown_00: [u8; 40usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfBugholeManager"][::std::mem::size_of::<HfBugholeManager>() - 48usize];
+    ["Alignment of HfBugholeManager"][::std::mem::align_of::<HfBugholeManager>() - 1usize];
+    ["Offset of field: HfBugholeManager::_unknown_00"]
+        [::std::mem::offset_of!(HfBugholeManager, _unknown_00) - 0usize];
+    ["Offset of field: HfBugholeManager::map"]
+        [::std::mem::offset_of!(HfBugholeManager, map) - 40usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfVehicleMotionManager {
+    pub _unknown_00: [u8; 64usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfVehicleMotionManager"][::std::mem::size_of::<HfVehicleMotionManager>() - 72usize];
+    ["Alignment of HfVehicleMotionManager"]
+        [::std::mem::align_of::<HfVehicleMotionManager>() - 1usize];
+    ["Offset of field: HfVehicleMotionManager::_unknown_00"]
+        [::std::mem::offset_of!(HfVehicleMotionManager, _unknown_00) - 0usize];
+    ["Offset of field: HfVehicleMotionManager::map"]
+        [::std::mem::offset_of!(HfVehicleMotionManager, map) - 64usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfVehicleManager {
+    pub _unknown_00: [u8; 56usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfVehicleManager"][::std::mem::size_of::<HfVehicleManager>() - 64usize];
+    ["Alignment of HfVehicleManager"][::std::mem::align_of::<HfVehicleManager>() - 1usize];
+    ["Offset of field: HfVehicleManager::_unknown_00"]
+        [::std::mem::offset_of!(HfVehicleManager, _unknown_00) - 0usize];
+    ["Offset of field: HfVehicleManager::map"]
+        [::std::mem::offset_of!(HfVehicleManager, map) - 56usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfSquadTransportManager {
+    pub _unknown_00: [u8; 32usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfSquadTransportManager"][::std::mem::size_of::<HfSquadTransportManager>() - 40usize];
+    ["Alignment of HfSquadTransportManager"]
+        [::std::mem::align_of::<HfSquadTransportManager>() - 1usize];
+    ["Offset of field: HfSquadTransportManager::_unknown_00"]
+        [::std::mem::offset_of!(HfSquadTransportManager, _unknown_00) - 0usize];
+    ["Offset of field: HfSquadTransportManager::map"]
+        [::std::mem::offset_of!(HfSquadTransportManager, map) - 32usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfSquadFormationManager {
+    pub _unknown_00: [u8; 24usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfSquadFormationManager"][::std::mem::size_of::<HfSquadFormationManager>() - 32usize];
+    ["Alignment of HfSquadFormationManager"]
+        [::std::mem::align_of::<HfSquadFormationManager>() - 1usize];
+    ["Offset of field: HfSquadFormationManager::_unknown_00"]
+        [::std::mem::offset_of!(HfSquadFormationManager, _unknown_00) - 0usize];
+    ["Offset of field: HfSquadFormationManager::map"]
+        [::std::mem::offset_of!(HfSquadFormationManager, map) - 24usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfGoreManager {
+    pub _unknown_00: [u8; 1404320usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfGoreManager"][::std::mem::size_of::<HfGoreManager>() - 1404328usize];
+    ["Alignment of HfGoreManager"][::std::mem::align_of::<HfGoreManager>() - 1usize];
+    ["Offset of field: HfGoreManager::_unknown_00"]
+        [::std::mem::offset_of!(HfGoreManager, _unknown_00) - 0usize];
+    ["Offset of field: HfGoreManager::map"]
+        [::std::mem::offset_of!(HfGoreManager, map) - 1404320usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfStratagemBlockerManager {
+    pub _unknown_00: [u8; 24usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfStratagemBlockerManager"]
+        [::std::mem::size_of::<HfStratagemBlockerManager>() - 32usize];
+    ["Alignment of HfStratagemBlockerManager"]
+        [::std::mem::align_of::<HfStratagemBlockerManager>() - 1usize];
+    ["Offset of field: HfStratagemBlockerManager::_unknown_00"]
+        [::std::mem::offset_of!(HfStratagemBlockerManager, _unknown_00) - 0usize];
+    ["Offset of field: HfStratagemBlockerManager::map"]
+        [::std::mem::offset_of!(HfStratagemBlockerManager, map) - 24usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfOrbitalAbilityManager {
+    pub _unknown_00: [u8; 88usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfOrbitalAbilityManager"][::std::mem::size_of::<HfOrbitalAbilityManager>() - 96usize];
+    ["Alignment of HfOrbitalAbilityManager"]
+        [::std::mem::align_of::<HfOrbitalAbilityManager>() - 1usize];
+    ["Offset of field: HfOrbitalAbilityManager::_unknown_00"]
+        [::std::mem::offset_of!(HfOrbitalAbilityManager, _unknown_00) - 0usize];
+    ["Offset of field: HfOrbitalAbilityManager::map"]
+        [::std::mem::offset_of!(HfOrbitalAbilityManager, map) - 88usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfHellpodPayloadManager {
+    pub _unknown_00: [u8; 40usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfHellpodPayloadManager"][::std::mem::size_of::<HfHellpodPayloadManager>() - 48usize];
+    ["Alignment of HfHellpodPayloadManager"]
+        [::std::mem::align_of::<HfHellpodPayloadManager>() - 1usize];
+    ["Offset of field: HfHellpodPayloadManager::_unknown_00"]
+        [::std::mem::offset_of!(HfHellpodPayloadManager, _unknown_00) - 0usize];
+    ["Offset of field: HfHellpodPayloadManager::map"]
+        [::std::mem::offset_of!(HfHellpodPayloadManager, map) - 40usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfUnitManager {
+    pub _unknown_00: [u8; 64usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfUnitManager"][::std::mem::size_of::<HfUnitManager>() - 72usize];
+    ["Alignment of HfUnitManager"][::std::mem::align_of::<HfUnitManager>() - 1usize];
+    ["Offset of field: HfUnitManager::_unknown_00"]
+        [::std::mem::offset_of!(HfUnitManager, _unknown_00) - 0usize];
+    ["Offset of field: HfUnitManager::map"][::std::mem::offset_of!(HfUnitManager, map) - 64usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRotationManager {
+    pub _unknown_00: [u8; 56usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRotationManager"][::std::mem::size_of::<HfRotationManager>() - 64usize];
+    ["Alignment of HfRotationManager"][::std::mem::align_of::<HfRotationManager>() - 1usize];
+    ["Offset of field: HfRotationManager::_unknown_00"]
+        [::std::mem::offset_of!(HfRotationManager, _unknown_00) - 0usize];
+    ["Offset of field: HfRotationManager::map"]
+        [::std::mem::offset_of!(HfRotationManager, map) - 56usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfDisplacementManager {
+    pub _unknown_00: [u8; 32usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfDisplacementManager"][::std::mem::size_of::<HfDisplacementManager>() - 40usize];
+    ["Alignment of HfDisplacementManager"]
+        [::std::mem::align_of::<HfDisplacementManager>() - 1usize];
+    ["Offset of field: HfDisplacementManager::_unknown_00"]
+        [::std::mem::offset_of!(HfDisplacementManager, _unknown_00) - 0usize];
+    ["Offset of field: HfDisplacementManager::map"]
+        [::std::mem::offset_of!(HfDisplacementManager, map) - 32usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfJumppackManager {
+    pub _unknown_00: [u8; 32usize],
+    pub map: *mut ::std::os::raw::c_void,
+    pub _unknown_28: [u8; 24usize],
+    pub hover_input: *mut ::std::os::raw::c_void,
+    pub flight: *mut ::std::os::raw::c_void,
+    pub flags: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfJumppackManager"][::std::mem::size_of::<HfJumppackManager>() - 88usize];
+    ["Alignment of HfJumppackManager"][::std::mem::align_of::<HfJumppackManager>() - 1usize];
+    ["Offset of field: HfJumppackManager::_unknown_00"]
+        [::std::mem::offset_of!(HfJumppackManager, _unknown_00) - 0usize];
+    ["Offset of field: HfJumppackManager::map"]
+        [::std::mem::offset_of!(HfJumppackManager, map) - 32usize];
+    ["Offset of field: HfJumppackManager::_unknown_28"]
+        [::std::mem::offset_of!(HfJumppackManager, _unknown_28) - 40usize];
+    ["Offset of field: HfJumppackManager::hover_input"]
+        [::std::mem::offset_of!(HfJumppackManager, hover_input) - 64usize];
+    ["Offset of field: HfJumppackManager::flight"]
+        [::std::mem::offset_of!(HfJumppackManager, flight) - 72usize];
+    ["Offset of field: HfJumppackManager::flags"]
+        [::std::mem::offset_of!(HfJumppackManager, flags) - 80usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEagleManager {
+    pub _unknown_00: [u8; 48usize],
+    pub map: *mut ::std::os::raw::c_void,
+    pub _unknown_38: [u8; 32usize],
+    pub records: *mut ::std::os::raw::c_void,
+    pub flight: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEagleManager"][::std::mem::size_of::<HfEagleManager>() - 104usize];
+    ["Alignment of HfEagleManager"][::std::mem::align_of::<HfEagleManager>() - 1usize];
+    ["Offset of field: HfEagleManager::_unknown_00"]
+        [::std::mem::offset_of!(HfEagleManager, _unknown_00) - 0usize];
+    ["Offset of field: HfEagleManager::map"][::std::mem::offset_of!(HfEagleManager, map) - 48usize];
+    ["Offset of field: HfEagleManager::_unknown_38"]
+        [::std::mem::offset_of!(HfEagleManager, _unknown_38) - 56usize];
+    ["Offset of field: HfEagleManager::records"]
+        [::std::mem::offset_of!(HfEagleManager, records) - 88usize];
+    ["Offset of field: HfEagleManager::flight"]
+        [::std::mem::offset_of!(HfEagleManager, flight) - 96usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfEncounterManager {
+    pub _unknown_00: [u8; 2376usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfEncounterManager"][::std::mem::size_of::<HfEncounterManager>() - 2384usize];
+    ["Alignment of HfEncounterManager"][::std::mem::align_of::<HfEncounterManager>() - 1usize];
+    ["Offset of field: HfEncounterManager::_unknown_00"]
+        [::std::mem::offset_of!(HfEncounterManager, _unknown_00) - 0usize];
+    ["Offset of field: HfEncounterManager::map"]
+        [::std::mem::offset_of!(HfEncounterManager, map) - 2376usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfAiSquadManager {
+    pub _unknown_00: [u8; 12usize],
+    pub count: u32,
+    pub _unknown_10: [u8; 16usize],
+    pub map: *mut ::std::os::raw::c_void,
+    pub _unknown_28: [u8; 16usize],
+    pub descriptors: *mut ::std::os::raw::c_void,
+    pub records: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfAiSquadManager"][::std::mem::size_of::<HfAiSquadManager>() - 72usize];
+    ["Alignment of HfAiSquadManager"][::std::mem::align_of::<HfAiSquadManager>() - 1usize];
+    ["Offset of field: HfAiSquadManager::_unknown_00"]
+        [::std::mem::offset_of!(HfAiSquadManager, _unknown_00) - 0usize];
+    ["Offset of field: HfAiSquadManager::count"]
+        [::std::mem::offset_of!(HfAiSquadManager, count) - 12usize];
+    ["Offset of field: HfAiSquadManager::_unknown_10"]
+        [::std::mem::offset_of!(HfAiSquadManager, _unknown_10) - 16usize];
+    ["Offset of field: HfAiSquadManager::map"]
+        [::std::mem::offset_of!(HfAiSquadManager, map) - 32usize];
+    ["Offset of field: HfAiSquadManager::_unknown_28"]
+        [::std::mem::offset_of!(HfAiSquadManager, _unknown_28) - 40usize];
+    ["Offset of field: HfAiSquadManager::descriptors"]
+        [::std::mem::offset_of!(HfAiSquadManager, descriptors) - 56usize];
+    ["Offset of field: HfAiSquadManager::records"]
+        [::std::mem::offset_of!(HfAiSquadManager, records) - 64usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfSensorEyeManager {
+    pub _unknown_00: [u8; 48usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfSensorEyeManager"][::std::mem::size_of::<HfSensorEyeManager>() - 56usize];
+    ["Alignment of HfSensorEyeManager"][::std::mem::align_of::<HfSensorEyeManager>() - 1usize];
+    ["Offset of field: HfSensorEyeManager::_unknown_00"]
+        [::std::mem::offset_of!(HfSensorEyeManager, _unknown_00) - 0usize];
+    ["Offset of field: HfSensorEyeManager::map"]
+        [::std::mem::offset_of!(HfSensorEyeManager, map) - 48usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfTurretManager {
+    pub _unknown_00: [u8; 40usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfTurretManager"][::std::mem::size_of::<HfTurretManager>() - 48usize];
+    ["Alignment of HfTurretManager"][::std::mem::align_of::<HfTurretManager>() - 1usize];
+    ["Offset of field: HfTurretManager::_unknown_00"]
+        [::std::mem::offset_of!(HfTurretManager, _unknown_00) - 0usize];
+    ["Offset of field: HfTurretManager::map"]
+        [::std::mem::offset_of!(HfTurretManager, map) - 40usize];
+};
+#[repr(C, packed)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfLocomotionManager {
+    pub _unknown_00: [u8; 32usize],
+    pub map: *mut ::std::os::raw::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfLocomotionManager"][::std::mem::size_of::<HfLocomotionManager>() - 40usize];
+    ["Alignment of HfLocomotionManager"][::std::mem::align_of::<HfLocomotionManager>() - 1usize];
+    ["Offset of field: HfLocomotionManager::_unknown_00"]
+        [::std::mem::offset_of!(HfLocomotionManager, _unknown_00) - 0usize];
+    ["Offset of field: HfLocomotionManager::map"]
+        [::std::mem::offset_of!(HfLocomotionManager, map) - 32usize];
+};
 unsafe extern "C" {
     pub fn hellforge_mod_init(api: *const HfApi, mod_: *mut HfMod) -> ::std::os::raw::c_int;
 }
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_outpost_location_discovered {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_outpost_location_discovered"]
+        [::std::mem::size_of::<HfRpc_outpost_location_discovered>() - 8usize];
+    ["Alignment of HfRpc_outpost_location_discovered"]
+        [::std::mem::align_of::<HfRpc_outpost_location_discovered>() - 4usize];
+    ["Offset of field: HfRpc_outpost_location_discovered::entity"]
+        [::std::mem::offset_of!(HfRpc_outpost_location_discovered, entity) - 0usize];
+    ["Offset of field: HfRpc_outpost_location_discovered::entity_2"]
+        [::std::mem::offset_of!(HfRpc_outpost_location_discovered, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_light_intensity {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub arg2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_light_intensity"]
+        [::std::mem::size_of::<HfRpc_set_light_intensity>() - 12usize];
+    ["Alignment of HfRpc_set_light_intensity"]
+        [::std::mem::align_of::<HfRpc_set_light_intensity>() - 4usize];
+    ["Offset of field: HfRpc_set_light_intensity::entity"]
+        [::std::mem::offset_of!(HfRpc_set_light_intensity, entity) - 0usize];
+    ["Offset of field: HfRpc_set_light_intensity::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_light_intensity, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_light_intensity::arg2"]
+        [::std::mem::offset_of!(HfRpc_set_light_intensity, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_remove_lobby {
+    pub int_value: i32,
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_remove_lobby"][::std::mem::size_of::<HfRpc_sync_remove_lobby>() - 16usize];
+    ["Alignment of HfRpc_sync_remove_lobby"]
+        [::std::mem::align_of::<HfRpc_sync_remove_lobby>() - 8usize];
+    ["Offset of field: HfRpc_sync_remove_lobby::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_remove_lobby, int_value) - 0usize];
+    ["Offset of field: HfRpc_sync_remove_lobby::network_string"]
+        [::std::mem::offset_of!(HfRpc_sync_remove_lobby, network_string) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stop_looping_surface_effect {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stop_looping_surface_effect"]
+        [::std::mem::size_of::<HfRpc_stop_looping_surface_effect>() - 8usize];
+    ["Alignment of HfRpc_stop_looping_surface_effect"]
+        [::std::mem::align_of::<HfRpc_stop_looping_surface_effect>() - 4usize];
+    ["Offset of field: HfRpc_stop_looping_surface_effect::entity"]
+        [::std::mem::offset_of!(HfRpc_stop_looping_surface_effect, entity) - 0usize];
+    ["Offset of field: HfRpc_stop_looping_surface_effect::arg1"]
+        [::std::mem::offset_of!(HfRpc_stop_looping_surface_effect, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_visible {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_visible"][::std::mem::size_of::<HfRpc_set_visible>() - 8usize];
+    ["Alignment of HfRpc_set_visible"][::std::mem::align_of::<HfRpc_set_visible>() - 4usize];
+    ["Offset of field: HfRpc_set_visible::entity"]
+        [::std::mem::offset_of!(HfRpc_set_visible, entity) - 0usize];
+    ["Offset of field: HfRpc_set_visible::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_visible, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_interactable_zone_occupant {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_interactable_zone_occupant"]
+        [::std::mem::size_of::<HfRpc_set_interactable_zone_occupant>() - 16usize];
+    ["Alignment of HfRpc_set_interactable_zone_occupant"]
+        [::std::mem::align_of::<HfRpc_set_interactable_zone_occupant>() - 8usize];
+    ["Offset of field: HfRpc_set_interactable_zone_occupant::entity"]
+        [::std::mem::offset_of!(HfRpc_set_interactable_zone_occupant, entity) - 0usize];
+    ["Offset of field: HfRpc_set_interactable_zone_occupant::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_interactable_zone_occupant, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_interactable_zone_occupant::peer_id"]
+        [::std::mem::offset_of!(HfRpc_set_interactable_zone_occupant, peer_id) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_pickup_entity {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_pickup_entity"][::std::mem::size_of::<HfRpc_pickup_entity>() - 8usize];
+    ["Alignment of HfRpc_pickup_entity"][::std::mem::align_of::<HfRpc_pickup_entity>() - 4usize];
+    ["Offset of field: HfRpc_pickup_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_pickup_entity, entity) - 0usize];
+    ["Offset of field: HfRpc_pickup_entity::entity_2"]
+        [::std::mem::offset_of!(HfRpc_pickup_entity, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_force_exit_seat_collection_retry {
+    pub entity: i32,
+    pub seat_index: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_force_exit_seat_collection_retry"]
+        [::std::mem::size_of::<HfRpc_force_exit_seat_collection_retry>() - 8usize];
+    ["Alignment of HfRpc_force_exit_seat_collection_retry"]
+        [::std::mem::align_of::<HfRpc_force_exit_seat_collection_retry>() - 4usize];
+    ["Offset of field: HfRpc_force_exit_seat_collection_retry::entity"]
+        [::std::mem::offset_of!(HfRpc_force_exit_seat_collection_retry, entity) - 0usize];
+    ["Offset of field: HfRpc_force_exit_seat_collection_retry::seat_index"]
+        [::std::mem::offset_of!(HfRpc_force_exit_seat_collection_retry, seat_index) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_entrance_opened {
+    pub entity: i32,
+    pub arg1: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_entrance_opened"]
+        [::std::mem::size_of::<HfRpc_set_entrance_opened>() - 12usize];
+    ["Alignment of HfRpc_set_entrance_opened"]
+        [::std::mem::align_of::<HfRpc_set_entrance_opened>() - 4usize];
+    ["Offset of field: HfRpc_set_entrance_opened::entity"]
+        [::std::mem::offset_of!(HfRpc_set_entrance_opened, entity) - 0usize];
+    ["Offset of field: HfRpc_set_entrance_opened::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_entrance_opened, arg1) - 4usize];
+    ["Offset of field: HfRpc_set_entrance_opened::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_entrance_opened, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_start_throwing {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [u64; 48usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_start_throwing"][::std::mem::size_of::<HfRpc_start_throwing>() - 400usize];
+    ["Alignment of HfRpc_start_throwing"][::std::mem::align_of::<HfRpc_start_throwing>() - 8usize];
+    ["Offset of field: HfRpc_start_throwing::entity"]
+        [::std::mem::offset_of!(HfRpc_start_throwing, entity) - 0usize];
+    ["Offset of field: HfRpc_start_throwing::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_start_throwing, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_start_throwing::arg1"]
+        [::std::mem::offset_of!(HfRpc_start_throwing, arg1) - 8usize];
+    ["Offset of field: HfRpc_start_throwing::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_start_throwing, unsigned_value) - 392usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_game_over {
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_game_over"][::std::mem::size_of::<HfRpc_game_over>() - 2usize];
+    ["Alignment of HfRpc_game_over"][::std::mem::align_of::<HfRpc_game_over>() - 1usize];
+    ["Offset of field: HfRpc_game_over::bool_value"]
+        [::std::mem::offset_of!(HfRpc_game_over, bool_value) - 0usize];
+    ["Offset of field: HfRpc_game_over::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_game_over, bool_value_2) - 1usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_equipment_changed {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_equipment_changed"]
+        [::std::mem::size_of::<HfRpc_on_equipment_changed>() - 4usize];
+    ["Alignment of HfRpc_on_equipment_changed"]
+        [::std::mem::align_of::<HfRpc_on_equipment_changed>() - 4usize];
+    ["Offset of field: HfRpc_on_equipment_changed::entity"]
+        [::std::mem::offset_of!(HfRpc_on_equipment_changed, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_living_effect {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_living_effect"][::std::mem::size_of::<HfRpc_set_living_effect>() - 12usize];
+    ["Alignment of HfRpc_set_living_effect"]
+        [::std::mem::align_of::<HfRpc_set_living_effect>() - 4usize];
+    ["Offset of field: HfRpc_set_living_effect::entity"]
+        [::std::mem::offset_of!(HfRpc_set_living_effect, entity) - 0usize];
+    ["Offset of field: HfRpc_set_living_effect::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_living_effect, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_living_effect::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_living_effect, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_vehicle_crash {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub float_value: f32,
+    pub bool_value: u8,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_vehicle_crash"][::std::mem::size_of::<HfRpc_vehicle_crash>() - 28usize];
+    ["Alignment of HfRpc_vehicle_crash"][::std::mem::align_of::<HfRpc_vehicle_crash>() - 4usize];
+    ["Offset of field: HfRpc_vehicle_crash::entity"]
+        [::std::mem::offset_of!(HfRpc_vehicle_crash, entity) - 0usize];
+    ["Offset of field: HfRpc_vehicle_crash::entity_2"]
+        [::std::mem::offset_of!(HfRpc_vehicle_crash, entity_2) - 4usize];
+    ["Offset of field: HfRpc_vehicle_crash::float_value"]
+        [::std::mem::offset_of!(HfRpc_vehicle_crash, float_value) - 8usize];
+    ["Offset of field: HfRpc_vehicle_crash::bool_value"]
+        [::std::mem::offset_of!(HfRpc_vehicle_crash, bool_value) - 12usize];
+    ["Offset of field: HfRpc_vehicle_crash::vector3"]
+        [::std::mem::offset_of!(HfRpc_vehicle_crash, vector3) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_player_cursor_active {
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_player_cursor_active"]
+        [::std::mem::size_of::<HfRpc_set_player_cursor_active>() - 8usize];
+    ["Alignment of HfRpc_set_player_cursor_active"]
+        [::std::mem::align_of::<HfRpc_set_player_cursor_active>() - 4usize];
+    ["Offset of field: HfRpc_set_player_cursor_active::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_player_cursor_active, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_set_player_cursor_active::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_player_cursor_active, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partyleader_join_lobby {
+    pub arg0: u64,
+    pub arg1_count: u32,
+    pub arg1: [u64; 5usize],
+    pub network_string: *const ::std::os::raw::c_char,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partyleader_join_lobby"]
+        [::std::mem::size_of::<HfRpc_from_partyleader_join_lobby>() - 72usize];
+    ["Alignment of HfRpc_from_partyleader_join_lobby"]
+        [::std::mem::align_of::<HfRpc_from_partyleader_join_lobby>() - 8usize];
+    ["Offset of field: HfRpc_from_partyleader_join_lobby::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_lobby, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partyleader_join_lobby::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_lobby, arg1_count) - 8usize];
+    ["Offset of field: HfRpc_from_partyleader_join_lobby::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_lobby, arg1) - 16usize];
+    ["Offset of field: HfRpc_from_partyleader_join_lobby::network_string"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_lobby, network_string) - 56usize];
+    ["Offset of field: HfRpc_from_partyleader_join_lobby::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_lobby, peer_id) - 64usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_clear_tag {
+    pub entity: i32,
+    pub tag: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_clear_tag"][::std::mem::size_of::<HfRpc_clear_tag>() - 16usize];
+    ["Alignment of HfRpc_clear_tag"][::std::mem::align_of::<HfRpc_clear_tag>() - 8usize];
+    ["Offset of field: HfRpc_clear_tag::entity"]
+        [::std::mem::offset_of!(HfRpc_clear_tag, entity) - 0usize];
+    ["Offset of field: HfRpc_clear_tag::tag"]
+        [::std::mem::offset_of!(HfRpc_clear_tag, tag) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_restock {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_restock"][::std::mem::size_of::<HfRpc_restock>() - 4usize];
+    ["Alignment of HfRpc_restock"][::std::mem::align_of::<HfRpc_restock>() - 4usize];
+    ["Offset of field: HfRpc_restock::entity"]
+        [::std::mem::offset_of!(HfRpc_restock, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_audio_event_no_soundscape {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_audio_event_no_soundscape"]
+        [::std::mem::size_of::<HfRpc_audio_event_no_soundscape>() - 12usize];
+    ["Alignment of HfRpc_audio_event_no_soundscape"]
+        [::std::mem::align_of::<HfRpc_audio_event_no_soundscape>() - 4usize];
+    ["Offset of field: HfRpc_audio_event_no_soundscape::entity"]
+        [::std::mem::offset_of!(HfRpc_audio_event_no_soundscape, entity) - 0usize];
+    ["Offset of field: HfRpc_audio_event_no_soundscape::id_string32"]
+        [::std::mem::offset_of!(HfRpc_audio_event_no_soundscape, id_string32) - 4usize];
+    ["Offset of field: HfRpc_audio_event_no_soundscape::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_audio_event_no_soundscape, id_string32_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_interrupt_ability {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_interrupt_ability"][::std::mem::size_of::<HfRpc_interrupt_ability>() - 4usize];
+    ["Alignment of HfRpc_interrupt_ability"]
+        [::std::mem::align_of::<HfRpc_interrupt_ability>() - 4usize];
+    ["Offset of field: HfRpc_interrupt_ability::entity"]
+        [::std::mem::offset_of!(HfRpc_interrupt_ability, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_switches_selected_index {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_switches_selected_index"]
+        [::std::mem::size_of::<HfRpc_set_minigame_switches_selected_index>() - 12usize];
+    ["Alignment of HfRpc_set_minigame_switches_selected_index"]
+        [::std::mem::align_of::<HfRpc_set_minigame_switches_selected_index>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_switches_selected_index::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_switches_selected_index, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_switches_selected_index::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_switches_selected_index,
+        unsigned_value
+    ) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_switches_selected_index::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_set_minigame_switches_selected_index,
+        unsigned_value_2
+    ) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_sync_objective_link_states {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub arg2_count: u32,
+    pub arg2: [i32; 64usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_sync_objective_link_states"]
+        [::std::mem::size_of::<HfRpc_hotjoin_sync_objective_link_states>() - 268usize];
+    ["Alignment of HfRpc_hotjoin_sync_objective_link_states"]
+        [::std::mem::align_of::<HfRpc_hotjoin_sync_objective_link_states>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_sync_objective_link_states::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_objective_link_states, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_sync_objective_link_states::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_objective_link_states, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_hotjoin_sync_objective_link_states::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_objective_link_states, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_hotjoin_sync_objective_link_states::arg2"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_objective_link_states, arg2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_skip_dialogue {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_skip_dialogue"]
+        [::std::mem::size_of::<HfRpc_request_skip_dialogue>() - 4usize];
+    ["Alignment of HfRpc_request_skip_dialogue"]
+        [::std::mem::align_of::<HfRpc_request_skip_dialogue>() - 4usize];
+    ["Offset of field: HfRpc_request_skip_dialogue::entity"]
+        [::std::mem::offset_of!(HfRpc_request_skip_dialogue, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_zone_armor {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_zone_armor"][::std::mem::size_of::<HfRpc_set_zone_armor>() - 12usize];
+    ["Alignment of HfRpc_set_zone_armor"][::std::mem::align_of::<HfRpc_set_zone_armor>() - 4usize];
+    ["Offset of field: HfRpc_set_zone_armor::entity"]
+        [::std::mem::offset_of!(HfRpc_set_zone_armor, entity) - 0usize];
+    ["Offset of field: HfRpc_set_zone_armor::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_zone_armor, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_zone_armor::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_zone_armor, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_payload {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_payload"][::std::mem::size_of::<HfRpc_drop_payload>() - 8usize];
+    ["Alignment of HfRpc_drop_payload"][::std::mem::align_of::<HfRpc_drop_payload>() - 4usize];
+    ["Offset of field: HfRpc_drop_payload::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_payload, entity) - 0usize];
+    ["Offset of field: HfRpc_drop_payload::bool_value"]
+        [::std::mem::offset_of!(HfRpc_drop_payload, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_damage_zones_state_changed {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [u64; 2usize],
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_damage_zones_state_changed"]
+        [::std::mem::size_of::<HfRpc_damage_zones_state_changed>() - 32usize];
+    ["Alignment of HfRpc_damage_zones_state_changed"]
+        [::std::mem::align_of::<HfRpc_damage_zones_state_changed>() - 8usize];
+    ["Offset of field: HfRpc_damage_zones_state_changed::entity"]
+        [::std::mem::offset_of!(HfRpc_damage_zones_state_changed, entity) - 0usize];
+    ["Offset of field: HfRpc_damage_zones_state_changed::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_damage_zones_state_changed, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_damage_zones_state_changed::arg1"]
+        [::std::mem::offset_of!(HfRpc_damage_zones_state_changed, arg1) - 8usize];
+    ["Offset of field: HfRpc_damage_zones_state_changed::peer_id"]
+        [::std::mem::offset_of!(HfRpc_damage_zones_state_changed, peer_id) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_gore_damage {
+    pub entity: i32,
+    pub arg1: i32,
+    pub damage_type: i32,
+    pub element_type: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub vector3: [f32; 3usize],
+    pub id_string32: u32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_gore_damage"][::std::mem::size_of::<HfRpc_on_gore_damage>() - 44usize];
+    ["Alignment of HfRpc_on_gore_damage"][::std::mem::align_of::<HfRpc_on_gore_damage>() - 4usize];
+    ["Offset of field: HfRpc_on_gore_damage::entity"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, entity) - 0usize];
+    ["Offset of field: HfRpc_on_gore_damage::arg1"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, arg1) - 4usize];
+    ["Offset of field: HfRpc_on_gore_damage::damage_type"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, damage_type) - 8usize];
+    ["Offset of field: HfRpc_on_gore_damage::element_type"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, element_type) - 12usize];
+    ["Offset of field: HfRpc_on_gore_damage::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, unsigned_value) - 16usize];
+    ["Offset of field: HfRpc_on_gore_damage::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, unsigned_value_2) - 20usize];
+    ["Offset of field: HfRpc_on_gore_damage::vector3"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, vector3) - 24usize];
+    ["Offset of field: HfRpc_on_gore_damage::id_string32"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, id_string32) - 36usize];
+    ["Offset of field: HfRpc_on_gore_damage::bool_value"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, bool_value) - 40usize];
+    ["Offset of field: HfRpc_on_gore_damage::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_on_gore_damage, bool_value_2) - 41usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_deform_terrain {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_deform_terrain"][::std::mem::size_of::<HfRpc_deform_terrain>() - 8usize];
+    ["Alignment of HfRpc_deform_terrain"][::std::mem::align_of::<HfRpc_deform_terrain>() - 4usize];
+    ["Offset of field: HfRpc_deform_terrain::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_deform_terrain, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_deform_terrain::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_deform_terrain, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shared_stratagem_state {
+    pub arg0: i32,
+    pub unsigned_value: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shared_stratagem_state"]
+        [::std::mem::size_of::<HfRpc_shared_stratagem_state>() - 12usize];
+    ["Alignment of HfRpc_shared_stratagem_state"]
+        [::std::mem::align_of::<HfRpc_shared_stratagem_state>() - 4usize];
+    ["Offset of field: HfRpc_shared_stratagem_state::arg0"]
+        [::std::mem::offset_of!(HfRpc_shared_stratagem_state, arg0) - 0usize];
+    ["Offset of field: HfRpc_shared_stratagem_state::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_shared_stratagem_state, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_shared_stratagem_state::arg2"]
+        [::std::mem::offset_of!(HfRpc_shared_stratagem_state, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fire_mounted_weapon {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fire_mounted_weapon"]
+        [::std::mem::size_of::<HfRpc_fire_mounted_weapon>() - 8usize];
+    ["Alignment of HfRpc_fire_mounted_weapon"]
+        [::std::mem::align_of::<HfRpc_fire_mounted_weapon>() - 4usize];
+    ["Offset of field: HfRpc_fire_mounted_weapon::entity"]
+        [::std::mem::offset_of!(HfRpc_fire_mounted_weapon, entity) - 0usize];
+    ["Offset of field: HfRpc_fire_mounted_weapon::entity_2"]
+        [::std::mem::offset_of!(HfRpc_fire_mounted_weapon, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_speed {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub float_value: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_speed"]
+        [::std::mem::size_of::<HfRpc_animation_event_speed>() - 16usize];
+    ["Alignment of HfRpc_animation_event_speed"]
+        [::std::mem::align_of::<HfRpc_animation_event_speed>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_speed::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_speed::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_speed::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed, float_value) - 8usize];
+    ["Offset of field: HfRpc_animation_event_speed::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_keypad_selected_index {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_keypad_selected_index"]
+        [::std::mem::size_of::<HfRpc_set_minigame_keypad_selected_index>() - 12usize];
+    ["Alignment of HfRpc_set_minigame_keypad_selected_index"]
+        [::std::mem::align_of::<HfRpc_set_minigame_keypad_selected_index>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_selected_index::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_selected_index, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_selected_index::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_selected_index, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_selected_index::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_set_minigame_keypad_selected_index,
+        unsigned_value_2
+    ) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ragdoll_penetration_resolution_vector {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ragdoll_penetration_resolution_vector"]
+        [::std::mem::size_of::<HfRpc_set_ragdoll_penetration_resolution_vector>() - 20usize];
+    ["Alignment of HfRpc_set_ragdoll_penetration_resolution_vector"]
+        [::std::mem::align_of::<HfRpc_set_ragdoll_penetration_resolution_vector>() - 4usize];
+    ["Offset of field: HfRpc_set_ragdoll_penetration_resolution_vector::entity"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_penetration_resolution_vector, entity) - 0usize];
+    ["Offset of field: HfRpc_set_ragdoll_penetration_resolution_vector::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_penetration_resolution_vector, vector3) - 4usize];
+    ["Offset of field: HfRpc_set_ragdoll_penetration_resolution_vector::bool_value"][::std::mem::offset_of!(
+        HfRpc_set_ragdoll_penetration_resolution_vector,
+        bool_value
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_record_discovery_interact {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_record_discovery_interact"]
+        [::std::mem::size_of::<HfRpc_record_discovery_interact>() - 8usize];
+    ["Alignment of HfRpc_record_discovery_interact"]
+        [::std::mem::align_of::<HfRpc_record_discovery_interact>() - 4usize];
+    ["Offset of field: HfRpc_record_discovery_interact::entity"]
+        [::std::mem::offset_of!(HfRpc_record_discovery_interact, entity) - 0usize];
+    ["Offset of field: HfRpc_record_discovery_interact::entity_2"]
+        [::std::mem::offset_of!(HfRpc_record_discovery_interact, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_destroyed {
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub unsigned_value_2: i32,
+    pub arg4: i32,
+    pub arg5: i32,
+    pub arg6: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_destroyed"][::std::mem::size_of::<HfRpc_on_destroyed>() - 56usize];
+    ["Alignment of HfRpc_on_destroyed"][::std::mem::align_of::<HfRpc_on_destroyed>() - 8usize];
+    ["Offset of field: HfRpc_on_destroyed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_on_destroyed::vector3"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, vector3) - 4usize];
+    ["Offset of field: HfRpc_on_destroyed::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_on_destroyed::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, unsigned_value_2) - 28usize];
+    ["Offset of field: HfRpc_on_destroyed::arg4"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, arg4) - 32usize];
+    ["Offset of field: HfRpc_on_destroyed::arg5"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, arg5) - 36usize];
+    ["Offset of field: HfRpc_on_destroyed::arg6"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, arg6) - 40usize];
+    ["Offset of field: HfRpc_on_destroyed::peer_id"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed, peer_id) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_wound_event_list {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [u64; 32usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_wound_event_list"][::std::mem::size_of::<HfRpc_wound_event_list>() - 264usize];
+    ["Alignment of HfRpc_wound_event_list"]
+        [::std::mem::align_of::<HfRpc_wound_event_list>() - 8usize];
+    ["Offset of field: HfRpc_wound_event_list::entity"]
+        [::std::mem::offset_of!(HfRpc_wound_event_list, entity) - 0usize];
+    ["Offset of field: HfRpc_wound_event_list::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_wound_event_list, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_wound_event_list::arg1"]
+        [::std::mem::offset_of!(HfRpc_wound_event_list, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_start_follow_curve {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+    pub unsigned_value_2: i32,
+    pub arg4_count: u32,
+    pub arg4: [[f32; 3usize]; 64usize],
+    pub arg5_count: u32,
+    pub arg5: [f32; 64usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_start_follow_curve"]
+        [::std::mem::size_of::<HfRpc_start_follow_curve>() - 1048usize];
+    ["Alignment of HfRpc_start_follow_curve"]
+        [::std::mem::align_of::<HfRpc_start_follow_curve>() - 4usize];
+    ["Offset of field: HfRpc_start_follow_curve::entity"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, entity) - 0usize];
+    ["Offset of field: HfRpc_start_follow_curve::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_start_follow_curve::float_value"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, float_value) - 8usize];
+    ["Offset of field: HfRpc_start_follow_curve::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, unsigned_value_2) - 12usize];
+    ["Offset of field: HfRpc_start_follow_curve::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, arg4_count) - 16usize];
+    ["Offset of field: HfRpc_start_follow_curve::arg4"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, arg4) - 20usize];
+    ["Offset of field: HfRpc_start_follow_curve::arg5_count"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, arg5_count) - 788usize];
+    ["Offset of field: HfRpc_start_follow_curve::arg5"]
+        [::std::mem::offset_of!(HfRpc_start_follow_curve, arg5) - 792usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_migrated_host_peer_state {
+    pub peer_state: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_migrated_host_peer_state"]
+        [::std::mem::size_of::<HfRpc_from_migrated_host_peer_state>() - 4usize];
+    ["Alignment of HfRpc_from_migrated_host_peer_state"]
+        [::std::mem::align_of::<HfRpc_from_migrated_host_peer_state>() - 4usize];
+    ["Offset of field: HfRpc_from_migrated_host_peer_state::peer_state"]
+        [::std::mem::offset_of!(HfRpc_from_migrated_host_peer_state, peer_state) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_level_generation_pass_completed {
+    pub unsigned_value: i32,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_level_generation_pass_completed"]
+        [::std::mem::size_of::<HfRpc_from_host_level_generation_pass_completed>() - 16usize];
+    ["Alignment of HfRpc_from_host_level_generation_pass_completed"]
+        [::std::mem::align_of::<HfRpc_from_host_level_generation_pass_completed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_level_generation_pass_completed::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_host_level_generation_pass_completed,
+        unsigned_value
+    )
+        - 0usize];
+    ["Offset of field: HfRpc_from_host_level_generation_pass_completed::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_level_generation_pass_completed, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stop_particle_event {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stop_particle_event"]
+        [::std::mem::size_of::<HfRpc_stop_particle_event>() - 8usize];
+    ["Alignment of HfRpc_stop_particle_event"]
+        [::std::mem::align_of::<HfRpc_stop_particle_event>() - 4usize];
+    ["Offset of field: HfRpc_stop_particle_event::entity"]
+        [::std::mem::offset_of!(HfRpc_stop_particle_event, entity) - 0usize];
+    ["Offset of field: HfRpc_stop_particle_event::arg1"]
+        [::std::mem::offset_of!(HfRpc_stop_particle_event, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_entity_deletion_request {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_entity_deletion_request"]
+        [::std::mem::size_of::<HfRpc_entity_deletion_request>() - 4usize];
+    ["Alignment of HfRpc_entity_deletion_request"]
+        [::std::mem::align_of::<HfRpc_entity_deletion_request>() - 4usize];
+    ["Offset of field: HfRpc_entity_deletion_request::entity"]
+        [::std::mem::offset_of!(HfRpc_entity_deletion_request, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_reset_uoi_interact {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_reset_uoi_interact"]
+        [::std::mem::size_of::<HfRpc_reset_uoi_interact>() - 8usize];
+    ["Alignment of HfRpc_reset_uoi_interact"]
+        [::std::mem::align_of::<HfRpc_reset_uoi_interact>() - 4usize];
+    ["Offset of field: HfRpc_reset_uoi_interact::entity"]
+        [::std::mem::offset_of!(HfRpc_reset_uoi_interact, entity) - 0usize];
+    ["Offset of field: HfRpc_reset_uoi_interact::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_reset_uoi_interact, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_ingame_ship_sync {
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_ingame_ship_sync"]
+        [::std::mem::size_of::<HfRpc_request_ingame_ship_sync>() - 8usize];
+    ["Alignment of HfRpc_request_ingame_ship_sync"]
+        [::std::mem::align_of::<HfRpc_request_ingame_ship_sync>() - 8usize];
+    ["Offset of field: HfRpc_request_ingame_ship_sync::peer_id"]
+        [::std::mem::offset_of!(HfRpc_request_ingame_ship_sync, peer_id) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_join_voice_room {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_join_voice_room"][::std::mem::size_of::<HfRpc_join_voice_room>() - 8usize];
+    ["Alignment of HfRpc_join_voice_room"]
+        [::std::mem::align_of::<HfRpc_join_voice_room>() - 8usize];
+    ["Offset of field: HfRpc_join_voice_room::arg0"]
+        [::std::mem::offset_of!(HfRpc_join_voice_room, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_reveal_map {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_reveal_map"][::std::mem::size_of::<HfRpc_reveal_map>() - 4usize];
+    ["Alignment of HfRpc_reveal_map"][::std::mem::align_of::<HfRpc_reveal_map>() - 4usize];
+    ["Offset of field: HfRpc_reveal_map::entity"]
+        [::std::mem::offset_of!(HfRpc_reveal_map, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_party_clan {
+    pub unsigned_value: i32,
+    pub network_string: *const ::std::os::raw::c_char,
+    pub network_string_2: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_party_clan"][::std::mem::size_of::<HfRpc_sync_party_clan>() - 24usize];
+    ["Alignment of HfRpc_sync_party_clan"]
+        [::std::mem::align_of::<HfRpc_sync_party_clan>() - 8usize];
+    ["Offset of field: HfRpc_sync_party_clan::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_party_clan::network_string"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan, network_string) - 8usize];
+    ["Offset of field: HfRpc_sync_party_clan::network_string_2"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan, network_string_2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_reset_shield_state {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_reset_shield_state"]
+        [::std::mem::size_of::<HfRpc_reset_shield_state>() - 4usize];
+    ["Alignment of HfRpc_reset_shield_state"]
+        [::std::mem::align_of::<HfRpc_reset_shield_state>() - 4usize];
+    ["Offset of field: HfRpc_reset_shield_state::entity"]
+        [::std::mem::offset_of!(HfRpc_reset_shield_state, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_planet_campaign_info {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub arg3: i32,
+    pub arg4: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_planet_campaign_info"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_planet_campaign_info>() - 20usize];
+    ["Alignment of HfRpc_sync_galactic_war_planet_campaign_info"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_planet_campaign_info>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_campaign_info::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_campaign_info,
+        unsigned_value
+    ) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_campaign_info::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_campaign_info,
+        unsigned_value_2
+    ) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_campaign_info::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_campaign_info,
+        unsigned_value_3
+    ) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_campaign_info::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_campaign_info, arg3) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_campaign_info::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_campaign_info, arg4) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_grid_maze_position {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_grid_maze_position"]
+        [::std::mem::size_of::<HfRpc_set_minigame_grid_maze_position>() - 16usize];
+    ["Alignment of HfRpc_set_minigame_grid_maze_position"]
+        [::std::mem::align_of::<HfRpc_set_minigame_grid_maze_position>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_grid_maze_position::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_grid_maze_position, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_grid_maze_position::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_grid_maze_position, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_grid_maze_position::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_grid_maze_position, unsigned_value_2) - 8usize];
+    ["Offset of field: HfRpc_set_minigame_grid_maze_position::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_grid_maze_position, unsigned_value_3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_peer_removed {
+    pub peer_id: u64,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_peer_removed"]
+        [::std::mem::size_of::<HfRpc_from_host_peer_removed>() - 16usize];
+    ["Alignment of HfRpc_from_host_peer_removed"]
+        [::std::mem::align_of::<HfRpc_from_host_peer_removed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_peer_removed::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_removed, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_peer_removed::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_removed, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_corpse_collision {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_corpse_collision"]
+        [::std::mem::size_of::<HfRpc_change_corpse_collision>() - 4usize];
+    ["Alignment of HfRpc_change_corpse_collision"]
+        [::std::mem::align_of::<HfRpc_change_corpse_collision>() - 4usize];
+    ["Offset of field: HfRpc_change_corpse_collision::entity"]
+        [::std::mem::offset_of!(HfRpc_change_corpse_collision, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_planet_event {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub arg2: i32,
+    pub arg3: i32,
+    pub unsigned_value_3: i32,
+    pub unsigned_value_4: i32,
+    pub arg6: u64,
+    pub arg7: u64,
+    pub unsigned_value_5: i32,
+    pub arg9_count: u32,
+    pub arg9: [i32; 4usize],
+    pub id_string32: u32,
+    pub unsigned_value_6: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_planet_event"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_planet_event>() - 72usize];
+    ["Alignment of HfRpc_sync_galactic_war_planet_event"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_planet_event>() - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value_2) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg2) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg3) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value_3) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value_4) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg6"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg6) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg7"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg7) - 32usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value_5) - 40usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg9_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg9_count) - 44usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::arg9"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, arg9) - 48usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, id_string32) - 64usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_event::unsigned_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_event, unsigned_value_6) - 68usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loadout_set_stratagem_in_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loadout_set_stratagem_in_slot"]
+        [::std::mem::size_of::<HfRpc_loadout_set_stratagem_in_slot>() - 12usize];
+    ["Alignment of HfRpc_loadout_set_stratagem_in_slot"]
+        [::std::mem::align_of::<HfRpc_loadout_set_stratagem_in_slot>() - 4usize];
+    ["Offset of field: HfRpc_loadout_set_stratagem_in_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_stratagem_in_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_loadout_set_stratagem_in_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_stratagem_in_slot, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_loadout_set_stratagem_in_slot::id_string32"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_stratagem_in_slot, id_string32) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_variable_int {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub int_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_variable_int"]
+        [::std::mem::size_of::<HfRpc_animation_variable_int>() - 12usize];
+    ["Alignment of HfRpc_animation_variable_int"]
+        [::std::mem::align_of::<HfRpc_animation_variable_int>() - 4usize];
+    ["Offset of field: HfRpc_animation_variable_int::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_variable_int, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_variable_int::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_animation_variable_int, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_animation_variable_int::int_value"]
+        [::std::mem::offset_of!(HfRpc_animation_variable_int, int_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_equipment_slot_change_start_percent {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_equipment_slot_change_start_percent"]
+        [::std::mem::size_of::<HfRpc_equipment_slot_change_start_percent>() - 12usize];
+    ["Alignment of HfRpc_equipment_slot_change_start_percent"]
+        [::std::mem::align_of::<HfRpc_equipment_slot_change_start_percent>() - 4usize];
+    ["Offset of field: HfRpc_equipment_slot_change_start_percent::entity"]
+        [::std::mem::offset_of!(HfRpc_equipment_slot_change_start_percent, entity) - 0usize];
+    ["Offset of field: HfRpc_equipment_slot_change_start_percent::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_equipment_slot_change_start_percent,
+        unsigned_value
+    ) - 4usize];
+    ["Offset of field: HfRpc_equipment_slot_change_start_percent::float_value"]
+        [::std::mem::offset_of!(HfRpc_equipment_slot_change_start_percent, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_arm_mines {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_arm_mines"][::std::mem::size_of::<HfRpc_arm_mines>() - 4usize];
+    ["Alignment of HfRpc_arm_mines"][::std::mem::align_of::<HfRpc_arm_mines>() - 4usize];
+    ["Offset of field: HfRpc_arm_mines::entity"]
+        [::std::mem::offset_of!(HfRpc_arm_mines, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_target_list {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_target_list"][::std::mem::size_of::<HfRpc_set_target_list>() - 40usize];
+    ["Alignment of HfRpc_set_target_list"]
+        [::std::mem::align_of::<HfRpc_set_target_list>() - 4usize];
+    ["Offset of field: HfRpc_set_target_list::entity"]
+        [::std::mem::offset_of!(HfRpc_set_target_list, entity) - 0usize];
+    ["Offset of field: HfRpc_set_target_list::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_set_target_list, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_set_target_list::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_target_list, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_reels_selected_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_reels_selected_slot"]
+        [::std::mem::size_of::<HfRpc_set_minigame_reels_selected_slot>() - 12usize];
+    ["Alignment of HfRpc_set_minigame_reels_selected_slot"]
+        [::std::mem::align_of::<HfRpc_set_minigame_reels_selected_slot>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_slot, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_slot::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_slot, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_destructible_on_destroyed {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub peer_id: u64,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_destructible_on_destroyed"]
+        [::std::mem::size_of::<HfRpc_destructible_on_destroyed>() - 56usize];
+    ["Alignment of HfRpc_destructible_on_destroyed"]
+        [::std::mem::align_of::<HfRpc_destructible_on_destroyed>() - 8usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::entity"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, entity) - 0usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::vector3"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, vector3) - 4usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, unsigned_value) - 28usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, unsigned_value_2) - 32usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::peer_id"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, peer_id) - 40usize];
+    ["Offset of field: HfRpc_destructible_on_destroyed::entity_2"]
+        [::std::mem::offset_of!(HfRpc_destructible_on_destroyed, entity_2) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_run_ability {
+    pub entity: i32,
+    pub arg1: i32,
+    pub arg2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_run_ability"][::std::mem::size_of::<HfRpc_run_ability>() - 12usize];
+    ["Alignment of HfRpc_run_ability"][::std::mem::align_of::<HfRpc_run_ability>() - 4usize];
+    ["Offset of field: HfRpc_run_ability::entity"]
+        [::std::mem::offset_of!(HfRpc_run_ability, entity) - 0usize];
+    ["Offset of field: HfRpc_run_ability::arg1"]
+        [::std::mem::offset_of!(HfRpc_run_ability, arg1) - 4usize];
+    ["Offset of field: HfRpc_run_ability::arg2"]
+        [::std::mem::offset_of!(HfRpc_run_ability, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_cape_state {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_cape_state"][::std::mem::size_of::<HfRpc_set_cape_state>() - 8usize];
+    ["Alignment of HfRpc_set_cape_state"][::std::mem::align_of::<HfRpc_set_cape_state>() - 4usize];
+    ["Offset of field: HfRpc_set_cape_state::entity"]
+        [::std::mem::offset_of!(HfRpc_set_cape_state, entity) - 0usize];
+    ["Offset of field: HfRpc_set_cape_state::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_cape_state, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_activate_explosive_variable_timer {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_activate_explosive_variable_timer"]
+        [::std::mem::size_of::<HfRpc_activate_explosive_variable_timer>() - 12usize];
+    ["Alignment of HfRpc_activate_explosive_variable_timer"]
+        [::std::mem::align_of::<HfRpc_activate_explosive_variable_timer>() - 4usize];
+    ["Offset of field: HfRpc_activate_explosive_variable_timer::entity"]
+        [::std::mem::offset_of!(HfRpc_activate_explosive_variable_timer, entity) - 0usize];
+    ["Offset of field: HfRpc_activate_explosive_variable_timer::bool_value"]
+        [::std::mem::offset_of!(HfRpc_activate_explosive_variable_timer, bool_value) - 4usize];
+    ["Offset of field: HfRpc_activate_explosive_variable_timer::float_value"]
+        [::std::mem::offset_of!(HfRpc_activate_explosive_variable_timer, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_apply_momentum {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_apply_momentum"][::std::mem::size_of::<HfRpc_apply_momentum>() - 28usize];
+    ["Alignment of HfRpc_apply_momentum"][::std::mem::align_of::<HfRpc_apply_momentum>() - 4usize];
+    ["Offset of field: HfRpc_apply_momentum::entity"]
+        [::std::mem::offset_of!(HfRpc_apply_momentum, entity) - 0usize];
+    ["Offset of field: HfRpc_apply_momentum::vector3"]
+        [::std::mem::offset_of!(HfRpc_apply_momentum, vector3) - 4usize];
+    ["Offset of field: HfRpc_apply_momentum::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_apply_momentum, vector3_2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_try_add_corpse {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_try_add_corpse"][::std::mem::size_of::<HfRpc_try_add_corpse>() - 4usize];
+    ["Alignment of HfRpc_try_add_corpse"][::std::mem::align_of::<HfRpc_try_add_corpse>() - 4usize];
+    ["Offset of field: HfRpc_try_add_corpse::entity"]
+        [::std::mem::offset_of!(HfRpc_try_add_corpse, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_arcade_stratagem_lost_combo {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_arcade_stratagem_lost_combo"]
+        [::std::mem::size_of::<HfRpc_arcade_stratagem_lost_combo>() - 4usize];
+    ["Alignment of HfRpc_arcade_stratagem_lost_combo"]
+        [::std::mem::align_of::<HfRpc_arcade_stratagem_lost_combo>() - 4usize];
+    ["Offset of field: HfRpc_arcade_stratagem_lost_combo::entity"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_lost_combo, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_destroy_unit {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_destroy_unit"][::std::mem::size_of::<HfRpc_destroy_unit>() - 8usize];
+    ["Alignment of HfRpc_destroy_unit"][::std::mem::align_of::<HfRpc_destroy_unit>() - 4usize];
+    ["Offset of field: HfRpc_destroy_unit::entity"]
+        [::std::mem::offset_of!(HfRpc_destroy_unit, entity) - 0usize];
+    ["Offset of field: HfRpc_destroy_unit::arg1"]
+        [::std::mem::offset_of!(HfRpc_destroy_unit, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_animation_event_if_cutscene {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_animation_event_if_cutscene"]
+        [::std::mem::size_of::<HfRpc_play_animation_event_if_cutscene>() - 12usize];
+    ["Alignment of HfRpc_play_animation_event_if_cutscene"]
+        [::std::mem::align_of::<HfRpc_play_animation_event_if_cutscene>() - 4usize];
+    ["Offset of field: HfRpc_play_animation_event_if_cutscene::entity"]
+        [::std::mem::offset_of!(HfRpc_play_animation_event_if_cutscene, entity) - 0usize];
+    ["Offset of field: HfRpc_play_animation_event_if_cutscene::id_string32"]
+        [::std::mem::offset_of!(HfRpc_play_animation_event_if_cutscene, id_string32) - 4usize];
+    ["Offset of field: HfRpc_play_animation_event_if_cutscene::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_play_animation_event_if_cutscene, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_global_resource {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_global_resource"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_global_resource>() - 20usize];
+    ["Alignment of HfRpc_sync_galactic_war_global_resource"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_global_resource>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_resource::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_resource, id_string32) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_resource::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_resource, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_resource::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_global_resource,
+        unsigned_value_2
+    ) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_resource::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_global_resource,
+        unsigned_value_3
+    ) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_resource::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_resource, float_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stop_follow_curve {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stop_follow_curve"][::std::mem::size_of::<HfRpc_stop_follow_curve>() - 8usize];
+    ["Alignment of HfRpc_stop_follow_curve"]
+        [::std::mem::align_of::<HfRpc_stop_follow_curve>() - 4usize];
+    ["Offset of field: HfRpc_stop_follow_curve::entity"]
+        [::std::mem::offset_of!(HfRpc_stop_follow_curve, entity) - 0usize];
+    ["Offset of field: HfRpc_stop_follow_curve::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_stop_follow_curve, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_spawn_cooldown_override {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_spawn_cooldown_override"]
+        [::std::mem::size_of::<HfRpc_set_spawn_cooldown_override>() - 8usize];
+    ["Alignment of HfRpc_set_spawn_cooldown_override"]
+        [::std::mem::align_of::<HfRpc_set_spawn_cooldown_override>() - 4usize];
+    ["Offset of field: HfRpc_set_spawn_cooldown_override::entity"]
+        [::std::mem::offset_of!(HfRpc_set_spawn_cooldown_override, entity) - 0usize];
+    ["Offset of field: HfRpc_set_spawn_cooldown_override::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_spawn_cooldown_override, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_do_explosion {
+    pub vector3: [f32; 3usize],
+    pub unsigned_value: i32,
+    pub entity: i32,
+    pub entity_2: i32,
+    pub peer_id: u64,
+    pub entity_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_do_explosion"][::std::mem::size_of::<HfRpc_do_explosion>() - 40usize];
+    ["Alignment of HfRpc_do_explosion"][::std::mem::align_of::<HfRpc_do_explosion>() - 8usize];
+    ["Offset of field: HfRpc_do_explosion::vector3"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, vector3) - 0usize];
+    ["Offset of field: HfRpc_do_explosion::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, unsigned_value) - 12usize];
+    ["Offset of field: HfRpc_do_explosion::entity"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, entity) - 16usize];
+    ["Offset of field: HfRpc_do_explosion::entity_2"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, entity_2) - 20usize];
+    ["Offset of field: HfRpc_do_explosion::peer_id"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, peer_id) - 24usize];
+    ["Offset of field: HfRpc_do_explosion::entity_3"]
+        [::std::mem::offset_of!(HfRpc_do_explosion, entity_3) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_convoy_left_mission_area {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_convoy_left_mission_area"]
+        [::std::mem::size_of::<HfRpc_convoy_left_mission_area>() - 8usize];
+    ["Alignment of HfRpc_convoy_left_mission_area"]
+        [::std::mem::align_of::<HfRpc_convoy_left_mission_area>() - 4usize];
+    ["Offset of field: HfRpc_convoy_left_mission_area::entity"]
+        [::std::mem::offset_of!(HfRpc_convoy_left_mission_area, entity) - 0usize];
+    ["Offset of field: HfRpc_convoy_left_mission_area::entity_2"]
+        [::std::mem::offset_of!(HfRpc_convoy_left_mission_area, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_switch_state_input {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_switch_state_input"]
+        [::std::mem::size_of::<HfRpc_set_switch_state_input>() - 8usize];
+    ["Alignment of HfRpc_set_switch_state_input"]
+        [::std::mem::align_of::<HfRpc_set_switch_state_input>() - 4usize];
+    ["Offset of field: HfRpc_set_switch_state_input::entity"]
+        [::std::mem::offset_of!(HfRpc_set_switch_state_input, entity) - 0usize];
+    ["Offset of field: HfRpc_set_switch_state_input::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_switch_state_input, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_detach {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_detach"][::std::mem::size_of::<HfRpc_detach>() - 4usize];
+    ["Alignment of HfRpc_detach"][::std::mem::align_of::<HfRpc_detach>() - 4usize];
+    ["Offset of field: HfRpc_detach::entity"]
+        [::std::mem::offset_of!(HfRpc_detach, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_exit_seat_collection {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub seat_index: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_exit_seat_collection"]
+        [::std::mem::size_of::<HfRpc_request_exit_seat_collection>() - 16usize];
+    ["Alignment of HfRpc_request_exit_seat_collection"]
+        [::std::mem::align_of::<HfRpc_request_exit_seat_collection>() - 4usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection::entity"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection, entity) - 0usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection::seat_index"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection, seat_index) - 8usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection::bool_value"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_wield_weapon {
+    pub entity: i32,
+    pub arg1: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_wield_weapon"][::std::mem::size_of::<HfRpc_wield_weapon>() - 12usize];
+    ["Alignment of HfRpc_wield_weapon"][::std::mem::align_of::<HfRpc_wield_weapon>() - 4usize];
+    ["Offset of field: HfRpc_wield_weapon::entity"]
+        [::std::mem::offset_of!(HfRpc_wield_weapon, entity) - 0usize];
+    ["Offset of field: HfRpc_wield_weapon::arg1"]
+        [::std::mem::offset_of!(HfRpc_wield_weapon, arg1) - 4usize];
+    ["Offset of field: HfRpc_wield_weapon::entity_2"]
+        [::std::mem::offset_of!(HfRpc_wield_weapon, entity_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_finalize_avatar_corpse {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_finalize_avatar_corpse"]
+        [::std::mem::size_of::<HfRpc_finalize_avatar_corpse>() - 8usize];
+    ["Alignment of HfRpc_finalize_avatar_corpse"]
+        [::std::mem::align_of::<HfRpc_finalize_avatar_corpse>() - 4usize];
+    ["Offset of field: HfRpc_finalize_avatar_corpse::entity"]
+        [::std::mem::offset_of!(HfRpc_finalize_avatar_corpse, entity) - 0usize];
+    ["Offset of field: HfRpc_finalize_avatar_corpse::entity_2"]
+        [::std::mem::offset_of!(HfRpc_finalize_avatar_corpse, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stop_approach {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stop_approach"][::std::mem::size_of::<HfRpc_stop_approach>() - 4usize];
+    ["Alignment of HfRpc_stop_approach"][::std::mem::align_of::<HfRpc_stop_approach>() - 4usize];
+    ["Offset of field: HfRpc_stop_approach::entity"]
+        [::std::mem::offset_of!(HfRpc_stop_approach, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_collision_filter {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_collision_filter"]
+        [::std::mem::size_of::<HfRpc_set_collision_filter>() - 4usize];
+    ["Alignment of HfRpc_set_collision_filter"]
+        [::std::mem::align_of::<HfRpc_set_collision_filter>() - 4usize];
+    ["Offset of field: HfRpc_set_collision_filter::entity"]
+        [::std::mem::offset_of!(HfRpc_set_collision_filter, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_selection {
+    pub int_value: i32,
+    pub int_value_2: i32,
+    pub int_value_3: i32,
+    pub int_value_4: i32,
+    pub unsigned_value: i32,
+    pub int_value_5: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_selection"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_selection>() - 36usize];
+    ["Alignment of HfRpc_sync_galactic_war_selection"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_selection>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, int_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::int_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, int_value_2) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::int_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, int_value_3) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::int_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, int_value_4) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, unsigned_value) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::int_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, int_value_5) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, bool_value) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, float_value) - 28usize];
+    ["Offset of field: HfRpc_sync_galactic_war_selection::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_selection, float_value_2) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_respawn {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub entity_2: i32,
+    pub bool_value: u8,
+    pub entity_3: i32,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_respawn"][::std::mem::size_of::<HfRpc_from_host_respawn>() - 32usize];
+    ["Alignment of HfRpc_from_host_respawn"]
+        [::std::mem::align_of::<HfRpc_from_host_respawn>() - 4usize];
+    ["Offset of field: HfRpc_from_host_respawn::entity"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, entity) - 0usize];
+    ["Offset of field: HfRpc_from_host_respawn::vector3"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, vector3) - 4usize];
+    ["Offset of field: HfRpc_from_host_respawn::entity_2"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, entity_2) - 16usize];
+    ["Offset of field: HfRpc_from_host_respawn::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, bool_value) - 20usize];
+    ["Offset of field: HfRpc_from_host_respawn::entity_3"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, entity_3) - 24usize];
+    ["Offset of field: HfRpc_from_host_respawn::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_from_host_respawn, bool_value_2) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_attachment {
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_attachment"][::std::mem::size_of::<HfRpc_sync_attachment>() - 28usize];
+    ["Alignment of HfRpc_sync_attachment"]
+        [::std::mem::align_of::<HfRpc_sync_attachment>() - 4usize];
+    ["Offset of field: HfRpc_sync_attachment::vector3"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment, vector3) - 0usize];
+    ["Offset of field: HfRpc_sync_attachment::quaternion"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment, quaternion) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_heal_all_injuries {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_heal_all_injuries"][::std::mem::size_of::<HfRpc_heal_all_injuries>() - 4usize];
+    ["Alignment of HfRpc_heal_all_injuries"]
+        [::std::mem::align_of::<HfRpc_heal_all_injuries>() - 4usize];
+    ["Offset of field: HfRpc_heal_all_injuries::entity"]
+        [::std::mem::offset_of!(HfRpc_heal_all_injuries, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loadout_set_equipment_in_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loadout_set_equipment_in_slot"]
+        [::std::mem::size_of::<HfRpc_loadout_set_equipment_in_slot>() - 12usize];
+    ["Alignment of HfRpc_loadout_set_equipment_in_slot"]
+        [::std::mem::align_of::<HfRpc_loadout_set_equipment_in_slot>() - 4usize];
+    ["Offset of field: HfRpc_loadout_set_equipment_in_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_equipment_in_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_loadout_set_equipment_in_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_equipment_in_slot, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_loadout_set_equipment_in_slot::id_string32"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_equipment_in_slot, id_string32) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_mark_squad {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub entity_3: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_mark_squad"]
+        [::std::mem::size_of::<HfRpc_request_mark_squad>() - 16usize];
+    ["Alignment of HfRpc_request_mark_squad"]
+        [::std::mem::align_of::<HfRpc_request_mark_squad>() - 4usize];
+    ["Offset of field: HfRpc_request_mark_squad::entity"]
+        [::std::mem::offset_of!(HfRpc_request_mark_squad, entity) - 0usize];
+    ["Offset of field: HfRpc_request_mark_squad::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_mark_squad, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_mark_squad::entity_3"]
+        [::std::mem::offset_of!(HfRpc_request_mark_squad, entity_3) - 8usize];
+    ["Offset of field: HfRpc_request_mark_squad::float_value"]
+        [::std::mem::offset_of!(HfRpc_request_mark_squad, float_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_revert_to_switch_state {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_revert_to_switch_state"]
+        [::std::mem::size_of::<HfRpc_revert_to_switch_state>() - 8usize];
+    ["Alignment of HfRpc_revert_to_switch_state"]
+        [::std::mem::align_of::<HfRpc_revert_to_switch_state>() - 4usize];
+    ["Offset of field: HfRpc_revert_to_switch_state::entity"]
+        [::std::mem::offset_of!(HfRpc_revert_to_switch_state, entity) - 0usize];
+    ["Offset of field: HfRpc_revert_to_switch_state::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_revert_to_switch_state, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dialogue_playing {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dialogue_playing"][::std::mem::size_of::<HfRpc_dialogue_playing>() - 12usize];
+    ["Alignment of HfRpc_dialogue_playing"]
+        [::std::mem::align_of::<HfRpc_dialogue_playing>() - 4usize];
+    ["Offset of field: HfRpc_dialogue_playing::entity"]
+        [::std::mem::offset_of!(HfRpc_dialogue_playing, entity) - 0usize];
+    ["Offset of field: HfRpc_dialogue_playing::entity_2"]
+        [::std::mem::offset_of!(HfRpc_dialogue_playing, entity_2) - 4usize];
+    ["Offset of field: HfRpc_dialogue_playing::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_dialogue_playing, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_unsigned {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_unsigned"]
+        [::std::mem::size_of::<HfRpc_score_sync_unsigned>() - 8usize];
+    ["Alignment of HfRpc_score_sync_unsigned"]
+        [::std::mem::align_of::<HfRpc_score_sync_unsigned>() - 4usize];
+    ["Offset of field: HfRpc_score_sync_unsigned::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_unsigned, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_unsigned::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_score_sync_unsigned, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_terrain_deformation_event_list {
+    pub arg0_count: u32,
+    pub arg0: [u64; 64usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_terrain_deformation_event_list"]
+        [::std::mem::size_of::<HfRpc_terrain_deformation_event_list>() - 528usize];
+    ["Alignment of HfRpc_terrain_deformation_event_list"]
+        [::std::mem::align_of::<HfRpc_terrain_deformation_event_list>() - 8usize];
+    ["Offset of field: HfRpc_terrain_deformation_event_list::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_terrain_deformation_event_list, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_terrain_deformation_event_list::arg0"]
+        [::std::mem::offset_of!(HfRpc_terrain_deformation_event_list, arg0) - 8usize];
+    ["Offset of field: HfRpc_terrain_deformation_event_list::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_terrain_deformation_event_list, unsigned_value) - 520usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ship_name {
+    pub entity: i32,
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ship_name"][::std::mem::size_of::<HfRpc_set_ship_name>() - 16usize];
+    ["Alignment of HfRpc_set_ship_name"][::std::mem::align_of::<HfRpc_set_ship_name>() - 8usize];
+    ["Offset of field: HfRpc_set_ship_name::entity"]
+        [::std::mem::offset_of!(HfRpc_set_ship_name, entity) - 0usize];
+    ["Offset of field: HfRpc_set_ship_name::network_string"]
+        [::std::mem::offset_of!(HfRpc_set_ship_name, network_string) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_player_ship_module_synced_data {
+    pub arg0_count: u32,
+    pub arg0: [u64; 2usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_player_ship_module_synced_data"]
+        [::std::mem::size_of::<HfRpc_player_ship_module_synced_data>() - 24usize];
+    ["Alignment of HfRpc_player_ship_module_synced_data"]
+        [::std::mem::align_of::<HfRpc_player_ship_module_synced_data>() - 8usize];
+    ["Offset of field: HfRpc_player_ship_module_synced_data::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_player_ship_module_synced_data, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_player_ship_module_synced_data::arg0"]
+        [::std::mem::offset_of!(HfRpc_player_ship_module_synced_data, arg0) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_spawn_unit {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_spawn_unit"][::std::mem::size_of::<HfRpc_spawn_unit>() - 8usize];
+    ["Alignment of HfRpc_spawn_unit"][::std::mem::align_of::<HfRpc_spawn_unit>() - 4usize];
+    ["Offset of field: HfRpc_spawn_unit::entity"]
+        [::std::mem::offset_of!(HfRpc_spawn_unit, entity) - 0usize];
+    ["Offset of field: HfRpc_spawn_unit::arg1"]
+        [::std::mem::offset_of!(HfRpc_spawn_unit, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_cape_enabled {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_cape_enabled"][::std::mem::size_of::<HfRpc_set_cape_enabled>() - 8usize];
+    ["Alignment of HfRpc_set_cape_enabled"]
+        [::std::mem::align_of::<HfRpc_set_cape_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_cape_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_cape_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_cape_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_cape_enabled, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_held_carryable {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_held_carryable"]
+        [::std::mem::size_of::<HfRpc_set_held_carryable>() - 12usize];
+    ["Alignment of HfRpc_set_held_carryable"]
+        [::std::mem::align_of::<HfRpc_set_held_carryable>() - 4usize];
+    ["Offset of field: HfRpc_set_held_carryable::entity"]
+        [::std::mem::offset_of!(HfRpc_set_held_carryable, entity) - 0usize];
+    ["Offset of field: HfRpc_set_held_carryable::entity_2"]
+        [::std::mem::offset_of!(HfRpc_set_held_carryable, entity_2) - 4usize];
+    ["Offset of field: HfRpc_set_held_carryable::arg2"]
+        [::std::mem::offset_of!(HfRpc_set_held_carryable, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_prepare_avatar_corpse {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_prepare_avatar_corpse"]
+        [::std::mem::size_of::<HfRpc_prepare_avatar_corpse>() - 8usize];
+    ["Alignment of HfRpc_prepare_avatar_corpse"]
+        [::std::mem::align_of::<HfRpc_prepare_avatar_corpse>() - 4usize];
+    ["Offset of field: HfRpc_prepare_avatar_corpse::entity"]
+        [::std::mem::offset_of!(HfRpc_prepare_avatar_corpse, entity) - 0usize];
+    ["Offset of field: HfRpc_prepare_avatar_corpse::entity_2"]
+        [::std::mem::offset_of!(HfRpc_prepare_avatar_corpse, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_dialogue {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_dialogue"][::std::mem::size_of::<HfRpc_request_dialogue>() - 12usize];
+    ["Alignment of HfRpc_request_dialogue"]
+        [::std::mem::align_of::<HfRpc_request_dialogue>() - 4usize];
+    ["Offset of field: HfRpc_request_dialogue::entity"]
+        [::std::mem::offset_of!(HfRpc_request_dialogue, entity) - 0usize];
+    ["Offset of field: HfRpc_request_dialogue::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_dialogue, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_dialogue::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_request_dialogue, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_seat_success {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub seat_index: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_seat_success"]
+        [::std::mem::size_of::<HfRpc_request_seat_success>() - 12usize];
+    ["Alignment of HfRpc_request_seat_success"]
+        [::std::mem::align_of::<HfRpc_request_seat_success>() - 4usize];
+    ["Offset of field: HfRpc_request_seat_success::entity"]
+        [::std::mem::offset_of!(HfRpc_request_seat_success, entity) - 0usize];
+    ["Offset of field: HfRpc_request_seat_success::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_seat_success, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_seat_success::seat_index"]
+        [::std::mem::offset_of!(HfRpc_request_seat_success, seat_index) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_migration_host_missing_events {
+    pub arg0_count: u32,
+    pub arg0: [u64; 64usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_migration_host_missing_events"]
+        [::std::mem::size_of::<HfRpc_from_migration_host_missing_events>() - 528usize];
+    ["Alignment of HfRpc_from_migration_host_missing_events"]
+        [::std::mem::align_of::<HfRpc_from_migration_host_missing_events>() - 8usize];
+    ["Offset of field: HfRpc_from_migration_host_missing_events::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_from_migration_host_missing_events, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_from_migration_host_missing_events::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_migration_host_missing_events, arg0) - 8usize];
+    ["Offset of field: HfRpc_from_migration_host_missing_events::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_migration_host_missing_events,
+        unsigned_value
+    ) - 520usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_recharge_activate {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_recharge_activate"][::std::mem::size_of::<HfRpc_recharge_activate>() - 4usize];
+    ["Alignment of HfRpc_recharge_activate"]
+        [::std::mem::align_of::<HfRpc_recharge_activate>() - 4usize];
+    ["Offset of field: HfRpc_recharge_activate::entity"]
+        [::std::mem::offset_of!(HfRpc_recharge_activate, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_aiming_weapon {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_aiming_weapon"][::std::mem::size_of::<HfRpc_set_aiming_weapon>() - 8usize];
+    ["Alignment of HfRpc_set_aiming_weapon"]
+        [::std::mem::align_of::<HfRpc_set_aiming_weapon>() - 4usize];
+    ["Offset of field: HfRpc_set_aiming_weapon::entity"]
+        [::std::mem::offset_of!(HfRpc_set_aiming_weapon, entity) - 0usize];
+    ["Offset of field: HfRpc_set_aiming_weapon::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_aiming_weapon, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_do_avatar_pain_exertion {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_do_avatar_pain_exertion"]
+        [::std::mem::size_of::<HfRpc_do_avatar_pain_exertion>() - 8usize];
+    ["Alignment of HfRpc_do_avatar_pain_exertion"]
+        [::std::mem::align_of::<HfRpc_do_avatar_pain_exertion>() - 4usize];
+    ["Offset of field: HfRpc_do_avatar_pain_exertion::entity"]
+        [::std::mem::offset_of!(HfRpc_do_avatar_pain_exertion, entity) - 0usize];
+    ["Offset of field: HfRpc_do_avatar_pain_exertion::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_do_avatar_pain_exertion, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_reinforcement_cooldown {
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_reinforcement_cooldown"]
+        [::std::mem::size_of::<HfRpc_reinforcement_cooldown>() - 4usize];
+    ["Alignment of HfRpc_reinforcement_cooldown"]
+        [::std::mem::align_of::<HfRpc_reinforcement_cooldown>() - 4usize];
+    ["Offset of field: HfRpc_reinforcement_cooldown::float_value"]
+        [::std::mem::offset_of!(HfRpc_reinforcement_cooldown, float_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_request_loadout_weapon_swap {
+    pub arg0: u64,
+    pub unsigned_value: i32,
+    pub id_string32: u32,
+    pub arg3_count: u32,
+    pub arg3: [i32; 48usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 48usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_request_loadout_weapon_swap"]
+        [::std::mem::size_of::<HfRpc_from_client_request_loadout_weapon_swap>() - 408usize];
+    ["Alignment of HfRpc_from_client_request_loadout_weapon_swap"]
+        [::std::mem::align_of::<HfRpc_from_client_request_loadout_weapon_swap>() - 8usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_client_request_loadout_weapon_swap, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_client_request_loadout_weapon_swap,
+        unsigned_value
+    ) - 8usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::id_string32"][::std::mem::offset_of!(
+        HfRpc_from_client_request_loadout_weapon_swap,
+        id_string32
+    ) - 12usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::arg3_count"][::std::mem::offset_of!(
+        HfRpc_from_client_request_loadout_weapon_swap,
+        arg3_count
+    ) - 16usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::arg3"]
+        [::std::mem::offset_of!(HfRpc_from_client_request_loadout_weapon_swap, arg3) - 20usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::arg4_count"][::std::mem::offset_of!(
+        HfRpc_from_client_request_loadout_weapon_swap,
+        arg4_count
+    ) - 212usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_weapon_swap::arg4"]
+        [::std::mem::offset_of!(HfRpc_from_client_request_loadout_weapon_swap, arg4) - 216usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_hellpad_confirmation {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_hellpad_confirmation"]
+        [::std::mem::size_of::<HfRpc_request_hellpad_confirmation>() - 4usize];
+    ["Alignment of HfRpc_request_hellpad_confirmation"]
+        [::std::mem::align_of::<HfRpc_request_hellpad_confirmation>() - 4usize];
+    ["Offset of field: HfRpc_request_hellpad_confirmation::arg0"]
+        [::std::mem::offset_of!(HfRpc_request_hellpad_confirmation, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_animation_states {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_animation_states"]
+        [::std::mem::size_of::<HfRpc_set_animation_states>() - 20usize];
+    ["Alignment of HfRpc_set_animation_states"]
+        [::std::mem::align_of::<HfRpc_set_animation_states>() - 4usize];
+    ["Offset of field: HfRpc_set_animation_states::entity"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states, entity) - 0usize];
+    ["Offset of field: HfRpc_set_animation_states::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_set_animation_states::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_share_target {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub entity_2: i32,
+    pub vector3_2: [f32; 3usize],
+    pub float_value: f32,
+    pub unsigned_value: i32,
+    pub float_value_2: f32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_share_target"][::std::mem::size_of::<HfRpc_share_target>() - 48usize];
+    ["Alignment of HfRpc_share_target"][::std::mem::align_of::<HfRpc_share_target>() - 4usize];
+    ["Offset of field: HfRpc_share_target::entity"]
+        [::std::mem::offset_of!(HfRpc_share_target, entity) - 0usize];
+    ["Offset of field: HfRpc_share_target::vector3"]
+        [::std::mem::offset_of!(HfRpc_share_target, vector3) - 4usize];
+    ["Offset of field: HfRpc_share_target::entity_2"]
+        [::std::mem::offset_of!(HfRpc_share_target, entity_2) - 16usize];
+    ["Offset of field: HfRpc_share_target::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_share_target, vector3_2) - 20usize];
+    ["Offset of field: HfRpc_share_target::float_value"]
+        [::std::mem::offset_of!(HfRpc_share_target, float_value) - 32usize];
+    ["Offset of field: HfRpc_share_target::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_share_target, unsigned_value) - 36usize];
+    ["Offset of field: HfRpc_share_target::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_share_target, float_value_2) - 40usize];
+    ["Offset of field: HfRpc_share_target::id_string32"]
+        [::std::mem::offset_of!(HfRpc_share_target, id_string32) - 44usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partyleader_join_request {
+    pub arg0: u64,
+    pub arg1_count: u32,
+    pub arg1: [u64; 5usize],
+    pub id_string64: u64,
+    pub id_string64_2: u64,
+    pub arg4: i32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partyleader_join_request"]
+        [::std::mem::size_of::<HfRpc_from_partyleader_join_request>() - 80usize];
+    ["Alignment of HfRpc_from_partyleader_join_request"]
+        [::std::mem::align_of::<HfRpc_from_partyleader_join_request>() - 8usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, arg1_count) - 8usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, arg1) - 16usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::id_string64"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, id_string64) - 56usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::id_string64_2"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, id_string64_2) - 64usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::arg4"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, arg4) - 72usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, bool_value) - 76usize];
+    ["Offset of field: HfRpc_from_partyleader_join_request::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_join_request, bool_value_2) - 77usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_store_entity {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_store_entity"][::std::mem::size_of::<HfRpc_store_entity>() - 8usize];
+    ["Alignment of HfRpc_store_entity"][::std::mem::align_of::<HfRpc_store_entity>() - 4usize];
+    ["Offset of field: HfRpc_store_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_store_entity, entity) - 0usize];
+    ["Offset of field: HfRpc_store_entity::entity_2"]
+        [::std::mem::offset_of!(HfRpc_store_entity, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_start_status_effect_damage {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub arg2: i32,
+    pub entity_2: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_start_status_effect_damage"]
+        [::std::mem::size_of::<HfRpc_start_status_effect_damage>() - 24usize];
+    ["Alignment of HfRpc_start_status_effect_damage"]
+        [::std::mem::align_of::<HfRpc_start_status_effect_damage>() - 8usize];
+    ["Offset of field: HfRpc_start_status_effect_damage::entity"]
+        [::std::mem::offset_of!(HfRpc_start_status_effect_damage, entity) - 0usize];
+    ["Offset of field: HfRpc_start_status_effect_damage::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_start_status_effect_damage, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_start_status_effect_damage::arg2"]
+        [::std::mem::offset_of!(HfRpc_start_status_effect_damage, arg2) - 8usize];
+    ["Offset of field: HfRpc_start_status_effect_damage::entity_2"]
+        [::std::mem::offset_of!(HfRpc_start_status_effect_damage, entity_2) - 12usize];
+    ["Offset of field: HfRpc_start_status_effect_damage::peer_id"]
+        [::std::mem::offset_of!(HfRpc_start_status_effect_damage, peer_id) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_pipe_slide_selected_index {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_pipe_slide_selected_index"]
+        [::std::mem::size_of::<HfRpc_set_minigame_pipe_slide_selected_index>() - 12usize];
+    ["Alignment of HfRpc_set_minigame_pipe_slide_selected_index"]
+        [::std::mem::align_of::<HfRpc_set_minigame_pipe_slide_selected_index>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_selected_index::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_pipe_slide_selected_index, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_selected_index::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_pipe_slide_selected_index,
+        unsigned_value
+    ) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_selected_index::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_set_minigame_pipe_slide_selected_index,
+        unsigned_value_2
+    ) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_explode_after_delay {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_explode_after_delay"]
+        [::std::mem::size_of::<HfRpc_explode_after_delay>() - 8usize];
+    ["Alignment of HfRpc_explode_after_delay"]
+        [::std::mem::align_of::<HfRpc_explode_after_delay>() - 4usize];
+    ["Offset of field: HfRpc_explode_after_delay::entity"]
+        [::std::mem::offset_of!(HfRpc_explode_after_delay, entity) - 0usize];
+    ["Offset of field: HfRpc_explode_after_delay::float_value"]
+        [::std::mem::offset_of!(HfRpc_explode_after_delay, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_minigame_press_any_button_pressed {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_minigame_press_any_button_pressed"]
+        [::std::mem::size_of::<HfRpc_on_minigame_press_any_button_pressed>() - 8usize];
+    ["Alignment of HfRpc_on_minigame_press_any_button_pressed"]
+        [::std::mem::align_of::<HfRpc_on_minigame_press_any_button_pressed>() - 4usize];
+    ["Offset of field: HfRpc_on_minigame_press_any_button_pressed::entity"]
+        [::std::mem::offset_of!(HfRpc_on_minigame_press_any_button_pressed, entity) - 0usize];
+    ["Offset of field: HfRpc_on_minigame_press_any_button_pressed::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_on_minigame_press_any_button_pressed,
+        unsigned_value
+    ) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_ready_for_network_play {
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_ready_for_network_play"]
+        [::std::mem::size_of::<HfRpc_from_client_ready_for_network_play>() - 1usize];
+    ["Alignment of HfRpc_from_client_ready_for_network_play"]
+        [::std::mem::align_of::<HfRpc_from_client_ready_for_network_play>() - 1usize];
+    ["Offset of field: HfRpc_from_client_ready_for_network_play::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_client_ready_for_network_play, bool_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_attachment_full {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_attachment_full"]
+        [::std::mem::size_of::<HfRpc_sync_attachment_full>() - 36usize];
+    ["Alignment of HfRpc_sync_attachment_full"]
+        [::std::mem::align_of::<HfRpc_sync_attachment_full>() - 4usize];
+    ["Offset of field: HfRpc_sync_attachment_full::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment_full, entity) - 0usize];
+    ["Offset of field: HfRpc_sync_attachment_full::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment_full, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_sync_attachment_full::vector3"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment_full, vector3) - 8usize];
+    ["Offset of field: HfRpc_sync_attachment_full::quaternion"]
+        [::std::mem::offset_of!(HfRpc_sync_attachment_full, quaternion) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_sticky_transform {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_sticky_transform"]
+        [::std::mem::size_of::<HfRpc_set_sticky_transform>() - 32usize];
+    ["Alignment of HfRpc_set_sticky_transform"]
+        [::std::mem::align_of::<HfRpc_set_sticky_transform>() - 4usize];
+    ["Offset of field: HfRpc_set_sticky_transform::entity"]
+        [::std::mem::offset_of!(HfRpc_set_sticky_transform, entity) - 0usize];
+    ["Offset of field: HfRpc_set_sticky_transform::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_sticky_transform, vector3) - 4usize];
+    ["Offset of field: HfRpc_set_sticky_transform::quaternion"]
+        [::std::mem::offset_of!(HfRpc_set_sticky_transform, quaternion) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mission_progression_result_received {
+    pub bool_value: u8,
+    pub arg1_count: u32,
+    pub arg1: [i32; 8usize],
+    pub arg2_count: u32,
+    pub arg2: [i32; 8usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 8usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 8usize],
+    pub arg5_count: u32,
+    pub arg5: [i32; 8usize],
+    pub arg6_count: u32,
+    pub arg6: [u64; 15usize],
+    pub arg7_count: u32,
+    pub arg7: [i32; 15usize],
+    pub arg8_count: u32,
+    pub arg8: [i32; 15usize],
+    pub arg9_count: u32,
+    pub arg9: [i32; 15usize],
+    pub network_string: *const ::std::os::raw::c_char,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub bool_value_2: u8,
+    pub arg14_count: u32,
+    pub arg14: [i32; 4usize],
+    pub unsigned_value_3: i32,
+    pub arg16_count: u32,
+    pub arg16: [i32; 4usize],
+    pub arg17_count: u32,
+    pub arg17: [f32; 4usize],
+    pub arg18_count: u32,
+    pub arg18: [u64; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mission_progression_result_received"]
+        [::std::mem::size_of::<HfRpc_mission_progression_result_received>() - 624usize];
+    ["Alignment of HfRpc_mission_progression_result_received"]
+        [::std::mem::align_of::<HfRpc_mission_progression_result_received>() - 8usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::bool_value"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, bool_value) - 0usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg1"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg1) - 8usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg2_count) - 40usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg2"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg2) - 44usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg3_count) - 76usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg3"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg3) - 80usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg4_count) - 112usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg4"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg4) - 116usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg5_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg5_count) - 148usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg5"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg5) - 152usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg6_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg6_count) - 184usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg6"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg6) - 192usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg7_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg7_count) - 312usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg7"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg7) - 316usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg8_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg8_count) - 376usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg8"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg8) - 380usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg9_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg9_count) - 440usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg9"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg9) - 444usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::network_string"][::std::mem::offset_of!(
+        HfRpc_mission_progression_result_received,
+        network_string
+    ) - 504usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_mission_progression_result_received,
+        unsigned_value
+    ) - 512usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_mission_progression_result_received,
+        unsigned_value_2
+    ) - 516usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::bool_value_2"][::std::mem::offset_of!(
+        HfRpc_mission_progression_result_received,
+        bool_value_2
+    ) - 520usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg14_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg14_count) - 524usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg14"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg14) - 528usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_mission_progression_result_received,
+        unsigned_value_3
+    ) - 544usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg16_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg16_count) - 548usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg16"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg16) - 552usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg17_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg17_count) - 568usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg17"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg17) - 572usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg18_count"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg18_count) - 588usize];
+    ["Offset of field: HfRpc_mission_progression_result_received::arg18"]
+        [::std::mem::offset_of!(HfRpc_mission_progression_result_received, arg18) - 592usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_enter_seat_collection {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_enter_seat_collection"]
+        [::std::mem::size_of::<HfRpc_request_enter_seat_collection>() - 12usize];
+    ["Alignment of HfRpc_request_enter_seat_collection"]
+        [::std::mem::align_of::<HfRpc_request_enter_seat_collection>() - 4usize];
+    ["Offset of field: HfRpc_request_enter_seat_collection::entity"]
+        [::std::mem::offset_of!(HfRpc_request_enter_seat_collection, entity) - 0usize];
+    ["Offset of field: HfRpc_request_enter_seat_collection::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_enter_seat_collection, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_enter_seat_collection::arg2"]
+        [::std::mem::offset_of!(HfRpc_request_enter_seat_collection, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_activate_explosive {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_activate_explosive"]
+        [::std::mem::size_of::<HfRpc_activate_explosive>() - 8usize];
+    ["Alignment of HfRpc_activate_explosive"]
+        [::std::mem::align_of::<HfRpc_activate_explosive>() - 4usize];
+    ["Offset of field: HfRpc_activate_explosive::entity"]
+        [::std::mem::offset_of!(HfRpc_activate_explosive, entity) - 0usize];
+    ["Offset of field: HfRpc_activate_explosive::bool_value"]
+        [::std::mem::offset_of!(HfRpc_activate_explosive, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_start_approach {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub vector3_3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_start_approach"][::std::mem::size_of::<HfRpc_start_approach>() - 40usize];
+    ["Alignment of HfRpc_start_approach"][::std::mem::align_of::<HfRpc_start_approach>() - 4usize];
+    ["Offset of field: HfRpc_start_approach::entity"]
+        [::std::mem::offset_of!(HfRpc_start_approach, entity) - 0usize];
+    ["Offset of field: HfRpc_start_approach::vector3"]
+        [::std::mem::offset_of!(HfRpc_start_approach, vector3) - 4usize];
+    ["Offset of field: HfRpc_start_approach::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_start_approach, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_start_approach::vector3_3"]
+        [::std::mem::offset_of!(HfRpc_start_approach, vector3_3) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_ability_target {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_ability_target"][::std::mem::size_of::<HfRpc_ability_target>() - 8usize];
+    ["Alignment of HfRpc_ability_target"][::std::mem::align_of::<HfRpc_ability_target>() - 4usize];
+    ["Offset of field: HfRpc_ability_target::entity"]
+        [::std::mem::offset_of!(HfRpc_ability_target, entity) - 0usize];
+    ["Offset of field: HfRpc_ability_target::entity_2"]
+        [::std::mem::offset_of!(HfRpc_ability_target, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability_target {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub position: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability_target"]
+        [::std::mem::size_of::<HfRpc_hotjoin_ability_target>() - 20usize];
+    ["Alignment of HfRpc_hotjoin_ability_target"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability_target>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_target::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_target, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability_target::entity_2"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_target, entity_2) - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_target::position"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_target, position) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_debug_time_of_day {
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub float_value_3: f32,
+    pub int_value: i32,
+    pub int_value_2: i32,
+    pub float_value_4: f32,
+    pub float_value_5: f32,
+    pub float_value_6: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_debug_time_of_day"]
+        [::std::mem::size_of::<HfRpc_sync_debug_time_of_day>() - 32usize];
+    ["Alignment of HfRpc_sync_debug_time_of_day"]
+        [::std::mem::align_of::<HfRpc_sync_debug_time_of_day>() - 4usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value) - 0usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value_2) - 4usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value_3) - 8usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, int_value) - 12usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::int_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, int_value_2) - 16usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value_4) - 20usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value_5) - 24usize];
+    ["Offset of field: HfRpc_sync_debug_time_of_day::float_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_debug_time_of_day, float_value_6) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_explosive_entered_basket {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_explosive_entered_basket"]
+        [::std::mem::size_of::<HfRpc_explosive_entered_basket>() - 8usize];
+    ["Alignment of HfRpc_explosive_entered_basket"]
+        [::std::mem::align_of::<HfRpc_explosive_entered_basket>() - 4usize];
+    ["Offset of field: HfRpc_explosive_entered_basket::entity"]
+        [::std::mem::offset_of!(HfRpc_explosive_entered_basket, entity) - 0usize];
+    ["Offset of field: HfRpc_explosive_entered_basket::bool_value"]
+        [::std::mem::offset_of!(HfRpc_explosive_entered_basket, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_debug_force_load_package {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_debug_force_load_package"]
+        [::std::mem::size_of::<HfRpc_debug_force_load_package>() - 8usize];
+    ["Alignment of HfRpc_debug_force_load_package"]
+        [::std::mem::align_of::<HfRpc_debug_force_load_package>() - 8usize];
+    ["Offset of field: HfRpc_debug_force_load_package::arg0"]
+        [::std::mem::offset_of!(HfRpc_debug_force_load_package, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_objective_discovered {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_objective_discovered"]
+        [::std::mem::size_of::<HfRpc_objective_discovered>() - 8usize];
+    ["Alignment of HfRpc_objective_discovered"]
+        [::std::mem::align_of::<HfRpc_objective_discovered>() - 4usize];
+    ["Offset of field: HfRpc_objective_discovered::entity"]
+        [::std::mem::offset_of!(HfRpc_objective_discovered, entity) - 0usize];
+    ["Offset of field: HfRpc_objective_discovered::entity_2"]
+        [::std::mem::offset_of!(HfRpc_objective_discovered, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_inform_clients_of_impact {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_inform_clients_of_impact"]
+        [::std::mem::size_of::<HfRpc_inform_clients_of_impact>() - 8usize];
+    ["Alignment of HfRpc_inform_clients_of_impact"]
+        [::std::mem::align_of::<HfRpc_inform_clients_of_impact>() - 4usize];
+    ["Offset of field: HfRpc_inform_clients_of_impact::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_inform_clients_of_impact, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_inform_clients_of_impact::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_inform_clients_of_impact, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_apply_impulse {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_apply_impulse"][::std::mem::size_of::<HfRpc_apply_impulse>() - 16usize];
+    ["Alignment of HfRpc_apply_impulse"][::std::mem::align_of::<HfRpc_apply_impulse>() - 4usize];
+    ["Offset of field: HfRpc_apply_impulse::entity"]
+        [::std::mem::offset_of!(HfRpc_apply_impulse, entity) - 0usize];
+    ["Offset of field: HfRpc_apply_impulse::vector3"]
+        [::std::mem::offset_of!(HfRpc_apply_impulse, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_party_join_denied {
+    pub arg0: u64,
+    pub arg1: i32,
+    pub arg2: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_party_join_denied"]
+        [::std::mem::size_of::<HfRpc_from_host_party_join_denied>() - 24usize];
+    ["Alignment of HfRpc_from_host_party_join_denied"]
+        [::std::mem::align_of::<HfRpc_from_host_party_join_denied>() - 8usize];
+    ["Offset of field: HfRpc_from_host_party_join_denied::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_denied, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_host_party_join_denied::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_denied, arg1) - 8usize];
+    ["Offset of field: HfRpc_from_host_party_join_denied::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_denied, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_targeting_constraint_locked {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_targeting_constraint_locked"]
+        [::std::mem::size_of::<HfRpc_set_targeting_constraint_locked>() - 8usize];
+    ["Alignment of HfRpc_set_targeting_constraint_locked"]
+        [::std::mem::align_of::<HfRpc_set_targeting_constraint_locked>() - 4usize];
+    ["Offset of field: HfRpc_set_targeting_constraint_locked::entity"]
+        [::std::mem::offset_of!(HfRpc_set_targeting_constraint_locked, entity) - 0usize];
+    ["Offset of field: HfRpc_set_targeting_constraint_locked::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_targeting_constraint_locked, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_play_animation_event_synced {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_play_animation_event_synced"]
+        [::std::mem::size_of::<HfRpc_request_play_animation_event_synced>() - 8usize];
+    ["Alignment of HfRpc_request_play_animation_event_synced"]
+        [::std::mem::align_of::<HfRpc_request_play_animation_event_synced>() - 4usize];
+    ["Offset of field: HfRpc_request_play_animation_event_synced::entity"]
+        [::std::mem::offset_of!(HfRpc_request_play_animation_event_synced, entity) - 0usize];
+    ["Offset of field: HfRpc_request_play_animation_event_synced::id_string32"]
+        [::std::mem::offset_of!(HfRpc_request_play_animation_event_synced, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_nag_for_respawn {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_nag_for_respawn"][::std::mem::size_of::<HfRpc_nag_for_respawn>() - 4usize];
+    ["Alignment of HfRpc_nag_for_respawn"]
+        [::std::mem::align_of::<HfRpc_nag_for_respawn>() - 4usize];
+    ["Offset of field: HfRpc_nag_for_respawn::entity"]
+        [::std::mem::offset_of!(HfRpc_nag_for_respawn, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_unwield_weapon {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_unwield_weapon"][::std::mem::size_of::<HfRpc_unwield_weapon>() - 8usize];
+    ["Alignment of HfRpc_unwield_weapon"][::std::mem::align_of::<HfRpc_unwield_weapon>() - 4usize];
+    ["Offset of field: HfRpc_unwield_weapon::entity"]
+        [::std::mem::offset_of!(HfRpc_unwield_weapon, entity) - 0usize];
+    ["Offset of field: HfRpc_unwield_weapon::arg1"]
+        [::std::mem::offset_of!(HfRpc_unwield_weapon, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_inventory {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub entity_3: i32,
+    pub entity_4: i32,
+    pub entity_5: i32,
+    pub entity_6: i32,
+    pub id_string64: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_inventory"][::std::mem::size_of::<HfRpc_set_inventory>() - 32usize];
+    ["Alignment of HfRpc_set_inventory"][::std::mem::align_of::<HfRpc_set_inventory>() - 8usize];
+    ["Offset of field: HfRpc_set_inventory::entity"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity) - 0usize];
+    ["Offset of field: HfRpc_set_inventory::entity_2"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity_2) - 4usize];
+    ["Offset of field: HfRpc_set_inventory::entity_3"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity_3) - 8usize];
+    ["Offset of field: HfRpc_set_inventory::entity_4"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity_4) - 12usize];
+    ["Offset of field: HfRpc_set_inventory::entity_5"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity_5) - 16usize];
+    ["Offset of field: HfRpc_set_inventory::entity_6"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, entity_6) - 20usize];
+    ["Offset of field: HfRpc_set_inventory::id_string64"]
+        [::std::mem::offset_of!(HfRpc_set_inventory, id_string64) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_force_to_loadout {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_force_to_loadout"]
+        [::std::mem::size_of::<HfRpc_on_force_to_loadout>() - 4usize];
+    ["Alignment of HfRpc_on_force_to_loadout"]
+        [::std::mem::align_of::<HfRpc_on_force_to_loadout>() - 4usize];
+    ["Offset of field: HfRpc_on_force_to_loadout::entity"]
+        [::std::mem::offset_of!(HfRpc_on_force_to_loadout, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_countdown_state {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_countdown_state"]
+        [::std::mem::size_of::<HfRpc_set_countdown_state>() - 12usize];
+    ["Alignment of HfRpc_set_countdown_state"]
+        [::std::mem::align_of::<HfRpc_set_countdown_state>() - 4usize];
+    ["Offset of field: HfRpc_set_countdown_state::entity"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_state, entity) - 0usize];
+    ["Offset of field: HfRpc_set_countdown_state::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_state, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_countdown_state::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_state, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_ship_game_event {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_ship_game_event"]
+        [::std::mem::size_of::<HfRpc_trigger_ship_game_event>() - 4usize];
+    ["Alignment of HfRpc_trigger_ship_game_event"]
+        [::std::mem::align_of::<HfRpc_trigger_ship_game_event>() - 4usize];
+    ["Offset of field: HfRpc_trigger_ship_game_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_trigger_ship_game_event, id_string32) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_request_loadout_load {
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_request_loadout_load"]
+        [::std::mem::size_of::<HfRpc_from_client_request_loadout_load>() - 1usize];
+    ["Alignment of HfRpc_from_client_request_loadout_load"]
+        [::std::mem::align_of::<HfRpc_from_client_request_loadout_load>() - 1usize];
+    ["Offset of field: HfRpc_from_client_request_loadout_load::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_client_request_loadout_load, bool_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_talk_with_target_about {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_talk_with_target_about"]
+        [::std::mem::size_of::<HfRpc_talk_with_target_about>() - 12usize];
+    ["Alignment of HfRpc_talk_with_target_about"]
+        [::std::mem::align_of::<HfRpc_talk_with_target_about>() - 4usize];
+    ["Offset of field: HfRpc_talk_with_target_about::entity"]
+        [::std::mem::offset_of!(HfRpc_talk_with_target_about, entity) - 0usize];
+    ["Offset of field: HfRpc_talk_with_target_about::entity_2"]
+        [::std::mem::offset_of!(HfRpc_talk_with_target_about, entity_2) - 4usize];
+    ["Offset of field: HfRpc_talk_with_target_about::id_string32"]
+        [::std::mem::offset_of!(HfRpc_talk_with_target_about, id_string32) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_avatar_ik_enabled {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_avatar_ik_enabled"]
+        [::std::mem::size_of::<HfRpc_set_avatar_ik_enabled>() - 8usize];
+    ["Alignment of HfRpc_set_avatar_ik_enabled"]
+        [::std::mem::align_of::<HfRpc_set_avatar_ik_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_avatar_ik_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_ik_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_avatar_ik_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_ik_enabled, bool_value) - 4usize];
+    ["Offset of field: HfRpc_set_avatar_ik_enabled::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_ik_enabled, bool_value_2) - 5usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_stratagem_changes {
+    pub arg0_count: u32,
+    pub arg0: [i32; 16usize],
+    pub arg1_count: u32,
+    pub arg1: [i32; 16usize],
+    pub arg2_count: u32,
+    pub arg2: [u64; 16usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 32usize],
+    pub arg4_count: u32,
+    pub arg4: [u8; 16usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_stratagem_changes"]
+        [::std::mem::size_of::<HfRpc_sync_stratagem_changes>() - 424usize];
+    ["Alignment of HfRpc_sync_stratagem_changes"]
+        [::std::mem::align_of::<HfRpc_sync_stratagem_changes>() - 8usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg0"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg0) - 4usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg1_count) - 68usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg1) - 72usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg2_count) - 136usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg2) - 144usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg3_count) - 272usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg3) - 276usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg4_count) - 404usize];
+    ["Offset of field: HfRpc_sync_stratagem_changes::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_changes, arg4) - 408usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_hive_lord_killed {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_hive_lord_killed"]
+        [::std::mem::size_of::<HfRpc_sync_hive_lord_killed>() - 4usize];
+    ["Alignment of HfRpc_sync_hive_lord_killed"]
+        [::std::mem::align_of::<HfRpc_sync_hive_lord_killed>() - 4usize];
+    ["Offset of field: HfRpc_sync_hive_lord_killed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_hive_lord_killed, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_ui_audio_event {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_ui_audio_event"]
+        [::std::mem::size_of::<HfRpc_trigger_ui_audio_event>() - 4usize];
+    ["Alignment of HfRpc_trigger_ui_audio_event"]
+        [::std::mem::align_of::<HfRpc_trigger_ui_audio_event>() - 4usize];
+    ["Offset of field: HfRpc_trigger_ui_audio_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_trigger_ui_audio_event, id_string32) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_interested_dialogue_target {
+    pub entity: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_interested_dialogue_target"]
+        [::std::mem::size_of::<HfRpc_remove_interested_dialogue_target>() - 16usize];
+    ["Alignment of HfRpc_remove_interested_dialogue_target"]
+        [::std::mem::align_of::<HfRpc_remove_interested_dialogue_target>() - 8usize];
+    ["Offset of field: HfRpc_remove_interested_dialogue_target::entity"]
+        [::std::mem::offset_of!(HfRpc_remove_interested_dialogue_target, entity) - 0usize];
+    ["Offset of field: HfRpc_remove_interested_dialogue_target::peer_id"]
+        [::std::mem::offset_of!(HfRpc_remove_interested_dialogue_target, peer_id) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_countdown_time_index {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_countdown_time_index"]
+        [::std::mem::size_of::<HfRpc_set_countdown_time_index>() - 12usize];
+    ["Alignment of HfRpc_set_countdown_time_index"]
+        [::std::mem::align_of::<HfRpc_set_countdown_time_index>() - 4usize];
+    ["Offset of field: HfRpc_set_countdown_time_index::entity"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_time_index, entity) - 0usize];
+    ["Offset of field: HfRpc_set_countdown_time_index::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_time_index, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_countdown_time_index::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_countdown_time_index, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_restore_limbs {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_restore_limbs"][::std::mem::size_of::<HfRpc_restore_limbs>() - 8usize];
+    ["Alignment of HfRpc_restore_limbs"][::std::mem::align_of::<HfRpc_restore_limbs>() - 4usize];
+    ["Offset of field: HfRpc_restore_limbs::entity"]
+        [::std::mem::offset_of!(HfRpc_restore_limbs, entity) - 0usize];
+    ["Offset of field: HfRpc_restore_limbs::float_value"]
+        [::std::mem::offset_of!(HfRpc_restore_limbs, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_commend_count_received {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_commend_count_received"]
+        [::std::mem::size_of::<HfRpc_on_commend_count_received>() - 4usize];
+    ["Alignment of HfRpc_on_commend_count_received"]
+        [::std::mem::align_of::<HfRpc_on_commend_count_received>() - 4usize];
+    ["Offset of field: HfRpc_on_commend_count_received::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_commend_count_received, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_get_ingame_ship_timeline {
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub float_value_3: f32,
+    pub float_value_4: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_get_ingame_ship_timeline"]
+        [::std::mem::size_of::<HfRpc_get_ingame_ship_timeline>() - 16usize];
+    ["Alignment of HfRpc_get_ingame_ship_timeline"]
+        [::std::mem::align_of::<HfRpc_get_ingame_ship_timeline>() - 4usize];
+    ["Offset of field: HfRpc_get_ingame_ship_timeline::float_value"]
+        [::std::mem::offset_of!(HfRpc_get_ingame_ship_timeline, float_value) - 0usize];
+    ["Offset of field: HfRpc_get_ingame_ship_timeline::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_get_ingame_ship_timeline, float_value_2) - 4usize];
+    ["Offset of field: HfRpc_get_ingame_ship_timeline::float_value_3"]
+        [::std::mem::offset_of!(HfRpc_get_ingame_ship_timeline, float_value_3) - 8usize];
+    ["Offset of field: HfRpc_get_ingame_ship_timeline::float_value_4"]
+        [::std::mem::offset_of!(HfRpc_get_ingame_ship_timeline, float_value_4) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_peer_confirmed {
+    pub peer_id: u64,
+    pub peer_id_2: u64,
+    pub arg2: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_peer_confirmed"]
+        [::std::mem::size_of::<HfRpc_from_host_peer_confirmed>() - 32usize];
+    ["Alignment of HfRpc_from_host_peer_confirmed"]
+        [::std::mem::align_of::<HfRpc_from_host_peer_confirmed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_peer_confirmed::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_confirmed, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_peer_confirmed::peer_id_2"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_confirmed, peer_id_2) - 8usize];
+    ["Offset of field: HfRpc_from_host_peer_confirmed::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_confirmed, arg2) - 16usize];
+    ["Offset of field: HfRpc_from_host_peer_confirmed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_confirmed, unsigned_value) - 20usize];
+    ["Offset of field: HfRpc_from_host_peer_confirmed::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_confirmed, bool_value) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loadout_select_stratagem_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loadout_select_stratagem_slot"]
+        [::std::mem::size_of::<HfRpc_loadout_select_stratagem_slot>() - 8usize];
+    ["Alignment of HfRpc_loadout_select_stratagem_slot"]
+        [::std::mem::align_of::<HfRpc_loadout_select_stratagem_slot>() - 4usize];
+    ["Offset of field: HfRpc_loadout_select_stratagem_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_loadout_select_stratagem_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_loadout_select_stratagem_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_loadout_select_stratagem_slot, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_ui_audio_event_from_drop_menu_3d {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_ui_audio_event_from_drop_menu_3d"]
+        [::std::mem::size_of::<HfRpc_trigger_ui_audio_event_from_drop_menu_3d>() - 4usize];
+    ["Alignment of HfRpc_trigger_ui_audio_event_from_drop_menu_3d"]
+        [::std::mem::align_of::<HfRpc_trigger_ui_audio_event_from_drop_menu_3d>() - 4usize];
+    ["Offset of field: HfRpc_trigger_ui_audio_event_from_drop_menu_3d::id_string32"][::std::mem::offset_of!(
+        HfRpc_trigger_ui_audio_event_from_drop_menu_3d,
+        id_string32
+    ) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_teammate_needs_reload_marker {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_teammate_needs_reload_marker"]
+        [::std::mem::size_of::<HfRpc_add_teammate_needs_reload_marker>() - 4usize];
+    ["Alignment of HfRpc_add_teammate_needs_reload_marker"]
+        [::std::mem::align_of::<HfRpc_add_teammate_needs_reload_marker>() - 4usize];
+    ["Offset of field: HfRpc_add_teammate_needs_reload_marker::entity"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_needs_reload_marker, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_exit_seat_collection_success {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_exit_seat_collection_success"]
+        [::std::mem::size_of::<HfRpc_request_exit_seat_collection_success>() - 16usize];
+    ["Alignment of HfRpc_request_exit_seat_collection_success"]
+        [::std::mem::align_of::<HfRpc_request_exit_seat_collection_success>() - 4usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_success::entity"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection_success, entity) - 0usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_success::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection_success, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_success::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_request_exit_seat_collection_success,
+        unsigned_value
+    ) - 8usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_success::bool_value"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection_success, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_physics_local_impulse {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_physics_local_impulse"]
+        [::std::mem::size_of::<HfRpc_physics_local_impulse>() - 36usize];
+    ["Alignment of HfRpc_physics_local_impulse"]
+        [::std::mem::align_of::<HfRpc_physics_local_impulse>() - 4usize];
+    ["Offset of field: HfRpc_physics_local_impulse::entity"]
+        [::std::mem::offset_of!(HfRpc_physics_local_impulse, entity) - 0usize];
+    ["Offset of field: HfRpc_physics_local_impulse::vector3"]
+        [::std::mem::offset_of!(HfRpc_physics_local_impulse, vector3) - 4usize];
+    ["Offset of field: HfRpc_physics_local_impulse::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_physics_local_impulse, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_physics_local_impulse::float_value"]
+        [::std::mem::offset_of!(HfRpc_physics_local_impulse, float_value) - 28usize];
+    ["Offset of field: HfRpc_physics_local_impulse::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_physics_local_impulse, float_value_2) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_ability_request_denied {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_ability_request_denied"]
+        [::std::mem::size_of::<HfRpc_ability_request_denied>() - 4usize];
+    ["Alignment of HfRpc_ability_request_denied"]
+        [::std::mem::align_of::<HfRpc_ability_request_denied>() - 4usize];
+    ["Offset of field: HfRpc_ability_request_denied::entity"]
+        [::std::mem::offset_of!(HfRpc_ability_request_denied, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_partymember_join_pre_confirmed {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_partymember_join_pre_confirmed"]
+        [::std::mem::size_of::<HfRpc_from_host_partymember_join_pre_confirmed>() - 8usize];
+    ["Alignment of HfRpc_from_host_partymember_join_pre_confirmed"]
+        [::std::mem::align_of::<HfRpc_from_host_partymember_join_pre_confirmed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_pre_confirmed::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_pre_confirmed, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_temperature_loss_modifier {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_temperature_loss_modifier"]
+        [::std::mem::size_of::<HfRpc_set_temperature_loss_modifier>() - 8usize];
+    ["Alignment of HfRpc_set_temperature_loss_modifier"]
+        [::std::mem::align_of::<HfRpc_set_temperature_loss_modifier>() - 4usize];
+    ["Offset of field: HfRpc_set_temperature_loss_modifier::entity"]
+        [::std::mem::offset_of!(HfRpc_set_temperature_loss_modifier, entity) - 0usize];
+    ["Offset of field: HfRpc_set_temperature_loss_modifier::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_temperature_loss_modifier, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_unit_customization {
+    pub arg0_count: u32,
+    pub arg0: [i32; 12usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_unit_customization"]
+        [::std::mem::size_of::<HfRpc_sync_unit_customization>() - 52usize];
+    ["Alignment of HfRpc_sync_unit_customization"]
+        [::std::mem::align_of::<HfRpc_sync_unit_customization>() - 4usize];
+    ["Offset of field: HfRpc_sync_unit_customization::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_sync_unit_customization, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_sync_unit_customization::arg0"]
+        [::std::mem::offset_of!(HfRpc_sync_unit_customization, arg0) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability {
+    pub entity: i32,
+    pub arg1: i32,
+    pub ability_frame: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability"][::std::mem::size_of::<HfRpc_hotjoin_ability>() - 16usize];
+    ["Alignment of HfRpc_hotjoin_ability"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability::arg1"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability, arg1) - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability::ability_frame"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability, ability_frame) - 8usize];
+    ["Offset of field: HfRpc_hotjoin_ability::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability, unsigned_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_avatar_visibility {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_avatar_visibility"]
+        [::std::mem::size_of::<HfRpc_set_avatar_visibility>() - 8usize];
+    ["Alignment of HfRpc_set_avatar_visibility"]
+        [::std::mem::align_of::<HfRpc_set_avatar_visibility>() - 4usize];
+    ["Offset of field: HfRpc_set_avatar_visibility::entity"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_visibility, entity) - 0usize];
+    ["Offset of field: HfRpc_set_avatar_visibility::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_visibility, bool_value) - 4usize];
+    ["Offset of field: HfRpc_set_avatar_visibility::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_avatar_visibility, bool_value_2) - 5usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_avatar_death_state {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_avatar_death_state"]
+        [::std::mem::size_of::<HfRpc_sync_avatar_death_state>() - 36usize];
+    ["Alignment of HfRpc_sync_avatar_death_state"]
+        [::std::mem::align_of::<HfRpc_sync_avatar_death_state>() - 4usize];
+    ["Offset of field: HfRpc_sync_avatar_death_state::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_avatar_death_state, entity) - 0usize];
+    ["Offset of field: HfRpc_sync_avatar_death_state::vector3"]
+        [::std::mem::offset_of!(HfRpc_sync_avatar_death_state, vector3) - 4usize];
+    ["Offset of field: HfRpc_sync_avatar_death_state::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_sync_avatar_death_state, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_sync_avatar_death_state::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_avatar_death_state, unsigned_value) - 28usize];
+    ["Offset of field: HfRpc_sync_avatar_death_state::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_avatar_death_state, float_value) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_active_and_retract {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_active_and_retract"]
+        [::std::mem::size_of::<HfRpc_set_active_and_retract>() - 8usize];
+    ["Alignment of HfRpc_set_active_and_retract"]
+        [::std::mem::align_of::<HfRpc_set_active_and_retract>() - 4usize];
+    ["Offset of field: HfRpc_set_active_and_retract::entity"]
+        [::std::mem::offset_of!(HfRpc_set_active_and_retract, entity) - 0usize];
+    ["Offset of field: HfRpc_set_active_and_retract::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_active_and_retract, bool_value) - 4usize];
+    ["Offset of field: HfRpc_set_active_and_retract::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_active_and_retract, bool_value_2) - 5usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_spawn_extraction_beacon_sfx {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_spawn_extraction_beacon_sfx"]
+        [::std::mem::size_of::<HfRpc_spawn_extraction_beacon_sfx>() - 16usize];
+    ["Alignment of HfRpc_spawn_extraction_beacon_sfx"]
+        [::std::mem::align_of::<HfRpc_spawn_extraction_beacon_sfx>() - 4usize];
+    ["Offset of field: HfRpc_spawn_extraction_beacon_sfx::entity"]
+        [::std::mem::offset_of!(HfRpc_spawn_extraction_beacon_sfx, entity) - 0usize];
+    ["Offset of field: HfRpc_spawn_extraction_beacon_sfx::vector3"]
+        [::std::mem::offset_of!(HfRpc_spawn_extraction_beacon_sfx, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_party_join_accepted {
+    pub arg0: u64,
+    pub arg1_count: u32,
+    pub arg1: [u64; 5usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_party_join_accepted"]
+        [::std::mem::size_of::<HfRpc_from_host_party_join_accepted>() - 56usize];
+    ["Alignment of HfRpc_from_host_party_join_accepted"]
+        [::std::mem::align_of::<HfRpc_from_host_party_join_accepted>() - 8usize];
+    ["Offset of field: HfRpc_from_host_party_join_accepted::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_accepted, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_host_party_join_accepted::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_accepted, arg1_count) - 8usize];
+    ["Offset of field: HfRpc_from_host_party_join_accepted::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_party_join_accepted, arg1) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_interaction_request_result {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+    pub entity_3: i32,
+    pub arg4: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_interaction_request_result"]
+        [::std::mem::size_of::<HfRpc_interaction_request_result>() - 20usize];
+    ["Alignment of HfRpc_interaction_request_result"]
+        [::std::mem::align_of::<HfRpc_interaction_request_result>() - 4usize];
+    ["Offset of field: HfRpc_interaction_request_result::entity"]
+        [::std::mem::offset_of!(HfRpc_interaction_request_result, entity) - 0usize];
+    ["Offset of field: HfRpc_interaction_request_result::entity_2"]
+        [::std::mem::offset_of!(HfRpc_interaction_request_result, entity_2) - 4usize];
+    ["Offset of field: HfRpc_interaction_request_result::arg2"]
+        [::std::mem::offset_of!(HfRpc_interaction_request_result, arg2) - 8usize];
+    ["Offset of field: HfRpc_interaction_request_result::entity_3"]
+        [::std::mem::offset_of!(HfRpc_interaction_request_result, entity_3) - 12usize];
+    ["Offset of field: HfRpc_interaction_request_result::arg4"]
+        [::std::mem::offset_of!(HfRpc_interaction_request_result, arg4) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partymember_cancel_join {
+    pub arg0: u64,
+    pub peer_id: u64,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partymember_cancel_join"]
+        [::std::mem::size_of::<HfRpc_from_partymember_cancel_join>() - 24usize];
+    ["Alignment of HfRpc_from_partymember_cancel_join"]
+        [::std::mem::align_of::<HfRpc_from_partymember_cancel_join>() - 8usize];
+    ["Offset of field: HfRpc_from_partymember_cancel_join::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_cancel_join, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partymember_cancel_join::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_cancel_join, peer_id) - 8usize];
+    ["Offset of field: HfRpc_from_partymember_cancel_join::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_cancel_join, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hostability {
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hostability"][::std::mem::size_of::<HfRpc_hostability>() - 4usize];
+    ["Alignment of HfRpc_hostability"][::std::mem::align_of::<HfRpc_hostability>() - 4usize];
+    ["Offset of field: HfRpc_hostability::float_value"]
+        [::std::mem::offset_of!(HfRpc_hostability, float_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_partymember_join_denied {
+    pub arg0: u64,
+    pub arg1: i32,
+    pub arg2: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_partymember_join_denied"]
+        [::std::mem::size_of::<HfRpc_from_host_partymember_join_denied>() - 24usize];
+    ["Alignment of HfRpc_from_host_partymember_join_denied"]
+        [::std::mem::align_of::<HfRpc_from_host_partymember_join_denied>() - 8usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_denied::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_denied, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_denied::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_denied, arg1) - 8usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_denied::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_denied, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability_pending_ability {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability_pending_ability"]
+        [::std::mem::size_of::<HfRpc_hotjoin_ability_pending_ability>() - 8usize];
+    ["Alignment of HfRpc_hotjoin_ability_pending_ability"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability_pending_ability>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_pending_ability::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_pending_ability, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability_pending_ability::arg1"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_pending_ability, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_ability_request {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_ability_request"][::std::mem::size_of::<HfRpc_ability_request>() - 12usize];
+    ["Alignment of HfRpc_ability_request"]
+        [::std::mem::align_of::<HfRpc_ability_request>() - 4usize];
+    ["Offset of field: HfRpc_ability_request::entity"]
+        [::std::mem::offset_of!(HfRpc_ability_request, entity) - 0usize];
+    ["Offset of field: HfRpc_ability_request::entity_2"]
+        [::std::mem::offset_of!(HfRpc_ability_request, entity_2) - 4usize];
+    ["Offset of field: HfRpc_ability_request::arg2"]
+        [::std::mem::offset_of!(HfRpc_ability_request, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_game_state {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_game_state"][::std::mem::size_of::<HfRpc_sync_game_state>() - 4usize];
+    ["Alignment of HfRpc_sync_game_state"]
+        [::std::mem::align_of::<HfRpc_sync_game_state>() - 4usize];
+    ["Offset of field: HfRpc_sync_game_state::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_game_state, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loot_container_pick_up_request {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loot_container_pick_up_request"]
+        [::std::mem::size_of::<HfRpc_loot_container_pick_up_request>() - 8usize];
+    ["Alignment of HfRpc_loot_container_pick_up_request"]
+        [::std::mem::align_of::<HfRpc_loot_container_pick_up_request>() - 4usize];
+    ["Offset of field: HfRpc_loot_container_pick_up_request::entity"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up_request, entity) - 0usize];
+    ["Offset of field: HfRpc_loot_container_pick_up_request::entity_2"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up_request, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_cutscene {
+    pub unsigned_value: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_cutscene"][::std::mem::size_of::<HfRpc_play_cutscene>() - 8usize];
+    ["Alignment of HfRpc_play_cutscene"][::std::mem::align_of::<HfRpc_play_cutscene>() - 4usize];
+    ["Offset of field: HfRpc_play_cutscene::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_play_cutscene, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_play_cutscene::arg1"]
+        [::std::mem::offset_of!(HfRpc_play_cutscene, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_transport_payload_cursor {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_transport_payload_cursor"]
+        [::std::mem::size_of::<HfRpc_set_transport_payload_cursor>() - 8usize];
+    ["Alignment of HfRpc_set_transport_payload_cursor"]
+        [::std::mem::align_of::<HfRpc_set_transport_payload_cursor>() - 4usize];
+    ["Offset of field: HfRpc_set_transport_payload_cursor::entity"]
+        [::std::mem::offset_of!(HfRpc_set_transport_payload_cursor, entity) - 0usize];
+    ["Offset of field: HfRpc_set_transport_payload_cursor::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_transport_payload_cursor, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_propose_drop_point {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_propose_drop_point"]
+        [::std::mem::size_of::<HfRpc_propose_drop_point>() - 4usize];
+    ["Alignment of HfRpc_propose_drop_point"]
+        [::std::mem::align_of::<HfRpc_propose_drop_point>() - 4usize];
+    ["Offset of field: HfRpc_propose_drop_point::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_propose_drop_point, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_zone_enabled {
+    pub entity: i32,
+    pub arg1: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_zone_enabled"][::std::mem::size_of::<HfRpc_set_zone_enabled>() - 12usize];
+    ["Alignment of HfRpc_set_zone_enabled"]
+        [::std::mem::align_of::<HfRpc_set_zone_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_zone_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_zone_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_zone_enabled::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_zone_enabled, arg1) - 4usize];
+    ["Offset of field: HfRpc_set_zone_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_zone_enabled, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_physics_uniform_impulse {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_physics_uniform_impulse"]
+        [::std::mem::size_of::<HfRpc_physics_uniform_impulse>() - 16usize];
+    ["Alignment of HfRpc_physics_uniform_impulse"]
+        [::std::mem::align_of::<HfRpc_physics_uniform_impulse>() - 4usize];
+    ["Offset of field: HfRpc_physics_uniform_impulse::entity"]
+        [::std::mem::offset_of!(HfRpc_physics_uniform_impulse, entity) - 0usize];
+    ["Offset of field: HfRpc_physics_uniform_impulse::vector3"]
+        [::std::mem::offset_of!(HfRpc_physics_uniform_impulse, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_bool {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_bool"][::std::mem::size_of::<HfRpc_score_sync_bool>() - 8usize];
+    ["Alignment of HfRpc_score_sync_bool"]
+        [::std::mem::align_of::<HfRpc_score_sync_bool>() - 4usize];
+    ["Offset of field: HfRpc_score_sync_bool::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_bool, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_bool::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_score_sync_bool, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_weapon_unsigned {
+    pub id_string32: u32,
+    pub id_string64: u64,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_weapon_unsigned"]
+        [::std::mem::size_of::<HfRpc_score_sync_weapon_unsigned>() - 24usize];
+    ["Alignment of HfRpc_score_sync_weapon_unsigned"]
+        [::std::mem::align_of::<HfRpc_score_sync_weapon_unsigned>() - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_unsigned::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_unsigned, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_weapon_unsigned::id_string64"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_unsigned, id_string64) - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_unsigned::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_unsigned, unsigned_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_encounters_within {
+    pub arg0: i32,
+    pub vector3: [f32; 3usize],
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_encounters_within"]
+        [::std::mem::size_of::<HfRpc_remove_encounters_within>() - 20usize];
+    ["Alignment of HfRpc_remove_encounters_within"]
+        [::std::mem::align_of::<HfRpc_remove_encounters_within>() - 4usize];
+    ["Offset of field: HfRpc_remove_encounters_within::arg0"]
+        [::std::mem::offset_of!(HfRpc_remove_encounters_within, arg0) - 0usize];
+    ["Offset of field: HfRpc_remove_encounters_within::vector3"]
+        [::std::mem::offset_of!(HfRpc_remove_encounters_within, vector3) - 4usize];
+    ["Offset of field: HfRpc_remove_encounters_within::float_value"]
+        [::std::mem::offset_of!(HfRpc_remove_encounters_within, float_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hellpad_confirmation_result {
+    pub arg0: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hellpad_confirmation_result"]
+        [::std::mem::size_of::<HfRpc_hellpad_confirmation_result>() - 8usize];
+    ["Alignment of HfRpc_hellpad_confirmation_result"]
+        [::std::mem::align_of::<HfRpc_hellpad_confirmation_result>() - 4usize];
+    ["Offset of field: HfRpc_hellpad_confirmation_result::arg0"]
+        [::std::mem::offset_of!(HfRpc_hellpad_confirmation_result, arg0) - 0usize];
+    ["Offset of field: HfRpc_hellpad_confirmation_result::bool_value"]
+        [::std::mem::offset_of!(HfRpc_hellpad_confirmation_result, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_difficulty_terrain {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_difficulty_terrain"]
+        [::std::mem::size_of::<HfRpc_change_difficulty_terrain>() - 8usize];
+    ["Alignment of HfRpc_change_difficulty_terrain"]
+        [::std::mem::align_of::<HfRpc_change_difficulty_terrain>() - 4usize];
+    ["Offset of field: HfRpc_change_difficulty_terrain::entity"]
+        [::std::mem::offset_of!(HfRpc_change_difficulty_terrain, entity) - 0usize];
+    ["Offset of field: HfRpc_change_difficulty_terrain::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_change_difficulty_terrain, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_validate_exploration {
+    pub arg0: u64,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_validate_exploration"]
+        [::std::mem::size_of::<HfRpc_validate_exploration>() - 24usize];
+    ["Alignment of HfRpc_validate_exploration"]
+        [::std::mem::align_of::<HfRpc_validate_exploration>() - 8usize];
+    ["Offset of field: HfRpc_validate_exploration::arg0"]
+        [::std::mem::offset_of!(HfRpc_validate_exploration, arg0) - 0usize];
+    ["Offset of field: HfRpc_validate_exploration::vector3"]
+        [::std::mem::offset_of!(HfRpc_validate_exploration, vector3) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_objective_asset_destroyed {
+    pub entity: i32,
+    pub damage_type: i32,
+    pub entity_2: i32,
+    pub entity_3: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_objective_asset_destroyed"]
+        [::std::mem::size_of::<HfRpc_objective_asset_destroyed>() - 20usize];
+    ["Alignment of HfRpc_objective_asset_destroyed"]
+        [::std::mem::align_of::<HfRpc_objective_asset_destroyed>() - 4usize];
+    ["Offset of field: HfRpc_objective_asset_destroyed::entity"]
+        [::std::mem::offset_of!(HfRpc_objective_asset_destroyed, entity) - 0usize];
+    ["Offset of field: HfRpc_objective_asset_destroyed::damage_type"]
+        [::std::mem::offset_of!(HfRpc_objective_asset_destroyed, damage_type) - 4usize];
+    ["Offset of field: HfRpc_objective_asset_destroyed::entity_2"]
+        [::std::mem::offset_of!(HfRpc_objective_asset_destroyed, entity_2) - 8usize];
+    ["Offset of field: HfRpc_objective_asset_destroyed::entity_3"]
+        [::std::mem::offset_of!(HfRpc_objective_asset_destroyed, entity_3) - 12usize];
+    ["Offset of field: HfRpc_objective_asset_destroyed::id_string32"]
+        [::std::mem::offset_of!(HfRpc_objective_asset_destroyed, id_string32) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partymember_join_failed {
+    pub arg0: u64,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partymember_join_failed"]
+        [::std::mem::size_of::<HfRpc_from_partymember_join_failed>() - 16usize];
+    ["Alignment of HfRpc_from_partymember_join_failed"]
+        [::std::mem::align_of::<HfRpc_from_partymember_join_failed>() - 8usize];
+    ["Offset of field: HfRpc_from_partymember_join_failed::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_join_failed, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partymember_join_failed::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_join_failed, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_material_variable_vector3 {
+    pub entity: i32,
+    pub arg1: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub float_value_3: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_material_variable_vector3"]
+        [::std::mem::size_of::<HfRpc_material_variable_vector3>() - 20usize];
+    ["Alignment of HfRpc_material_variable_vector3"]
+        [::std::mem::align_of::<HfRpc_material_variable_vector3>() - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector3::entity"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector3, entity) - 0usize];
+    ["Offset of field: HfRpc_material_variable_vector3::arg1"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector3, arg1) - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector3::float_value"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector3, float_value) - 8usize];
+    ["Offset of field: HfRpc_material_variable_vector3::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector3, float_value_2) - 12usize];
+    ["Offset of field: HfRpc_material_variable_vector3::float_value_3"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector3, float_value_3) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_entity_broken_command {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_entity_broken_command"]
+        [::std::mem::size_of::<HfRpc_entity_broken_command>() - 8usize];
+    ["Alignment of HfRpc_entity_broken_command"]
+        [::std::mem::align_of::<HfRpc_entity_broken_command>() - 4usize];
+    ["Offset of field: HfRpc_entity_broken_command::entity"]
+        [::std::mem::offset_of!(HfRpc_entity_broken_command, entity) - 0usize];
+    ["Offset of field: HfRpc_entity_broken_command::entity_2"]
+        [::std::mem::offset_of!(HfRpc_entity_broken_command, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loadout_set_booster_id {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loadout_set_booster_id"]
+        [::std::mem::size_of::<HfRpc_loadout_set_booster_id>() - 8usize];
+    ["Alignment of HfRpc_loadout_set_booster_id"]
+        [::std::mem::align_of::<HfRpc_loadout_set_booster_id>() - 4usize];
+    ["Offset of field: HfRpc_loadout_set_booster_id::entity"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_booster_id, entity) - 0usize];
+    ["Offset of field: HfRpc_loadout_set_booster_id::id_string32"]
+        [::std::mem::offset_of!(HfRpc_loadout_set_booster_id, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_hologram_audio_event {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_hologram_audio_event"]
+        [::std::mem::size_of::<HfRpc_trigger_hologram_audio_event>() - 4usize];
+    ["Alignment of HfRpc_trigger_hologram_audio_event"]
+        [::std::mem::align_of::<HfRpc_trigger_hologram_audio_event>() - 4usize];
+    ["Offset of field: HfRpc_trigger_hologram_audio_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_trigger_hologram_audio_event, id_string32) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_planet_status {
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub arg2: i32,
+    pub unsigned_value_2: i32,
+    pub float_value: f32,
+    pub bool_value: u8,
+    pub unsigned_value_3: i32,
+    pub arg7_count: u32,
+    pub arg7: [i32; 8usize],
+    pub arg8_count: u32,
+    pub arg8: [i32; 32usize],
+    pub arg9: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_planet_status"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_planet_status>() - 208usize];
+    ["Alignment of HfRpc_sync_galactic_war_planet_status"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_planet_status>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::vector3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, vector3) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg2) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, unsigned_value_2) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, float_value) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, bool_value) - 28usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, unsigned_value_3) - 32usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg7_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg7_count) - 36usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg7"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg7) - 40usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg8_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg8_count) - 72usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg8"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg8) - 76usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_status::arg9"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_status, arg9) - 204usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_deform_terrain {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_deform_terrain"]
+        [::std::mem::size_of::<HfRpc_request_deform_terrain>() - 8usize];
+    ["Alignment of HfRpc_request_deform_terrain"]
+        [::std::mem::align_of::<HfRpc_request_deform_terrain>() - 4usize];
+    ["Offset of field: HfRpc_request_deform_terrain::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_request_deform_terrain, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_request_deform_terrain::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_request_deform_terrain, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_party_clan_station {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub int_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_party_clan_station"]
+        [::std::mem::size_of::<HfRpc_sync_party_clan_station>() - 12usize];
+    ["Alignment of HfRpc_sync_party_clan_station"]
+        [::std::mem::align_of::<HfRpc_sync_party_clan_station>() - 4usize];
+    ["Offset of field: HfRpc_sync_party_clan_station::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan_station, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_party_clan_station::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan_station, unsigned_value_2) - 4usize];
+    ["Offset of field: HfRpc_sync_party_clan_station::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_party_clan_station, int_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_heal {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_heal"][::std::mem::size_of::<HfRpc_heal>() - 8usize];
+    ["Alignment of HfRpc_heal"][::std::mem::align_of::<HfRpc_heal>() - 4usize];
+    ["Offset of field: HfRpc_heal::entity"][::std::mem::offset_of!(HfRpc_heal, entity) - 0usize];
+    ["Offset of field: HfRpc_heal::float_value"]
+        [::std::mem::offset_of!(HfRpc_heal, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_displacement_start {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_displacement_start"]
+        [::std::mem::size_of::<HfRpc_displacement_start>() - 4usize];
+    ["Alignment of HfRpc_displacement_start"]
+        [::std::mem::align_of::<HfRpc_displacement_start>() - 4usize];
+    ["Offset of field: HfRpc_displacement_start::entity"]
+        [::std::mem::offset_of!(HfRpc_displacement_start, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_landing_started {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_landing_started"][::std::mem::size_of::<HfRpc_landing_started>() - 16usize];
+    ["Alignment of HfRpc_landing_started"]
+        [::std::mem::align_of::<HfRpc_landing_started>() - 4usize];
+    ["Offset of field: HfRpc_landing_started::entity"]
+        [::std::mem::offset_of!(HfRpc_landing_started, entity) - 0usize];
+    ["Offset of field: HfRpc_landing_started::vector3"]
+        [::std::mem::offset_of!(HfRpc_landing_started, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_weapon_flashlight_mode {
+    pub entity: i32,
+    pub flashlight_mode: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_weapon_flashlight_mode"]
+        [::std::mem::size_of::<HfRpc_set_weapon_flashlight_mode>() - 8usize];
+    ["Alignment of HfRpc_set_weapon_flashlight_mode"]
+        [::std::mem::align_of::<HfRpc_set_weapon_flashlight_mode>() - 4usize];
+    ["Offset of field: HfRpc_set_weapon_flashlight_mode::entity"]
+        [::std::mem::offset_of!(HfRpc_set_weapon_flashlight_mode, entity) - 0usize];
+    ["Offset of field: HfRpc_set_weapon_flashlight_mode::flashlight_mode"]
+        [::std::mem::offset_of!(HfRpc_set_weapon_flashlight_mode, flashlight_mode) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_stance {
+    pub entity: i32,
+    pub stance: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_stance"][::std::mem::size_of::<HfRpc_set_stance>() - 8usize];
+    ["Alignment of HfRpc_set_stance"][::std::mem::align_of::<HfRpc_set_stance>() - 4usize];
+    ["Offset of field: HfRpc_set_stance::entity"]
+        [::std::mem::offset_of!(HfRpc_set_stance, entity) - 0usize];
+    ["Offset of field: HfRpc_set_stance::stance"]
+        [::std::mem::offset_of!(HfRpc_set_stance, stance) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_equipment_slot_change_start {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_equipment_slot_change_start"]
+        [::std::mem::size_of::<HfRpc_equipment_slot_change_start>() - 8usize];
+    ["Alignment of HfRpc_equipment_slot_change_start"]
+        [::std::mem::align_of::<HfRpc_equipment_slot_change_start>() - 4usize];
+    ["Offset of field: HfRpc_equipment_slot_change_start::entity"]
+        [::std::mem::offset_of!(HfRpc_equipment_slot_change_start, entity) - 0usize];
+    ["Offset of field: HfRpc_equipment_slot_change_start::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_equipment_slot_change_start, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_partymember_join_confirmed {
+    pub arg0: u64,
+    pub network_string: *const ::std::os::raw::c_char,
+    pub unsigned_value: i32,
+    pub arg3: u64,
+    pub vector3: [f32; 3usize],
+    pub arg5: i32,
+    pub arg6: i32,
+    pub arg7: i32,
+    pub client_rejoin_state: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_partymember_join_confirmed"]
+        [::std::mem::size_of::<HfRpc_from_host_partymember_join_confirmed>() - 64usize];
+    ["Alignment of HfRpc_from_host_partymember_join_confirmed"]
+        [::std::mem::align_of::<HfRpc_from_host_partymember_join_confirmed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::network_string"][::std::mem::offset_of!(
+        HfRpc_from_host_partymember_join_confirmed,
+        network_string
+    ) - 8usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_host_partymember_join_confirmed,
+        unsigned_value
+    ) - 16usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::arg3"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, arg3) - 24usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::vector3"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, vector3) - 32usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::arg5"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, arg5) - 44usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::arg6"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, arg6) - 48usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::arg7"]
+        [::std::mem::offset_of!(HfRpc_from_host_partymember_join_confirmed, arg7) - 52usize];
+    ["Offset of field: HfRpc_from_host_partymember_join_confirmed::client_rejoin_state"][::std::mem::offset_of!(
+        HfRpc_from_host_partymember_join_confirmed,
+        client_rejoin_state
+    )
+        - 56usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dialogue_finished {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dialogue_finished"][::std::mem::size_of::<HfRpc_dialogue_finished>() - 12usize];
+    ["Alignment of HfRpc_dialogue_finished"]
+        [::std::mem::align_of::<HfRpc_dialogue_finished>() - 4usize];
+    ["Offset of field: HfRpc_dialogue_finished::entity"]
+        [::std::mem::offset_of!(HfRpc_dialogue_finished, entity) - 0usize];
+    ["Offset of field: HfRpc_dialogue_finished::entity_2"]
+        [::std::mem::offset_of!(HfRpc_dialogue_finished, entity_2) - 4usize];
+    ["Offset of field: HfRpc_dialogue_finished::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_dialogue_finished, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dyndest_on_hotjoined {
+    pub arg0: i32,
+    pub arg1: u64,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dyndest_on_hotjoined"]
+        [::std::mem::size_of::<HfRpc_dyndest_on_hotjoined>() - 48usize];
+    ["Alignment of HfRpc_dyndest_on_hotjoined"]
+        [::std::mem::align_of::<HfRpc_dyndest_on_hotjoined>() - 8usize];
+    ["Offset of field: HfRpc_dyndest_on_hotjoined::arg0"]
+        [::std::mem::offset_of!(HfRpc_dyndest_on_hotjoined, arg0) - 0usize];
+    ["Offset of field: HfRpc_dyndest_on_hotjoined::arg1"]
+        [::std::mem::offset_of!(HfRpc_dyndest_on_hotjoined, arg1) - 8usize];
+    ["Offset of field: HfRpc_dyndest_on_hotjoined::vector3"]
+        [::std::mem::offset_of!(HfRpc_dyndest_on_hotjoined, vector3) - 16usize];
+    ["Offset of field: HfRpc_dyndest_on_hotjoined::quaternion"]
+        [::std::mem::offset_of!(HfRpc_dyndest_on_hotjoined, quaternion) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partyleader_cancel_join {
+    pub arg0: u64,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partyleader_cancel_join"]
+        [::std::mem::size_of::<HfRpc_from_partyleader_cancel_join>() - 16usize];
+    ["Alignment of HfRpc_from_partyleader_cancel_join"]
+        [::std::mem::align_of::<HfRpc_from_partyleader_cancel_join>() - 8usize];
+    ["Offset of field: HfRpc_from_partyleader_cancel_join::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_cancel_join, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partyleader_cancel_join::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_partyleader_cancel_join, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_migration_host_done {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_migration_host_done"]
+        [::std::mem::size_of::<HfRpc_from_migration_host_done>() - 4usize];
+    ["Alignment of HfRpc_from_migration_host_done"]
+        [::std::mem::align_of::<HfRpc_from_migration_host_done>() - 4usize];
+    ["Offset of field: HfRpc_from_migration_host_done::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_migration_host_done, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_chained {
+    pub arg0_count: u32,
+    pub arg0: [u32; 8usize],
+    pub arg1_count: u32,
+    pub arg1: [f32; 8usize],
+    pub arg2_count: u32,
+    pub arg2: [u32; 8usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 8usize],
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_chained"][::std::mem::size_of::<HfRpc_play_chained>() - 152usize];
+    ["Alignment of HfRpc_play_chained"][::std::mem::align_of::<HfRpc_play_chained>() - 4usize];
+    ["Offset of field: HfRpc_play_chained::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_play_chained::arg0"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg0) - 4usize];
+    ["Offset of field: HfRpc_play_chained::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg1_count) - 36usize];
+    ["Offset of field: HfRpc_play_chained::arg1"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg1) - 40usize];
+    ["Offset of field: HfRpc_play_chained::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg2_count) - 72usize];
+    ["Offset of field: HfRpc_play_chained::arg2"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg2) - 76usize];
+    ["Offset of field: HfRpc_play_chained::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg3_count) - 108usize];
+    ["Offset of field: HfRpc_play_chained::arg3"]
+        [::std::mem::offset_of!(HfRpc_play_chained, arg3) - 112usize];
+    ["Offset of field: HfRpc_play_chained::entity"]
+        [::std::mem::offset_of!(HfRpc_play_chained, entity) - 144usize];
+    ["Offset of field: HfRpc_play_chained::id_string32"]
+        [::std::mem::offset_of!(HfRpc_play_chained, id_string32) - 148usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_variable {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_variable"]
+        [::std::mem::size_of::<HfRpc_animation_variable>() - 12usize];
+    ["Alignment of HfRpc_animation_variable"]
+        [::std::mem::align_of::<HfRpc_animation_variable>() - 4usize];
+    ["Offset of field: HfRpc_animation_variable::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_variable, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_variable::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_animation_variable, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_animation_variable::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_variable, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_stratagem_shared_uses_left {
+    pub arg0_count: u32,
+    pub arg0: [i32; 16usize],
+    pub arg1_count: u32,
+    pub arg1: [i32; 16usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_stratagem_shared_uses_left"]
+        [::std::mem::size_of::<HfRpc_sync_stratagem_shared_uses_left>() - 136usize];
+    ["Alignment of HfRpc_sync_stratagem_shared_uses_left"]
+        [::std::mem::align_of::<HfRpc_sync_stratagem_shared_uses_left>() - 4usize];
+    ["Offset of field: HfRpc_sync_stratagem_shared_uses_left::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_shared_uses_left, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_sync_stratagem_shared_uses_left::arg0"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_shared_uses_left, arg0) - 4usize];
+    ["Offset of field: HfRpc_sync_stratagem_shared_uses_left::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_shared_uses_left, arg1_count) - 68usize];
+    ["Offset of field: HfRpc_sync_stratagem_shared_uses_left::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagem_shared_uses_left, arg1) - 72usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_transport_drop {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_transport_drop"][::std::mem::size_of::<HfRpc_transport_drop>() - 8usize];
+    ["Alignment of HfRpc_transport_drop"][::std::mem::align_of::<HfRpc_transport_drop>() - 4usize];
+    ["Offset of field: HfRpc_transport_drop::entity"]
+        [::std::mem::offset_of!(HfRpc_transport_drop, entity) - 0usize];
+    ["Offset of field: HfRpc_transport_drop::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_transport_drop, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_displacement_teleport {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_displacement_teleport"]
+        [::std::mem::size_of::<HfRpc_displacement_teleport>() - 8usize];
+    ["Alignment of HfRpc_displacement_teleport"]
+        [::std::mem::align_of::<HfRpc_displacement_teleport>() - 4usize];
+    ["Offset of field: HfRpc_displacement_teleport::entity"]
+        [::std::mem::offset_of!(HfRpc_displacement_teleport, entity) - 0usize];
+    ["Offset of field: HfRpc_displacement_teleport::bool_value"]
+        [::std::mem::offset_of!(HfRpc_displacement_teleport, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loadout_select_equipment_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loadout_select_equipment_slot"]
+        [::std::mem::size_of::<HfRpc_loadout_select_equipment_slot>() - 8usize];
+    ["Alignment of HfRpc_loadout_select_equipment_slot"]
+        [::std::mem::align_of::<HfRpc_loadout_select_equipment_slot>() - 4usize];
+    ["Offset of field: HfRpc_loadout_select_equipment_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_loadout_select_equipment_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_loadout_select_equipment_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_loadout_select_equipment_slot, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_encounter_spawn_ping {
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_encounter_spawn_ping"]
+        [::std::mem::size_of::<HfRpc_encounter_spawn_ping>() - 12usize];
+    ["Alignment of HfRpc_encounter_spawn_ping"]
+        [::std::mem::align_of::<HfRpc_encounter_spawn_ping>() - 4usize];
+    ["Offset of field: HfRpc_encounter_spawn_ping::vector3"]
+        [::std::mem::offset_of!(HfRpc_encounter_spawn_ping, vector3) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_held_throwable {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_held_throwable"]
+        [::std::mem::size_of::<HfRpc_set_held_throwable>() - 12usize];
+    ["Alignment of HfRpc_set_held_throwable"]
+        [::std::mem::align_of::<HfRpc_set_held_throwable>() - 4usize];
+    ["Offset of field: HfRpc_set_held_throwable::entity"]
+        [::std::mem::offset_of!(HfRpc_set_held_throwable, entity) - 0usize];
+    ["Offset of field: HfRpc_set_held_throwable::entity_2"]
+        [::std::mem::offset_of!(HfRpc_set_held_throwable, entity_2) - 4usize];
+    ["Offset of field: HfRpc_set_held_throwable::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_held_throwable, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_modifier_system_recieve_modifier_from_host {
+    pub unsigned_value: i32,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_modifier_system_recieve_modifier_from_host"]
+        [::std::mem::size_of::<HfRpc_modifier_system_recieve_modifier_from_host>() - 16usize];
+    ["Alignment of HfRpc_modifier_system_recieve_modifier_from_host"]
+        [::std::mem::align_of::<HfRpc_modifier_system_recieve_modifier_from_host>() - 8usize];
+    ["Offset of field: HfRpc_modifier_system_recieve_modifier_from_host::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_modifier_system_recieve_modifier_from_host,
+        unsigned_value
+    )
+        - 0usize];
+    ["Offset of field: HfRpc_modifier_system_recieve_modifier_from_host::arg1"]
+        [::std::mem::offset_of!(HfRpc_modifier_system_recieve_modifier_from_host, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability_set_undo_mask {
+    pub entity: i32,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability_set_undo_mask"]
+        [::std::mem::size_of::<HfRpc_hotjoin_ability_set_undo_mask>() - 16usize];
+    ["Alignment of HfRpc_hotjoin_ability_set_undo_mask"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability_set_undo_mask>() - 8usize];
+    ["Offset of field: HfRpc_hotjoin_ability_set_undo_mask::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_set_undo_mask, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability_set_undo_mask::arg1"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_set_undo_mask, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_assisted_reload_partner_ready_state {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_assisted_reload_partner_ready_state"]
+        [::std::mem::size_of::<HfRpc_assisted_reload_partner_ready_state>() - 8usize];
+    ["Alignment of HfRpc_assisted_reload_partner_ready_state"]
+        [::std::mem::align_of::<HfRpc_assisted_reload_partner_ready_state>() - 4usize];
+    ["Offset of field: HfRpc_assisted_reload_partner_ready_state::entity"]
+        [::std::mem::offset_of!(HfRpc_assisted_reload_partner_ready_state, entity) - 0usize];
+    ["Offset of field: HfRpc_assisted_reload_partner_ready_state::bool_value"]
+        [::std::mem::offset_of!(HfRpc_assisted_reload_partner_ready_state, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_percent {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_percent"]
+        [::std::mem::size_of::<HfRpc_animation_event_percent>() - 12usize];
+    ["Alignment of HfRpc_animation_event_percent"]
+        [::std::mem::align_of::<HfRpc_animation_event_percent>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_percent::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_percent, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_percent::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_percent, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_animation_event_percent::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_percent, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_heal_injury {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_heal_injury"][::std::mem::size_of::<HfRpc_heal_injury>() - 8usize];
+    ["Alignment of HfRpc_heal_injury"][::std::mem::align_of::<HfRpc_heal_injury>() - 4usize];
+    ["Offset of field: HfRpc_heal_injury::entity"]
+        [::std::mem::offset_of!(HfRpc_heal_injury, entity) - 0usize];
+    ["Offset of field: HfRpc_heal_injury::arg1"]
+        [::std::mem::offset_of!(HfRpc_heal_injury, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_info {
+    pub entity: i32,
+    pub int_value: i32,
+    pub arg2_count: u32,
+    pub arg2: [u64; 2usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_info"][::std::mem::size_of::<HfRpc_hotjoin_info>() - 32usize];
+    ["Alignment of HfRpc_hotjoin_info"][::std::mem::align_of::<HfRpc_hotjoin_info>() - 8usize];
+    ["Offset of field: HfRpc_hotjoin_info::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_info, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_info::int_value"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_info, int_value) - 4usize];
+    ["Offset of field: HfRpc_hotjoin_info::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_info, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_hotjoin_info::arg2"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_info, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_duration_percent {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_duration_percent"]
+        [::std::mem::size_of::<HfRpc_animation_event_duration_percent>() - 20usize];
+    ["Alignment of HfRpc_animation_event_duration_percent"]
+        [::std::mem::align_of::<HfRpc_animation_event_duration_percent>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_duration_percent::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration_percent, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_duration_percent::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration_percent, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_duration_percent::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration_percent, float_value) - 8usize];
+    ["Offset of field: HfRpc_animation_event_duration_percent::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration_percent, float_value_2) - 12usize];
+    ["Offset of field: HfRpc_animation_event_duration_percent::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration_percent, bool_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_pawn_deserting {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_pawn_deserting"][::std::mem::size_of::<HfRpc_pawn_deserting>() - 4usize];
+    ["Alignment of HfRpc_pawn_deserting"][::std::mem::align_of::<HfRpc_pawn_deserting>() - 4usize];
+    ["Offset of field: HfRpc_pawn_deserting::entity"]
+        [::std::mem::offset_of!(HfRpc_pawn_deserting, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_moving_hazard_time_remaining {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_moving_hazard_time_remaining"]
+        [::std::mem::size_of::<HfRpc_set_moving_hazard_time_remaining>() - 8usize];
+    ["Alignment of HfRpc_set_moving_hazard_time_remaining"]
+        [::std::mem::align_of::<HfRpc_set_moving_hazard_time_remaining>() - 4usize];
+    ["Offset of field: HfRpc_set_moving_hazard_time_remaining::entity"]
+        [::std::mem::offset_of!(HfRpc_set_moving_hazard_time_remaining, entity) - 0usize];
+    ["Offset of field: HfRpc_set_moving_hazard_time_remaining::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_moving_hazard_time_remaining, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_migration_host_event_count {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_migration_host_event_count"]
+        [::std::mem::size_of::<HfRpc_from_migration_host_event_count>() - 8usize];
+    ["Alignment of HfRpc_from_migration_host_event_count"]
+        [::std::mem::align_of::<HfRpc_from_migration_host_event_count>() - 4usize];
+    ["Offset of field: HfRpc_from_migration_host_event_count::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_migration_host_event_count, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_from_migration_host_event_count::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_from_migration_host_event_count, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_state_changed {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_state_changed"][::std::mem::size_of::<HfRpc_state_changed>() - 8usize];
+    ["Alignment of HfRpc_state_changed"][::std::mem::align_of::<HfRpc_state_changed>() - 4usize];
+    ["Offset of field: HfRpc_state_changed::entity"]
+        [::std::mem::offset_of!(HfRpc_state_changed, entity) - 0usize];
+    ["Offset of field: HfRpc_state_changed::arg1"]
+        [::std::mem::offset_of!(HfRpc_state_changed, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_weapon_level_up {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_weapon_level_up"][::std::mem::size_of::<HfRpc_weapon_level_up>() - 8usize];
+    ["Alignment of HfRpc_weapon_level_up"]
+        [::std::mem::align_of::<HfRpc_weapon_level_up>() - 4usize];
+    ["Offset of field: HfRpc_weapon_level_up::id_string32"]
+        [::std::mem::offset_of!(HfRpc_weapon_level_up, id_string32) - 0usize];
+    ["Offset of field: HfRpc_weapon_level_up::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_weapon_level_up, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_local_scale {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub arg2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_local_scale"][::std::mem::size_of::<HfRpc_set_local_scale>() - 12usize];
+    ["Alignment of HfRpc_set_local_scale"]
+        [::std::mem::align_of::<HfRpc_set_local_scale>() - 4usize];
+    ["Offset of field: HfRpc_set_local_scale::entity"]
+        [::std::mem::offset_of!(HfRpc_set_local_scale, entity) - 0usize];
+    ["Offset of field: HfRpc_set_local_scale::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_local_scale, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_local_scale::arg2"]
+        [::std::mem::offset_of!(HfRpc_set_local_scale, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_joint_operation {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub unsigned_value_4: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_joint_operation"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_joint_operation>() - 16usize];
+    ["Alignment of HfRpc_sync_galactic_war_joint_operation"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_joint_operation>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_joint_operation::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_joint_operation, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_joint_operation::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_joint_operation,
+        unsigned_value_2
+    ) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_joint_operation::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_joint_operation,
+        unsigned_value_3
+    ) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_joint_operation::unsigned_value_4"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_joint_operation,
+        unsigned_value_4
+    ) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hostability_scores {
+    pub arg0_count: u32,
+    pub arg0: [u64; 5usize],
+    pub arg1_count: u32,
+    pub arg1: [f32; 5usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hostability_scores"]
+        [::std::mem::size_of::<HfRpc_hostability_scores>() - 72usize];
+    ["Alignment of HfRpc_hostability_scores"]
+        [::std::mem::align_of::<HfRpc_hostability_scores>() - 8usize];
+    ["Offset of field: HfRpc_hostability_scores::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_hostability_scores, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_hostability_scores::arg0"]
+        [::std::mem::offset_of!(HfRpc_hostability_scores, arg0) - 8usize];
+    ["Offset of field: HfRpc_hostability_scores::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_hostability_scores, arg1_count) - 48usize];
+    ["Offset of field: HfRpc_hostability_scores::arg1"]
+        [::std::mem::offset_of!(HfRpc_hostability_scores, arg1) - 52usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_hostinfo {
+    pub arg0: u64,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_hostinfo"][::std::mem::size_of::<HfRpc_request_hostinfo>() - 16usize];
+    ["Alignment of HfRpc_request_hostinfo"]
+        [::std::mem::align_of::<HfRpc_request_hostinfo>() - 8usize];
+    ["Offset of field: HfRpc_request_hostinfo::arg0"]
+        [::std::mem::offset_of!(HfRpc_request_hostinfo, arg0) - 0usize];
+    ["Offset of field: HfRpc_request_hostinfo::arg1"]
+        [::std::mem::offset_of!(HfRpc_request_hostinfo, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_enabled {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_enabled"][::std::mem::size_of::<HfRpc_set_enabled>() - 8usize];
+    ["Alignment of HfRpc_set_enabled"][::std::mem::align_of::<HfRpc_set_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_enabled, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_sync_film_progress {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_sync_film_progress"]
+        [::std::mem::size_of::<HfRpc_hotjoin_sync_film_progress>() - 8usize];
+    ["Alignment of HfRpc_hotjoin_sync_film_progress"]
+        [::std::mem::align_of::<HfRpc_hotjoin_sync_film_progress>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_sync_film_progress::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_film_progress, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_sync_film_progress::float_value"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_sync_film_progress, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_hellpod_occupied {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_hellpod_occupied"]
+        [::std::mem::size_of::<HfRpc_set_hellpod_occupied>() - 8usize];
+    ["Alignment of HfRpc_set_hellpod_occupied"]
+        [::std::mem::align_of::<HfRpc_set_hellpod_occupied>() - 4usize];
+    ["Offset of field: HfRpc_set_hellpod_occupied::entity"]
+        [::std::mem::offset_of!(HfRpc_set_hellpod_occupied, entity) - 0usize];
+    ["Offset of field: HfRpc_set_hellpod_occupied::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_hellpod_occupied, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_start_position {
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_start_position"]
+        [::std::mem::size_of::<HfRpc_from_host_set_start_position>() - 12usize];
+    ["Alignment of HfRpc_from_host_set_start_position"]
+        [::std::mem::align_of::<HfRpc_from_host_set_start_position>() - 4usize];
+    ["Offset of field: HfRpc_from_host_set_start_position::vector3"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_start_position, vector3) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_ship_seed {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_ship_seed"]
+        [::std::mem::size_of::<HfRpc_from_host_set_ship_seed>() - 4usize];
+    ["Alignment of HfRpc_from_host_set_ship_seed"]
+        [::std::mem::align_of::<HfRpc_from_host_set_ship_seed>() - 4usize];
+    ["Offset of field: HfRpc_from_host_set_ship_seed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_ship_seed, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_generation_seed {
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_generation_seed"]
+        [::std::mem::size_of::<HfRpc_from_host_set_generation_seed>() - 8usize];
+    ["Alignment of HfRpc_from_host_set_generation_seed"]
+        [::std::mem::align_of::<HfRpc_from_host_set_generation_seed>() - 8usize];
+    ["Offset of field: HfRpc_from_host_set_generation_seed::network_string"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_generation_seed, network_string) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_confirmation_result {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_confirmation_result"]
+        [::std::mem::size_of::<HfRpc_stratagem_confirmation_result>() - 8usize];
+    ["Alignment of HfRpc_stratagem_confirmation_result"]
+        [::std::mem::align_of::<HfRpc_stratagem_confirmation_result>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_confirmation_result::entity"]
+        [::std::mem::offset_of!(HfRpc_stratagem_confirmation_result, entity) - 0usize];
+    ["Offset of field: HfRpc_stratagem_confirmation_result::bool_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_confirmation_result, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_booster {
+    pub booster: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_booster"][::std::mem::size_of::<HfRpc_request_booster>() - 4usize];
+    ["Alignment of HfRpc_request_booster"]
+        [::std::mem::align_of::<HfRpc_request_booster>() - 4usize];
+    ["Offset of field: HfRpc_request_booster::booster"]
+        [::std::mem::offset_of!(HfRpc_request_booster, booster) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_debug_level {
+    pub id_string64: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_debug_level"]
+        [::std::mem::size_of::<HfRpc_from_host_set_debug_level>() - 8usize];
+    ["Alignment of HfRpc_from_host_set_debug_level"]
+        [::std::mem::align_of::<HfRpc_from_host_set_debug_level>() - 8usize];
+    ["Offset of field: HfRpc_from_host_set_debug_level::id_string64"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_debug_level, id_string64) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_abort_dialogue {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_abort_dialogue"][::std::mem::size_of::<HfRpc_abort_dialogue>() - 4usize];
+    ["Alignment of HfRpc_abort_dialogue"][::std::mem::align_of::<HfRpc_abort_dialogue>() - 4usize];
+    ["Offset of field: HfRpc_abort_dialogue::entity"]
+        [::std::mem::offset_of!(HfRpc_abort_dialogue, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loot_pick_up_request {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loot_pick_up_request"]
+        [::std::mem::size_of::<HfRpc_loot_pick_up_request>() - 8usize];
+    ["Alignment of HfRpc_loot_pick_up_request"]
+        [::std::mem::align_of::<HfRpc_loot_pick_up_request>() - 4usize];
+    ["Offset of field: HfRpc_loot_pick_up_request::entity"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up_request, entity) - 0usize];
+    ["Offset of field: HfRpc_loot_pick_up_request::entity_2"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up_request, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_switch_script_event {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_switch_script_event"]
+        [::std::mem::size_of::<HfRpc_switch_script_event>() - 16usize];
+    ["Alignment of HfRpc_switch_script_event"]
+        [::std::mem::align_of::<HfRpc_switch_script_event>() - 4usize];
+    ["Offset of field: HfRpc_switch_script_event::entity"]
+        [::std::mem::offset_of!(HfRpc_switch_script_event, entity) - 0usize];
+    ["Offset of field: HfRpc_switch_script_event::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_switch_script_event, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_switch_script_event::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_switch_script_event, unsigned_value_2) - 8usize];
+    ["Offset of field: HfRpc_switch_script_event::bool_value"]
+        [::std::mem::offset_of!(HfRpc_switch_script_event, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_minefield {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub float_value: f32,
+    pub arg3_count: u32,
+    pub arg3: [u64; 48usize],
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_minefield"][::std::mem::size_of::<HfRpc_sync_minefield>() - 416usize];
+    ["Alignment of HfRpc_sync_minefield"][::std::mem::align_of::<HfRpc_sync_minefield>() - 8usize];
+    ["Offset of field: HfRpc_sync_minefield::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, entity) - 0usize];
+    ["Offset of field: HfRpc_sync_minefield::vector3"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, vector3) - 4usize];
+    ["Offset of field: HfRpc_sync_minefield::float_value"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, float_value) - 16usize];
+    ["Offset of field: HfRpc_sync_minefield::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, arg3_count) - 20usize];
+    ["Offset of field: HfRpc_sync_minefield::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, arg3) - 24usize];
+    ["Offset of field: HfRpc_sync_minefield::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_minefield, bool_value) - 408usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_material_swap {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_material_swap"][::std::mem::size_of::<HfRpc_material_swap>() - 8usize];
+    ["Alignment of HfRpc_material_swap"][::std::mem::align_of::<HfRpc_material_swap>() - 4usize];
+    ["Offset of field: HfRpc_material_swap::entity"]
+        [::std::mem::offset_of!(HfRpc_material_swap, entity) - 0usize];
+    ["Offset of field: HfRpc_material_swap::id_string32"]
+        [::std::mem::offset_of!(HfRpc_material_swap, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_sight_node {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_sight_node"][::std::mem::size_of::<HfRpc_set_sight_node>() - 8usize];
+    ["Alignment of HfRpc_set_sight_node"][::std::mem::align_of::<HfRpc_set_sight_node>() - 4usize];
+    ["Offset of field: HfRpc_set_sight_node::entity"]
+        [::std::mem::offset_of!(HfRpc_set_sight_node, entity) - 0usize];
+    ["Offset of field: HfRpc_set_sight_node::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_sight_node, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_register_kill {
+    pub peer_id: u64,
+    pub entity: i32,
+    pub entity_2: i32,
+    pub damage_type: i32,
+    pub element_type: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_register_kill"][::std::mem::size_of::<HfRpc_register_kill>() - 24usize];
+    ["Alignment of HfRpc_register_kill"][::std::mem::align_of::<HfRpc_register_kill>() - 8usize];
+    ["Offset of field: HfRpc_register_kill::peer_id"]
+        [::std::mem::offset_of!(HfRpc_register_kill, peer_id) - 0usize];
+    ["Offset of field: HfRpc_register_kill::entity"]
+        [::std::mem::offset_of!(HfRpc_register_kill, entity) - 8usize];
+    ["Offset of field: HfRpc_register_kill::entity_2"]
+        [::std::mem::offset_of!(HfRpc_register_kill, entity_2) - 12usize];
+    ["Offset of field: HfRpc_register_kill::damage_type"]
+        [::std::mem::offset_of!(HfRpc_register_kill, damage_type) - 16usize];
+    ["Offset of field: HfRpc_register_kill::element_type"]
+        [::std::mem::offset_of!(HfRpc_register_kill, element_type) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_align_strategy {
+    pub entity: i32,
+    pub align_strategy: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_align_strategy"]
+        [::std::mem::size_of::<HfRpc_set_align_strategy>() - 8usize];
+    ["Alignment of HfRpc_set_align_strategy"]
+        [::std::mem::align_of::<HfRpc_set_align_strategy>() - 4usize];
+    ["Offset of field: HfRpc_set_align_strategy::entity"]
+        [::std::mem::offset_of!(HfRpc_set_align_strategy, entity) - 0usize];
+    ["Offset of field: HfRpc_set_align_strategy::align_strategy"]
+        [::std::mem::offset_of!(HfRpc_set_align_strategy, align_strategy) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_value_alignment_corrected_value {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_value_alignment_corrected_value"]
+        [::std::mem::size_of::<HfRpc_set_minigame_value_alignment_corrected_value>() - 16usize];
+    ["Alignment of HfRpc_set_minigame_value_alignment_corrected_value"]
+        [::std::mem::align_of::<HfRpc_set_minigame_value_alignment_corrected_value>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_corrected_value::entity"][::std::mem::offset_of!(
+        HfRpc_set_minigame_value_alignment_corrected_value,
+        entity
+    ) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_corrected_value::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_value_alignment_corrected_value,
+        unsigned_value
+    )
+        - 4usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_corrected_value::bool_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_value_alignment_corrected_value,
+        bool_value
+    ) - 8usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_corrected_value::float_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_value_alignment_corrected_value,
+        float_value
+    )
+        - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_reset_align_strategy {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_reset_align_strategy"]
+        [::std::mem::size_of::<HfRpc_reset_align_strategy>() - 4usize];
+    ["Alignment of HfRpc_reset_align_strategy"]
+        [::std::mem::align_of::<HfRpc_reset_align_strategy>() - 4usize];
+    ["Offset of field: HfRpc_reset_align_strategy::entity"]
+        [::std::mem::offset_of!(HfRpc_reset_align_strategy, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_terminal_interact_success {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_terminal_interact_success"]
+        [::std::mem::size_of::<HfRpc_terminal_interact_success>() - 8usize];
+    ["Alignment of HfRpc_terminal_interact_success"]
+        [::std::mem::align_of::<HfRpc_terminal_interact_success>() - 4usize];
+    ["Offset of field: HfRpc_terminal_interact_success::entity"]
+        [::std::mem::offset_of!(HfRpc_terminal_interact_success, entity) - 0usize];
+    ["Offset of field: HfRpc_terminal_interact_success::entity_2"]
+        [::std::mem::offset_of!(HfRpc_terminal_interact_success, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_delete_all_passengers_request {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_delete_all_passengers_request"]
+        [::std::mem::size_of::<HfRpc_delete_all_passengers_request>() - 4usize];
+    ["Alignment of HfRpc_delete_all_passengers_request"]
+        [::std::mem::align_of::<HfRpc_delete_all_passengers_request>() - 4usize];
+    ["Offset of field: HfRpc_delete_all_passengers_request::entity"]
+        [::std::mem::offset_of!(HfRpc_delete_all_passengers_request, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_attack_event {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_attack_event"]
+        [::std::mem::size_of::<HfRpc_trigger_attack_event>() - 12usize];
+    ["Alignment of HfRpc_trigger_attack_event"]
+        [::std::mem::align_of::<HfRpc_trigger_attack_event>() - 4usize];
+    ["Offset of field: HfRpc_trigger_attack_event::entity"]
+        [::std::mem::offset_of!(HfRpc_trigger_attack_event, entity) - 0usize];
+    ["Offset of field: HfRpc_trigger_attack_event::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_trigger_attack_event, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_trigger_attack_event::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_trigger_attack_event, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_stagger {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_stagger"][::std::mem::size_of::<HfRpc_on_stagger>() - 28usize];
+    ["Alignment of HfRpc_on_stagger"][::std::mem::align_of::<HfRpc_on_stagger>() - 4usize];
+    ["Offset of field: HfRpc_on_stagger::entity"]
+        [::std::mem::offset_of!(HfRpc_on_stagger, entity) - 0usize];
+    ["Offset of field: HfRpc_on_stagger::vector3"]
+        [::std::mem::offset_of!(HfRpc_on_stagger, vector3) - 4usize];
+    ["Offset of field: HfRpc_on_stagger::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_stagger, unsigned_value) - 16usize];
+    ["Offset of field: HfRpc_on_stagger::bool_value"]
+        [::std::mem::offset_of!(HfRpc_on_stagger, bool_value) - 20usize];
+    ["Offset of field: HfRpc_on_stagger::entity_2"]
+        [::std::mem::offset_of!(HfRpc_on_stagger, entity_2) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_weapon_execute_chambering {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_weapon_execute_chambering"]
+        [::std::mem::size_of::<HfRpc_weapon_execute_chambering>() - 4usize];
+    ["Alignment of HfRpc_weapon_execute_chambering"]
+        [::std::mem::align_of::<HfRpc_weapon_execute_chambering>() - 4usize];
+    ["Offset of field: HfRpc_weapon_execute_chambering::entity"]
+        [::std::mem::offset_of!(HfRpc_weapon_execute_chambering, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_beam {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_beam"][::std::mem::size_of::<HfRpc_add_beam>() - 4usize];
+    ["Alignment of HfRpc_add_beam"][::std::mem::align_of::<HfRpc_add_beam>() - 4usize];
+    ["Offset of field: HfRpc_add_beam::entity"]
+        [::std::mem::offset_of!(HfRpc_add_beam, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shuttle_extraction {
+    pub bool_value: u8,
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shuttle_extraction"]
+        [::std::mem::size_of::<HfRpc_shuttle_extraction>() - 24usize];
+    ["Alignment of HfRpc_shuttle_extraction"]
+        [::std::mem::align_of::<HfRpc_shuttle_extraction>() - 4usize];
+    ["Offset of field: HfRpc_shuttle_extraction::bool_value"]
+        [::std::mem::offset_of!(HfRpc_shuttle_extraction, bool_value) - 0usize];
+    ["Offset of field: HfRpc_shuttle_extraction::entity"]
+        [::std::mem::offset_of!(HfRpc_shuttle_extraction, entity) - 4usize];
+    ["Offset of field: HfRpc_shuttle_extraction::vector3"]
+        [::std::mem::offset_of!(HfRpc_shuttle_extraction, vector3) - 8usize];
+    ["Offset of field: HfRpc_shuttle_extraction::float_value"]
+        [::std::mem::offset_of!(HfRpc_shuttle_extraction, float_value) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_finalize_swap_request {
+    pub arg0: u64,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_finalize_swap_request"]
+        [::std::mem::size_of::<HfRpc_finalize_swap_request>() - 16usize];
+    ["Alignment of HfRpc_finalize_swap_request"]
+        [::std::mem::align_of::<HfRpc_finalize_swap_request>() - 8usize];
+    ["Offset of field: HfRpc_finalize_swap_request::arg0"]
+        [::std::mem::offset_of!(HfRpc_finalize_swap_request, arg0) - 0usize];
+    ["Offset of field: HfRpc_finalize_swap_request::arg1"]
+        [::std::mem::offset_of!(HfRpc_finalize_swap_request, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mount_entities {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mount_entities"][::std::mem::size_of::<HfRpc_mount_entities>() - 4usize];
+    ["Alignment of HfRpc_mount_entities"][::std::mem::align_of::<HfRpc_mount_entities>() - 4usize];
+    ["Offset of field: HfRpc_mount_entities::entity"]
+        [::std::mem::offset_of!(HfRpc_mount_entities, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_arm_explosive {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_arm_explosive"][::std::mem::size_of::<HfRpc_arm_explosive>() - 8usize];
+    ["Alignment of HfRpc_arm_explosive"][::std::mem::align_of::<HfRpc_arm_explosive>() - 4usize];
+    ["Offset of field: HfRpc_arm_explosive::entity"]
+        [::std::mem::offset_of!(HfRpc_arm_explosive, entity) - 0usize];
+    ["Offset of field: HfRpc_arm_explosive::entity_2"]
+        [::std::mem::offset_of!(HfRpc_arm_explosive, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_revive {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_revive"][::std::mem::size_of::<HfRpc_revive>() - 8usize];
+    ["Alignment of HfRpc_revive"][::std::mem::align_of::<HfRpc_revive>() - 4usize];
+    ["Offset of field: HfRpc_revive::entity"]
+        [::std::mem::offset_of!(HfRpc_revive, entity) - 0usize];
+    ["Offset of field: HfRpc_revive::float_value"]
+        [::std::mem::offset_of!(HfRpc_revive, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_active {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_active"][::std::mem::size_of::<HfRpc_set_active>() - 8usize];
+    ["Alignment of HfRpc_set_active"][::std::mem::align_of::<HfRpc_set_active>() - 4usize];
+    ["Offset of field: HfRpc_set_active::entity"]
+        [::std::mem::offset_of!(HfRpc_set_active, entity) - 0usize];
+    ["Offset of field: HfRpc_set_active::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_active, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_teleport_slot {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_teleport_slot"]
+        [::std::mem::size_of::<HfRpc_request_teleport_slot>() - 4usize];
+    ["Alignment of HfRpc_request_teleport_slot"]
+        [::std::mem::align_of::<HfRpc_request_teleport_slot>() - 4usize];
+    ["Offset of field: HfRpc_request_teleport_slot::arg0"]
+        [::std::mem::offset_of!(HfRpc_request_teleport_slot, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_hologram_event {
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_hologram_event"]
+        [::std::mem::size_of::<HfRpc_play_hologram_event>() - 8usize];
+    ["Alignment of HfRpc_play_hologram_event"]
+        [::std::mem::align_of::<HfRpc_play_hologram_event>() - 4usize];
+    ["Offset of field: HfRpc_play_hologram_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_play_hologram_event, id_string32) - 0usize];
+    ["Offset of field: HfRpc_play_hologram_event::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_play_hologram_event, id_string32_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_abort_terminal_interact {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_abort_terminal_interact"]
+        [::std::mem::size_of::<HfRpc_abort_terminal_interact>() - 8usize];
+    ["Alignment of HfRpc_abort_terminal_interact"]
+        [::std::mem::align_of::<HfRpc_abort_terminal_interact>() - 4usize];
+    ["Offset of field: HfRpc_abort_terminal_interact::entity"]
+        [::std::mem::offset_of!(HfRpc_abort_terminal_interact, entity) - 0usize];
+    ["Offset of field: HfRpc_abort_terminal_interact::entity_2"]
+        [::std::mem::offset_of!(HfRpc_abort_terminal_interact, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_stack_value {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub arg2: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_stack_value"]
+        [::std::mem::size_of::<HfRpc_change_stack_value>() - 16usize];
+    ["Alignment of HfRpc_change_stack_value"]
+        [::std::mem::align_of::<HfRpc_change_stack_value>() - 4usize];
+    ["Offset of field: HfRpc_change_stack_value::entity"]
+        [::std::mem::offset_of!(HfRpc_change_stack_value, entity) - 0usize];
+    ["Offset of field: HfRpc_change_stack_value::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_change_stack_value, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_change_stack_value::arg2"]
+        [::std::mem::offset_of!(HfRpc_change_stack_value, arg2) - 8usize];
+    ["Offset of field: HfRpc_change_stack_value::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_change_stack_value, unsigned_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_space_station_mismatch_detected {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_space_station_mismatch_detected"]
+        [::std::mem::size_of::<HfRpc_on_space_station_mismatch_detected>() - 4usize];
+    ["Alignment of HfRpc_on_space_station_mismatch_detected"]
+        [::std::mem::align_of::<HfRpc_on_space_station_mismatch_detected>() - 4usize];
+    ["Offset of field: HfRpc_on_space_station_mismatch_detected::id_string32"]
+        [::std::mem::offset_of!(HfRpc_on_space_station_mismatch_detected, id_string32) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_select_drop_point {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_select_drop_point"][::std::mem::size_of::<HfRpc_select_drop_point>() - 4usize];
+    ["Alignment of HfRpc_select_drop_point"]
+        [::std::mem::align_of::<HfRpc_select_drop_point>() - 4usize];
+    ["Offset of field: HfRpc_select_drop_point::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_select_drop_point, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_activate_cooldown {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_activate_cooldown"][::std::mem::size_of::<HfRpc_activate_cooldown>() - 4usize];
+    ["Alignment of HfRpc_activate_cooldown"]
+        [::std::mem::align_of::<HfRpc_activate_cooldown>() - 4usize];
+    ["Offset of field: HfRpc_activate_cooldown::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_activate_cooldown, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_eye_type {
+    pub entity: i32,
+    pub eye_type: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_eye_type"][::std::mem::size_of::<HfRpc_set_eye_type>() - 8usize];
+    ["Alignment of HfRpc_set_eye_type"][::std::mem::align_of::<HfRpc_set_eye_type>() - 4usize];
+    ["Offset of field: HfRpc_set_eye_type::entity"]
+        [::std::mem::offset_of!(HfRpc_set_eye_type, entity) - 0usize];
+    ["Offset of field: HfRpc_set_eye_type::eye_type"]
+        [::std::mem::offset_of!(HfRpc_set_eye_type, eye_type) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fancy_effect_system_recieve_effect_from_host {
+    pub unsigned_value: i32,
+    pub network_string: *const ::std::os::raw::c_char,
+    pub network_string_2: *const ::std::os::raw::c_char,
+    pub arg3_count: u32,
+    pub arg3: [i32; 20usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fancy_effect_system_recieve_effect_from_host"]
+        [::std::mem::size_of::<HfRpc_fancy_effect_system_recieve_effect_from_host>() - 112usize];
+    ["Alignment of HfRpc_fancy_effect_system_recieve_effect_from_host"]
+        [::std::mem::align_of::<HfRpc_fancy_effect_system_recieve_effect_from_host>() - 8usize];
+    ["Offset of field: HfRpc_fancy_effect_system_recieve_effect_from_host::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_recieve_effect_from_host,
+        unsigned_value
+    )
+        - 0usize];
+    ["Offset of field: HfRpc_fancy_effect_system_recieve_effect_from_host::network_string"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_recieve_effect_from_host,
+        network_string
+    )
+        - 8usize];
+    ["Offset of field: HfRpc_fancy_effect_system_recieve_effect_from_host::network_string_2"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_recieve_effect_from_host,
+        network_string_2
+    )
+        - 16usize];
+    ["Offset of field: HfRpc_fancy_effect_system_recieve_effect_from_host::arg3_count"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_recieve_effect_from_host,
+        arg3_count
+    )
+        - 24usize];
+    ["Offset of field: HfRpc_fancy_effect_system_recieve_effect_from_host::arg3"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_recieve_effect_from_host,
+        arg3
+    ) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_commend {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_commend"][::std::mem::size_of::<HfRpc_on_commend>() - 8usize];
+    ["Alignment of HfRpc_on_commend"][::std::mem::align_of::<HfRpc_on_commend>() - 4usize];
+    ["Offset of field: HfRpc_on_commend::entity"]
+        [::std::mem::offset_of!(HfRpc_on_commend, entity) - 0usize];
+    ["Offset of field: HfRpc_on_commend::entity_2"]
+        [::std::mem::offset_of!(HfRpc_on_commend, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remote_trigger_event_on_entity {
+    pub id_string32: u32,
+    pub entity: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remote_trigger_event_on_entity"]
+        [::std::mem::size_of::<HfRpc_remote_trigger_event_on_entity>() - 16usize];
+    ["Alignment of HfRpc_remote_trigger_event_on_entity"]
+        [::std::mem::align_of::<HfRpc_remote_trigger_event_on_entity>() - 4usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_entity::id_string32"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_entity, id_string32) - 0usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_entity, entity) - 4usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_entity::bool_value"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_entity, bool_value) - 8usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_entity::float_value"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_entity, float_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_objective_stratagem_destroyed {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_objective_stratagem_destroyed"]
+        [::std::mem::size_of::<HfRpc_on_objective_stratagem_destroyed>() - 4usize];
+    ["Alignment of HfRpc_on_objective_stratagem_destroyed"]
+        [::std::mem::align_of::<HfRpc_on_objective_stratagem_destroyed>() - 4usize];
+    ["Offset of field: HfRpc_on_objective_stratagem_destroyed::arg0"]
+        [::std::mem::offset_of!(HfRpc_on_objective_stratagem_destroyed, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_sticky_is_attached {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_sticky_is_attached"]
+        [::std::mem::size_of::<HfRpc_set_sticky_is_attached>() - 8usize];
+    ["Alignment of HfRpc_set_sticky_is_attached"]
+        [::std::mem::align_of::<HfRpc_set_sticky_is_attached>() - 4usize];
+    ["Offset of field: HfRpc_set_sticky_is_attached::entity"]
+        [::std::mem::offset_of!(HfRpc_set_sticky_is_attached, entity) - 0usize];
+    ["Offset of field: HfRpc_set_sticky_is_attached::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_sticky_is_attached, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_player_invited_to_clan {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_player_invited_to_clan"]
+        [::std::mem::size_of::<HfRpc_player_invited_to_clan>() - 4usize];
+    ["Alignment of HfRpc_player_invited_to_clan"]
+        [::std::mem::align_of::<HfRpc_player_invited_to_clan>() - 4usize];
+    ["Offset of field: HfRpc_player_invited_to_clan::entity"]
+        [::std::mem::offset_of!(HfRpc_player_invited_to_clan, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mission_over_result {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mission_over_result"]
+        [::std::mem::size_of::<HfRpc_mission_over_result>() - 4usize];
+    ["Alignment of HfRpc_mission_over_result"]
+        [::std::mem::align_of::<HfRpc_mission_over_result>() - 4usize];
+    ["Offset of field: HfRpc_mission_over_result::arg0"]
+        [::std::mem::offset_of!(HfRpc_mission_over_result, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_production_cooldown_override {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_production_cooldown_override"]
+        [::std::mem::size_of::<HfRpc_set_production_cooldown_override>() - 8usize];
+    ["Alignment of HfRpc_set_production_cooldown_override"]
+        [::std::mem::align_of::<HfRpc_set_production_cooldown_override>() - 4usize];
+    ["Offset of field: HfRpc_set_production_cooldown_override::entity"]
+        [::std::mem::offset_of!(HfRpc_set_production_cooldown_override, entity) - 0usize];
+    ["Offset of field: HfRpc_set_production_cooldown_override::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_production_cooldown_override, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_enable_and_show_shield_zone_actors {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_enable_and_show_shield_zone_actors"]
+        [::std::mem::size_of::<HfRpc_enable_and_show_shield_zone_actors>() - 8usize];
+    ["Alignment of HfRpc_enable_and_show_shield_zone_actors"]
+        [::std::mem::align_of::<HfRpc_enable_and_show_shield_zone_actors>() - 4usize];
+    ["Offset of field: HfRpc_enable_and_show_shield_zone_actors::entity"]
+        [::std::mem::offset_of!(HfRpc_enable_and_show_shield_zone_actors, entity) - 0usize];
+    ["Offset of field: HfRpc_enable_and_show_shield_zone_actors::bool_value"]
+        [::std::mem::offset_of!(HfRpc_enable_and_show_shield_zone_actors, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_curve_navigation_enabled {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_curve_navigation_enabled"]
+        [::std::mem::size_of::<HfRpc_set_curve_navigation_enabled>() - 8usize];
+    ["Alignment of HfRpc_set_curve_navigation_enabled"]
+        [::std::mem::align_of::<HfRpc_set_curve_navigation_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_curve_navigation_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_curve_navigation_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_curve_navigation_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_curve_navigation_enabled, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_verify_matching_latest_config {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_verify_matching_latest_config"]
+        [::std::mem::size_of::<HfRpc_from_client_verify_matching_latest_config>() - 4usize];
+    ["Alignment of HfRpc_from_client_verify_matching_latest_config"]
+        [::std::mem::align_of::<HfRpc_from_client_verify_matching_latest_config>() - 4usize];
+    ["Offset of field: HfRpc_from_client_verify_matching_latest_config::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_client_verify_matching_latest_config,
+        unsigned_value
+    )
+        - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_notify_dropoff_location {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_notify_dropoff_location"]
+        [::std::mem::size_of::<HfRpc_notify_dropoff_location>() - 12usize];
+    ["Alignment of HfRpc_notify_dropoff_location"]
+        [::std::mem::align_of::<HfRpc_notify_dropoff_location>() - 4usize];
+    ["Offset of field: HfRpc_notify_dropoff_location::entity"]
+        [::std::mem::offset_of!(HfRpc_notify_dropoff_location, entity) - 0usize];
+    ["Offset of field: HfRpc_notify_dropoff_location::entity_2"]
+        [::std::mem::offset_of!(HfRpc_notify_dropoff_location, entity_2) - 4usize];
+    ["Offset of field: HfRpc_notify_dropoff_location::arg2"]
+        [::std::mem::offset_of!(HfRpc_notify_dropoff_location, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_arcade_stratagem_updated_highscores {
+    pub arg0_count: u32,
+    pub arg0: [*const ::std::os::raw::c_char; 10usize],
+    pub arg1_count: u32,
+    pub arg1: [i32; 10usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_arcade_stratagem_updated_highscores"]
+        [::std::mem::size_of::<HfRpc_arcade_stratagem_updated_highscores>() - 136usize];
+    ["Alignment of HfRpc_arcade_stratagem_updated_highscores"]
+        [::std::mem::align_of::<HfRpc_arcade_stratagem_updated_highscores>() - 8usize];
+    ["Offset of field: HfRpc_arcade_stratagem_updated_highscores::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_updated_highscores, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_arcade_stratagem_updated_highscores::arg0"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_updated_highscores, arg0) - 8usize];
+    ["Offset of field: HfRpc_arcade_stratagem_updated_highscores::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_updated_highscores, arg1_count) - 88usize];
+    ["Offset of field: HfRpc_arcade_stratagem_updated_highscores::arg1"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_updated_highscores, arg1) - 92usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_removed_level_entities {
+    pub removed_level_entities_count: u32,
+    pub removed_level_entities: [i32; 128usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_removed_level_entities"]
+        [::std::mem::size_of::<HfRpc_removed_level_entities>() - 516usize];
+    ["Alignment of HfRpc_removed_level_entities"]
+        [::std::mem::align_of::<HfRpc_removed_level_entities>() - 4usize];
+    ["Offset of field: HfRpc_removed_level_entities::removed_level_entities_count"][::std::mem::offset_of!(
+        HfRpc_removed_level_entities,
+        removed_level_entities_count
+    ) - 0usize];
+    ["Offset of field: HfRpc_removed_level_entities::removed_level_entities"]
+        [::std::mem::offset_of!(HfRpc_removed_level_entities, removed_level_entities) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_begin {
+    pub unsigned_value: i32,
+    pub int_value: i32,
+    pub arg2: u64,
+    pub id_string32: u32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_begin"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_begin>() - 32usize];
+    ["Alignment of HfRpc_sync_galactic_war_begin"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_begin>() - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, int_value) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, arg2) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, id_string32) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, unsigned_value_2) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, unsigned_value_3) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_begin::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_begin, bool_value) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shared_weapon_state {
+    pub id_string32: u32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 9usize],
+    pub arg2_count: u32,
+    pub arg2: [i32; 9usize],
+    pub arg3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shared_weapon_state"]
+        [::std::mem::size_of::<HfRpc_shared_weapon_state>() - 88usize];
+    ["Alignment of HfRpc_shared_weapon_state"]
+        [::std::mem::align_of::<HfRpc_shared_weapon_state>() - 4usize];
+    ["Offset of field: HfRpc_shared_weapon_state::id_string32"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, id_string32) - 0usize];
+    ["Offset of field: HfRpc_shared_weapon_state::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_shared_weapon_state::arg1"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, arg1) - 8usize];
+    ["Offset of field: HfRpc_shared_weapon_state::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, arg2_count) - 44usize];
+    ["Offset of field: HfRpc_shared_weapon_state::arg2"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, arg2) - 48usize];
+    ["Offset of field: HfRpc_shared_weapon_state::arg3"]
+        [::std::mem::offset_of!(HfRpc_shared_weapon_state, arg3) - 84usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_avatar_change_locomotion_set {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_avatar_change_locomotion_set"]
+        [::std::mem::size_of::<HfRpc_avatar_change_locomotion_set>() - 8usize];
+    ["Alignment of HfRpc_avatar_change_locomotion_set"]
+        [::std::mem::align_of::<HfRpc_avatar_change_locomotion_set>() - 4usize];
+    ["Offset of field: HfRpc_avatar_change_locomotion_set::entity"]
+        [::std::mem::offset_of!(HfRpc_avatar_change_locomotion_set, entity) - 0usize];
+    ["Offset of field: HfRpc_avatar_change_locomotion_set::id_string32"]
+        [::std::mem::offset_of!(HfRpc_avatar_change_locomotion_set, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_cloaked {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_cloaked"][::std::mem::size_of::<HfRpc_set_cloaked>() - 8usize];
+    ["Alignment of HfRpc_set_cloaked"][::std::mem::align_of::<HfRpc_set_cloaked>() - 4usize];
+    ["Offset of field: HfRpc_set_cloaked::entity"]
+        [::std::mem::offset_of!(HfRpc_set_cloaked, entity) - 0usize];
+    ["Offset of field: HfRpc_set_cloaked::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_cloaked, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_encounter {
+    pub arg0: i32,
+    pub vector3: [f32; 3usize],
+    pub entity: i32,
+    pub entity_2: i32,
+    pub vector3_2: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_encounter"][::std::mem::size_of::<HfRpc_trigger_encounter>() - 36usize];
+    ["Alignment of HfRpc_trigger_encounter"]
+        [::std::mem::align_of::<HfRpc_trigger_encounter>() - 4usize];
+    ["Offset of field: HfRpc_trigger_encounter::arg0"]
+        [::std::mem::offset_of!(HfRpc_trigger_encounter, arg0) - 0usize];
+    ["Offset of field: HfRpc_trigger_encounter::vector3"]
+        [::std::mem::offset_of!(HfRpc_trigger_encounter, vector3) - 4usize];
+    ["Offset of field: HfRpc_trigger_encounter::entity"]
+        [::std::mem::offset_of!(HfRpc_trigger_encounter, entity) - 16usize];
+    ["Offset of field: HfRpc_trigger_encounter::entity_2"]
+        [::std::mem::offset_of!(HfRpc_trigger_encounter, entity_2) - 20usize];
+    ["Offset of field: HfRpc_trigger_encounter::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_trigger_encounter, vector3_2) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_minigame_completed {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_minigame_completed"]
+        [::std::mem::size_of::<HfRpc_minigame_completed>() - 8usize];
+    ["Alignment of HfRpc_minigame_completed"]
+        [::std::mem::align_of::<HfRpc_minigame_completed>() - 4usize];
+    ["Offset of field: HfRpc_minigame_completed::entity"]
+        [::std::mem::offset_of!(HfRpc_minigame_completed, entity) - 0usize];
+    ["Offset of field: HfRpc_minigame_completed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_minigame_completed, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_deduct_from_deposit {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_deduct_from_deposit"]
+        [::std::mem::size_of::<HfRpc_deduct_from_deposit>() - 8usize];
+    ["Alignment of HfRpc_deduct_from_deposit"]
+        [::std::mem::align_of::<HfRpc_deduct_from_deposit>() - 4usize];
+    ["Offset of field: HfRpc_deduct_from_deposit::entity"]
+        [::std::mem::offset_of!(HfRpc_deduct_from_deposit, entity) - 0usize];
+    ["Offset of field: HfRpc_deduct_from_deposit::arg1"]
+        [::std::mem::offset_of!(HfRpc_deduct_from_deposit, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_impact_play_effect {
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_impact_play_effect"]
+        [::std::mem::size_of::<HfRpc_impact_play_effect>() - 28usize];
+    ["Alignment of HfRpc_impact_play_effect"]
+        [::std::mem::align_of::<HfRpc_impact_play_effect>() - 4usize];
+    ["Offset of field: HfRpc_impact_play_effect::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_impact_play_effect, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_impact_play_effect::vector3"]
+        [::std::mem::offset_of!(HfRpc_impact_play_effect, vector3) - 4usize];
+    ["Offset of field: HfRpc_impact_play_effect::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_impact_play_effect, vector3_2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hellpad_spawn_stratagem {
+    pub arg0: i32,
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hellpad_spawn_stratagem"]
+        [::std::mem::size_of::<HfRpc_hellpad_spawn_stratagem>() - 28usize];
+    ["Alignment of HfRpc_hellpad_spawn_stratagem"]
+        [::std::mem::align_of::<HfRpc_hellpad_spawn_stratagem>() - 4usize];
+    ["Offset of field: HfRpc_hellpad_spawn_stratagem::arg0"]
+        [::std::mem::offset_of!(HfRpc_hellpad_spawn_stratagem, arg0) - 0usize];
+    ["Offset of field: HfRpc_hellpad_spawn_stratagem::entity"]
+        [::std::mem::offset_of!(HfRpc_hellpad_spawn_stratagem, entity) - 4usize];
+    ["Offset of field: HfRpc_hellpad_spawn_stratagem::entity_2"]
+        [::std::mem::offset_of!(HfRpc_hellpad_spawn_stratagem, entity_2) - 8usize];
+    ["Offset of field: HfRpc_hellpad_spawn_stratagem::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_hellpad_spawn_stratagem, unsigned_value) - 12usize];
+    ["Offset of field: HfRpc_hellpad_spawn_stratagem::vector3"]
+        [::std::mem::offset_of!(HfRpc_hellpad_spawn_stratagem, vector3) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_debug_transform {
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_debug_transform"]
+        [::std::mem::size_of::<HfRpc_set_debug_transform>() - 28usize];
+    ["Alignment of HfRpc_set_debug_transform"]
+        [::std::mem::align_of::<HfRpc_set_debug_transform>() - 4usize];
+    ["Offset of field: HfRpc_set_debug_transform::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_debug_transform, vector3) - 0usize];
+    ["Offset of field: HfRpc_set_debug_transform::quaternion"]
+        [::std::mem::offset_of!(HfRpc_set_debug_transform, quaternion) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ingame_ship_movement {
+    pub peer_id: u64,
+    pub vector3: [f32; 3usize],
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ingame_ship_movement"]
+        [::std::mem::size_of::<HfRpc_set_ingame_ship_movement>() - 32usize];
+    ["Alignment of HfRpc_set_ingame_ship_movement"]
+        [::std::mem::align_of::<HfRpc_set_ingame_ship_movement>() - 8usize];
+    ["Offset of field: HfRpc_set_ingame_ship_movement::peer_id"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_movement, peer_id) - 0usize];
+    ["Offset of field: HfRpc_set_ingame_ship_movement::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_movement, vector3) - 8usize];
+    ["Offset of field: HfRpc_set_ingame_ship_movement::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_movement, float_value) - 20usize];
+    ["Offset of field: HfRpc_set_ingame_ship_movement::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_movement, float_value_2) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_destructible_set_invincible {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_destructible_set_invincible"]
+        [::std::mem::size_of::<HfRpc_destructible_set_invincible>() - 8usize];
+    ["Alignment of HfRpc_destructible_set_invincible"]
+        [::std::mem::align_of::<HfRpc_destructible_set_invincible>() - 4usize];
+    ["Offset of field: HfRpc_destructible_set_invincible::entity"]
+        [::std::mem::offset_of!(HfRpc_destructible_set_invincible, entity) - 0usize];
+    ["Offset of field: HfRpc_destructible_set_invincible::bool_value"]
+        [::std::mem::offset_of!(HfRpc_destructible_set_invincible, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_create_smoke_effect {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub vector3_3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_create_smoke_effect"]
+        [::std::mem::size_of::<HfRpc_create_smoke_effect>() - 44usize];
+    ["Alignment of HfRpc_create_smoke_effect"]
+        [::std::mem::align_of::<HfRpc_create_smoke_effect>() - 4usize];
+    ["Offset of field: HfRpc_create_smoke_effect::entity"]
+        [::std::mem::offset_of!(HfRpc_create_smoke_effect, entity) - 0usize];
+    ["Offset of field: HfRpc_create_smoke_effect::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_create_smoke_effect, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_create_smoke_effect::vector3"]
+        [::std::mem::offset_of!(HfRpc_create_smoke_effect, vector3) - 8usize];
+    ["Offset of field: HfRpc_create_smoke_effect::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_create_smoke_effect, vector3_2) - 20usize];
+    ["Offset of field: HfRpc_create_smoke_effect::vector3_3"]
+        [::std::mem::offset_of!(HfRpc_create_smoke_effect, vector3_3) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_time {
+    pub unsigned_value: i32,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_time"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_time>() - 16usize];
+    ["Alignment of HfRpc_sync_galactic_war_time"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_time>() - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_time::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_time, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_time::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_time, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_material_variable_vector2 {
+    pub entity: i32,
+    pub arg1: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_material_variable_vector2"]
+        [::std::mem::size_of::<HfRpc_material_variable_vector2>() - 16usize];
+    ["Alignment of HfRpc_material_variable_vector2"]
+        [::std::mem::align_of::<HfRpc_material_variable_vector2>() - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector2::entity"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector2, entity) - 0usize];
+    ["Offset of field: HfRpc_material_variable_vector2::arg1"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector2, arg1) - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector2::float_value"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector2, float_value) - 8usize];
+    ["Offset of field: HfRpc_material_variable_vector2::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector2, float_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_player_abandoned {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_player_abandoned"][::std::mem::size_of::<HfRpc_player_abandoned>() - 4usize];
+    ["Alignment of HfRpc_player_abandoned"]
+        [::std::mem::align_of::<HfRpc_player_abandoned>() - 4usize];
+    ["Offset of field: HfRpc_player_abandoned::entity"]
+        [::std::mem::offset_of!(HfRpc_player_abandoned, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_persisted_operation {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub unsigned_value_4: i32,
+    pub unsigned_value_5: i32,
+    pub unsigned_value_6: i32,
+    pub unsigned_value_7: i32,
+    pub arg7: i32,
+    pub unsigned_value_8: i32,
+    pub arg9: i32,
+    pub unsigned_value_9: i32,
+    pub unsigned_value_10: i32,
+    pub arg12_count: u32,
+    pub arg12: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_persisted_operation"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_persisted_operation>() - 84usize];
+    ["Alignment of HfRpc_sync_galactic_war_persisted_operation"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_persisted_operation>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value
+    ) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_2
+    ) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_3
+    ) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_4"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_4
+    ) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_5"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_5
+    ) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_6"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_6
+    ) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_7"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_7
+    ) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::arg7"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_persisted_operation, arg7) - 28usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_8"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_8
+    ) - 32usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::arg9"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_persisted_operation, arg9) - 36usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_9"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_9
+    ) - 40usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::unsigned_value_10"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        unsigned_value_10
+    )
+        - 44usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::arg12_count"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_persisted_operation,
+        arg12_count
+    ) - 48usize];
+    ["Offset of field: HfRpc_sync_galactic_war_persisted_operation::arg12"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_persisted_operation, arg12) - 52usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_peer_added_to_session {
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_peer_added_to_session"]
+        [::std::mem::size_of::<HfRpc_from_host_peer_added_to_session>() - 8usize];
+    ["Alignment of HfRpc_from_host_peer_added_to_session"]
+        [::std::mem::align_of::<HfRpc_from_host_peer_added_to_session>() - 8usize];
+    ["Offset of field: HfRpc_from_host_peer_added_to_session::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_added_to_session, peer_id) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_ragdoll_to_pose {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_ragdoll_to_pose"]
+        [::std::mem::size_of::<HfRpc_sync_ragdoll_to_pose>() - 4usize];
+    ["Alignment of HfRpc_sync_ragdoll_to_pose"]
+        [::std::mem::align_of::<HfRpc_sync_ragdoll_to_pose>() - 4usize];
+    ["Offset of field: HfRpc_sync_ragdoll_to_pose::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_ragdoll_to_pose, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_skip_arming_timer {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_skip_arming_timer"][::std::mem::size_of::<HfRpc_skip_arming_timer>() - 4usize];
+    ["Alignment of HfRpc_skip_arming_timer"]
+        [::std::mem::align_of::<HfRpc_skip_arming_timer>() - 4usize];
+    ["Offset of field: HfRpc_skip_arming_timer::entity"]
+        [::std::mem::offset_of!(HfRpc_skip_arming_timer, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_visibility_group {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_visibility_group"]
+        [::std::mem::size_of::<HfRpc_set_visibility_group>() - 12usize];
+    ["Alignment of HfRpc_set_visibility_group"]
+        [::std::mem::align_of::<HfRpc_set_visibility_group>() - 4usize];
+    ["Offset of field: HfRpc_set_visibility_group::entity"]
+        [::std::mem::offset_of!(HfRpc_set_visibility_group, entity) - 0usize];
+    ["Offset of field: HfRpc_set_visibility_group::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_visibility_group, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_visibility_group::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_visibility_group, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_failed {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_failed"][::std::mem::size_of::<HfRpc_stratagem_failed>() - 4usize];
+    ["Alignment of HfRpc_stratagem_failed"]
+        [::std::mem::align_of::<HfRpc_stratagem_failed>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_failed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_failed, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_entity {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_entity"][::std::mem::size_of::<HfRpc_drop_entity>() - 4usize];
+    ["Alignment of HfRpc_drop_entity"][::std::mem::align_of::<HfRpc_drop_entity>() - 4usize];
+    ["Offset of field: HfRpc_drop_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_entity, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_proposed_drop_point {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_proposed_drop_point"]
+        [::std::mem::size_of::<HfRpc_remove_proposed_drop_point>() - 4usize];
+    ["Alignment of HfRpc_remove_proposed_drop_point"]
+        [::std::mem::align_of::<HfRpc_remove_proposed_drop_point>() - 4usize];
+    ["Offset of field: HfRpc_remove_proposed_drop_point::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_remove_proposed_drop_point, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dyndest_client_request_hide_and_spawn {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub arg3: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dyndest_client_request_hide_and_spawn"]
+        [::std::mem::size_of::<HfRpc_dyndest_client_request_hide_and_spawn>() - 24usize];
+    ["Alignment of HfRpc_dyndest_client_request_hide_and_spawn"]
+        [::std::mem::align_of::<HfRpc_dyndest_client_request_hide_and_spawn>() - 8usize];
+    ["Offset of field: HfRpc_dyndest_client_request_hide_and_spawn::entity"]
+        [::std::mem::offset_of!(HfRpc_dyndest_client_request_hide_and_spawn, entity) - 0usize];
+    ["Offset of field: HfRpc_dyndest_client_request_hide_and_spawn::id_string32"]
+        [::std::mem::offset_of!(HfRpc_dyndest_client_request_hide_and_spawn, id_string32) - 4usize];
+    ["Offset of field: HfRpc_dyndest_client_request_hide_and_spawn::id_string32_2"][::std::mem::offset_of!(
+        HfRpc_dyndest_client_request_hide_and_spawn,
+        id_string32_2
+    ) - 8usize];
+    ["Offset of field: HfRpc_dyndest_client_request_hide_and_spawn::arg3"]
+        [::std::mem::offset_of!(HfRpc_dyndest_client_request_hide_and_spawn, arg3) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_ready_for_synced_tasks {
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_ready_for_synced_tasks"]
+        [::std::mem::size_of::<HfRpc_from_client_ready_for_synced_tasks>() - 1usize];
+    ["Alignment of HfRpc_from_client_ready_for_synced_tasks"]
+        [::std::mem::align_of::<HfRpc_from_client_ready_for_synced_tasks>() - 1usize];
+    ["Offset of field: HfRpc_from_client_ready_for_synced_tasks::bool_value"]
+        [::std::mem::offset_of!(HfRpc_from_client_ready_for_synced_tasks, bool_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_update_hold_minigame_value {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_update_hold_minigame_value"]
+        [::std::mem::size_of::<HfRpc_update_hold_minigame_value>() - 12usize];
+    ["Alignment of HfRpc_update_hold_minigame_value"]
+        [::std::mem::align_of::<HfRpc_update_hold_minigame_value>() - 4usize];
+    ["Offset of field: HfRpc_update_hold_minigame_value::entity"]
+        [::std::mem::offset_of!(HfRpc_update_hold_minigame_value, entity) - 0usize];
+    ["Offset of field: HfRpc_update_hold_minigame_value::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_update_hold_minigame_value, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_update_hold_minigame_value::float_value"]
+        [::std::mem::offset_of!(HfRpc_update_hold_minigame_value, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_entering {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_entering"][::std::mem::size_of::<HfRpc_set_entering>() - 12usize];
+    ["Alignment of HfRpc_set_entering"][::std::mem::align_of::<HfRpc_set_entering>() - 4usize];
+    ["Offset of field: HfRpc_set_entering::entity"]
+        [::std::mem::offset_of!(HfRpc_set_entering, entity) - 0usize];
+    ["Offset of field: HfRpc_set_entering::entity_2"]
+        [::std::mem::offset_of!(HfRpc_set_entering, entity_2) - 4usize];
+    ["Offset of field: HfRpc_set_entering::arg2"]
+        [::std::mem::offset_of!(HfRpc_set_entering, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_attach_simple {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_attach_simple"][::std::mem::size_of::<HfRpc_attach_simple>() - 12usize];
+    ["Alignment of HfRpc_attach_simple"][::std::mem::align_of::<HfRpc_attach_simple>() - 4usize];
+    ["Offset of field: HfRpc_attach_simple::entity"]
+        [::std::mem::offset_of!(HfRpc_attach_simple, entity) - 0usize];
+    ["Offset of field: HfRpc_attach_simple::entity_2"]
+        [::std::mem::offset_of!(HfRpc_attach_simple, entity_2) - 4usize];
+    ["Offset of field: HfRpc_attach_simple::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_attach_simple, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_weapon_float {
+    pub id_string32: u32,
+    pub id_string64: u64,
+    pub arg2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_weapon_float"]
+        [::std::mem::size_of::<HfRpc_score_sync_weapon_float>() - 24usize];
+    ["Alignment of HfRpc_score_sync_weapon_float"]
+        [::std::mem::align_of::<HfRpc_score_sync_weapon_float>() - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_float::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_float, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_weapon_float::id_string64"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_float, id_string64) - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_float::arg2"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_float, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_extraction_zone_discovered {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_extraction_zone_discovered"]
+        [::std::mem::size_of::<HfRpc_extraction_zone_discovered>() - 8usize];
+    ["Alignment of HfRpc_extraction_zone_discovered"]
+        [::std::mem::align_of::<HfRpc_extraction_zone_discovered>() - 4usize];
+    ["Offset of field: HfRpc_extraction_zone_discovered::entity"]
+        [::std::mem::offset_of!(HfRpc_extraction_zone_discovered, entity) - 0usize];
+    ["Offset of field: HfRpc_extraction_zone_discovered::entity_2"]
+        [::std::mem::offset_of!(HfRpc_extraction_zone_discovered, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_snap_rotation {
+    pub entity: i32,
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_snap_rotation"][::std::mem::size_of::<HfRpc_snap_rotation>() - 20usize];
+    ["Alignment of HfRpc_snap_rotation"][::std::mem::align_of::<HfRpc_snap_rotation>() - 4usize];
+    ["Offset of field: HfRpc_snap_rotation::entity"]
+        [::std::mem::offset_of!(HfRpc_snap_rotation, entity) - 0usize];
+    ["Offset of field: HfRpc_snap_rotation::quaternion"]
+        [::std::mem::offset_of!(HfRpc_snap_rotation, quaternion) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_particle_event {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_particle_event"]
+        [::std::mem::size_of::<HfRpc_trigger_particle_event>() - 8usize];
+    ["Alignment of HfRpc_trigger_particle_event"]
+        [::std::mem::align_of::<HfRpc_trigger_particle_event>() - 4usize];
+    ["Offset of field: HfRpc_trigger_particle_event::entity"]
+        [::std::mem::offset_of!(HfRpc_trigger_particle_event, entity) - 0usize];
+    ["Offset of field: HfRpc_trigger_particle_event::arg1"]
+        [::std::mem::offset_of!(HfRpc_trigger_particle_event, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ingame_ship_transform {
+    pub peer_id: u64,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ingame_ship_transform"]
+        [::std::mem::size_of::<HfRpc_set_ingame_ship_transform>() - 32usize];
+    ["Alignment of HfRpc_set_ingame_ship_transform"]
+        [::std::mem::align_of::<HfRpc_set_ingame_ship_transform>() - 8usize];
+    ["Offset of field: HfRpc_set_ingame_ship_transform::peer_id"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_transform, peer_id) - 0usize];
+    ["Offset of field: HfRpc_set_ingame_ship_transform::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_transform, vector3) - 8usize];
+    ["Offset of field: HfRpc_set_ingame_ship_transform::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_set_ingame_ship_transform, vector3_2) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_shared_unit_customizations {
+    pub peer_id: u64,
+    pub arg1_count: u32,
+    pub arg1: [i32; 12usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_shared_unit_customizations"]
+        [::std::mem::size_of::<HfRpc_sync_shared_unit_customizations>() - 64usize];
+    ["Alignment of HfRpc_sync_shared_unit_customizations"]
+        [::std::mem::align_of::<HfRpc_sync_shared_unit_customizations>() - 8usize];
+    ["Offset of field: HfRpc_sync_shared_unit_customizations::peer_id"]
+        [::std::mem::offset_of!(HfRpc_sync_shared_unit_customizations, peer_id) - 0usize];
+    ["Offset of field: HfRpc_sync_shared_unit_customizations::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_shared_unit_customizations, arg1_count) - 8usize];
+    ["Offset of field: HfRpc_sync_shared_unit_customizations::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_shared_unit_customizations, arg1) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mission_started {
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mission_started"][::std::mem::size_of::<HfRpc_mission_started>() - 8usize];
+    ["Alignment of HfRpc_mission_started"]
+        [::std::mem::align_of::<HfRpc_mission_started>() - 8usize];
+    ["Offset of field: HfRpc_mission_started::network_string"]
+        [::std::mem::offset_of!(HfRpc_mission_started, network_string) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ability_paused {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ability_paused"]
+        [::std::mem::size_of::<HfRpc_set_ability_paused>() - 8usize];
+    ["Alignment of HfRpc_set_ability_paused"]
+        [::std::mem::align_of::<HfRpc_set_ability_paused>() - 4usize];
+    ["Offset of field: HfRpc_set_ability_paused::entity"]
+        [::std::mem::offset_of!(HfRpc_set_ability_paused, entity) - 0usize];
+    ["Offset of field: HfRpc_set_ability_paused::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_ability_paused, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_pickup_payload {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_pickup_payload"][::std::mem::size_of::<HfRpc_pickup_payload>() - 12usize];
+    ["Alignment of HfRpc_pickup_payload"][::std::mem::align_of::<HfRpc_pickup_payload>() - 4usize];
+    ["Offset of field: HfRpc_pickup_payload::entity"]
+        [::std::mem::offset_of!(HfRpc_pickup_payload, entity) - 0usize];
+    ["Offset of field: HfRpc_pickup_payload::entity_2"]
+        [::std::mem::offset_of!(HfRpc_pickup_payload, entity_2) - 4usize];
+    ["Offset of field: HfRpc_pickup_payload::arg2"]
+        [::std::mem::offset_of!(HfRpc_pickup_payload, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_ready_peer_added {
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_ready_peer_added"]
+        [::std::mem::size_of::<HfRpc_from_host_ready_peer_added>() - 8usize];
+    ["Alignment of HfRpc_from_host_ready_peer_added"]
+        [::std::mem::align_of::<HfRpc_from_host_ready_peer_added>() - 8usize];
+    ["Offset of field: HfRpc_from_host_ready_peer_added::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_ready_peer_added, peer_id) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_targeting_decal {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub id_string64: u64,
+    pub vector3: [f32; 3usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_targeting_decal"][::std::mem::size_of::<HfRpc_targeting_decal>() - 32usize];
+    ["Alignment of HfRpc_targeting_decal"]
+        [::std::mem::align_of::<HfRpc_targeting_decal>() - 8usize];
+    ["Offset of field: HfRpc_targeting_decal::entity"]
+        [::std::mem::offset_of!(HfRpc_targeting_decal, entity) - 0usize];
+    ["Offset of field: HfRpc_targeting_decal::entity_2"]
+        [::std::mem::offset_of!(HfRpc_targeting_decal, entity_2) - 4usize];
+    ["Offset of field: HfRpc_targeting_decal::id_string64"]
+        [::std::mem::offset_of!(HfRpc_targeting_decal, id_string64) - 8usize];
+    ["Offset of field: HfRpc_targeting_decal::vector3"]
+        [::std::mem::offset_of!(HfRpc_targeting_decal, vector3) - 16usize];
+    ["Offset of field: HfRpc_targeting_decal::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_targeting_decal, unsigned_value) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fire_system_delta_cell_list {
+    pub arg0_count: u32,
+    pub arg0: [i32; 64usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fire_system_delta_cell_list"]
+        [::std::mem::size_of::<HfRpc_fire_system_delta_cell_list>() - 260usize];
+    ["Alignment of HfRpc_fire_system_delta_cell_list"]
+        [::std::mem::align_of::<HfRpc_fire_system_delta_cell_list>() - 4usize];
+    ["Offset of field: HfRpc_fire_system_delta_cell_list::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_fire_system_delta_cell_list, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_fire_system_delta_cell_list::arg0"]
+        [::std::mem::offset_of!(HfRpc_fire_system_delta_cell_list, arg0) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_job_position {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_job_position"][::std::mem::size_of::<HfRpc_set_job_position>() - 16usize];
+    ["Alignment of HfRpc_set_job_position"]
+        [::std::mem::align_of::<HfRpc_set_job_position>() - 4usize];
+    ["Offset of field: HfRpc_set_job_position::entity"]
+        [::std::mem::offset_of!(HfRpc_set_job_position, entity) - 0usize];
+    ["Offset of field: HfRpc_set_job_position::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_job_position, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_delete_current_equipment {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_delete_current_equipment"]
+        [::std::mem::size_of::<HfRpc_delete_current_equipment>() - 4usize];
+    ["Alignment of HfRpc_delete_current_equipment"]
+        [::std::mem::align_of::<HfRpc_delete_current_equipment>() - 4usize];
+    ["Offset of field: HfRpc_delete_current_equipment::entity"]
+        [::std::mem::offset_of!(HfRpc_delete_current_equipment, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_corpsed_reattach {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_corpsed_reattach"][::std::mem::size_of::<HfRpc_corpsed_reattach>() - 8usize];
+    ["Alignment of HfRpc_corpsed_reattach"]
+        [::std::mem::align_of::<HfRpc_corpsed_reattach>() - 4usize];
+    ["Offset of field: HfRpc_corpsed_reattach::entity"]
+        [::std::mem::offset_of!(HfRpc_corpsed_reattach, entity) - 0usize];
+    ["Offset of field: HfRpc_corpsed_reattach::entity_2"]
+        [::std::mem::offset_of!(HfRpc_corpsed_reattach, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_give_ammo {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_give_ammo"][::std::mem::size_of::<HfRpc_give_ammo>() - 4usize];
+    ["Alignment of HfRpc_give_ammo"][::std::mem::align_of::<HfRpc_give_ammo>() - 4usize];
+    ["Offset of field: HfRpc_give_ammo::entity"]
+        [::std::mem::offset_of!(HfRpc_give_ammo, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_replicate_override_batch {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub arg3_count: u32,
+    pub arg3: [i32; 20usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 20usize],
+    pub arg5_count: u32,
+    pub arg5: [i32; 20usize],
+    pub arg6_count: u32,
+    pub arg6: [u64; 20usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_replicate_override_batch"]
+        [::std::mem::size_of::<HfRpc_replicate_override_batch>() - 432usize];
+    ["Alignment of HfRpc_replicate_override_batch"]
+        [::std::mem::align_of::<HfRpc_replicate_override_batch>() - 8usize];
+    ["Offset of field: HfRpc_replicate_override_batch::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_replicate_override_batch::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, unsigned_value_2) - 4usize];
+    ["Offset of field: HfRpc_replicate_override_batch::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, unsigned_value_3) - 8usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg3_count) - 12usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg3"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg3) - 16usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg4_count) - 96usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg4"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg4) - 100usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg5_count"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg5_count) - 180usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg5"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg5) - 184usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg6_count"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg6_count) - 264usize];
+    ["Offset of field: HfRpc_replicate_override_batch::arg6"]
+        [::std::mem::offset_of!(HfRpc_replicate_override_batch, arg6) - 272usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_armor_modifier {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_armor_modifier"]
+        [::std::mem::size_of::<HfRpc_set_armor_modifier>() - 8usize];
+    ["Alignment of HfRpc_set_armor_modifier"]
+        [::std::mem::align_of::<HfRpc_set_armor_modifier>() - 4usize];
+    ["Offset of field: HfRpc_set_armor_modifier::entity"]
+        [::std::mem::offset_of!(HfRpc_set_armor_modifier, entity) - 0usize];
+    ["Offset of field: HfRpc_set_armor_modifier::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_armor_modifier, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_ingame_chat_message {
+    pub arg0_count: u32,
+    pub arg0: [i32; 128usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_ingame_chat_message"]
+        [::std::mem::size_of::<HfRpc_ingame_chat_message>() - 516usize];
+    ["Alignment of HfRpc_ingame_chat_message"]
+        [::std::mem::align_of::<HfRpc_ingame_chat_message>() - 4usize];
+    ["Offset of field: HfRpc_ingame_chat_message::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_ingame_chat_message, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_ingame_chat_message::arg0"]
+        [::std::mem::offset_of!(HfRpc_ingame_chat_message, arg0) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_game_state {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_game_state"]
+        [::std::mem::size_of::<HfRpc_from_host_set_game_state>() - 4usize];
+    ["Alignment of HfRpc_from_host_set_game_state"]
+        [::std::mem::align_of::<HfRpc_from_host_set_game_state>() - 4usize];
+    ["Offset of field: HfRpc_from_host_set_game_state::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_game_state, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_set_parent_active {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_set_parent_active"]
+        [::std::mem::size_of::<HfRpc_request_set_parent_active>() - 8usize];
+    ["Alignment of HfRpc_request_set_parent_active"]
+        [::std::mem::align_of::<HfRpc_request_set_parent_active>() - 4usize];
+    ["Offset of field: HfRpc_request_set_parent_active::entity"]
+        [::std::mem::offset_of!(HfRpc_request_set_parent_active, entity) - 0usize];
+    ["Offset of field: HfRpc_request_set_parent_active::bool_value"]
+        [::std::mem::offset_of!(HfRpc_request_set_parent_active, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mission_activity_result {
+    pub arg0_count: u32,
+    pub arg0: [i32; 16usize],
+    pub arg1_count: u32,
+    pub arg1: [i32; 16usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mission_activity_result"]
+        [::std::mem::size_of::<HfRpc_mission_activity_result>() - 136usize];
+    ["Alignment of HfRpc_mission_activity_result"]
+        [::std::mem::align_of::<HfRpc_mission_activity_result>() - 4usize];
+    ["Offset of field: HfRpc_mission_activity_result::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_mission_activity_result, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_mission_activity_result::arg0"]
+        [::std::mem::offset_of!(HfRpc_mission_activity_result, arg0) - 4usize];
+    ["Offset of field: HfRpc_mission_activity_result::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_mission_activity_result, arg1_count) - 68usize];
+    ["Offset of field: HfRpc_mission_activity_result::arg1"]
+        [::std::mem::offset_of!(HfRpc_mission_activity_result, arg1) - 72usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loot_destroyed_message {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loot_destroyed_message"]
+        [::std::mem::size_of::<HfRpc_loot_destroyed_message>() - 4usize];
+    ["Alignment of HfRpc_loot_destroyed_message"]
+        [::std::mem::align_of::<HfRpc_loot_destroyed_message>() - 4usize];
+    ["Offset of field: HfRpc_loot_destroyed_message::entity"]
+        [::std::mem::offset_of!(HfRpc_loot_destroyed_message, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_radio {
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_radio"][::std::mem::size_of::<HfRpc_radio>() - 4usize];
+    ["Alignment of HfRpc_radio"][::std::mem::align_of::<HfRpc_radio>() - 4usize];
+    ["Offset of field: HfRpc_radio::id_string32"]
+        [::std::mem::offset_of!(HfRpc_radio, id_string32) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_spawn_minefield_mines {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_spawn_minefield_mines"]
+        [::std::mem::size_of::<HfRpc_spawn_minefield_mines>() - 36usize];
+    ["Alignment of HfRpc_spawn_minefield_mines"]
+        [::std::mem::align_of::<HfRpc_spawn_minefield_mines>() - 4usize];
+    ["Offset of field: HfRpc_spawn_minefield_mines::entity"]
+        [::std::mem::offset_of!(HfRpc_spawn_minefield_mines, entity) - 0usize];
+    ["Offset of field: HfRpc_spawn_minefield_mines::vector3"]
+        [::std::mem::offset_of!(HfRpc_spawn_minefield_mines, vector3) - 4usize];
+    ["Offset of field: HfRpc_spawn_minefield_mines::quaternion"]
+        [::std::mem::offset_of!(HfRpc_spawn_minefield_mines, quaternion) - 16usize];
+    ["Offset of field: HfRpc_spawn_minefield_mines::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_spawn_minefield_mines, unsigned_value) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_actor_motion_property {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_actor_motion_property"]
+        [::std::mem::size_of::<HfRpc_set_actor_motion_property>() - 8usize];
+    ["Alignment of HfRpc_set_actor_motion_property"]
+        [::std::mem::align_of::<HfRpc_set_actor_motion_property>() - 4usize];
+    ["Offset of field: HfRpc_set_actor_motion_property::entity"]
+        [::std::mem::offset_of!(HfRpc_set_actor_motion_property, entity) - 0usize];
+    ["Offset of field: HfRpc_set_actor_motion_property::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_actor_motion_property, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_reels_selected_reel {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_reels_selected_reel"]
+        [::std::mem::size_of::<HfRpc_set_minigame_reels_selected_reel>() - 12usize];
+    ["Alignment of HfRpc_set_minigame_reels_selected_reel"]
+        [::std::mem::align_of::<HfRpc_set_minigame_reels_selected_reel>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_reel::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_reel, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_reel::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_reel, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_reels_selected_reel::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_reels_selected_reel, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_interested_dialogue_target {
+    pub entity: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_interested_dialogue_target"]
+        [::std::mem::size_of::<HfRpc_set_interested_dialogue_target>() - 16usize];
+    ["Alignment of HfRpc_set_interested_dialogue_target"]
+        [::std::mem::align_of::<HfRpc_set_interested_dialogue_target>() - 8usize];
+    ["Offset of field: HfRpc_set_interested_dialogue_target::entity"]
+        [::std::mem::offset_of!(HfRpc_set_interested_dialogue_target, entity) - 0usize];
+    ["Offset of field: HfRpc_set_interested_dialogue_target::peer_id"]
+        [::std::mem::offset_of!(HfRpc_set_interested_dialogue_target, peer_id) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_intel_encounter {
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_intel_encounter"]
+        [::std::mem::size_of::<HfRpc_trigger_intel_encounter>() - 12usize];
+    ["Alignment of HfRpc_trigger_intel_encounter"]
+        [::std::mem::align_of::<HfRpc_trigger_intel_encounter>() - 4usize];
+    ["Offset of field: HfRpc_trigger_intel_encounter::vector3"]
+        [::std::mem::offset_of!(HfRpc_trigger_intel_encounter, vector3) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_equipment {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_equipment"][::std::mem::size_of::<HfRpc_change_equipment>() - 8usize];
+    ["Alignment of HfRpc_change_equipment"]
+        [::std::mem::align_of::<HfRpc_change_equipment>() - 4usize];
+    ["Offset of field: HfRpc_change_equipment::entity"]
+        [::std::mem::offset_of!(HfRpc_change_equipment, entity) - 0usize];
+    ["Offset of field: HfRpc_change_equipment::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_change_equipment, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_active_passenger {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_active_passenger"]
+        [::std::mem::size_of::<HfRpc_set_active_passenger>() - 8usize];
+    ["Alignment of HfRpc_set_active_passenger"]
+        [::std::mem::align_of::<HfRpc_set_active_passenger>() - 4usize];
+    ["Offset of field: HfRpc_set_active_passenger::entity"]
+        [::std::mem::offset_of!(HfRpc_set_active_passenger, entity) - 0usize];
+    ["Offset of field: HfRpc_set_active_passenger::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_active_passenger, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_completed_loadout_load {
+    pub peer_id: u64,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_completed_loadout_load"]
+        [::std::mem::size_of::<HfRpc_from_client_completed_loadout_load>() - 16usize];
+    ["Alignment of HfRpc_from_client_completed_loadout_load"]
+        [::std::mem::align_of::<HfRpc_from_client_completed_loadout_load>() - 8usize];
+    ["Offset of field: HfRpc_from_client_completed_loadout_load::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_client_completed_loadout_load, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_client_completed_loadout_load::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_client_completed_loadout_load, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_notified {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_notified"][::std::mem::size_of::<HfRpc_on_notified>() - 16usize];
+    ["Alignment of HfRpc_on_notified"][::std::mem::align_of::<HfRpc_on_notified>() - 4usize];
+    ["Offset of field: HfRpc_on_notified::entity"]
+        [::std::mem::offset_of!(HfRpc_on_notified, entity) - 0usize];
+    ["Offset of field: HfRpc_on_notified::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_notified, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_on_notified::float_value"]
+        [::std::mem::offset_of!(HfRpc_on_notified, float_value) - 8usize];
+    ["Offset of field: HfRpc_on_notified::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_on_notified, float_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_weapon_bool {
+    pub id_string32: u32,
+    pub id_string64: u64,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_weapon_bool"]
+        [::std::mem::size_of::<HfRpc_score_sync_weapon_bool>() - 24usize];
+    ["Alignment of HfRpc_score_sync_weapon_bool"]
+        [::std::mem::align_of::<HfRpc_score_sync_weapon_bool>() - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_bool::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_bool, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_weapon_bool::id_string64"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_bool, id_string64) - 8usize];
+    ["Offset of field: HfRpc_score_sync_weapon_bool::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_score_sync_weapon_bool, unsigned_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_damage_owner {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_damage_owner"][::std::mem::size_of::<HfRpc_set_damage_owner>() - 8usize];
+    ["Alignment of HfRpc_set_damage_owner"]
+        [::std::mem::align_of::<HfRpc_set_damage_owner>() - 4usize];
+    ["Offset of field: HfRpc_set_damage_owner::entity"]
+        [::std::mem::offset_of!(HfRpc_set_damage_owner, entity) - 0usize];
+    ["Offset of field: HfRpc_set_damage_owner::entity_2"]
+        [::std::mem::offset_of!(HfRpc_set_damage_owner, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_cycle_seat {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub seat_index: i32,
+    pub arg3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_cycle_seat"]
+        [::std::mem::size_of::<HfRpc_request_cycle_seat>() - 16usize];
+    ["Alignment of HfRpc_request_cycle_seat"]
+        [::std::mem::align_of::<HfRpc_request_cycle_seat>() - 4usize];
+    ["Offset of field: HfRpc_request_cycle_seat::entity"]
+        [::std::mem::offset_of!(HfRpc_request_cycle_seat, entity) - 0usize];
+    ["Offset of field: HfRpc_request_cycle_seat::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_cycle_seat, entity_2) - 4usize];
+    ["Offset of field: HfRpc_request_cycle_seat::seat_index"]
+        [::std::mem::offset_of!(HfRpc_request_cycle_seat, seat_index) - 8usize];
+    ["Offset of field: HfRpc_request_cycle_seat::arg3"]
+        [::std::mem::offset_of!(HfRpc_request_cycle_seat, arg3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_external_switch_state_reset {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_external_switch_state_reset"]
+        [::std::mem::size_of::<HfRpc_external_switch_state_reset>() - 4usize];
+    ["Alignment of HfRpc_external_switch_state_reset"]
+        [::std::mem::align_of::<HfRpc_external_switch_state_reset>() - 4usize];
+    ["Offset of field: HfRpc_external_switch_state_reset::entity"]
+        [::std::mem::offset_of!(HfRpc_external_switch_state_reset, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_switch_value {
+    pub entity: i32,
+    pub arg1: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_switch_value"][::std::mem::size_of::<HfRpc_set_switch_value>() - 8usize];
+    ["Alignment of HfRpc_set_switch_value"]
+        [::std::mem::align_of::<HfRpc_set_switch_value>() - 4usize];
+    ["Offset of field: HfRpc_set_switch_value::entity"]
+        [::std::mem::offset_of!(HfRpc_set_switch_value, entity) - 0usize];
+    ["Offset of field: HfRpc_set_switch_value::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_switch_value, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_ball_sound {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_ball_sound"]
+        [::std::mem::size_of::<HfRpc_stratagem_ball_sound>() - 8usize];
+    ["Alignment of HfRpc_stratagem_ball_sound"]
+        [::std::mem::align_of::<HfRpc_stratagem_ball_sound>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_ball_sound::entity"]
+        [::std::mem::offset_of!(HfRpc_stratagem_ball_sound, entity) - 0usize];
+    ["Offset of field: HfRpc_stratagem_ball_sound::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_ball_sound, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_select_done {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_select_done"][::std::mem::size_of::<HfRpc_drop_select_done>() - 4usize];
+    ["Alignment of HfRpc_drop_select_done"]
+        [::std::mem::align_of::<HfRpc_drop_select_done>() - 4usize];
+    ["Offset of field: HfRpc_drop_select_done::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_select_done, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dialogue_response {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dialogue_response"][::std::mem::size_of::<HfRpc_dialogue_response>() - 12usize];
+    ["Alignment of HfRpc_dialogue_response"]
+        [::std::mem::align_of::<HfRpc_dialogue_response>() - 4usize];
+    ["Offset of field: HfRpc_dialogue_response::entity"]
+        [::std::mem::offset_of!(HfRpc_dialogue_response, entity) - 0usize];
+    ["Offset of field: HfRpc_dialogue_response::entity_2"]
+        [::std::mem::offset_of!(HfRpc_dialogue_response, entity_2) - 4usize];
+    ["Offset of field: HfRpc_dialogue_response::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_dialogue_response, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loot_pick_up {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loot_pick_up"][::std::mem::size_of::<HfRpc_loot_pick_up>() - 16usize];
+    ["Alignment of HfRpc_loot_pick_up"][::std::mem::align_of::<HfRpc_loot_pick_up>() - 4usize];
+    ["Offset of field: HfRpc_loot_pick_up::entity"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up, entity) - 0usize];
+    ["Offset of field: HfRpc_loot_pick_up::entity_2"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up, entity_2) - 4usize];
+    ["Offset of field: HfRpc_loot_pick_up::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_loot_pick_up::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_loot_pick_up, unsigned_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_score_sync_float {
+    pub id_string32: u32,
+    pub arg1: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_score_sync_float"][::std::mem::size_of::<HfRpc_score_sync_float>() - 8usize];
+    ["Alignment of HfRpc_score_sync_float"]
+        [::std::mem::align_of::<HfRpc_score_sync_float>() - 4usize];
+    ["Offset of field: HfRpc_score_sync_float::id_string32"]
+        [::std::mem::offset_of!(HfRpc_score_sync_float, id_string32) - 0usize];
+    ["Offset of field: HfRpc_score_sync_float::arg1"]
+        [::std::mem::offset_of!(HfRpc_score_sync_float, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shield_on_depleted {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shield_on_depleted"]
+        [::std::mem::size_of::<HfRpc_shield_on_depleted>() - 4usize];
+    ["Alignment of HfRpc_shield_on_depleted"]
+        [::std::mem::align_of::<HfRpc_shield_on_depleted>() - 4usize];
+    ["Offset of field: HfRpc_shield_on_depleted::entity"]
+        [::std::mem::offset_of!(HfRpc_shield_on_depleted, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_roll_for_status_effect {
+    pub entity: i32,
+    pub arg1: i32,
+    pub id_string32: u32,
+    pub float_value: f32,
+    pub entity_2: i32,
+    pub entity_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_roll_for_status_effect"]
+        [::std::mem::size_of::<HfRpc_roll_for_status_effect>() - 24usize];
+    ["Alignment of HfRpc_roll_for_status_effect"]
+        [::std::mem::align_of::<HfRpc_roll_for_status_effect>() - 4usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::entity"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, entity) - 0usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::arg1"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, arg1) - 4usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::id_string32"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, id_string32) - 8usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::float_value"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, float_value) - 12usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::entity_2"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, entity_2) - 16usize];
+    ["Offset of field: HfRpc_roll_for_status_effect::entity_3"]
+        [::std::mem::offset_of!(HfRpc_roll_for_status_effect, entity_3) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_recharge_set_timer {
+    pub entity: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_recharge_set_timer"]
+        [::std::mem::size_of::<HfRpc_recharge_set_timer>() - 8usize];
+    ["Alignment of HfRpc_recharge_set_timer"]
+        [::std::mem::align_of::<HfRpc_recharge_set_timer>() - 4usize];
+    ["Offset of field: HfRpc_recharge_set_timer::entity"]
+        [::std::mem::offset_of!(HfRpc_recharge_set_timer, entity) - 0usize];
+    ["Offset of field: HfRpc_recharge_set_timer::float_value"]
+        [::std::mem::offset_of!(HfRpc_recharge_set_timer, float_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_knockback {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub arg3: f32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_knockback"][::std::mem::size_of::<HfRpc_on_knockback>() - 44usize];
+    ["Alignment of HfRpc_on_knockback"][::std::mem::align_of::<HfRpc_on_knockback>() - 4usize];
+    ["Offset of field: HfRpc_on_knockback::entity"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, entity) - 0usize];
+    ["Offset of field: HfRpc_on_knockback::vector3"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, vector3) - 4usize];
+    ["Offset of field: HfRpc_on_knockback::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_on_knockback::arg3"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, arg3) - 28usize];
+    ["Offset of field: HfRpc_on_knockback::float_value"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, float_value) - 32usize];
+    ["Offset of field: HfRpc_on_knockback::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, float_value_2) - 36usize];
+    ["Offset of field: HfRpc_on_knockback::entity_2"]
+        [::std::mem::offset_of!(HfRpc_on_knockback, entity_2) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_pipe_slide_offset_value {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_pipe_slide_offset_value"]
+        [::std::mem::size_of::<HfRpc_set_minigame_pipe_slide_offset_value>() - 16usize];
+    ["Alignment of HfRpc_set_minigame_pipe_slide_offset_value"]
+        [::std::mem::align_of::<HfRpc_set_minigame_pipe_slide_offset_value>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_offset_value::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_pipe_slide_offset_value, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_offset_value::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_set_minigame_pipe_slide_offset_value,
+        unsigned_value
+    ) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_offset_value::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_set_minigame_pipe_slide_offset_value,
+        unsigned_value_2
+    ) - 8usize];
+    ["Offset of field: HfRpc_set_minigame_pipe_slide_offset_value::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_set_minigame_pipe_slide_offset_value,
+        unsigned_value_3
+    ) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_inventory_visibility {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_inventory_visibility"]
+        [::std::mem::size_of::<HfRpc_set_inventory_visibility>() - 8usize];
+    ["Alignment of HfRpc_set_inventory_visibility"]
+        [::std::mem::align_of::<HfRpc_set_inventory_visibility>() - 4usize];
+    ["Offset of field: HfRpc_set_inventory_visibility::entity"]
+        [::std::mem::offset_of!(HfRpc_set_inventory_visibility, entity) - 0usize];
+    ["Offset of field: HfRpc_set_inventory_visibility::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_inventory_visibility, bool_value) - 4usize];
+    ["Offset of field: HfRpc_set_inventory_visibility::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_inventory_visibility, bool_value_2) - 5usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_synced_ability_hit {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_synced_ability_hit"]
+        [::std::mem::size_of::<HfRpc_synced_ability_hit>() - 8usize];
+    ["Alignment of HfRpc_synced_ability_hit"]
+        [::std::mem::align_of::<HfRpc_synced_ability_hit>() - 4usize];
+    ["Offset of field: HfRpc_synced_ability_hit::entity"]
+        [::std::mem::offset_of!(HfRpc_synced_ability_hit, entity) - 0usize];
+    ["Offset of field: HfRpc_synced_ability_hit::entity_2"]
+        [::std::mem::offset_of!(HfRpc_synced_ability_hit, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_loadout_weapon_swap_ready {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_loadout_weapon_swap_ready"]
+        [::std::mem::size_of::<HfRpc_from_host_loadout_weapon_swap_ready>() - 8usize];
+    ["Alignment of HfRpc_from_host_loadout_weapon_swap_ready"]
+        [::std::mem::align_of::<HfRpc_from_host_loadout_weapon_swap_ready>() - 8usize];
+    ["Offset of field: HfRpc_from_host_loadout_weapon_swap_ready::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_loadout_weapon_swap_ready, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_wants_to_burrow {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_wants_to_burrow"]
+        [::std::mem::size_of::<HfRpc_set_wants_to_burrow>() - 8usize];
+    ["Alignment of HfRpc_set_wants_to_burrow"]
+        [::std::mem::align_of::<HfRpc_set_wants_to_burrow>() - 4usize];
+    ["Offset of field: HfRpc_set_wants_to_burrow::entity"]
+        [::std::mem::offset_of!(HfRpc_set_wants_to_burrow, entity) - 0usize];
+    ["Offset of field: HfRpc_set_wants_to_burrow::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_wants_to_burrow, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_smooth_attach_offset_rotation {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_smooth_attach_offset_rotation"]
+        [::std::mem::size_of::<HfRpc_smooth_attach_offset_rotation>() - 44usize];
+    ["Alignment of HfRpc_smooth_attach_offset_rotation"]
+        [::std::mem::align_of::<HfRpc_smooth_attach_offset_rotation>() - 4usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::entity"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, entity) - 0usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::entity_2"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, entity_2) - 4usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::vector3"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, vector3) - 12usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::quaternion"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, quaternion) - 24usize];
+    ["Offset of field: HfRpc_smooth_attach_offset_rotation::float_value"]
+        [::std::mem::offset_of!(HfRpc_smooth_attach_offset_rotation, float_value) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_exit_seat_collection_denied {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_exit_seat_collection_denied"]
+        [::std::mem::size_of::<HfRpc_request_exit_seat_collection_denied>() - 8usize];
+    ["Alignment of HfRpc_request_exit_seat_collection_denied"]
+        [::std::mem::align_of::<HfRpc_request_exit_seat_collection_denied>() - 4usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_denied::entity"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection_denied, entity) - 0usize];
+    ["Offset of field: HfRpc_request_exit_seat_collection_denied::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_exit_seat_collection_denied, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_animation_times {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [f32; 32usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_animation_times"]
+        [::std::mem::size_of::<HfRpc_set_animation_times>() - 136usize];
+    ["Alignment of HfRpc_set_animation_times"]
+        [::std::mem::align_of::<HfRpc_set_animation_times>() - 4usize];
+    ["Offset of field: HfRpc_set_animation_times::entity"]
+        [::std::mem::offset_of!(HfRpc_set_animation_times, entity) - 0usize];
+    ["Offset of field: HfRpc_set_animation_times::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_set_animation_times, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_set_animation_times::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_animation_times, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_hazard {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_hazard"][::std::mem::size_of::<HfRpc_trigger_hazard>() - 4usize];
+    ["Alignment of HfRpc_trigger_hazard"][::std::mem::align_of::<HfRpc_trigger_hazard>() - 4usize];
+    ["Offset of field: HfRpc_trigger_hazard::entity"]
+        [::std::mem::offset_of!(HfRpc_trigger_hazard, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fancy_effect_system_initialise_sync {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fancy_effect_system_initialise_sync"]
+        [::std::mem::size_of::<HfRpc_fancy_effect_system_initialise_sync>() - 4usize];
+    ["Alignment of HfRpc_fancy_effect_system_initialise_sync"]
+        [::std::mem::align_of::<HfRpc_fancy_effect_system_initialise_sync>() - 4usize];
+    ["Offset of field: HfRpc_fancy_effect_system_initialise_sync::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_fancy_effect_system_initialise_sync,
+        unsigned_value
+    ) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_detonate_c4_charges {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_detonate_c4_charges"]
+        [::std::mem::size_of::<HfRpc_detonate_c4_charges>() - 4usize];
+    ["Alignment of HfRpc_detonate_c4_charges"]
+        [::std::mem::align_of::<HfRpc_detonate_c4_charges>() - 4usize];
+    ["Offset of field: HfRpc_detonate_c4_charges::entity"]
+        [::std::mem::offset_of!(HfRpc_detonate_c4_charges, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_audio_event {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub id_string32_3: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_audio_event"][::std::mem::size_of::<HfRpc_audio_event>() - 16usize];
+    ["Alignment of HfRpc_audio_event"][::std::mem::align_of::<HfRpc_audio_event>() - 4usize];
+    ["Offset of field: HfRpc_audio_event::entity"]
+        [::std::mem::offset_of!(HfRpc_audio_event, entity) - 0usize];
+    ["Offset of field: HfRpc_audio_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_audio_event, id_string32) - 4usize];
+    ["Offset of field: HfRpc_audio_event::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_audio_event, id_string32_2) - 8usize];
+    ["Offset of field: HfRpc_audio_event::id_string32_3"]
+        [::std::mem::offset_of!(HfRpc_audio_event, id_string32_3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_generation_hash {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_generation_hash"]
+        [::std::mem::size_of::<HfRpc_from_host_set_generation_hash>() - 8usize];
+    ["Alignment of HfRpc_from_host_set_generation_hash"]
+        [::std::mem::align_of::<HfRpc_from_host_set_generation_hash>() - 8usize];
+    ["Offset of field: HfRpc_from_host_set_generation_hash::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_generation_hash, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_voiceover_stop_event {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_voiceover_stop_event"]
+        [::std::mem::size_of::<HfRpc_voiceover_stop_event>() - 16usize];
+    ["Alignment of HfRpc_voiceover_stop_event"]
+        [::std::mem::align_of::<HfRpc_voiceover_stop_event>() - 4usize];
+    ["Offset of field: HfRpc_voiceover_stop_event::entity"]
+        [::std::mem::offset_of!(HfRpc_voiceover_stop_event, entity) - 0usize];
+    ["Offset of field: HfRpc_voiceover_stop_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_voiceover_stop_event, id_string32) - 4usize];
+    ["Offset of field: HfRpc_voiceover_stop_event::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_voiceover_stop_event, id_string32_2) - 8usize];
+    ["Offset of field: HfRpc_voiceover_stop_event::float_value"]
+        [::std::mem::offset_of!(HfRpc_voiceover_stop_event, float_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shield_zone_depleted {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shield_zone_depleted"]
+        [::std::mem::size_of::<HfRpc_shield_zone_depleted>() - 8usize];
+    ["Alignment of HfRpc_shield_zone_depleted"]
+        [::std::mem::align_of::<HfRpc_shield_zone_depleted>() - 4usize];
+    ["Offset of field: HfRpc_shield_zone_depleted::entity"]
+        [::std::mem::offset_of!(HfRpc_shield_zone_depleted, entity) - 0usize];
+    ["Offset of field: HfRpc_shield_zone_depleted::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_shield_zone_depleted, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mine_triggered {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mine_triggered"][::std::mem::size_of::<HfRpc_mine_triggered>() - 12usize];
+    ["Alignment of HfRpc_mine_triggered"][::std::mem::align_of::<HfRpc_mine_triggered>() - 4usize];
+    ["Offset of field: HfRpc_mine_triggered::entity"]
+        [::std::mem::offset_of!(HfRpc_mine_triggered, entity) - 0usize];
+    ["Offset of field: HfRpc_mine_triggered::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_mine_triggered, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_mine_triggered::bool_value"]
+        [::std::mem::offset_of!(HfRpc_mine_triggered, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_stratagems {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 16usize],
+    pub arg2_count: u32,
+    pub arg2: [i32; 16usize],
+    pub arg3_count: u32,
+    pub arg3: [u64; 16usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 32usize],
+    pub arg5_count: u32,
+    pub arg5: [u8; 16usize],
+    pub arg6: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_stratagems"][::std::mem::size_of::<HfRpc_sync_stratagems>() - 432usize];
+    ["Alignment of HfRpc_sync_stratagems"]
+        [::std::mem::align_of::<HfRpc_sync_stratagems>() - 8usize];
+    ["Offset of field: HfRpc_sync_stratagems::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, entity) - 0usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg1) - 8usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg2_count) - 72usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg2) - 76usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg3_count) - 140usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg3) - 144usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg4_count) - 272usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg4) - 276usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg5_count"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg5_count) - 404usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg5"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg5) - 408usize];
+    ["Offset of field: HfRpc_sync_stratagems::arg6"]
+        [::std::mem::offset_of!(HfRpc_sync_stratagems, arg6) - 424usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_debug_load_soundbank {
+    pub id_string64: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_debug_load_soundbank"]
+        [::std::mem::size_of::<HfRpc_debug_load_soundbank>() - 8usize];
+    ["Alignment of HfRpc_debug_load_soundbank"]
+        [::std::mem::align_of::<HfRpc_debug_load_soundbank>() - 8usize];
+    ["Offset of field: HfRpc_debug_load_soundbank::id_string64"]
+        [::std::mem::offset_of!(HfRpc_debug_load_soundbank, id_string64) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_oil_rig_drilling_start {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_oil_rig_drilling_start"]
+        [::std::mem::size_of::<HfRpc_oil_rig_drilling_start>() - 4usize];
+    ["Alignment of HfRpc_oil_rig_drilling_start"]
+        [::std::mem::align_of::<HfRpc_oil_rig_drilling_start>() - 4usize];
+    ["Offset of field: HfRpc_oil_rig_drilling_start::entity"]
+        [::std::mem::offset_of!(HfRpc_oil_rig_drilling_start, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ragdoll_enabled {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ragdoll_enabled"]
+        [::std::mem::size_of::<HfRpc_set_ragdoll_enabled>() - 8usize];
+    ["Alignment of HfRpc_set_ragdoll_enabled"]
+        [::std::mem::align_of::<HfRpc_set_ragdoll_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_ragdoll_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_ragdoll_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_enabled, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_start_upload_discovery {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_start_upload_discovery"]
+        [::std::mem::size_of::<HfRpc_start_upload_discovery>() - 8usize];
+    ["Alignment of HfRpc_start_upload_discovery"]
+        [::std::mem::align_of::<HfRpc_start_upload_discovery>() - 4usize];
+    ["Offset of field: HfRpc_start_upload_discovery::entity"]
+        [::std::mem::offset_of!(HfRpc_start_upload_discovery, entity) - 0usize];
+    ["Offset of field: HfRpc_start_upload_discovery::entity_2"]
+        [::std::mem::offset_of!(HfRpc_start_upload_discovery, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_animation_states_large {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 32usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_animation_states_large"]
+        [::std::mem::size_of::<HfRpc_set_animation_states_large>() - 136usize];
+    ["Alignment of HfRpc_set_animation_states_large"]
+        [::std::mem::align_of::<HfRpc_set_animation_states_large>() - 4usize];
+    ["Offset of field: HfRpc_set_animation_states_large::entity"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states_large, entity) - 0usize];
+    ["Offset of field: HfRpc_set_animation_states_large::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states_large, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_set_animation_states_large::arg1"]
+        [::std::mem::offset_of!(HfRpc_set_animation_states_large, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_give_stims {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub id_string64: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_give_stims"][::std::mem::size_of::<HfRpc_give_stims>() - 16usize];
+    ["Alignment of HfRpc_give_stims"][::std::mem::align_of::<HfRpc_give_stims>() - 8usize];
+    ["Offset of field: HfRpc_give_stims::entity"]
+        [::std::mem::offset_of!(HfRpc_give_stims, entity) - 0usize];
+    ["Offset of field: HfRpc_give_stims::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_give_stims, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_give_stims::id_string64"]
+        [::std::mem::offset_of!(HfRpc_give_stims, id_string64) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_objective_link_to_guard_force_member {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_objective_link_to_guard_force_member"]
+        [::std::mem::size_of::<HfRpc_objective_link_to_guard_force_member>() - 8usize];
+    ["Alignment of HfRpc_objective_link_to_guard_force_member"]
+        [::std::mem::align_of::<HfRpc_objective_link_to_guard_force_member>() - 4usize];
+    ["Offset of field: HfRpc_objective_link_to_guard_force_member::entity"]
+        [::std::mem::offset_of!(HfRpc_objective_link_to_guard_force_member, entity) - 0usize];
+    ["Offset of field: HfRpc_objective_link_to_guard_force_member::entity_2"]
+        [::std::mem::offset_of!(HfRpc_objective_link_to_guard_force_member, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_load_player_loadout_for_peer {
+    pub peer_id: u64,
+    pub arg1: i32,
+    pub arg2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_load_player_loadout_for_peer"]
+        [::std::mem::size_of::<HfRpc_load_player_loadout_for_peer>() - 24usize];
+    ["Alignment of HfRpc_load_player_loadout_for_peer"]
+        [::std::mem::align_of::<HfRpc_load_player_loadout_for_peer>() - 8usize];
+    ["Offset of field: HfRpc_load_player_loadout_for_peer::peer_id"]
+        [::std::mem::offset_of!(HfRpc_load_player_loadout_for_peer, peer_id) - 0usize];
+    ["Offset of field: HfRpc_load_player_loadout_for_peer::arg1"]
+        [::std::mem::offset_of!(HfRpc_load_player_loadout_for_peer, arg1) - 8usize];
+    ["Offset of field: HfRpc_load_player_loadout_for_peer::arg2"]
+        [::std::mem::offset_of!(HfRpc_load_player_loadout_for_peer, arg2) - 12usize];
+    ["Offset of field: HfRpc_load_player_loadout_for_peer::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_load_player_loadout_for_peer, unsigned_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_respond_to_emote {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_respond_to_emote"][::std::mem::size_of::<HfRpc_respond_to_emote>() - 12usize];
+    ["Alignment of HfRpc_respond_to_emote"]
+        [::std::mem::align_of::<HfRpc_respond_to_emote>() - 4usize];
+    ["Offset of field: HfRpc_respond_to_emote::entity"]
+        [::std::mem::offset_of!(HfRpc_respond_to_emote, entity) - 0usize];
+    ["Offset of field: HfRpc_respond_to_emote::entity_2"]
+        [::std::mem::offset_of!(HfRpc_respond_to_emote, entity_2) - 4usize];
+    ["Offset of field: HfRpc_respond_to_emote::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_respond_to_emote, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_cycle_seat_denied {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_cycle_seat_denied"][::std::mem::size_of::<HfRpc_cycle_seat_denied>() - 8usize];
+    ["Alignment of HfRpc_cycle_seat_denied"]
+        [::std::mem::align_of::<HfRpc_cycle_seat_denied>() - 4usize];
+    ["Offset of field: HfRpc_cycle_seat_denied::entity"]
+        [::std::mem::offset_of!(HfRpc_cycle_seat_denied, entity) - 0usize];
+    ["Offset of field: HfRpc_cycle_seat_denied::entity_2"]
+        [::std::mem::offset_of!(HfRpc_cycle_seat_denied, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_charge_minigame_state_change {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_charge_minigame_state_change"]
+        [::std::mem::size_of::<HfRpc_charge_minigame_state_change>() - 12usize];
+    ["Alignment of HfRpc_charge_minigame_state_change"]
+        [::std::mem::align_of::<HfRpc_charge_minigame_state_change>() - 4usize];
+    ["Offset of field: HfRpc_charge_minigame_state_change::entity"]
+        [::std::mem::offset_of!(HfRpc_charge_minigame_state_change, entity) - 0usize];
+    ["Offset of field: HfRpc_charge_minigame_state_change::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_charge_minigame_state_change, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_charge_minigame_state_change::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_charge_minigame_state_change, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability_synced_data {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability_synced_data"]
+        [::std::mem::size_of::<HfRpc_hotjoin_ability_synced_data>() - 8usize];
+    ["Alignment of HfRpc_hotjoin_ability_synced_data"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability_synced_data>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_synced_data::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_synced_data, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability_synced_data::entity_2"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_synced_data, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_build_wave_info {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_build_wave_info"][::std::mem::size_of::<HfRpc_build_wave_info>() - 8usize];
+    ["Alignment of HfRpc_build_wave_info"]
+        [::std::mem::align_of::<HfRpc_build_wave_info>() - 4usize];
+    ["Offset of field: HfRpc_build_wave_info::entity"]
+        [::std::mem::offset_of!(HfRpc_build_wave_info, entity) - 0usize];
+    ["Offset of field: HfRpc_build_wave_info::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_build_wave_info, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_space_station {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+    pub arg2_count: u32,
+    pub arg2: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_space_station"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_space_station>() - 44usize];
+    ["Alignment of HfRpc_sync_galactic_war_space_station"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_space_station>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_space_station::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_space_station, id_string32) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_space_station::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_space_station, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_space_station::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_space_station, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_space_station::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_space_station, arg2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_to_migration_host_event_list {
+    pub arg0_count: u32,
+    pub arg0: [u64; 64usize],
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_to_migration_host_event_list"]
+        [::std::mem::size_of::<HfRpc_to_migration_host_event_list>() - 528usize];
+    ["Alignment of HfRpc_to_migration_host_event_list"]
+        [::std::mem::align_of::<HfRpc_to_migration_host_event_list>() - 8usize];
+    ["Offset of field: HfRpc_to_migration_host_event_list::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_to_migration_host_event_list, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_to_migration_host_event_list::arg0"]
+        [::std::mem::offset_of!(HfRpc_to_migration_host_event_list, arg0) - 8usize];
+    ["Offset of field: HfRpc_to_migration_host_event_list::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_to_migration_host_event_list, unsigned_value) - 520usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_projectile_to_manager {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub arg3: i32,
+    pub entity_2: i32,
+    pub entity_3: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_projectile_to_manager"]
+        [::std::mem::size_of::<HfRpc_add_projectile_to_manager>() - 48usize];
+    ["Alignment of HfRpc_add_projectile_to_manager"]
+        [::std::mem::align_of::<HfRpc_add_projectile_to_manager>() - 8usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::entity"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, entity) - 0usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::vector3"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, vector3) - 4usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::arg3"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, arg3) - 28usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::entity_2"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, entity_2) - 32usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::entity_3"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, entity_3) - 36usize];
+    ["Offset of field: HfRpc_add_projectile_to_manager::peer_id"]
+        [::std::mem::offset_of!(HfRpc_add_projectile_to_manager, peer_id) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_unmount_entity {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_unmount_entity"][::std::mem::size_of::<HfRpc_unmount_entity>() - 8usize];
+    ["Alignment of HfRpc_unmount_entity"][::std::mem::align_of::<HfRpc_unmount_entity>() - 4usize];
+    ["Offset of field: HfRpc_unmount_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_unmount_entity, entity) - 0usize];
+    ["Offset of field: HfRpc_unmount_entity::entity_2"]
+        [::std::mem::offset_of!(HfRpc_unmount_entity, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_with_params {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_with_params"]
+        [::std::mem::size_of::<HfRpc_animation_event_with_params>() - 20usize];
+    ["Alignment of HfRpc_animation_event_with_params"]
+        [::std::mem::align_of::<HfRpc_animation_event_with_params>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_with_params::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_with_params, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_with_params::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_with_params, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_with_params::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_with_params, bool_value) - 8usize];
+    ["Offset of field: HfRpc_animation_event_with_params::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_with_params, float_value) - 12usize];
+    ["Offset of field: HfRpc_animation_event_with_params::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_animation_event_with_params, float_value_2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_notify_new_host {
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_notify_new_host"]
+        [::std::mem::size_of::<HfRpc_from_host_notify_new_host>() - 8usize];
+    ["Alignment of HfRpc_from_host_notify_new_host"]
+        [::std::mem::align_of::<HfRpc_from_host_notify_new_host>() - 8usize];
+    ["Offset of field: HfRpc_from_host_notify_new_host::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_notify_new_host, peer_id) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_equipment_charge_up {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_equipment_charge_up"]
+        [::std::mem::size_of::<HfRpc_equipment_charge_up>() - 4usize];
+    ["Alignment of HfRpc_equipment_charge_up"]
+        [::std::mem::align_of::<HfRpc_equipment_charge_up>() - 4usize];
+    ["Offset of field: HfRpc_equipment_charge_up::entity"]
+        [::std::mem::offset_of!(HfRpc_equipment_charge_up, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_mission_history {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_mission_history"]
+        [::std::mem::size_of::<HfRpc_sync_mission_history>() - 8usize];
+    ["Alignment of HfRpc_sync_mission_history"]
+        [::std::mem::align_of::<HfRpc_sync_mission_history>() - 4usize];
+    ["Offset of field: HfRpc_sync_mission_history::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_mission_history, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_mission_history::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_mission_history, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_shipnames {
+    pub peer_id: u64,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_shipnames"]
+        [::std::mem::size_of::<HfRpc_from_host_set_shipnames>() - 16usize];
+    ["Alignment of HfRpc_from_host_set_shipnames"]
+        [::std::mem::align_of::<HfRpc_from_host_set_shipnames>() - 8usize];
+    ["Offset of field: HfRpc_from_host_set_shipnames::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_shipnames, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_set_shipnames::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_shipnames, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_from_host_set_shipnames::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_shipnames, unsigned_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_wound {
+    pub entity: i32,
+    pub int_value: i32,
+    pub arg2: [f32; 3usize],
+    pub arg3: f32,
+    pub arg4: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_wound"][::std::mem::size_of::<HfRpc_add_wound>() - 28usize];
+    ["Alignment of HfRpc_add_wound"][::std::mem::align_of::<HfRpc_add_wound>() - 4usize];
+    ["Offset of field: HfRpc_add_wound::entity"]
+        [::std::mem::offset_of!(HfRpc_add_wound, entity) - 0usize];
+    ["Offset of field: HfRpc_add_wound::int_value"]
+        [::std::mem::offset_of!(HfRpc_add_wound, int_value) - 4usize];
+    ["Offset of field: HfRpc_add_wound::arg2"]
+        [::std::mem::offset_of!(HfRpc_add_wound, arg2) - 8usize];
+    ["Offset of field: HfRpc_add_wound::arg3"]
+        [::std::mem::offset_of!(HfRpc_add_wound, arg3) - 20usize];
+    ["Offset of field: HfRpc_add_wound::arg4"]
+        [::std::mem::offset_of!(HfRpc_add_wound, arg4) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partymember_join_finished {
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partymember_join_finished"]
+        [::std::mem::size_of::<HfRpc_from_partymember_join_finished>() - 8usize];
+    ["Alignment of HfRpc_from_partymember_join_finished"]
+        [::std::mem::align_of::<HfRpc_from_partymember_join_finished>() - 8usize];
+    ["Offset of field: HfRpc_from_partymember_join_finished::network_string"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_join_finished, network_string) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_convoy_reached_goal {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_convoy_reached_goal"]
+        [::std::mem::size_of::<HfRpc_convoy_reached_goal>() - 8usize];
+    ["Alignment of HfRpc_convoy_reached_goal"]
+        [::std::mem::align_of::<HfRpc_convoy_reached_goal>() - 4usize];
+    ["Offset of field: HfRpc_convoy_reached_goal::entity"]
+        [::std::mem::offset_of!(HfRpc_convoy_reached_goal, entity) - 0usize];
+    ["Offset of field: HfRpc_convoy_reached_goal::entity_2"]
+        [::std::mem::offset_of!(HfRpc_convoy_reached_goal, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_abort_value_alignment_minigame {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_abort_value_alignment_minigame"]
+        [::std::mem::size_of::<HfRpc_abort_value_alignment_minigame>() - 16usize];
+    ["Alignment of HfRpc_abort_value_alignment_minigame"]
+        [::std::mem::align_of::<HfRpc_abort_value_alignment_minigame>() - 4usize];
+    ["Offset of field: HfRpc_abort_value_alignment_minigame::entity"]
+        [::std::mem::offset_of!(HfRpc_abort_value_alignment_minigame, entity) - 0usize];
+    ["Offset of field: HfRpc_abort_value_alignment_minigame::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_abort_value_alignment_minigame, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_abort_value_alignment_minigame::float_value"]
+        [::std::mem::offset_of!(HfRpc_abort_value_alignment_minigame, float_value) - 8usize];
+    ["Offset of field: HfRpc_abort_value_alignment_minigame::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_abort_value_alignment_minigame, float_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event"][::std::mem::size_of::<HfRpc_animation_event>() - 12usize];
+    ["Alignment of HfRpc_animation_event"]
+        [::std::mem::align_of::<HfRpc_animation_event>() - 4usize];
+    ["Offset of field: HfRpc_animation_event::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_entity_commanded {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_entity_commanded"][::std::mem::size_of::<HfRpc_entity_commanded>() - 8usize];
+    ["Alignment of HfRpc_entity_commanded"]
+        [::std::mem::align_of::<HfRpc_entity_commanded>() - 4usize];
+    ["Offset of field: HfRpc_entity_commanded::entity"]
+        [::std::mem::offset_of!(HfRpc_entity_commanded, entity) - 0usize];
+    ["Offset of field: HfRpc_entity_commanded::entity_2"]
+        [::std::mem::offset_of!(HfRpc_entity_commanded, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_position {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_position"][::std::mem::size_of::<HfRpc_set_position>() - 16usize];
+    ["Alignment of HfRpc_set_position"][::std::mem::align_of::<HfRpc_set_position>() - 4usize];
+    ["Offset of field: HfRpc_set_position::entity"]
+        [::std::mem::offset_of!(HfRpc_set_position, entity) - 0usize];
+    ["Offset of field: HfRpc_set_position::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_position, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dialogue_failed_none_found {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dialogue_failed_none_found"]
+        [::std::mem::size_of::<HfRpc_dialogue_failed_none_found>() - 4usize];
+    ["Alignment of HfRpc_dialogue_failed_none_found"]
+        [::std::mem::align_of::<HfRpc_dialogue_failed_none_found>() - 4usize];
+    ["Offset of field: HfRpc_dialogue_failed_none_found::entity"]
+        [::std::mem::offset_of!(HfRpc_dialogue_failed_none_found, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_destroyed_dynamic {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub unsigned_value: i32,
+    pub arg4: i32,
+    pub arg5: i32,
+    pub arg6: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_destroyed_dynamic"]
+        [::std::mem::size_of::<HfRpc_on_destroyed_dynamic>() - 56usize];
+    ["Alignment of HfRpc_on_destroyed_dynamic"]
+        [::std::mem::align_of::<HfRpc_on_destroyed_dynamic>() - 8usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::entity"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, entity) - 0usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::vector3"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, vector3) - 4usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, unsigned_value) - 28usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::arg4"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, arg4) - 32usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::arg5"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, arg5) - 36usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::arg6"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, arg6) - 40usize];
+    ["Offset of field: HfRpc_on_destroyed_dynamic::peer_id"]
+        [::std::mem::offset_of!(HfRpc_on_destroyed_dynamic, peer_id) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mission_end_info_result {
+    pub arg0_count: u32,
+    pub arg0: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mission_end_info_result"]
+        [::std::mem::size_of::<HfRpc_mission_end_info_result>() - 36usize];
+    ["Alignment of HfRpc_mission_end_info_result"]
+        [::std::mem::align_of::<HfRpc_mission_end_info_result>() - 4usize];
+    ["Offset of field: HfRpc_mission_end_info_result::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_mission_end_info_result, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_mission_end_info_result::arg0"]
+        [::std::mem::offset_of!(HfRpc_mission_end_info_result, arg0) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fire_source_trigger {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fire_source_trigger"]
+        [::std::mem::size_of::<HfRpc_fire_source_trigger>() - 16usize];
+    ["Alignment of HfRpc_fire_source_trigger"]
+        [::std::mem::align_of::<HfRpc_fire_source_trigger>() - 4usize];
+    ["Offset of field: HfRpc_fire_source_trigger::entity"]
+        [::std::mem::offset_of!(HfRpc_fire_source_trigger, entity) - 0usize];
+    ["Offset of field: HfRpc_fire_source_trigger::vector3"]
+        [::std::mem::offset_of!(HfRpc_fire_source_trigger, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_synced_task_done {
+    pub synced_task: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_synced_task_done"]
+        [::std::mem::size_of::<HfRpc_from_client_synced_task_done>() - 8usize];
+    ["Alignment of HfRpc_from_client_synced_task_done"]
+        [::std::mem::align_of::<HfRpc_from_client_synced_task_done>() - 4usize];
+    ["Offset of field: HfRpc_from_client_synced_task_done::synced_task"]
+        [::std::mem::offset_of!(HfRpc_from_client_synced_task_done, synced_task) - 0usize];
+    ["Offset of field: HfRpc_from_client_synced_task_done::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_client_synced_task_done, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_status_effect_mask {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub arg2_count: u32,
+    pub arg2: [u64; 2usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_status_effect_mask"]
+        [::std::mem::size_of::<HfRpc_change_status_effect_mask>() - 32usize];
+    ["Alignment of HfRpc_change_status_effect_mask"]
+        [::std::mem::align_of::<HfRpc_change_status_effect_mask>() - 8usize];
+    ["Offset of field: HfRpc_change_status_effect_mask::entity"]
+        [::std::mem::offset_of!(HfRpc_change_status_effect_mask, entity) - 0usize];
+    ["Offset of field: HfRpc_change_status_effect_mask::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_change_status_effect_mask, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_change_status_effect_mask::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_change_status_effect_mask, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_change_status_effect_mask::arg2"]
+        [::std::mem::offset_of!(HfRpc_change_status_effect_mask, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_panic_exit {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_panic_exit"][::std::mem::size_of::<HfRpc_panic_exit>() - 4usize];
+    ["Alignment of HfRpc_panic_exit"][::std::mem::align_of::<HfRpc_panic_exit>() - 4usize];
+    ["Offset of field: HfRpc_panic_exit::entity"]
+        [::std::mem::offset_of!(HfRpc_panic_exit, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_throwable_path {
+    pub entity: i32,
+    pub id_string64: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_throwable_path"]
+        [::std::mem::size_of::<HfRpc_set_throwable_path>() - 16usize];
+    ["Alignment of HfRpc_set_throwable_path"]
+        [::std::mem::align_of::<HfRpc_set_throwable_path>() - 8usize];
+    ["Offset of field: HfRpc_set_throwable_path::entity"]
+        [::std::mem::offset_of!(HfRpc_set_throwable_path, entity) - 0usize];
+    ["Offset of field: HfRpc_set_throwable_path::id_string64"]
+        [::std::mem::offset_of!(HfRpc_set_throwable_path, id_string64) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_transport_dropped {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_transport_dropped"][::std::mem::size_of::<HfRpc_transport_dropped>() - 12usize];
+    ["Alignment of HfRpc_transport_dropped"]
+        [::std::mem::align_of::<HfRpc_transport_dropped>() - 4usize];
+    ["Offset of field: HfRpc_transport_dropped::entity"]
+        [::std::mem::offset_of!(HfRpc_transport_dropped, entity) - 0usize];
+    ["Offset of field: HfRpc_transport_dropped::entity_2"]
+        [::std::mem::offset_of!(HfRpc_transport_dropped, entity_2) - 4usize];
+    ["Offset of field: HfRpc_transport_dropped::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_transport_dropped, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_projectile_explosion {
+    pub unsigned_value: i32,
+    pub position: [f32; 3usize],
+    pub direction: [f32; 3usize],
+    pub arg3: [f32; 3usize],
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+    pub arg6: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_projectile_explosion"]
+        [::std::mem::size_of::<HfRpc_trigger_projectile_explosion>() - 48usize];
+    ["Alignment of HfRpc_trigger_projectile_explosion"]
+        [::std::mem::align_of::<HfRpc_trigger_projectile_explosion>() - 4usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::position"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, position) - 4usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::direction"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, direction) - 16usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::arg3"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, arg3) - 28usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::bool_value"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, bool_value) - 40usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, bool_value_2) - 41usize];
+    ["Offset of field: HfRpc_trigger_projectile_explosion::arg6"]
+        [::std::mem::offset_of!(HfRpc_trigger_projectile_explosion, arg6) - 44usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_force_exit_seat_collection {
+    pub entity: i32,
+    pub seat_index: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_force_exit_seat_collection"]
+        [::std::mem::size_of::<HfRpc_force_exit_seat_collection>() - 8usize];
+    ["Alignment of HfRpc_force_exit_seat_collection"]
+        [::std::mem::align_of::<HfRpc_force_exit_seat_collection>() - 4usize];
+    ["Offset of field: HfRpc_force_exit_seat_collection::entity"]
+        [::std::mem::offset_of!(HfRpc_force_exit_seat_collection, entity) - 0usize];
+    ["Offset of field: HfRpc_force_exit_seat_collection::seat_index"]
+        [::std::mem::offset_of!(HfRpc_force_exit_seat_collection, seat_index) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_filming_completed {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_filming_completed"]
+        [::std::mem::size_of::<HfRpc_set_filming_completed>() - 4usize];
+    ["Alignment of HfRpc_set_filming_completed"]
+        [::std::mem::align_of::<HfRpc_set_filming_completed>() - 4usize];
+    ["Offset of field: HfRpc_set_filming_completed::entity"]
+        [::std::mem::offset_of!(HfRpc_set_filming_completed, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_ragdoll_set_velocity {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_ragdoll_set_velocity"]
+        [::std::mem::size_of::<HfRpc_ragdoll_set_velocity>() - 16usize];
+    ["Alignment of HfRpc_ragdoll_set_velocity"]
+        [::std::mem::align_of::<HfRpc_ragdoll_set_velocity>() - 4usize];
+    ["Offset of field: HfRpc_ragdoll_set_velocity::entity"]
+        [::std::mem::offset_of!(HfRpc_ragdoll_set_velocity, entity) - 0usize];
+    ["Offset of field: HfRpc_ragdoll_set_velocity::vector3"]
+        [::std::mem::offset_of!(HfRpc_ragdoll_set_velocity, vector3) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_current_equipment {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_current_equipment"]
+        [::std::mem::size_of::<HfRpc_drop_current_equipment>() - 8usize];
+    ["Alignment of HfRpc_drop_current_equipment"]
+        [::std::mem::align_of::<HfRpc_drop_current_equipment>() - 4usize];
+    ["Offset of field: HfRpc_drop_current_equipment::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_current_equipment, entity) - 0usize];
+    ["Offset of field: HfRpc_drop_current_equipment::arg1"]
+        [::std::mem::offset_of!(HfRpc_drop_current_equipment, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_state_change {
+    pub entity: i32,
+    pub arg1: i32,
+    pub damage_type: i32,
+    pub element_type: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_state_change"]
+        [::std::mem::size_of::<HfRpc_request_state_change>() - 16usize];
+    ["Alignment of HfRpc_request_state_change"]
+        [::std::mem::align_of::<HfRpc_request_state_change>() - 4usize];
+    ["Offset of field: HfRpc_request_state_change::entity"]
+        [::std::mem::offset_of!(HfRpc_request_state_change, entity) - 0usize];
+    ["Offset of field: HfRpc_request_state_change::arg1"]
+        [::std::mem::offset_of!(HfRpc_request_state_change, arg1) - 4usize];
+    ["Offset of field: HfRpc_request_state_change::damage_type"]
+        [::std::mem::offset_of!(HfRpc_request_state_change, damage_type) - 8usize];
+    ["Offset of field: HfRpc_request_state_change::element_type"]
+        [::std::mem::offset_of!(HfRpc_request_state_change, element_type) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_held_throwable_cancelled {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_held_throwable_cancelled"]
+        [::std::mem::size_of::<HfRpc_held_throwable_cancelled>() - 4usize];
+    ["Alignment of HfRpc_held_throwable_cancelled"]
+        [::std::mem::align_of::<HfRpc_held_throwable_cancelled>() - 4usize];
+    ["Offset of field: HfRpc_held_throwable_cancelled::entity"]
+        [::std::mem::offset_of!(HfRpc_held_throwable_cancelled, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_looping_surface_effect {
+    pub entity: i32,
+    pub arg1: i32,
+    pub unsigned_value: i32,
+    pub direction: [f32; 3usize],
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_looping_surface_effect"]
+        [::std::mem::size_of::<HfRpc_play_looping_surface_effect>() - 28usize];
+    ["Alignment of HfRpc_play_looping_surface_effect"]
+        [::std::mem::align_of::<HfRpc_play_looping_surface_effect>() - 4usize];
+    ["Offset of field: HfRpc_play_looping_surface_effect::entity"]
+        [::std::mem::offset_of!(HfRpc_play_looping_surface_effect, entity) - 0usize];
+    ["Offset of field: HfRpc_play_looping_surface_effect::arg1"]
+        [::std::mem::offset_of!(HfRpc_play_looping_surface_effect, arg1) - 4usize];
+    ["Offset of field: HfRpc_play_looping_surface_effect::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_play_looping_surface_effect, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_play_looping_surface_effect::direction"]
+        [::std::mem::offset_of!(HfRpc_play_looping_surface_effect, direction) - 12usize];
+    ["Offset of field: HfRpc_play_looping_surface_effect::float_value"]
+        [::std::mem::offset_of!(HfRpc_play_looping_surface_effect, float_value) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_convoy_destroyed {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_convoy_destroyed"][::std::mem::size_of::<HfRpc_convoy_destroyed>() - 8usize];
+    ["Alignment of HfRpc_convoy_destroyed"]
+        [::std::mem::align_of::<HfRpc_convoy_destroyed>() - 4usize];
+    ["Offset of field: HfRpc_convoy_destroyed::entity"]
+        [::std::mem::offset_of!(HfRpc_convoy_destroyed, entity) - 0usize];
+    ["Offset of field: HfRpc_convoy_destroyed::entity_2"]
+        [::std::mem::offset_of!(HfRpc_convoy_destroyed, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_player_history {
+    pub peer_id: u64,
+    pub arg1: u64,
+    pub arg2: u64,
+    pub arg3: u64,
+    pub arg4: u64,
+    pub arg5: u64,
+    pub bool_value: u8,
+    pub bool_value_2: u8,
+    pub bool_value_3: u8,
+    pub bool_value_4: u8,
+    pub bool_value_5: u8,
+    pub bool_value_6: u8,
+    pub arg12_count: u32,
+    pub arg12: [u32; 16usize],
+    pub arg13_count: u32,
+    pub arg13: [i32; 48usize],
+    pub arg14_count: u32,
+    pub arg14: [i32; 48usize],
+    pub arg15_count: u32,
+    pub arg15: [i32; 48usize],
+    pub arg16: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub booster: i32,
+    pub unsigned_value_4: i32,
+    pub unsigned_value_5: i32,
+    pub arg23: i32,
+    pub arg24: i32,
+    pub arg25_count: u32,
+    pub arg25: [i32; 16usize],
+    pub arg26_count: u32,
+    pub arg26: [i32; 16usize],
+    pub arg27_count: u32,
+    pub arg27: [u64; 16usize],
+    pub arg28_count: u32,
+    pub arg28: [i32; 32usize],
+    pub arg29_count: u32,
+    pub arg29: [u8; 16usize],
+    pub arg30_count: u32,
+    pub arg30: [i32; 12usize],
+    pub unsigned_value_6: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_player_history"]
+        [::std::mem::size_of::<HfRpc_sync_player_history>() - 1224usize];
+    ["Alignment of HfRpc_sync_player_history"]
+        [::std::mem::align_of::<HfRpc_sync_player_history>() - 8usize];
+    ["Offset of field: HfRpc_sync_player_history::peer_id"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, peer_id) - 0usize];
+    ["Offset of field: HfRpc_sync_player_history::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg1) - 8usize];
+    ["Offset of field: HfRpc_sync_player_history::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg2) - 16usize];
+    ["Offset of field: HfRpc_sync_player_history::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg3) - 24usize];
+    ["Offset of field: HfRpc_sync_player_history::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg4) - 32usize];
+    ["Offset of field: HfRpc_sync_player_history::arg5"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg5) - 40usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value) - 48usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value_2) - 49usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value_3) - 50usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value_4) - 51usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value_5) - 52usize];
+    ["Offset of field: HfRpc_sync_player_history::bool_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, bool_value_6) - 53usize];
+    ["Offset of field: HfRpc_sync_player_history::arg12_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg12_count) - 56usize];
+    ["Offset of field: HfRpc_sync_player_history::arg12"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg12) - 60usize];
+    ["Offset of field: HfRpc_sync_player_history::arg13_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg13_count) - 124usize];
+    ["Offset of field: HfRpc_sync_player_history::arg13"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg13) - 128usize];
+    ["Offset of field: HfRpc_sync_player_history::arg14_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg14_count) - 320usize];
+    ["Offset of field: HfRpc_sync_player_history::arg14"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg14) - 324usize];
+    ["Offset of field: HfRpc_sync_player_history::arg15_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg15_count) - 516usize];
+    ["Offset of field: HfRpc_sync_player_history::arg15"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg15) - 520usize];
+    ["Offset of field: HfRpc_sync_player_history::arg16"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg16) - 712usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value) - 716usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value_2) - 720usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value_3) - 724usize];
+    ["Offset of field: HfRpc_sync_player_history::booster"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, booster) - 728usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value_4) - 732usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value_5) - 736usize];
+    ["Offset of field: HfRpc_sync_player_history::arg23"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg23) - 740usize];
+    ["Offset of field: HfRpc_sync_player_history::arg24"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg24) - 744usize];
+    ["Offset of field: HfRpc_sync_player_history::arg25_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg25_count) - 748usize];
+    ["Offset of field: HfRpc_sync_player_history::arg25"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg25) - 752usize];
+    ["Offset of field: HfRpc_sync_player_history::arg26_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg26_count) - 816usize];
+    ["Offset of field: HfRpc_sync_player_history::arg26"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg26) - 820usize];
+    ["Offset of field: HfRpc_sync_player_history::arg27_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg27_count) - 884usize];
+    ["Offset of field: HfRpc_sync_player_history::arg27"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg27) - 888usize];
+    ["Offset of field: HfRpc_sync_player_history::arg28_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg28_count) - 1016usize];
+    ["Offset of field: HfRpc_sync_player_history::arg28"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg28) - 1020usize];
+    ["Offset of field: HfRpc_sync_player_history::arg29_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg29_count) - 1148usize];
+    ["Offset of field: HfRpc_sync_player_history::arg29"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg29) - 1152usize];
+    ["Offset of field: HfRpc_sync_player_history::arg30_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg30_count) - 1168usize];
+    ["Offset of field: HfRpc_sync_player_history::arg30"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, arg30) - 1172usize];
+    ["Offset of field: HfRpc_sync_player_history::unsigned_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_player_history, unsigned_value_6) - 1220usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dyndest_hide_and_spawn {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub arg3: i32,
+    pub arg4: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dyndest_hide_and_spawn"]
+        [::std::mem::size_of::<HfRpc_dyndest_hide_and_spawn>() - 24usize];
+    ["Alignment of HfRpc_dyndest_hide_and_spawn"]
+        [::std::mem::align_of::<HfRpc_dyndest_hide_and_spawn>() - 8usize];
+    ["Offset of field: HfRpc_dyndest_hide_and_spawn::entity"]
+        [::std::mem::offset_of!(HfRpc_dyndest_hide_and_spawn, entity) - 0usize];
+    ["Offset of field: HfRpc_dyndest_hide_and_spawn::id_string32"]
+        [::std::mem::offset_of!(HfRpc_dyndest_hide_and_spawn, id_string32) - 4usize];
+    ["Offset of field: HfRpc_dyndest_hide_and_spawn::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_dyndest_hide_and_spawn, id_string32_2) - 8usize];
+    ["Offset of field: HfRpc_dyndest_hide_and_spawn::arg3"]
+        [::std::mem::offset_of!(HfRpc_dyndest_hide_and_spawn, arg3) - 12usize];
+    ["Offset of field: HfRpc_dyndest_hide_and_spawn::arg4"]
+        [::std::mem::offset_of!(HfRpc_dyndest_hide_and_spawn, arg4) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hotjoin_ability_time_modifiers {
+    pub entity: i32,
+    pub arg1: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hotjoin_ability_time_modifiers"]
+        [::std::mem::size_of::<HfRpc_hotjoin_ability_time_modifiers>() - 12usize];
+    ["Alignment of HfRpc_hotjoin_ability_time_modifiers"]
+        [::std::mem::align_of::<HfRpc_hotjoin_ability_time_modifiers>() - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_time_modifiers::entity"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_time_modifiers, entity) - 0usize];
+    ["Offset of field: HfRpc_hotjoin_ability_time_modifiers::arg1"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_time_modifiers, arg1) - 4usize];
+    ["Offset of field: HfRpc_hotjoin_ability_time_modifiers::bool_value"]
+        [::std::mem::offset_of!(HfRpc_hotjoin_ability_time_modifiers, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_run_ability_frame {
+    pub entity: i32,
+    pub arg1: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_run_ability_frame"][::std::mem::size_of::<HfRpc_run_ability_frame>() - 12usize];
+    ["Alignment of HfRpc_run_ability_frame"]
+        [::std::mem::align_of::<HfRpc_run_ability_frame>() - 4usize];
+    ["Offset of field: HfRpc_run_ability_frame::entity"]
+        [::std::mem::offset_of!(HfRpc_run_ability_frame, entity) - 0usize];
+    ["Offset of field: HfRpc_run_ability_frame::arg1"]
+        [::std::mem::offset_of!(HfRpc_run_ability_frame, arg1) - 4usize];
+    ["Offset of field: HfRpc_run_ability_frame::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_run_ability_frame, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_player_feed_event {
+    pub entity: i32,
+    pub bool_value: u8,
+    pub damage_type: i32,
+    pub element_type: i32,
+    pub peer_id: u64,
+    pub entity_2: i32,
+    pub entity_3: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_player_feed_event"][::std::mem::size_of::<HfRpc_player_feed_event>() - 40usize];
+    ["Alignment of HfRpc_player_feed_event"]
+        [::std::mem::align_of::<HfRpc_player_feed_event>() - 8usize];
+    ["Offset of field: HfRpc_player_feed_event::entity"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, entity) - 0usize];
+    ["Offset of field: HfRpc_player_feed_event::bool_value"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, bool_value) - 4usize];
+    ["Offset of field: HfRpc_player_feed_event::damage_type"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, damage_type) - 8usize];
+    ["Offset of field: HfRpc_player_feed_event::element_type"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, element_type) - 12usize];
+    ["Offset of field: HfRpc_player_feed_event::peer_id"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, peer_id) - 16usize];
+    ["Offset of field: HfRpc_player_feed_event::entity_2"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, entity_2) - 24usize];
+    ["Offset of field: HfRpc_player_feed_event::entity_3"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, entity_3) - 28usize];
+    ["Offset of field: HfRpc_player_feed_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_player_feed_event, id_string32) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_abort_minigame_interact {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_abort_minigame_interact"]
+        [::std::mem::size_of::<HfRpc_abort_minigame_interact>() - 4usize];
+    ["Alignment of HfRpc_abort_minigame_interact"]
+        [::std::mem::align_of::<HfRpc_abort_minigame_interact>() - 4usize];
+    ["Offset of field: HfRpc_abort_minigame_interact::entity"]
+        [::std::mem::offset_of!(HfRpc_abort_minigame_interact, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_transition_target {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_transition_target"]
+        [::std::mem::size_of::<HfRpc_from_host_set_transition_target>() - 4usize];
+    ["Alignment of HfRpc_from_host_set_transition_target"]
+        [::std::mem::align_of::<HfRpc_from_host_set_transition_target>() - 4usize];
+    ["Offset of field: HfRpc_from_host_set_transition_target::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_transition_target, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_external_switches_activate {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_external_switches_activate"]
+        [::std::mem::size_of::<HfRpc_set_external_switches_activate>() - 4usize];
+    ["Alignment of HfRpc_set_external_switches_activate"]
+        [::std::mem::align_of::<HfRpc_set_external_switches_activate>() - 4usize];
+    ["Offset of field: HfRpc_set_external_switches_activate::entity"]
+        [::std::mem::offset_of!(HfRpc_set_external_switches_activate, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_increment_stratagem_placed_count {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_increment_stratagem_placed_count"]
+        [::std::mem::size_of::<HfRpc_increment_stratagem_placed_count>() - 8usize];
+    ["Alignment of HfRpc_increment_stratagem_placed_count"]
+        [::std::mem::align_of::<HfRpc_increment_stratagem_placed_count>() - 4usize];
+    ["Offset of field: HfRpc_increment_stratagem_placed_count::entity"]
+        [::std::mem::offset_of!(HfRpc_increment_stratagem_placed_count, entity) - 0usize];
+    ["Offset of field: HfRpc_increment_stratagem_placed_count::arg1"]
+        [::std::mem::offset_of!(HfRpc_increment_stratagem_placed_count, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_execute_loadout_weapon_swap {
+    pub peer_id: u64,
+    pub arg1: u64,
+    pub unsigned_value: i32,
+    pub id_string32: u32,
+    pub arg4_count: u32,
+    pub arg4: [i32; 48usize],
+    pub arg5_count: u32,
+    pub arg5: [i32; 48usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_execute_loadout_weapon_swap"]
+        [::std::mem::size_of::<HfRpc_from_host_execute_loadout_weapon_swap>() - 416usize];
+    ["Alignment of HfRpc_from_host_execute_loadout_weapon_swap"]
+        [::std::mem::align_of::<HfRpc_from_host_execute_loadout_weapon_swap>() - 8usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_loadout_weapon_swap, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_loadout_weapon_swap, arg1) - 8usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_from_host_execute_loadout_weapon_swap,
+        unsigned_value
+    ) - 16usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::id_string32"][::std::mem::offset_of!(
+        HfRpc_from_host_execute_loadout_weapon_swap,
+        id_string32
+    ) - 20usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_loadout_weapon_swap, arg4_count) - 24usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::arg4"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_loadout_weapon_swap, arg4) - 28usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::arg5_count"][::std::mem::offset_of!(
+        HfRpc_from_host_execute_loadout_weapon_swap,
+        arg5_count
+    ) - 220usize];
+    ["Offset of field: HfRpc_from_host_execute_loadout_weapon_swap::arg5"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_loadout_weapon_swap, arg5) - 224usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_duration {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub float_value: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_duration"]
+        [::std::mem::size_of::<HfRpc_animation_event_duration>() - 16usize];
+    ["Alignment of HfRpc_animation_event_duration"]
+        [::std::mem::align_of::<HfRpc_animation_event_duration>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_duration::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_duration::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_duration::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration, float_value) - 8usize];
+    ["Offset of field: HfRpc_animation_event_duration::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_duration, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_arcade_stratagem_sound {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_arcade_stratagem_sound"]
+        [::std::mem::size_of::<HfRpc_arcade_stratagem_sound>() - 8usize];
+    ["Alignment of HfRpc_arcade_stratagem_sound"]
+        [::std::mem::align_of::<HfRpc_arcade_stratagem_sound>() - 4usize];
+    ["Offset of field: HfRpc_arcade_stratagem_sound::entity"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_sound, entity) - 0usize];
+    ["Offset of field: HfRpc_arcade_stratagem_sound::id_string32"]
+        [::std::mem::offset_of!(HfRpc_arcade_stratagem_sound, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_interpolation_target {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub vector3_2: [f32; 3usize],
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_interpolation_target"]
+        [::std::mem::size_of::<HfRpc_set_interpolation_target>() - 32usize];
+    ["Alignment of HfRpc_set_interpolation_target"]
+        [::std::mem::align_of::<HfRpc_set_interpolation_target>() - 4usize];
+    ["Offset of field: HfRpc_set_interpolation_target::entity"]
+        [::std::mem::offset_of!(HfRpc_set_interpolation_target, entity) - 0usize];
+    ["Offset of field: HfRpc_set_interpolation_target::vector3"]
+        [::std::mem::offset_of!(HfRpc_set_interpolation_target, vector3) - 4usize];
+    ["Offset of field: HfRpc_set_interpolation_target::vector3_2"]
+        [::std::mem::offset_of!(HfRpc_set_interpolation_target, vector3_2) - 16usize];
+    ["Offset of field: HfRpc_set_interpolation_target::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_interpolation_target, float_value) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_loot_container_pick_up {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2_count: u32,
+    pub arg2: [i32; 8usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_loot_container_pick_up"]
+        [::std::mem::size_of::<HfRpc_loot_container_pick_up>() - 80usize];
+    ["Alignment of HfRpc_loot_container_pick_up"]
+        [::std::mem::align_of::<HfRpc_loot_container_pick_up>() - 4usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::entity"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, entity) - 0usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::entity_2"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, entity_2) - 4usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::arg2"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, arg2) - 12usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, arg3_count) - 44usize];
+    ["Offset of field: HfRpc_loot_container_pick_up::arg3"]
+        [::std::mem::offset_of!(HfRpc_loot_container_pick_up, arg3) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_teammate_marker {
+    pub arg0: i32,
+    pub vector3: [f32; 3usize],
+    pub entity: i32,
+    pub bool_value: u8,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub bool_value_2: u8,
+    pub bool_value_3: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_teammate_marker"]
+        [::std::mem::size_of::<HfRpc_add_teammate_marker>() - 36usize];
+    ["Alignment of HfRpc_add_teammate_marker"]
+        [::std::mem::align_of::<HfRpc_add_teammate_marker>() - 4usize];
+    ["Offset of field: HfRpc_add_teammate_marker::arg0"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, arg0) - 0usize];
+    ["Offset of field: HfRpc_add_teammate_marker::vector3"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, vector3) - 4usize];
+    ["Offset of field: HfRpc_add_teammate_marker::entity"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, entity) - 16usize];
+    ["Offset of field: HfRpc_add_teammate_marker::bool_value"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, bool_value) - 20usize];
+    ["Offset of field: HfRpc_add_teammate_marker::entity_2"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, entity_2) - 24usize];
+    ["Offset of field: HfRpc_add_teammate_marker::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, unsigned_value) - 28usize];
+    ["Offset of field: HfRpc_add_teammate_marker::bool_value_2"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, bool_value_2) - 32usize];
+    ["Offset of field: HfRpc_add_teammate_marker::bool_value_3"]
+        [::std::mem::offset_of!(HfRpc_add_teammate_marker, bool_value_3) - 33usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_speed_percent {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_speed_percent"]
+        [::std::mem::size_of::<HfRpc_animation_event_speed_percent>() - 20usize];
+    ["Alignment of HfRpc_animation_event_speed_percent"]
+        [::std::mem::align_of::<HfRpc_animation_event_speed_percent>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_speed_percent::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed_percent, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_speed_percent::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed_percent, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_speed_percent::float_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed_percent, float_value) - 8usize];
+    ["Offset of field: HfRpc_animation_event_speed_percent::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed_percent, float_value_2) - 12usize];
+    ["Offset of field: HfRpc_animation_event_speed_percent::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_speed_percent, bool_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_level_generation_started {
+    pub network_string: *const ::std::os::raw::c_char,
+    pub unsigned_value: i32,
+    pub arg2: i32,
+    pub network_string_2: *const ::std::os::raw::c_char,
+    pub network_string_3: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_level_generation_started"]
+        [::std::mem::size_of::<HfRpc_from_host_level_generation_started>() - 32usize];
+    ["Alignment of HfRpc_from_host_level_generation_started"]
+        [::std::mem::align_of::<HfRpc_from_host_level_generation_started>() - 8usize];
+    ["Offset of field: HfRpc_from_host_level_generation_started::network_string"]
+        [::std::mem::offset_of!(HfRpc_from_host_level_generation_started, network_string) - 0usize];
+    ["Offset of field: HfRpc_from_host_level_generation_started::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_from_host_level_generation_started, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_from_host_level_generation_started::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_host_level_generation_started, arg2) - 12usize];
+    ["Offset of field: HfRpc_from_host_level_generation_started::network_string_2"][::std::mem::offset_of!(
+        HfRpc_from_host_level_generation_started,
+        network_string_2
+    ) - 16usize];
+    ["Offset of field: HfRpc_from_host_level_generation_started::network_string_3"][::std::mem::offset_of!(
+        HfRpc_from_host_level_generation_started,
+        network_string_3
+    ) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_synced_health_request {
+    pub entity: i32,
+    pub int_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_synced_health_request"]
+        [::std::mem::size_of::<HfRpc_synced_health_request>() - 8usize];
+    ["Alignment of HfRpc_synced_health_request"]
+        [::std::mem::align_of::<HfRpc_synced_health_request>() - 4usize];
+    ["Offset of field: HfRpc_synced_health_request::entity"]
+        [::std::mem::offset_of!(HfRpc_synced_health_request, entity) - 0usize];
+    ["Offset of field: HfRpc_synced_health_request::int_value"]
+        [::std::mem::offset_of!(HfRpc_synced_health_request, int_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_attach_offset {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_attach_offset"][::std::mem::size_of::<HfRpc_attach_offset>() - 24usize];
+    ["Alignment of HfRpc_attach_offset"][::std::mem::align_of::<HfRpc_attach_offset>() - 4usize];
+    ["Offset of field: HfRpc_attach_offset::entity"]
+        [::std::mem::offset_of!(HfRpc_attach_offset, entity) - 0usize];
+    ["Offset of field: HfRpc_attach_offset::entity_2"]
+        [::std::mem::offset_of!(HfRpc_attach_offset, entity_2) - 4usize];
+    ["Offset of field: HfRpc_attach_offset::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_attach_offset, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_attach_offset::vector3"]
+        [::std::mem::offset_of!(HfRpc_attach_offset, vector3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_animation_event_broadcast {
+    pub entity: i32,
+    pub animation_event: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_animation_event_broadcast"]
+        [::std::mem::size_of::<HfRpc_animation_event_broadcast>() - 12usize];
+    ["Alignment of HfRpc_animation_event_broadcast"]
+        [::std::mem::align_of::<HfRpc_animation_event_broadcast>() - 4usize];
+    ["Offset of field: HfRpc_animation_event_broadcast::entity"]
+        [::std::mem::offset_of!(HfRpc_animation_event_broadcast, entity) - 0usize];
+    ["Offset of field: HfRpc_animation_event_broadcast::animation_event"]
+        [::std::mem::offset_of!(HfRpc_animation_event_broadcast, animation_event) - 4usize];
+    ["Offset of field: HfRpc_animation_event_broadcast::bool_value"]
+        [::std::mem::offset_of!(HfRpc_animation_event_broadcast, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remote_trigger_event_on_speaker {
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remote_trigger_event_on_speaker"]
+        [::std::mem::size_of::<HfRpc_remote_trigger_event_on_speaker>() - 16usize];
+    ["Alignment of HfRpc_remote_trigger_event_on_speaker"]
+        [::std::mem::align_of::<HfRpc_remote_trigger_event_on_speaker>() - 4usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_speaker::id_string32"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_speaker, id_string32) - 0usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_speaker::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_speaker, id_string32_2) - 4usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_speaker::bool_value"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_speaker, bool_value) - 8usize];
+    ["Offset of field: HfRpc_remote_trigger_event_on_speaker::float_value"]
+        [::std::mem::offset_of!(HfRpc_remote_trigger_event_on_speaker, float_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_displacement_activated {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_displacement_activated"]
+        [::std::mem::size_of::<HfRpc_displacement_activated>() - 4usize];
+    ["Alignment of HfRpc_displacement_activated"]
+        [::std::mem::align_of::<HfRpc_displacement_activated>() - 4usize];
+    ["Offset of field: HfRpc_displacement_activated::entity"]
+        [::std::mem::offset_of!(HfRpc_displacement_activated, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fire_single_round {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fire_single_round"][::std::mem::size_of::<HfRpc_fire_single_round>() - 20usize];
+    ["Alignment of HfRpc_fire_single_round"]
+        [::std::mem::align_of::<HfRpc_fire_single_round>() - 4usize];
+    ["Offset of field: HfRpc_fire_single_round::entity"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round, entity) - 0usize];
+    ["Offset of field: HfRpc_fire_single_round::vector3"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round, vector3) - 4usize];
+    ["Offset of field: HfRpc_fire_single_round::arg2"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_update_or_add_lobby {
+    pub int_value: i32,
+    pub network_string: *const ::std::os::raw::c_char,
+    pub int_value_2: i32,
+    pub int_value_3: i32,
+    pub int_value_4: i32,
+    pub bool_value: u8,
+    pub int_value_5: i32,
+    pub int_value_6: i32,
+    pub network_string_2: *const ::std::os::raw::c_char,
+    pub arg9: i32,
+    pub arg10: u64,
+    pub unsigned_value: i32,
+    pub arg12_count: u32,
+    pub arg12: [*const ::std::os::raw::c_char; 4usize],
+    pub arg13_count: u32,
+    pub arg13: [i32; 4usize],
+    pub arg14_count: u32,
+    pub arg14: [i32; 4usize],
+    pub arg15_count: u32,
+    pub arg15: [u64; 4usize],
+    pub arg16_count: u32,
+    pub arg16: [i32; 4usize],
+    pub arg17_count: u32,
+    pub arg17: [u8; 4usize],
+    pub arg18_count: u32,
+    pub arg18: [u8; 4usize],
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub arg21_count: u32,
+    pub arg21: [i32; 8usize],
+    pub arg22_count: u32,
+    pub arg22: [i32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_update_or_add_lobby"]
+        [::std::mem::size_of::<HfRpc_sync_update_or_add_lobby>() - 288usize];
+    ["Alignment of HfRpc_sync_update_or_add_lobby"]
+        [::std::mem::align_of::<HfRpc_sync_update_or_add_lobby>() - 8usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value) - 0usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::network_string"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, network_string) - 8usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value_2) - 16usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value_3) - 20usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value_4) - 24usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::bool_value"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, bool_value) - 28usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value_5) - 32usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::int_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, int_value_6) - 36usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::network_string_2"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, network_string_2) - 40usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg9"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg9) - 48usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg10"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg10) - 56usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, unsigned_value) - 64usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg12_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg12_count) - 68usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg12"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg12) - 72usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg13_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg13_count) - 104usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg13"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg13) - 108usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg14_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg14_count) - 124usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg14"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg14) - 128usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg15_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg15_count) - 144usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg15"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg15) - 152usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg16_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg16_count) - 184usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg16"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg16) - 188usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg17_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg17_count) - 204usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg17"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg17) - 208usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg18_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg18_count) - 212usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg18"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg18) - 216usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, unsigned_value_2) - 220usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, unsigned_value_3) - 224usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg21_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg21_count) - 228usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg21"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg21) - 232usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg22_count"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg22_count) - 264usize];
+    ["Offset of field: HfRpc_sync_update_or_add_lobby::arg22"]
+        [::std::mem::offset_of!(HfRpc_sync_update_or_add_lobby, arg22) - 268usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_migrate_objective_carry {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_migrate_objective_carry"]
+        [::std::mem::size_of::<HfRpc_migrate_objective_carry>() - 4usize];
+    ["Alignment of HfRpc_migrate_objective_carry"]
+        [::std::mem::align_of::<HfRpc_migrate_objective_carry>() - 4usize];
+    ["Offset of field: HfRpc_migrate_objective_carry::entity"]
+        [::std::mem::offset_of!(HfRpc_migrate_objective_carry, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_avatar_comms_notify {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_avatar_comms_notify"]
+        [::std::mem::size_of::<HfRpc_trigger_avatar_comms_notify>() - 8usize];
+    ["Alignment of HfRpc_trigger_avatar_comms_notify"]
+        [::std::mem::align_of::<HfRpc_trigger_avatar_comms_notify>() - 4usize];
+    ["Offset of field: HfRpc_trigger_avatar_comms_notify::entity"]
+        [::std::mem::offset_of!(HfRpc_trigger_avatar_comms_notify, entity) - 0usize];
+    ["Offset of field: HfRpc_trigger_avatar_comms_notify::id_string32"]
+        [::std::mem::offset_of!(HfRpc_trigger_avatar_comms_notify, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partymember_ready_for_confirmation {
+    pub arg0: u64,
+    pub peer_id: u64,
+    pub arg2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partymember_ready_for_confirmation"]
+        [::std::mem::size_of::<HfRpc_from_partymember_ready_for_confirmation>() - 24usize];
+    ["Alignment of HfRpc_from_partymember_ready_for_confirmation"]
+        [::std::mem::align_of::<HfRpc_from_partymember_ready_for_confirmation>() - 8usize];
+    ["Offset of field: HfRpc_from_partymember_ready_for_confirmation::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_ready_for_confirmation, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_partymember_ready_for_confirmation::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_ready_for_confirmation, peer_id) - 8usize];
+    ["Offset of field: HfRpc_from_partymember_ready_for_confirmation::arg2"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_ready_for_confirmation, arg2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_value_alignment_input {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_value_alignment_input"]
+        [::std::mem::size_of::<HfRpc_set_minigame_value_alignment_input>() - 16usize];
+    ["Alignment of HfRpc_set_minigame_value_alignment_input"]
+        [::std::mem::align_of::<HfRpc_set_minigame_value_alignment_input>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_input::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_value_alignment_input, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_input::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_value_alignment_input, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_input::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_value_alignment_input, bool_value) - 8usize];
+    ["Offset of field: HfRpc_set_minigame_value_alignment_input::float_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_value_alignment_input, float_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_seater_state {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub seat_index: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_seater_state"][::std::mem::size_of::<HfRpc_seater_state>() - 16usize];
+    ["Alignment of HfRpc_seater_state"][::std::mem::align_of::<HfRpc_seater_state>() - 4usize];
+    ["Offset of field: HfRpc_seater_state::entity"]
+        [::std::mem::offset_of!(HfRpc_seater_state, entity) - 0usize];
+    ["Offset of field: HfRpc_seater_state::entity_2"]
+        [::std::mem::offset_of!(HfRpc_seater_state, entity_2) - 4usize];
+    ["Offset of field: HfRpc_seater_state::seat_index"]
+        [::std::mem::offset_of!(HfRpc_seater_state, seat_index) - 8usize];
+    ["Offset of field: HfRpc_seater_state::bool_value"]
+        [::std::mem::offset_of!(HfRpc_seater_state, bool_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_job {
+    pub entity: i32,
+    pub ai_job: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_job"][::std::mem::size_of::<HfRpc_set_job>() - 8usize];
+    ["Alignment of HfRpc_set_job"][::std::mem::align_of::<HfRpc_set_job>() - 4usize];
+    ["Offset of field: HfRpc_set_job::entity"]
+        [::std::mem::offset_of!(HfRpc_set_job, entity) - 0usize];
+    ["Offset of field: HfRpc_set_job::ai_job"]
+        [::std::mem::offset_of!(HfRpc_set_job, ai_job) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_physics_actor_enable {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_physics_actor_enable"]
+        [::std::mem::size_of::<HfRpc_set_physics_actor_enable>() - 12usize];
+    ["Alignment of HfRpc_set_physics_actor_enable"]
+        [::std::mem::align_of::<HfRpc_set_physics_actor_enable>() - 4usize];
+    ["Offset of field: HfRpc_set_physics_actor_enable::entity"]
+        [::std::mem::offset_of!(HfRpc_set_physics_actor_enable, entity) - 0usize];
+    ["Offset of field: HfRpc_set_physics_actor_enable::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_physics_actor_enable, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_physics_actor_enable::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_physics_actor_enable, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_give_equipment {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_give_equipment"][::std::mem::size_of::<HfRpc_give_equipment>() - 12usize];
+    ["Alignment of HfRpc_give_equipment"][::std::mem::align_of::<HfRpc_give_equipment>() - 4usize];
+    ["Offset of field: HfRpc_give_equipment::entity"]
+        [::std::mem::offset_of!(HfRpc_give_equipment, entity) - 0usize];
+    ["Offset of field: HfRpc_give_equipment::entity_2"]
+        [::std::mem::offset_of!(HfRpc_give_equipment, entity_2) - 4usize];
+    ["Offset of field: HfRpc_give_equipment::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_give_equipment, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_droppable_infinite_map_items {
+    pub arg0_count: u32,
+    pub arg0: [i32; 128usize],
+    pub arg1_count: u32,
+    pub arg1: [u64; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_droppable_infinite_map_items"]
+        [::std::mem::size_of::<HfRpc_sync_droppable_infinite_map_items>() - 552usize];
+    ["Alignment of HfRpc_sync_droppable_infinite_map_items"]
+        [::std::mem::align_of::<HfRpc_sync_droppable_infinite_map_items>() - 8usize];
+    ["Offset of field: HfRpc_sync_droppable_infinite_map_items::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_sync_droppable_infinite_map_items, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_sync_droppable_infinite_map_items::arg0"]
+        [::std::mem::offset_of!(HfRpc_sync_droppable_infinite_map_items, arg0) - 4usize];
+    ["Offset of field: HfRpc_sync_droppable_infinite_map_items::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_droppable_infinite_map_items, arg1_count) - 516usize];
+    ["Offset of field: HfRpc_sync_droppable_infinite_map_items::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_droppable_infinite_map_items, arg1) - 520usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_encounters_by_controller {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_encounters_by_controller"]
+        [::std::mem::size_of::<HfRpc_remove_encounters_by_controller>() - 4usize];
+    ["Alignment of HfRpc_remove_encounters_by_controller"]
+        [::std::mem::align_of::<HfRpc_remove_encounters_by_controller>() - 4usize];
+    ["Offset of field: HfRpc_remove_encounters_by_controller::entity"]
+        [::std::mem::offset_of!(HfRpc_remove_encounters_by_controller, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_left {
+    pub leave_reason: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_left"][::std::mem::size_of::<HfRpc_from_client_left>() - 4usize];
+    ["Alignment of HfRpc_from_client_left"]
+        [::std::mem::align_of::<HfRpc_from_client_left>() - 4usize];
+    ["Offset of field: HfRpc_from_client_left::leave_reason"]
+        [::std::mem::offset_of!(HfRpc_from_client_left, leave_reason) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_assignment_kill {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+    pub arg2: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_assignment_kill"]
+        [::std::mem::size_of::<HfRpc_sync_assignment_kill>() - 16usize];
+    ["Alignment of HfRpc_sync_assignment_kill"]
+        [::std::mem::align_of::<HfRpc_sync_assignment_kill>() - 8usize];
+    ["Offset of field: HfRpc_sync_assignment_kill::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_assignment_kill, id_string32) - 0usize];
+    ["Offset of field: HfRpc_sync_assignment_kill::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_assignment_kill, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_sync_assignment_kill::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_assignment_kill, arg2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_material_variable_scalar {
+    pub entity: i32,
+    pub arg1: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_material_variable_scalar"]
+        [::std::mem::size_of::<HfRpc_material_variable_scalar>() - 12usize];
+    ["Alignment of HfRpc_material_variable_scalar"]
+        [::std::mem::align_of::<HfRpc_material_variable_scalar>() - 4usize];
+    ["Offset of field: HfRpc_material_variable_scalar::entity"]
+        [::std::mem::offset_of!(HfRpc_material_variable_scalar, entity) - 0usize];
+    ["Offset of field: HfRpc_material_variable_scalar::arg1"]
+        [::std::mem::offset_of!(HfRpc_material_variable_scalar, arg1) - 4usize];
+    ["Offset of field: HfRpc_material_variable_scalar::float_value"]
+        [::std::mem::offset_of!(HfRpc_material_variable_scalar, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_mission_join_time {
+    pub peer_id: u64,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_mission_join_time"]
+        [::std::mem::size_of::<HfRpc_sync_mission_join_time>() - 16usize];
+    ["Alignment of HfRpc_sync_mission_join_time"]
+        [::std::mem::align_of::<HfRpc_sync_mission_join_time>() - 8usize];
+    ["Offset of field: HfRpc_sync_mission_join_time::peer_id"]
+        [::std::mem::offset_of!(HfRpc_sync_mission_join_time, peer_id) - 0usize];
+    ["Offset of field: HfRpc_sync_mission_join_time::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_mission_join_time, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_member {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_member"][::std::mem::size_of::<HfRpc_remove_member>() - 8usize];
+    ["Alignment of HfRpc_remove_member"][::std::mem::align_of::<HfRpc_remove_member>() - 4usize];
+    ["Offset of field: HfRpc_remove_member::entity"]
+        [::std::mem::offset_of!(HfRpc_remove_member, entity) - 0usize];
+    ["Offset of field: HfRpc_remove_member::entity_2"]
+        [::std::mem::offset_of!(HfRpc_remove_member, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_to_migration_host_count {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_to_migration_host_count"]
+        [::std::mem::size_of::<HfRpc_to_migration_host_count>() - 8usize];
+    ["Alignment of HfRpc_to_migration_host_count"]
+        [::std::mem::align_of::<HfRpc_to_migration_host_count>() - 4usize];
+    ["Offset of field: HfRpc_to_migration_host_count::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_to_migration_host_count, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_to_migration_host_count::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_to_migration_host_count, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_requested_state {
+    pub arg0: u64,
+    pub synced_task: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_requested_state"]
+        [::std::mem::size_of::<HfRpc_from_client_requested_state>() - 16usize];
+    ["Alignment of HfRpc_from_client_requested_state"]
+        [::std::mem::align_of::<HfRpc_from_client_requested_state>() - 8usize];
+    ["Offset of field: HfRpc_from_client_requested_state::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_client_requested_state, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_client_requested_state::synced_task"]
+        [::std::mem::offset_of!(HfRpc_from_client_requested_state, synced_task) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_tag {
+    pub entity: i32,
+    pub tag: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_tag"][::std::mem::size_of::<HfRpc_set_tag>() - 16usize];
+    ["Alignment of HfRpc_set_tag"][::std::mem::align_of::<HfRpc_set_tag>() - 8usize];
+    ["Offset of field: HfRpc_set_tag::entity"]
+        [::std::mem::offset_of!(HfRpc_set_tag, entity) - 0usize];
+    ["Offset of field: HfRpc_set_tag::tag"][::std::mem::offset_of!(HfRpc_set_tag, tag) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_done {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_done"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_done>() - 4usize];
+    ["Alignment of HfRpc_sync_galactic_war_done"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_done>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_done::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_done, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_player_loaded_loadout {
+    pub peer_id: u64,
+    pub arg1_count: u32,
+    pub arg1: [u32; 16usize],
+    pub arg2_count: u32,
+    pub arg2: [i32; 48usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 48usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 48usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_player_loaded_loadout"]
+        [::std::mem::size_of::<HfRpc_sync_player_loaded_loadout>() - 664usize];
+    ["Alignment of HfRpc_sync_player_loaded_loadout"]
+        [::std::mem::align_of::<HfRpc_sync_player_loaded_loadout>() - 8usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::peer_id"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, peer_id) - 0usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg1_count) - 8usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg1) - 12usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg2_count) - 76usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg2) - 80usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg3_count) - 272usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg3) - 276usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg4_count) - 468usize];
+    ["Offset of field: HfRpc_sync_player_loaded_loadout::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_player_loaded_loadout, arg4) - 472usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_minigame_revert {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_minigame_revert"][::std::mem::size_of::<HfRpc_minigame_revert>() - 8usize];
+    ["Alignment of HfRpc_minigame_revert"]
+        [::std::mem::align_of::<HfRpc_minigame_revert>() - 4usize];
+    ["Offset of field: HfRpc_minigame_revert::entity"]
+        [::std::mem::offset_of!(HfRpc_minigame_revert, entity) - 0usize];
+    ["Offset of field: HfRpc_minigame_revert::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_minigame_revert, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_exploration_reward_request_start {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_exploration_reward_request_start"]
+        [::std::mem::size_of::<HfRpc_on_exploration_reward_request_start>() - 4usize];
+    ["Alignment of HfRpc_on_exploration_reward_request_start"]
+        [::std::mem::align_of::<HfRpc_on_exploration_reward_request_start>() - 4usize];
+    ["Offset of field: HfRpc_on_exploration_reward_request_start::entity"]
+        [::std::mem::offset_of!(HfRpc_on_exploration_reward_request_start, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hold_minigame_state_change {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hold_minigame_state_change"]
+        [::std::mem::size_of::<HfRpc_hold_minigame_state_change>() - 12usize];
+    ["Alignment of HfRpc_hold_minigame_state_change"]
+        [::std::mem::align_of::<HfRpc_hold_minigame_state_change>() - 4usize];
+    ["Offset of field: HfRpc_hold_minigame_state_change::entity"]
+        [::std::mem::offset_of!(HfRpc_hold_minigame_state_change, entity) - 0usize];
+    ["Offset of field: HfRpc_hold_minigame_state_change::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_hold_minigame_state_change, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_hold_minigame_state_change::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_hold_minigame_state_change, unsigned_value_2) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_seater_set_action {
+    pub entity: i32,
+    pub seat_index: i32,
+    pub seat_index_2: i32,
+    pub arg3: i32,
+    pub arg4: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_seater_set_action"][::std::mem::size_of::<HfRpc_seater_set_action>() - 20usize];
+    ["Alignment of HfRpc_seater_set_action"]
+        [::std::mem::align_of::<HfRpc_seater_set_action>() - 4usize];
+    ["Offset of field: HfRpc_seater_set_action::entity"]
+        [::std::mem::offset_of!(HfRpc_seater_set_action, entity) - 0usize];
+    ["Offset of field: HfRpc_seater_set_action::seat_index"]
+        [::std::mem::offset_of!(HfRpc_seater_set_action, seat_index) - 4usize];
+    ["Offset of field: HfRpc_seater_set_action::seat_index_2"]
+        [::std::mem::offset_of!(HfRpc_seater_set_action, seat_index_2) - 8usize];
+    ["Offset of field: HfRpc_seater_set_action::arg3"]
+        [::std::mem::offset_of!(HfRpc_seater_set_action, arg3) - 12usize];
+    ["Offset of field: HfRpc_seater_set_action::arg4"]
+        [::std::mem::offset_of!(HfRpc_seater_set_action, arg4) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_loadout {
+    pub id_string32: u32,
+    pub id_string32_2: u32,
+    pub id_string32_3: u32,
+    pub arg3: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+    pub booster: i32,
+    pub unsigned_value_4: i32,
+    pub unsigned_value_5: i32,
+    pub unsigned_value_6: i32,
+    pub unsigned_value_7: i32,
+    pub arg12_count: u32,
+    pub arg12: [i32; 16usize],
+    pub arg13_count: u32,
+    pub arg13: [i32; 16usize],
+    pub arg14_count: u32,
+    pub arg14: [i32; 12usize],
+    pub unsigned_value_8: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_loadout"][::std::mem::size_of::<HfRpc_sync_loadout>() - 240usize];
+    ["Alignment of HfRpc_sync_loadout"][::std::mem::align_of::<HfRpc_sync_loadout>() - 4usize];
+    ["Offset of field: HfRpc_sync_loadout::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, id_string32) - 0usize];
+    ["Offset of field: HfRpc_sync_loadout::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, id_string32_2) - 4usize];
+    ["Offset of field: HfRpc_sync_loadout::id_string32_3"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, id_string32_3) - 8usize];
+    ["Offset of field: HfRpc_sync_loadout::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg3) - 12usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value) - 16usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_2) - 20usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_3) - 24usize];
+    ["Offset of field: HfRpc_sync_loadout::booster"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, booster) - 28usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_4"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_4) - 32usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_5"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_5) - 36usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_6"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_6) - 40usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_7"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_7) - 44usize];
+    ["Offset of field: HfRpc_sync_loadout::arg12_count"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg12_count) - 48usize];
+    ["Offset of field: HfRpc_sync_loadout::arg12"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg12) - 52usize];
+    ["Offset of field: HfRpc_sync_loadout::arg13_count"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg13_count) - 116usize];
+    ["Offset of field: HfRpc_sync_loadout::arg13"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg13) - 120usize];
+    ["Offset of field: HfRpc_sync_loadout::arg14_count"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg14_count) - 184usize];
+    ["Offset of field: HfRpc_sync_loadout::arg14"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, arg14) - 188usize];
+    ["Offset of field: HfRpc_sync_loadout::unsigned_value_8"]
+        [::std::mem::offset_of!(HfRpc_sync_loadout, unsigned_value_8) - 236usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_customization_seed {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_customization_seed"]
+        [::std::mem::size_of::<HfRpc_sync_customization_seed>() - 4usize];
+    ["Alignment of HfRpc_sync_customization_seed"]
+        [::std::mem::align_of::<HfRpc_sync_customization_seed>() - 4usize];
+    ["Offset of field: HfRpc_sync_customization_seed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_customization_seed, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_map_location_discovered {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_map_location_discovered"]
+        [::std::mem::size_of::<HfRpc_map_location_discovered>() - 8usize];
+    ["Alignment of HfRpc_map_location_discovered"]
+        [::std::mem::align_of::<HfRpc_map_location_discovered>() - 4usize];
+    ["Offset of field: HfRpc_map_location_discovered::entity"]
+        [::std::mem::offset_of!(HfRpc_map_location_discovered, entity) - 0usize];
+    ["Offset of field: HfRpc_map_location_discovered::entity_2"]
+        [::std::mem::offset_of!(HfRpc_map_location_discovered, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_reload_state {
+    pub entity: i32,
+    pub arg1: i32,
+    pub int_value: i32,
+    pub int_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_reload_state"][::std::mem::size_of::<HfRpc_sync_reload_state>() - 16usize];
+    ["Alignment of HfRpc_sync_reload_state"]
+        [::std::mem::align_of::<HfRpc_sync_reload_state>() - 4usize];
+    ["Offset of field: HfRpc_sync_reload_state::entity"]
+        [::std::mem::offset_of!(HfRpc_sync_reload_state, entity) - 0usize];
+    ["Offset of field: HfRpc_sync_reload_state::arg1"]
+        [::std::mem::offset_of!(HfRpc_sync_reload_state, arg1) - 4usize];
+    ["Offset of field: HfRpc_sync_reload_state::int_value"]
+        [::std::mem::offset_of!(HfRpc_sync_reload_state, int_value) - 8usize];
+    ["Offset of field: HfRpc_sync_reload_state::int_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_reload_state, int_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_dematerialized {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_dematerialized"]
+        [::std::mem::size_of::<HfRpc_set_dematerialized>() - 8usize];
+    ["Alignment of HfRpc_set_dematerialized"]
+        [::std::mem::align_of::<HfRpc_set_dematerialized>() - 4usize];
+    ["Offset of field: HfRpc_set_dematerialized::entity"]
+        [::std::mem::offset_of!(HfRpc_set_dematerialized, entity) - 0usize];
+    ["Offset of field: HfRpc_set_dematerialized::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_dematerialized, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_player_info {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_player_info"][::std::mem::size_of::<HfRpc_set_player_info>() - 4usize];
+    ["Alignment of HfRpc_set_player_info"]
+        [::std::mem::align_of::<HfRpc_set_player_info>() - 4usize];
+    ["Offset of field: HfRpc_set_player_info::entity"]
+        [::std::mem::offset_of!(HfRpc_set_player_info, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_stratagem_code_completed_count {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_stratagem_code_completed_count"]
+        [::std::mem::size_of::<HfRpc_set_stratagem_code_completed_count>() - 8usize];
+    ["Alignment of HfRpc_set_stratagem_code_completed_count"]
+        [::std::mem::align_of::<HfRpc_set_stratagem_code_completed_count>() - 4usize];
+    ["Offset of field: HfRpc_set_stratagem_code_completed_count::entity"]
+        [::std::mem::offset_of!(HfRpc_set_stratagem_code_completed_count, entity) - 0usize];
+    ["Offset of field: HfRpc_set_stratagem_code_completed_count::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_stratagem_code_completed_count, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_restore_to_pickup_point {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_restore_to_pickup_point"]
+        [::std::mem::size_of::<HfRpc_restore_to_pickup_point>() - 4usize];
+    ["Alignment of HfRpc_restore_to_pickup_point"]
+        [::std::mem::align_of::<HfRpc_restore_to_pickup_point>() - 4usize];
+    ["Offset of field: HfRpc_restore_to_pickup_point::entity"]
+        [::std::mem::offset_of!(HfRpc_restore_to_pickup_point, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_stratagem_confirmation {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_stratagem_confirmation"]
+        [::std::mem::size_of::<HfRpc_request_stratagem_confirmation>() - 20usize];
+    ["Alignment of HfRpc_request_stratagem_confirmation"]
+        [::std::mem::align_of::<HfRpc_request_stratagem_confirmation>() - 4usize];
+    ["Offset of field: HfRpc_request_stratagem_confirmation::entity"]
+        [::std::mem::offset_of!(HfRpc_request_stratagem_confirmation, entity) - 0usize];
+    ["Offset of field: HfRpc_request_stratagem_confirmation::vector3"]
+        [::std::mem::offset_of!(HfRpc_request_stratagem_confirmation, vector3) - 4usize];
+    ["Offset of field: HfRpc_request_stratagem_confirmation::bool_value"]
+        [::std::mem::offset_of!(HfRpc_request_stratagem_confirmation, bool_value) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_set_menu_screen {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_set_menu_screen"]
+        [::std::mem::size_of::<HfRpc_from_host_set_menu_screen>() - 4usize];
+    ["Alignment of HfRpc_from_host_set_menu_screen"]
+        [::std::mem::align_of::<HfRpc_from_host_set_menu_screen>() - 4usize];
+    ["Offset of field: HfRpc_from_host_set_menu_screen::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_set_menu_screen, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_mission_id {
+    pub arg0: u64,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_mission_id"]
+        [::std::mem::size_of::<HfRpc_from_host_mission_id>() - 16usize];
+    ["Alignment of HfRpc_from_host_mission_id"]
+        [::std::mem::align_of::<HfRpc_from_host_mission_id>() - 8usize];
+    ["Offset of field: HfRpc_from_host_mission_id::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_host_mission_id, arg0) - 0usize];
+    ["Offset of field: HfRpc_from_host_mission_id::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_mission_id, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_migration {
+    pub arg0: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_migration"][::std::mem::size_of::<HfRpc_request_migration>() - 16usize];
+    ["Alignment of HfRpc_request_migration"]
+        [::std::mem::align_of::<HfRpc_request_migration>() - 8usize];
+    ["Offset of field: HfRpc_request_migration::arg0"]
+        [::std::mem::offset_of!(HfRpc_request_migration, arg0) - 0usize];
+    ["Offset of field: HfRpc_request_migration::peer_id"]
+        [::std::mem::offset_of!(HfRpc_request_migration, peer_id) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_inflict_injury {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_inflict_injury"][::std::mem::size_of::<HfRpc_inflict_injury>() - 8usize];
+    ["Alignment of HfRpc_inflict_injury"][::std::mem::align_of::<HfRpc_inflict_injury>() - 4usize];
+    ["Offset of field: HfRpc_inflict_injury::entity"]
+        [::std::mem::offset_of!(HfRpc_inflict_injury, entity) - 0usize];
+    ["Offset of field: HfRpc_inflict_injury::arg1"]
+        [::std::mem::offset_of!(HfRpc_inflict_injury, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_objective_entity_spotted {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_objective_entity_spotted"]
+        [::std::mem::size_of::<HfRpc_objective_entity_spotted>() - 8usize];
+    ["Alignment of HfRpc_objective_entity_spotted"]
+        [::std::mem::align_of::<HfRpc_objective_entity_spotted>() - 4usize];
+    ["Offset of field: HfRpc_objective_entity_spotted::entity"]
+        [::std::mem::offset_of!(HfRpc_objective_entity_spotted, entity) - 0usize];
+    ["Offset of field: HfRpc_objective_entity_spotted::entity_2"]
+        [::std::mem::offset_of!(HfRpc_objective_entity_spotted, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_player_info {
+    pub network_string: *const ::std::os::raw::c_char,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub arg3: u64,
+    pub arg4: u64,
+    pub arg5: u64,
+    pub arg6: i32,
+    pub unsigned_value_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_player_info"][::std::mem::size_of::<HfRpc_sync_player_info>() - 48usize];
+    ["Alignment of HfRpc_sync_player_info"]
+        [::std::mem::align_of::<HfRpc_sync_player_info>() - 8usize];
+    ["Offset of field: HfRpc_sync_player_info::network_string"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, network_string) - 0usize];
+    ["Offset of field: HfRpc_sync_player_info::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, unsigned_value) - 8usize];
+    ["Offset of field: HfRpc_sync_player_info::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, unsigned_value_2) - 12usize];
+    ["Offset of field: HfRpc_sync_player_info::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, arg3) - 16usize];
+    ["Offset of field: HfRpc_sync_player_info::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, arg4) - 24usize];
+    ["Offset of field: HfRpc_sync_player_info::arg5"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, arg5) - 32usize];
+    ["Offset of field: HfRpc_sync_player_info::arg6"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, arg6) - 40usize];
+    ["Offset of field: HfRpc_sync_player_info::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_sync_player_info, unsigned_value_3) - 44usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_partymember_lobby_joined {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_partymember_lobby_joined"]
+        [::std::mem::size_of::<HfRpc_from_partymember_lobby_joined>() - 8usize];
+    ["Alignment of HfRpc_from_partymember_lobby_joined"]
+        [::std::mem::align_of::<HfRpc_from_partymember_lobby_joined>() - 8usize];
+    ["Offset of field: HfRpc_from_partymember_lobby_joined::arg0"]
+        [::std::mem::offset_of!(HfRpc_from_partymember_lobby_joined, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_entity_dying {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_entity_dying"][::std::mem::size_of::<HfRpc_on_entity_dying>() - 4usize];
+    ["Alignment of HfRpc_on_entity_dying"]
+        [::std::mem::align_of::<HfRpc_on_entity_dying>() - 4usize];
+    ["Offset of field: HfRpc_on_entity_dying::entity"]
+        [::std::mem::offset_of!(HfRpc_on_entity_dying, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_distant_war_particle {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_distant_war_particle"]
+        [::std::mem::size_of::<HfRpc_distant_war_particle>() - 20usize];
+    ["Alignment of HfRpc_distant_war_particle"]
+        [::std::mem::align_of::<HfRpc_distant_war_particle>() - 4usize];
+    ["Offset of field: HfRpc_distant_war_particle::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_distant_war_particle, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_distant_war_particle::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_distant_war_particle, unsigned_value_2) - 4usize];
+    ["Offset of field: HfRpc_distant_war_particle::vector3"]
+        [::std::mem::offset_of!(HfRpc_distant_war_particle, vector3) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_minigame_reset {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_minigame_reset"][::std::mem::size_of::<HfRpc_minigame_reset>() - 8usize];
+    ["Alignment of HfRpc_minigame_reset"][::std::mem::align_of::<HfRpc_minigame_reset>() - 4usize];
+    ["Offset of field: HfRpc_minigame_reset::entity"]
+        [::std::mem::offset_of!(HfRpc_minigame_reset, entity) - 0usize];
+    ["Offset of field: HfRpc_minigame_reset::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_minigame_reset, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_add_spawnpoint {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_add_spawnpoint"][::std::mem::size_of::<HfRpc_add_spawnpoint>() - 20usize];
+    ["Alignment of HfRpc_add_spawnpoint"][::std::mem::align_of::<HfRpc_add_spawnpoint>() - 4usize];
+    ["Offset of field: HfRpc_add_spawnpoint::entity"]
+        [::std::mem::offset_of!(HfRpc_add_spawnpoint, entity) - 0usize];
+    ["Offset of field: HfRpc_add_spawnpoint::vector3"]
+        [::std::mem::offset_of!(HfRpc_add_spawnpoint, vector3) - 4usize];
+    ["Offset of field: HfRpc_add_spawnpoint::entity_2"]
+        [::std::mem::offset_of!(HfRpc_add_spawnpoint, entity_2) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_attach {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_attach"][::std::mem::size_of::<HfRpc_attach>() - 12usize];
+    ["Alignment of HfRpc_attach"][::std::mem::align_of::<HfRpc_attach>() - 4usize];
+    ["Offset of field: HfRpc_attach::entity"]
+        [::std::mem::offset_of!(HfRpc_attach, entity) - 0usize];
+    ["Offset of field: HfRpc_attach::entity_2"]
+        [::std::mem::offset_of!(HfRpc_attach, entity_2) - 4usize];
+    ["Offset of field: HfRpc_attach::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_attach, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_build_random_order {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_build_random_order"]
+        [::std::mem::size_of::<HfRpc_build_random_order>() - 12usize];
+    ["Alignment of HfRpc_build_random_order"]
+        [::std::mem::align_of::<HfRpc_build_random_order>() - 4usize];
+    ["Offset of field: HfRpc_build_random_order::entity"]
+        [::std::mem::offset_of!(HfRpc_build_random_order, entity) - 0usize];
+    ["Offset of field: HfRpc_build_random_order::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_build_random_order, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_build_random_order::bool_value"]
+        [::std::mem::offset_of!(HfRpc_build_random_order, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_planet_region_status {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub arg2: i32,
+    pub unsigned_value_3: i32,
+    pub float_value: f32,
+    pub bool_value: u8,
+    pub float_value_2: f32,
+    pub unsigned_value_4: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_planet_region_status"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_planet_region_status>() - 32usize];
+    ["Alignment of HfRpc_sync_galactic_war_planet_region_status"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_planet_region_status>() - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::unsigned_value"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        unsigned_value
+    ) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::unsigned_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        unsigned_value_2
+    ) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_planet_region_status, arg2) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::unsigned_value_3"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        unsigned_value_3
+    )
+        - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::float_value"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        float_value
+    ) - 16usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::bool_value"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        bool_value
+    ) - 20usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::float_value_2"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        float_value_2
+    ) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_planet_region_status::unsigned_value_4"][::std::mem::offset_of!(
+        HfRpc_sync_galactic_war_planet_region_status,
+        unsigned_value_4
+    )
+        - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_peer_authorized_request {
+    pub arg0: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_peer_authorized_request"]
+        [::std::mem::size_of::<HfRpc_peer_authorized_request>() - 8usize];
+    ["Alignment of HfRpc_peer_authorized_request"]
+        [::std::mem::align_of::<HfRpc_peer_authorized_request>() - 8usize];
+    ["Offset of field: HfRpc_peer_authorized_request::arg0"]
+        [::std::mem::offset_of!(HfRpc_peer_authorized_request, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_extract {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_extract"][::std::mem::size_of::<HfRpc_extract>() - 4usize];
+    ["Alignment of HfRpc_extract"][::std::mem::align_of::<HfRpc_extract>() - 4usize];
+    ["Offset of field: HfRpc_extract::entity"]
+        [::std::mem::offset_of!(HfRpc_extract, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_play_collision_sound {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_play_collision_sound"]
+        [::std::mem::size_of::<HfRpc_play_collision_sound>() - 12usize];
+    ["Alignment of HfRpc_play_collision_sound"]
+        [::std::mem::align_of::<HfRpc_play_collision_sound>() - 4usize];
+    ["Offset of field: HfRpc_play_collision_sound::entity"]
+        [::std::mem::offset_of!(HfRpc_play_collision_sound, entity) - 0usize];
+    ["Offset of field: HfRpc_play_collision_sound::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_play_collision_sound, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_play_collision_sound::float_value"]
+        [::std::mem::offset_of!(HfRpc_play_collision_sound, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_shipname {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_shipname"][::std::mem::size_of::<HfRpc_set_shipname>() - 8usize];
+    ["Alignment of HfRpc_set_shipname"][::std::mem::align_of::<HfRpc_set_shipname>() - 4usize];
+    ["Offset of field: HfRpc_set_shipname::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_shipname, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_set_shipname::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_shipname, unsigned_value_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_ball_stratagem_failed {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_ball_stratagem_failed"]
+        [::std::mem::size_of::<HfRpc_stratagem_ball_stratagem_failed>() - 4usize];
+    ["Alignment of HfRpc_stratagem_ball_stratagem_failed"]
+        [::std::mem::align_of::<HfRpc_stratagem_ball_stratagem_failed>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_ball_stratagem_failed::entity"]
+        [::std::mem::offset_of!(HfRpc_stratagem_ball_stratagem_failed, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_attachment_removed {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_attachment_removed"]
+        [::std::mem::size_of::<HfRpc_attachment_removed>() - 8usize];
+    ["Alignment of HfRpc_attachment_removed"]
+        [::std::mem::align_of::<HfRpc_attachment_removed>() - 4usize];
+    ["Offset of field: HfRpc_attachment_removed::entity"]
+        [::std::mem::offset_of!(HfRpc_attachment_removed, entity) - 0usize];
+    ["Offset of field: HfRpc_attachment_removed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_attachment_removed, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_complete_wait_minigame {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_complete_wait_minigame"]
+        [::std::mem::size_of::<HfRpc_complete_wait_minigame>() - 8usize];
+    ["Alignment of HfRpc_complete_wait_minigame"]
+        [::std::mem::align_of::<HfRpc_complete_wait_minigame>() - 4usize];
+    ["Offset of field: HfRpc_complete_wait_minigame::entity"]
+        [::std::mem::offset_of!(HfRpc_complete_wait_minigame, entity) - 0usize];
+    ["Offset of field: HfRpc_complete_wait_minigame::id_string32"]
+        [::std::mem::offset_of!(HfRpc_complete_wait_minigame, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_hotjoined_destruction {
+    pub unsigned_value: i32,
+    pub arg1_count: u32,
+    pub arg1: [i32; 128usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_hotjoined_destruction"]
+        [::std::mem::size_of::<HfRpc_on_hotjoined_destruction>() - 520usize];
+    ["Alignment of HfRpc_on_hotjoined_destruction"]
+        [::std::mem::align_of::<HfRpc_on_hotjoined_destruction>() - 4usize];
+    ["Offset of field: HfRpc_on_hotjoined_destruction::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_hotjoined_destruction, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_on_hotjoined_destruction::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_on_hotjoined_destruction, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_on_hotjoined_destruction::arg1"]
+        [::std::mem::offset_of!(HfRpc_on_hotjoined_destruction, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_client_completed_loadout_weapon_swap {
+    pub peer_id: u64,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_client_completed_loadout_weapon_swap"]
+        [::std::mem::size_of::<HfRpc_from_client_completed_loadout_weapon_swap>() - 16usize];
+    ["Alignment of HfRpc_from_client_completed_loadout_weapon_swap"]
+        [::std::mem::align_of::<HfRpc_from_client_completed_loadout_weapon_swap>() - 8usize];
+    ["Offset of field: HfRpc_from_client_completed_loadout_weapon_swap::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_client_completed_loadout_weapon_swap, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_client_completed_loadout_weapon_swap::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_client_completed_loadout_weapon_swap, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_trigger_particle_event_from_position_rotation {
+    pub entity: i32,
+    pub arg1: i32,
+    pub vector3: [f32; 3usize],
+    pub quaternion: [f32; 4usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_trigger_particle_event_from_position_rotation"]
+        [::std::mem::size_of::<HfRpc_trigger_particle_event_from_position_rotation>() - 36usize];
+    ["Alignment of HfRpc_trigger_particle_event_from_position_rotation"]
+        [::std::mem::align_of::<HfRpc_trigger_particle_event_from_position_rotation>() - 4usize];
+    ["Offset of field: HfRpc_trigger_particle_event_from_position_rotation::entity"][::std::mem::offset_of!(
+        HfRpc_trigger_particle_event_from_position_rotation,
+        entity
+    ) - 0usize];
+    ["Offset of field: HfRpc_trigger_particle_event_from_position_rotation::arg1"][::std::mem::offset_of!(
+        HfRpc_trigger_particle_event_from_position_rotation,
+        arg1
+    ) - 4usize];
+    ["Offset of field: HfRpc_trigger_particle_event_from_position_rotation::vector3"][::std::mem::offset_of!(
+        HfRpc_trigger_particle_event_from_position_rotation,
+        vector3
+    ) - 8usize];
+    ["Offset of field: HfRpc_trigger_particle_event_from_position_rotation::quaternion"][::std::mem::offset_of!(
+        HfRpc_trigger_particle_event_from_position_rotation,
+        quaternion
+    )
+        - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_light_enabled {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_light_enabled"][::std::mem::size_of::<HfRpc_set_light_enabled>() - 12usize];
+    ["Alignment of HfRpc_set_light_enabled"]
+        [::std::mem::align_of::<HfRpc_set_light_enabled>() - 4usize];
+    ["Offset of field: HfRpc_set_light_enabled::entity"]
+        [::std::mem::offset_of!(HfRpc_set_light_enabled, entity) - 0usize];
+    ["Offset of field: HfRpc_set_light_enabled::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_light_enabled, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_light_enabled::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_light_enabled, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_disable_stratagem_of_type {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_disable_stratagem_of_type"]
+        [::std::mem::size_of::<HfRpc_disable_stratagem_of_type>() - 4usize];
+    ["Alignment of HfRpc_disable_stratagem_of_type"]
+        [::std::mem::align_of::<HfRpc_disable_stratagem_of_type>() - 4usize];
+    ["Offset of field: HfRpc_disable_stratagem_of_type::arg0"]
+        [::std::mem::offset_of!(HfRpc_disable_stratagem_of_type, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shield_almost_done_charging {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shield_almost_done_charging"]
+        [::std::mem::size_of::<HfRpc_shield_almost_done_charging>() - 4usize];
+    ["Alignment of HfRpc_shield_almost_done_charging"]
+        [::std::mem::align_of::<HfRpc_shield_almost_done_charging>() - 4usize];
+    ["Offset of field: HfRpc_shield_almost_done_charging::entity"]
+        [::std::mem::offset_of!(HfRpc_shield_almost_done_charging, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_carryable {
+    pub entity: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_carryable"][::std::mem::size_of::<HfRpc_drop_carryable>() - 8usize];
+    ["Alignment of HfRpc_drop_carryable"][::std::mem::align_of::<HfRpc_drop_carryable>() - 4usize];
+    ["Offset of field: HfRpc_drop_carryable::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_carryable, entity) - 0usize];
+    ["Offset of field: HfRpc_drop_carryable::bool_value"]
+        [::std::mem::offset_of!(HfRpc_drop_carryable, bool_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_voiceover_queue_entry {
+    pub id_string32: u32,
+    pub unsigned_value: i32,
+    pub id_string32_2: u32,
+    pub entity: i32,
+    pub float_value: f32,
+    pub id_string32_3: u32,
+    pub id_string32_4: u32,
+    pub id_string32_5: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_voiceover_queue_entry"]
+        [::std::mem::size_of::<HfRpc_voiceover_queue_entry>() - 32usize];
+    ["Alignment of HfRpc_voiceover_queue_entry"]
+        [::std::mem::align_of::<HfRpc_voiceover_queue_entry>() - 4usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::id_string32"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, id_string32) - 0usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, id_string32_2) - 8usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::entity"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, entity) - 12usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::float_value"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, float_value) - 16usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::id_string32_3"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, id_string32_3) - 20usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::id_string32_4"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, id_string32_4) - 24usize];
+    ["Offset of field: HfRpc_voiceover_queue_entry::id_string32_5"]
+        [::std::mem::offset_of!(HfRpc_voiceover_queue_entry, id_string32_5) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_fire_single_round_advanced {
+    pub entity: i32,
+    pub vector3: [f32; 3usize],
+    pub arg2: i32,
+    pub arg3: i32,
+    pub id_string64: u64,
+    pub id_string32: u32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub float_value_3: f32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_fire_single_round_advanced"]
+        [::std::mem::size_of::<HfRpc_fire_single_round_advanced>() - 56usize];
+    ["Alignment of HfRpc_fire_single_round_advanced"]
+        [::std::mem::align_of::<HfRpc_fire_single_round_advanced>() - 8usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::entity"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, entity) - 0usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::vector3"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, vector3) - 4usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::arg2"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, arg2) - 16usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::arg3"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, arg3) - 20usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::id_string64"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, id_string64) - 24usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::id_string32"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, id_string32) - 32usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::float_value"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, float_value) - 36usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, float_value_2) - 40usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::float_value_3"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, float_value_3) - 44usize];
+    ["Offset of field: HfRpc_fire_single_round_advanced::bool_value"]
+        [::std::mem::offset_of!(HfRpc_fire_single_round_advanced, bool_value) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_ragdoll_pose {
+    pub entity: i32,
+    pub ragdoll_pose: i32,
+    pub bool_value: u8,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_ragdoll_pose"][::std::mem::size_of::<HfRpc_set_ragdoll_pose>() - 12usize];
+    ["Alignment of HfRpc_set_ragdoll_pose"]
+        [::std::mem::align_of::<HfRpc_set_ragdoll_pose>() - 4usize];
+    ["Offset of field: HfRpc_set_ragdoll_pose::entity"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_pose, entity) - 0usize];
+    ["Offset of field: HfRpc_set_ragdoll_pose::ragdoll_pose"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_pose, ragdoll_pose) - 4usize];
+    ["Offset of field: HfRpc_set_ragdoll_pose::bool_value"]
+        [::std::mem::offset_of!(HfRpc_set_ragdoll_pose, bool_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_material_variable_vector4 {
+    pub entity: i32,
+    pub arg1: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+    pub float_value_3: f32,
+    pub float_value_4: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_material_variable_vector4"]
+        [::std::mem::size_of::<HfRpc_material_variable_vector4>() - 24usize];
+    ["Alignment of HfRpc_material_variable_vector4"]
+        [::std::mem::align_of::<HfRpc_material_variable_vector4>() - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector4::entity"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, entity) - 0usize];
+    ["Offset of field: HfRpc_material_variable_vector4::arg1"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, arg1) - 4usize];
+    ["Offset of field: HfRpc_material_variable_vector4::float_value"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, float_value) - 8usize];
+    ["Offset of field: HfRpc_material_variable_vector4::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, float_value_2) - 12usize];
+    ["Offset of field: HfRpc_material_variable_vector4::float_value_3"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, float_value_3) - 16usize];
+    ["Offset of field: HfRpc_material_variable_vector4::float_value_4"]
+        [::std::mem::offset_of!(HfRpc_material_variable_vector4, float_value_4) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_shield_zones_state_changed {
+    pub entity: i32,
+    pub arg1_count: u32,
+    pub arg1: [u64; 2usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_shield_zones_state_changed"]
+        [::std::mem::size_of::<HfRpc_shield_zones_state_changed>() - 24usize];
+    ["Alignment of HfRpc_shield_zones_state_changed"]
+        [::std::mem::align_of::<HfRpc_shield_zones_state_changed>() - 8usize];
+    ["Offset of field: HfRpc_shield_zones_state_changed::entity"]
+        [::std::mem::offset_of!(HfRpc_shield_zones_state_changed, entity) - 0usize];
+    ["Offset of field: HfRpc_shield_zones_state_changed::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_shield_zones_state_changed, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_shield_zones_state_changed::arg1"]
+        [::std::mem::offset_of!(HfRpc_shield_zones_state_changed, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_change_ui_avatar_animation {
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub float_value: f32,
+    pub float_value_2: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_change_ui_avatar_animation"]
+        [::std::mem::size_of::<HfRpc_change_ui_avatar_animation>() - 16usize];
+    ["Alignment of HfRpc_change_ui_avatar_animation"]
+        [::std::mem::align_of::<HfRpc_change_ui_avatar_animation>() - 4usize];
+    ["Offset of field: HfRpc_change_ui_avatar_animation::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_change_ui_avatar_animation, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_change_ui_avatar_animation::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_change_ui_avatar_animation, unsigned_value_2) - 4usize];
+    ["Offset of field: HfRpc_change_ui_avatar_animation::float_value"]
+        [::std::mem::offset_of!(HfRpc_change_ui_avatar_animation, float_value) - 8usize];
+    ["Offset of field: HfRpc_change_ui_avatar_animation::float_value_2"]
+        [::std::mem::offset_of!(HfRpc_change_ui_avatar_animation, float_value_2) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_request_enter_seat_collection_denied {
+    pub entity: i32,
+    pub entity_2: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_request_enter_seat_collection_denied"]
+        [::std::mem::size_of::<HfRpc_request_enter_seat_collection_denied>() - 8usize];
+    ["Alignment of HfRpc_request_enter_seat_collection_denied"]
+        [::std::mem::align_of::<HfRpc_request_enter_seat_collection_denied>() - 4usize];
+    ["Offset of field: HfRpc_request_enter_seat_collection_denied::entity"]
+        [::std::mem::offset_of!(HfRpc_request_enter_seat_collection_denied, entity) - 0usize];
+    ["Offset of field: HfRpc_request_enter_seat_collection_denied::entity_2"]
+        [::std::mem::offset_of!(HfRpc_request_enter_seat_collection_denied, entity_2) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_synced_health_damage_request {
+    pub entity: i32,
+    pub int_value: i32,
+    pub int_value_2: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_synced_health_damage_request"]
+        [::std::mem::size_of::<HfRpc_synced_health_damage_request>() - 16usize];
+    ["Alignment of HfRpc_synced_health_damage_request"]
+        [::std::mem::align_of::<HfRpc_synced_health_damage_request>() - 4usize];
+    ["Offset of field: HfRpc_synced_health_damage_request::entity"]
+        [::std::mem::offset_of!(HfRpc_synced_health_damage_request, entity) - 0usize];
+    ["Offset of field: HfRpc_synced_health_damage_request::int_value"]
+        [::std::mem::offset_of!(HfRpc_synced_health_damage_request, int_value) - 4usize];
+    ["Offset of field: HfRpc_synced_health_damage_request::int_value_2"]
+        [::std::mem::offset_of!(HfRpc_synced_health_damage_request, int_value_2) - 8usize];
+    ["Offset of field: HfRpc_synced_health_damage_request::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_synced_health_damage_request, unsigned_value) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_select_loadout_weapon {
+    pub unsigned_value: i32,
+    pub arg1_count: u32,
+    pub arg1: [u32; 16usize],
+    pub arg2_count: u32,
+    pub arg2: [i32; 48usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 48usize],
+    pub arg4_count: u32,
+    pub arg4: [i32; 48usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_select_loadout_weapon"]
+        [::std::mem::size_of::<HfRpc_select_loadout_weapon>() - 660usize];
+    ["Alignment of HfRpc_select_loadout_weapon"]
+        [::std::mem::align_of::<HfRpc_select_loadout_weapon>() - 4usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg1_count"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg1_count) - 4usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg1"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg1) - 8usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg2_count) - 72usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg2"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg2) - 76usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg3_count) - 268usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg3"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg3) - 272usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg4_count"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg4_count) - 464usize];
+    ["Offset of field: HfRpc_select_loadout_weapon::arg4"]
+        [::std::mem::offset_of!(HfRpc_select_loadout_weapon, arg4) - 468usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_execute_synced_task {
+    pub synced_task: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_execute_synced_task"]
+        [::std::mem::size_of::<HfRpc_from_host_execute_synced_task>() - 4usize];
+    ["Alignment of HfRpc_from_host_execute_synced_task"]
+        [::std::mem::align_of::<HfRpc_from_host_execute_synced_task>() - 4usize];
+    ["Offset of field: HfRpc_from_host_execute_synced_task::synced_task"]
+        [::std::mem::offset_of!(HfRpc_from_host_execute_synced_task, synced_task) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_trigger_cooldown {
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+    pub float_value: f32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_trigger_cooldown"]
+        [::std::mem::size_of::<HfRpc_stratagem_trigger_cooldown>() - 12usize];
+    ["Alignment of HfRpc_stratagem_trigger_cooldown"]
+        [::std::mem::align_of::<HfRpc_stratagem_trigger_cooldown>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_trigger_cooldown::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_trigger_cooldown, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_stratagem_trigger_cooldown::bool_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_trigger_cooldown, bool_value) - 4usize];
+    ["Offset of field: HfRpc_stratagem_trigger_cooldown::float_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_trigger_cooldown, float_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_increment_objective_counter {
+    pub entity: i32,
+    pub float_value: f32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_increment_objective_counter"]
+        [::std::mem::size_of::<HfRpc_increment_objective_counter>() - 12usize];
+    ["Alignment of HfRpc_increment_objective_counter"]
+        [::std::mem::align_of::<HfRpc_increment_objective_counter>() - 4usize];
+    ["Offset of field: HfRpc_increment_objective_counter::entity"]
+        [::std::mem::offset_of!(HfRpc_increment_objective_counter, entity) - 0usize];
+    ["Offset of field: HfRpc_increment_objective_counter::float_value"]
+        [::std::mem::offset_of!(HfRpc_increment_objective_counter, float_value) - 4usize];
+    ["Offset of field: HfRpc_increment_objective_counter::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_increment_objective_counter, unsigned_value) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_interaction_request {
+    pub entity: i32,
+    pub entity_2: i32,
+    pub arg2: i32,
+    pub entity_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_interaction_request"]
+        [::std::mem::size_of::<HfRpc_interaction_request>() - 16usize];
+    ["Alignment of HfRpc_interaction_request"]
+        [::std::mem::align_of::<HfRpc_interaction_request>() - 4usize];
+    ["Offset of field: HfRpc_interaction_request::entity"]
+        [::std::mem::offset_of!(HfRpc_interaction_request, entity) - 0usize];
+    ["Offset of field: HfRpc_interaction_request::entity_2"]
+        [::std::mem::offset_of!(HfRpc_interaction_request, entity_2) - 4usize];
+    ["Offset of field: HfRpc_interaction_request::arg2"]
+        [::std::mem::offset_of!(HfRpc_interaction_request, arg2) - 8usize];
+    ["Offset of field: HfRpc_interaction_request::entity_3"]
+        [::std::mem::offset_of!(HfRpc_interaction_request, entity_3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_galactic_war_global_event {
+    pub unsigned_value: i32,
+    pub id_string32: u32,
+    pub arg2_count: u32,
+    pub arg2: [i32; 3usize],
+    pub arg3_count: u32,
+    pub arg3: [i32; 32usize],
+    pub arg4: i32,
+    pub arg5: i32,
+    pub id_string32_2: u32,
+    pub id_string32_3: u32,
+    pub id_string32_4: u32,
+    pub arg9: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_galactic_war_global_event"]
+        [::std::mem::size_of::<HfRpc_sync_galactic_war_global_event>() - 184usize];
+    ["Alignment of HfRpc_sync_galactic_war_global_event"]
+        [::std::mem::align_of::<HfRpc_sync_galactic_war_global_event>() - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, id_string32) - 4usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg2_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg2_count) - 8usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg2) - 12usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg3_count"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg3_count) - 24usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg3) - 28usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg4"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg4) - 156usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg5"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg5) - 160usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::id_string32_2"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, id_string32_2) - 164usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::id_string32_3"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, id_string32_3) - 168usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::id_string32_4"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, id_string32_4) - 172usize];
+    ["Offset of field: HfRpc_sync_galactic_war_global_event::arg9"]
+        [::std::mem::offset_of!(HfRpc_sync_galactic_war_global_event, arg9) - 176usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_sync_space_battle_units {
+    pub arg0_count: u32,
+    pub arg0: [i32; 8usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_sync_space_battle_units"]
+        [::std::mem::size_of::<HfRpc_sync_space_battle_units>() - 36usize];
+    ["Alignment of HfRpc_sync_space_battle_units"]
+        [::std::mem::align_of::<HfRpc_sync_space_battle_units>() - 4usize];
+    ["Offset of field: HfRpc_sync_space_battle_units::arg0_count"]
+        [::std::mem::offset_of!(HfRpc_sync_space_battle_units, arg0_count) - 0usize];
+    ["Offset of field: HfRpc_sync_space_battle_units::arg0"]
+        [::std::mem::offset_of!(HfRpc_sync_space_battle_units, arg0) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_light_color {
+    pub entity: i32,
+    pub id_string32: u32,
+    pub color: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_light_color"][::std::mem::size_of::<HfRpc_set_light_color>() - 20usize];
+    ["Alignment of HfRpc_set_light_color"]
+        [::std::mem::align_of::<HfRpc_set_light_color>() - 4usize];
+    ["Offset of field: HfRpc_set_light_color::entity"]
+        [::std::mem::offset_of!(HfRpc_set_light_color, entity) - 0usize];
+    ["Offset of field: HfRpc_set_light_color::id_string32"]
+        [::std::mem::offset_of!(HfRpc_set_light_color, id_string32) - 4usize];
+    ["Offset of field: HfRpc_set_light_color::color"]
+        [::std::mem::offset_of!(HfRpc_set_light_color, color) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_mine_stepped_on {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_mine_stepped_on"][::std::mem::size_of::<HfRpc_mine_stepped_on>() - 8usize];
+    ["Alignment of HfRpc_mine_stepped_on"]
+        [::std::mem::align_of::<HfRpc_mine_stepped_on>() - 4usize];
+    ["Offset of field: HfRpc_mine_stepped_on::entity"]
+        [::std::mem::offset_of!(HfRpc_mine_stepped_on, entity) - 0usize];
+    ["Offset of field: HfRpc_mine_stepped_on::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_mine_stepped_on, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_used {
+    pub unsigned_value: i32,
+    pub bool_value: u8,
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_used"][::std::mem::size_of::<HfRpc_stratagem_used>() - 20usize];
+    ["Alignment of HfRpc_stratagem_used"][::std::mem::align_of::<HfRpc_stratagem_used>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_used::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_used, unsigned_value) - 0usize];
+    ["Offset of field: HfRpc_stratagem_used::bool_value"]
+        [::std::mem::offset_of!(HfRpc_stratagem_used, bool_value) - 4usize];
+    ["Offset of field: HfRpc_stratagem_used::vector3"]
+        [::std::mem::offset_of!(HfRpc_stratagem_used, vector3) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_hostinfo {
+    pub arg0: u64,
+    pub bool_value: u8,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_hostinfo"][::std::mem::size_of::<HfRpc_hostinfo>() - 24usize];
+    ["Alignment of HfRpc_hostinfo"][::std::mem::align_of::<HfRpc_hostinfo>() - 8usize];
+    ["Offset of field: HfRpc_hostinfo::arg0"]
+        [::std::mem::offset_of!(HfRpc_hostinfo, arg0) - 0usize];
+    ["Offset of field: HfRpc_hostinfo::bool_value"]
+        [::std::mem::offset_of!(HfRpc_hostinfo, bool_value) - 8usize];
+    ["Offset of field: HfRpc_hostinfo::peer_id"]
+        [::std::mem::offset_of!(HfRpc_hostinfo, peer_id) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_set_minigame_keypad_value {
+    pub entity: i32,
+    pub unsigned_value: i32,
+    pub unsigned_value_2: i32,
+    pub unsigned_value_3: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_set_minigame_keypad_value"]
+        [::std::mem::size_of::<HfRpc_set_minigame_keypad_value>() - 16usize];
+    ["Alignment of HfRpc_set_minigame_keypad_value"]
+        [::std::mem::align_of::<HfRpc_set_minigame_keypad_value>() - 4usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_value::entity"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_value, entity) - 0usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_value::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_value, unsigned_value) - 4usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_value::unsigned_value_2"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_value, unsigned_value_2) - 8usize];
+    ["Offset of field: HfRpc_set_minigame_keypad_value::unsigned_value_3"]
+        [::std::mem::offset_of!(HfRpc_set_minigame_keypad_value, unsigned_value_3) - 12usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_migrate_game_object_request {
+    pub arg0: i32,
+    pub peer_id: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_migrate_game_object_request"]
+        [::std::mem::size_of::<HfRpc_migrate_game_object_request>() - 16usize];
+    ["Alignment of HfRpc_migrate_game_object_request"]
+        [::std::mem::align_of::<HfRpc_migrate_game_object_request>() - 8usize];
+    ["Offset of field: HfRpc_migrate_game_object_request::arg0"]
+        [::std::mem::offset_of!(HfRpc_migrate_game_object_request, arg0) - 0usize];
+    ["Offset of field: HfRpc_migrate_game_object_request::peer_id"]
+        [::std::mem::offset_of!(HfRpc_migrate_game_object_request, peer_id) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_peer_metric_added {
+    pub peer_id: u64,
+    pub arg1: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_peer_metric_added"]
+        [::std::mem::size_of::<HfRpc_from_host_peer_metric_added>() - 16usize];
+    ["Alignment of HfRpc_from_host_peer_metric_added"]
+        [::std::mem::align_of::<HfRpc_from_host_peer_metric_added>() - 8usize];
+    ["Offset of field: HfRpc_from_host_peer_metric_added::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_metric_added, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_peer_metric_added::arg1"]
+        [::std::mem::offset_of!(HfRpc_from_host_peer_metric_added, arg1) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_hit_react_event {
+    pub entity: i32,
+    pub id_string32: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_hit_react_event"]
+        [::std::mem::size_of::<HfRpc_on_hit_react_event>() - 8usize];
+    ["Alignment of HfRpc_on_hit_react_event"]
+        [::std::mem::align_of::<HfRpc_on_hit_react_event>() - 4usize];
+    ["Offset of field: HfRpc_on_hit_react_event::entity"]
+        [::std::mem::offset_of!(HfRpc_on_hit_react_event, entity) - 0usize];
+    ["Offset of field: HfRpc_on_hit_react_event::id_string32"]
+        [::std::mem::offset_of!(HfRpc_on_hit_react_event, id_string32) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_on_disabled_wait_completed {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_on_disabled_wait_completed"]
+        [::std::mem::size_of::<HfRpc_on_disabled_wait_completed>() - 8usize];
+    ["Alignment of HfRpc_on_disabled_wait_completed"]
+        [::std::mem::align_of::<HfRpc_on_disabled_wait_completed>() - 4usize];
+    ["Offset of field: HfRpc_on_disabled_wait_completed::entity"]
+        [::std::mem::offset_of!(HfRpc_on_disabled_wait_completed, entity) - 0usize];
+    ["Offset of field: HfRpc_on_disabled_wait_completed::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_on_disabled_wait_completed, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_dyndest_despawn {
+    pub arg0: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_dyndest_despawn"][::std::mem::size_of::<HfRpc_dyndest_despawn>() - 4usize];
+    ["Alignment of HfRpc_dyndest_despawn"]
+        [::std::mem::align_of::<HfRpc_dyndest_despawn>() - 4usize];
+    ["Offset of field: HfRpc_dyndest_despawn::arg0"]
+        [::std::mem::offset_of!(HfRpc_dyndest_despawn, arg0) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_remove_selected_drop_point {
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_remove_selected_drop_point"]
+        [::std::mem::size_of::<HfRpc_remove_selected_drop_point>() - 4usize];
+    ["Alignment of HfRpc_remove_selected_drop_point"]
+        [::std::mem::align_of::<HfRpc_remove_selected_drop_point>() - 4usize];
+    ["Offset of field: HfRpc_remove_selected_drop_point::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_remove_selected_drop_point, unsigned_value) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_cancel_aim_interpolation {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_cancel_aim_interpolation"]
+        [::std::mem::size_of::<HfRpc_cancel_aim_interpolation>() - 4usize];
+    ["Alignment of HfRpc_cancel_aim_interpolation"]
+        [::std::mem::align_of::<HfRpc_cancel_aim_interpolation>() - 4usize];
+    ["Offset of field: HfRpc_cancel_aim_interpolation::entity"]
+        [::std::mem::offset_of!(HfRpc_cancel_aim_interpolation, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stop_all_for_entity {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stop_all_for_entity"]
+        [::std::mem::size_of::<HfRpc_stop_all_for_entity>() - 4usize];
+    ["Alignment of HfRpc_stop_all_for_entity"]
+        [::std::mem::align_of::<HfRpc_stop_all_for_entity>() - 4usize];
+    ["Offset of field: HfRpc_stop_all_for_entity::entity"]
+        [::std::mem::offset_of!(HfRpc_stop_all_for_entity, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_clear_status_effect_immediate {
+    pub entity: i32,
+    pub arg1: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_clear_status_effect_immediate"]
+        [::std::mem::size_of::<HfRpc_clear_status_effect_immediate>() - 8usize];
+    ["Alignment of HfRpc_clear_status_effect_immediate"]
+        [::std::mem::align_of::<HfRpc_clear_status_effect_immediate>() - 4usize];
+    ["Offset of field: HfRpc_clear_status_effect_immediate::entity"]
+        [::std::mem::offset_of!(HfRpc_clear_status_effect_immediate, entity) - 0usize];
+    ["Offset of field: HfRpc_clear_status_effect_immediate::arg1"]
+        [::std::mem::offset_of!(HfRpc_clear_status_effect_immediate, arg1) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_encounter_end_ping {
+    pub vector3: [f32; 3usize],
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_encounter_end_ping"]
+        [::std::mem::size_of::<HfRpc_encounter_end_ping>() - 12usize];
+    ["Alignment of HfRpc_encounter_end_ping"]
+        [::std::mem::align_of::<HfRpc_encounter_end_ping>() - 4usize];
+    ["Offset of field: HfRpc_encounter_end_ping::vector3"]
+        [::std::mem::offset_of!(HfRpc_encounter_end_ping, vector3) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_displacement_destroyed {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_displacement_destroyed"]
+        [::std::mem::size_of::<HfRpc_displacement_destroyed>() - 4usize];
+    ["Alignment of HfRpc_displacement_destroyed"]
+        [::std::mem::align_of::<HfRpc_displacement_destroyed>() - 4usize];
+    ["Offset of field: HfRpc_displacement_destroyed::entity"]
+        [::std::mem::offset_of!(HfRpc_displacement_destroyed, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_exit_ship_hellpod {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_exit_ship_hellpod"][::std::mem::size_of::<HfRpc_exit_ship_hellpod>() - 4usize];
+    ["Alignment of HfRpc_exit_ship_hellpod"]
+        [::std::mem::align_of::<HfRpc_exit_ship_hellpod>() - 4usize];
+    ["Offset of field: HfRpc_exit_ship_hellpod::entity"]
+        [::std::mem::offset_of!(HfRpc_exit_ship_hellpod, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_stratagem_ball_stratagem_succeded {
+    pub entity: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_stratagem_ball_stratagem_succeded"]
+        [::std::mem::size_of::<HfRpc_stratagem_ball_stratagem_succeded>() - 4usize];
+    ["Alignment of HfRpc_stratagem_ball_stratagem_succeded"]
+        [::std::mem::align_of::<HfRpc_stratagem_ball_stratagem_succeded>() - 4usize];
+    ["Offset of field: HfRpc_stratagem_ball_stratagem_succeded::entity"]
+        [::std::mem::offset_of!(HfRpc_stratagem_ball_stratagem_succeded, entity) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_drop_current_droppable_slot {
+    pub entity: i32,
+    pub unsigned_value: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_drop_current_droppable_slot"]
+        [::std::mem::size_of::<HfRpc_drop_current_droppable_slot>() - 8usize];
+    ["Alignment of HfRpc_drop_current_droppable_slot"]
+        [::std::mem::align_of::<HfRpc_drop_current_droppable_slot>() - 4usize];
+    ["Offset of field: HfRpc_drop_current_droppable_slot::entity"]
+        [::std::mem::offset_of!(HfRpc_drop_current_droppable_slot, entity) - 0usize];
+    ["Offset of field: HfRpc_drop_current_droppable_slot::unsigned_value"]
+        [::std::mem::offset_of!(HfRpc_drop_current_droppable_slot, unsigned_value) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct HfRpc_from_host_notify_joined_peer {
+    pub peer_id: u64,
+    pub network_string: *const ::std::os::raw::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of HfRpc_from_host_notify_joined_peer"]
+        [::std::mem::size_of::<HfRpc_from_host_notify_joined_peer>() - 16usize];
+    ["Alignment of HfRpc_from_host_notify_joined_peer"]
+        [::std::mem::align_of::<HfRpc_from_host_notify_joined_peer>() - 8usize];
+    ["Offset of field: HfRpc_from_host_notify_joined_peer::peer_id"]
+        [::std::mem::offset_of!(HfRpc_from_host_notify_joined_peer, peer_id) - 0usize];
+    ["Offset of field: HfRpc_from_host_notify_joined_peer::network_string"]
+        [::std::mem::offset_of!(HfRpc_from_host_notify_joined_peer, network_string) - 8usize];
+};
 pub type __builtin_va_list = *mut ::std::os::raw::c_char;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]

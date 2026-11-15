@@ -3,7 +3,10 @@
 #![allow(dead_code)]
 
 use super::{HellForgeApi, util::cstring};
-use crate::rust_ffi::{HfEditDef, HfEntityDef, HfField, HfLiveValue, HfRef, HfValue};
+use crate::rust_ffi::{
+    HfEditDef, HfEnemy, HfEnemySquad, HfEnemySwap, HfEntityDef, HfField, HfLiveValue, HfRef,
+    HfValue,
+};
 use std::ffi::c_void;
 
 impl HellForgeApi {
@@ -22,6 +25,55 @@ impl HellForgeApi {
         };
 
         unsafe { register_entity(self.mod_handle(), entity) }
+    }
+
+    /// Adds an enemy to the spawn director's rosters (call from
+    /// `hellforge_mod_init`).
+    ///
+    /// Its rows are made once the entity data loads. Returns `true` when
+    /// added, `false` when refused.
+    pub fn add_enemy(&self, enemy: &HfEnemy) -> bool {
+        if !self.supports(17) {
+            return false;
+        }
+
+        let Some(add_enemy) = self.raw_api().add_enemy else {
+            return false;
+        };
+
+        unsafe { add_enemy(self.mod_handle(), enemy) == 0 }
+    }
+
+    /// Adds a replacement rule to the spawn director (call from
+    /// `hellforge_mod_init`).
+    ///
+    /// Returns `true` when added, `false` when refused.
+    pub fn add_enemy_swap(&self, swap: &HfEnemySwap) -> bool {
+        if !self.supports(17) {
+            return false;
+        }
+
+        let Some(add_enemy_swap) = self.raw_api().add_enemy_swap else {
+            return false;
+        };
+
+        unsafe { add_enemy_swap(self.mod_handle(), swap) == 0 }
+    }
+
+    /// Adds a squad to the spawn director (call from `hellforge_mod_init`).
+    ///
+    /// Its rows are made with the enemies'. Returns `true` when added,
+    /// `false` when refused.
+    pub fn add_enemy_squad(&self, squad: &HfEnemySquad) -> bool {
+        if !self.supports(17) {
+            return false;
+        }
+
+        let Some(add_enemy_squad) = self.raw_api().add_enemy_squad else {
+            return false;
+        };
+
+        unsafe { add_enemy_squad(self.mod_handle(), squad) == 0 }
     }
 
     /// Queues a deferred copy of `field` from `from` onto `entity`.

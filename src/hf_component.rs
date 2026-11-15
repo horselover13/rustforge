@@ -13,22 +13,23 @@ use crate::rust_ffi::HfRef;
 use std::mem::size_of;
 
 pub use crate::rust_ffi::{
-    HfAbilityWeapon, HfAiSpawner, HfArcSettings, HfArcWeapon, HfAvatar, HfBeamSettings,
-    HfBeamWeapon, HfBehavior, HfBombardment, HfBoosterSettings, HfBughole, HfDamageInfo,
-    HfDemolitionTemplate, HfDeposit, HfDifficultySettings, HfDisplacement, HfEagle,
-    HfEnemyComposition, HfEnemyRoster, HfEnemyRosterLevel11, HfExplosionSettings, HfExplosive,
-    HfGore, HfHealth, HfHellpodPayload, HfHellpodRack, HfHiveMind, HfInventory, HfJumppack,
-    HfLoadoutEntry, HfLoadoutPackage, HfMeleeHitVolume, HfMeleeWeapon, HfMount, HfOrbitalAbility,
-    HfPassiveModifier, HfPassiveStat, HfProjectileSettings, HfProjectileWeapon, HfRecharge,
-    HfRotation, HfSeekingMissile, HfSensorEye, HfShield, HfSquadTransport,
-    HfSquadTransportFormation, HfStatusEffectSettings, HfStratagemBlocker, HfStratagemSettings,
-    HfTag, HfThrowable, HfThrower, HfTurret, HfUnit, HfVehicleMotion, HfWeaponCharge, HfWeaponData,
-    HfWeaponHeat, HfWeaponMagazine, HfWeaponReload, HfWeaponRounds, HfWeaponWindUp,
+    HfAbilityWeapon, HfAiSpawner, HfArcSettings, HfArcWeapon, HfAttachable, HfAvatar,
+    HfBeamSettings, HfBeamWeapon, HfBehavior, HfBombardment, HfBoosterSettings, HfBughole,
+    HfDamageInfo, HfDemolitionTemplate, HfDeposit, HfDifficultySettings, HfDisplacement, HfEagle,
+    HfEnemyComposition, HfEnemyRoster, HfEnemyRosterLevel11, HfEquipment, HfExplosionSettings,
+    HfExplosive, HfGore, HfHealth, HfHellpodPayload, HfHellpodRack, HfHiveMind, HfInventory,
+    HfJumppack, HfLoadoutEntry, HfLoadoutPackage, HfMeleeHitVolume, HfMeleeWeapon, HfMount,
+    HfOrbitalAbility, HfPassiveModifier, HfPassiveStat, HfProjectileSettings, HfProjectileWeapon,
+    HfRecharge, HfRotation, HfSeekingMissile, HfSensorEye, HfShield, HfSquadTransport,
+    HfSquadTransportFormation, HfStatusEffectSettings, HfStratagemBlocker, HfStratagemCode,
+    HfStratagemRearm, HfStratagemSettings, HfTag, HfThrowable, HfThrower, HfTurret, HfUnit,
+    HfVehicleMotion, HfWeaponCharge, HfWeaponCustomization, HfWeaponData, HfWeaponHeat,
+    HfWeaponMagazine, HfWeaponReload, HfWeaponRounds, HfWeaponWindUp, HfWieldable,
 };
 
 /// An entity component record generated from `hellforge_components.h`.
 ///
-/// This is implemented only for the 46 component records, not for the
+/// This is implemented only for the 50 component records, not for the
 /// settings-table rows the header also generates.
 ///
 /// # Safety
@@ -102,6 +103,10 @@ impl_components! {
     HfAiSpawner => "AiSpawnerComponentData",
     HfStratagemBlocker => "StratagemBlockerComponentData",
     HfBughole => "BugholeComponentData",
+    HfEquipment => "EquipmentComponentData",
+    HfWieldable => "WieldableComponentData",
+    HfAttachable => "AttachableComponentData",
+    HfWeaponCustomization => "WeaponCustomizationComponentData",
 }
 
 impl HellForgeApi {

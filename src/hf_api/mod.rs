@@ -20,6 +20,8 @@ pub mod stats;
 pub mod status;
 pub(crate) mod util;
 
+pub use util::wwise_id;
+
 pub static HF_API: OnceLock<HellForgeApi> = OnceLock::new();
 
 /// The function shape `#[hf_entry]` registers.

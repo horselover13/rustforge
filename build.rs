@@ -8,7 +8,7 @@ fn main() {
 
     // Compile Rust closures into FFI-compatible functions for HellForge events
     let out_path = Path::new("./src/");
-    
+
     // Generate bindgen'd C headers from wrapper.h
     let rust_ffi_bindings = bindgen::Builder::default()
         .header("./wrapper.h")
@@ -19,11 +19,12 @@ fn main() {
         .clang_arg("-fdeclspec")
         .generate()
         .expect("HF bindings generation failed");
-    
+
     // Write bindgen'd FFI definitions to separate file
-    rust_ffi_bindings.write_to_file(out_path.join("rust_ffi.rs"))
+    rust_ffi_bindings
+        .write_to_file(out_path.join("rust_ffi.rs"))
         .expect("HF bindings generation failed");
-    
+
     // Rebuild when the safe callback trampolines change.
     println!("cargo:rerun-if-changed=src/hf_api/callback.rs");
 }

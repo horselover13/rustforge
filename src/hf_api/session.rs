@@ -4,7 +4,7 @@
 #![allow(dead_code)]
 
 use super::HellForgeApi;
-use crate::rust_ffi::{HfModInfo, HfNotice, HfPassives, HfSession};
+use crate::rust_ffi::{HfGenerationCapacity, HfModInfo, HfNotice, HfPassives, HfSession};
 
 impl HellForgeApi {
     /// Overrides the local player's armor and second passives (solo only).
@@ -126,5 +126,37 @@ impl HellForgeApi {
         };
 
         unsafe { load_phase(self.mod_handle()) }
+    }
+
+    /// Asks the map generator for room in its arrays, or reads the planned
+    /// capacities.
+    ///
+    /// `want` asks for at least those capacities; `None` only reads. `have`
+    /// is filled with the capacities planned and where each region lies in
+    /// the block. Returns `true` on success, `false` when refused (too late,
+    /// or a field over its limit) or when the loader is too old.
+    pub fn generation_capacity(
+        &self,
+        want: Option<&HfGenerationCapacity>,
+        have: Option<&mut HfGenerationCapacity>,
+    ) -> bool {
+        if !self.supports(17) {
+            return false;
+        }
+
+        let Some(generation_capacity) = self.raw_api().generation_capacity else {
+            return false;
+        };
+
+        let want = want.map_or(std::ptr::null(), |want| want as *const HfGenerationCapacity);
+        let have = match have {
+            Some(have) => {
+                have.size = std::mem::size_of::<HfGenerationCapacity>() as u32;
+                have as *mut HfGenerationCapacity
+            }
+            None => std::ptr::null_mut(),
+        };
+
+        unsafe { generation_capacity(self.mod_handle(), want, have) == 0 }
     }
 }
