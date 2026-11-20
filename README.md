@@ -100,9 +100,9 @@ RustForge has, roughly, 2 primary parts:
 
 ### Differences from the normal C SDK
 
-1. HF_API is a singleton that you retrieve with `rustforge::hf_api::HF_API.get().unwrap()`, or with `hf_api!()` macro.
+- HF_API is a singleton that you retrieve with `rustforge::hf_api::HF_API.get().unwrap()`, or with `hf_api!()` macro.
 
-2. External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes no arguments; retrieve the singleton API inside:
+- External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes no arguments; retrieve the singleton API inside:
 
 ```rust
 use rustforge::hf_api::{hf_api};
@@ -114,7 +114,7 @@ fn init() {
 }
 ```
 
-1. You don't have to pass that stupid `HfMod` everywhere. RustForge does that for you.
+- You don't have to pass that stupid `HfMod` everywhere. RustForge does that for you.
 
 ## AI disclosure
 

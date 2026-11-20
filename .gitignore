@@ -2,6 +2,7 @@
 native/
 DOCS.md
 test-mod/
+src/rust_ffi.rs
 
 # Added by cargo
 #
