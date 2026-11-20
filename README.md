@@ -105,7 +105,7 @@ RustForge has, roughly, 2 primary parts:
 2. External `hellforge_mod_init` function is already implemented. Mark the function that sets your mod up with `#[hf_entry]`; HellForge calls it after the API has been installed. It takes no arguments; retrieve the singleton API inside:
 
 ```rust
-use rustforge::hf_api::{HellForgeApi, HF_API};
+use rustforge::hf_api::{hf_api};
 use rustforge::hf_entry;
 
 #[hf_entry]
