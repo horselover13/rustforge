@@ -33,10 +33,10 @@ impl HellForgeApi {
         unsafe { read(address, buffer_ptr, buffer.len()) == 0 }
     }
 
-    /// Writes `data` at `address`, making the memory writable for the write.
+    /// # Safety
     ///
-    /// Returns `true` on success.
-    pub fn write(&self, address: usize, data: &[u8]) -> bool {
+    /// You need to know where are you writing and what you're doing
+    pub unsafe fn write(&self, address: usize, data: &[u8]) -> bool {
         let Some(write) = self.raw_api().write else {
             return false;
         };
@@ -45,12 +45,11 @@ impl HellForgeApi {
         unsafe { write(address, data_ptr, data.len()) == 0 }
     }
 
-    /// Writes `value` only if the u32 at `address` holds `expect` (or already
-    /// `value`).
+
+    /// # Safety
     ///
-    /// Returns `true` when it was written or already set, `false` when it was
-    /// left alone.
-    pub fn write_u32_if(&self, address: usize, expect: u32, value: u32) -> bool {
+    /// You need to know where are you writing and what you're doing
+    pub unsafe fn write_u32_if(&self, address: usize, expect: u32, value: u32) -> bool {
         let Some(write_u32_if) = self.raw_api().write_u32_if else {
             return false;
         };

@@ -8,13 +8,15 @@ It is meant for those who do not trust themselves with writing C code (like myse
 
 ### Versioning
 
-You might want to say, use a different SDK version for some mod that is meant for an older, or even newer (nightly) version. 
+You might want to say, use a different SDK version for some mod that is meant for an older, or even newer (nightly) version.
 
 The version system for RustForge is pretty simple:
 
 ```
-0.[SDK NUMBER].[PATCH NUMBER]
+[SDK NUMBER].[MINOR NUMBER].[PATCH NUMBER]
 ```
+
+The SDK number is the major number, because of rapid development of HellForge. Sometimes, mods can just...break. And the older SDKs with them.
 
 It is kind of similar to SemVer, just its more of a lobotomized version of it. RustForge meant for a newer SDK will not work with older SDK bindings. Newer SDK bindings, if unchanged, may work with older RustForge version, however, you won't have access to new Rust-safe functions.
 
@@ -31,17 +33,17 @@ At the moment, i will purposefully not get this up on Cargo, so you will have to
 rustforge = { path = "./rustforge/" }
 ```
 
-3. Grab the latest [HellForge mod SDK](https://github.com/SkyeShade/HellForge/tree/main/native/mod-sdk) and drop it directly into RustForge's root folder.
+1. Grab the latest [HellForge mod SDK](https://github.com/SkyeShade/HellForge/tree/main/native/mod-sdk) and drop it directly into RustForge's root folder.
 
-4. Use it as you wish.
+2. Use it as you wish.
 
 ## Getting Rust to build a HellForge mod
 
-All RustForge mods should be precompiled. HellForge's onboard Zig compiler, obviously, does not compile Rust. Second, the library must be compiled as specifically a DLL. 
+All RustForge mods should be precompiled. HellForge's onboard Zig compiler, obviously, does not compile Rust. Second, the library must be compiled as specifically a DLL.
 
 First of all, your project should be a library. Its a DLL after all.
 
-```bash 
+```bash
 cargo init --lib
 # OR
 cargo new my_awesome_mod --lib
@@ -67,6 +69,12 @@ First of all, get MinGW if you haven't already, using your favorite package mana
 sudo apt install mingw-w64 # debian or debian based
 sudo dnf install mingw64-gcc mingw32-gcc # fedora
 sudo pacman -S --needed mingw-w64-gcc # arch people (or arch based people)
+```
+
+Now, get the actual Windows toolchain (again, if you haven't done that yet).
+
+```bash
+rustup target add x86_64-pc-windows-gnu
 ```
 
 Then, you need to get Rust to use mingw as linker, and also, by default, compile for Windows. Make a new `.cargo/config.toml` file.
@@ -102,12 +110,11 @@ use rustforge::hf_entry;
 
 #[hf_entry]
 fn init() {
-    let api: &HellForgeApi = HF_API.get().unwrap();
-    api.log("hello from RustForge");
+    hf_api!().log("hello from RustForge");
 }
 ```
 
-3. You don't have to pass that stupid `HfMod` everywhere. RustForge does that for you.
+1. You don't have to pass that stupid `HfMod` everywhere. RustForge does that for you.
 
 ## AI disclosure
 
