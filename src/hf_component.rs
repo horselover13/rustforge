@@ -13,23 +13,24 @@ use crate::rust_ffi::HfRef;
 use std::mem::size_of;
 
 pub use crate::rust_ffi::{
-    HfAbilityWeapon, HfAiSpawner, HfArcSettings, HfArcWeapon, HfAttachable, HfAvatar,
+    HfAbilityWeapon, HfAiEnemy, HfAiSpawner, HfArcSettings, HfArcWeapon, HfAttachable, HfAvatar,
     HfBeamSettings, HfBeamWeapon, HfBehavior, HfBombardment, HfBoosterSettings, HfBughole,
     HfDamageInfo, HfDemolitionTemplate, HfDeposit, HfDifficultySettings, HfDisplacement, HfEagle,
     HfEnemyComposition, HfEnemyRoster, HfEnemyRosterLevel11, HfEquipment, HfExplosionSettings,
     HfExplosive, HfGore, HfHealth, HfHellpodPayload, HfHellpodRack, HfHiveMind, HfInventory,
-    HfJumppack, HfLoadoutEntry, HfLoadoutPackage, HfMeleeHitVolume, HfMeleeWeapon, HfMount,
-    HfOrbitalAbility, HfPassiveModifier, HfPassiveStat, HfProjectileSettings, HfProjectileWeapon,
-    HfRecharge, HfRotation, HfSeekingMissile, HfSensorEye, HfShield, HfSquadTransport,
-    HfSquadTransportFormation, HfStatusEffectSettings, HfStratagemBlocker, HfStratagemCode,
-    HfStratagemRearm, HfStratagemSettings, HfTag, HfThrowable, HfThrower, HfTurret, HfUnit,
-    HfVehicleMotion, HfWeaponCharge, HfWeaponCustomization, HfWeaponData, HfWeaponHeat,
-    HfWeaponMagazine, HfWeaponReload, HfWeaponRounds, HfWeaponWindUp, HfWieldable,
+    HfJumppack, HfLoadoutEntry, HfLoadoutPackage, HfLocomotion, HfMeleeHitVolume, HfMeleeWeapon,
+    HfMount, HfOrbitalAbility, HfPassiveModifier, HfPassiveStat, HfProjectileSettings,
+    HfProjectileWeapon, HfRecharge, HfRotation, HfSeekingMissile, HfSensorEye, HfShield,
+    HfSprayWeapon, HfSquadTransport, HfSquadTransportFormation, HfStatusEffectReceiver,
+    HfStatusEffectSettings, HfStratagemBlocker, HfStratagemCode, HfStratagemRearm,
+    HfStratagemSettings, HfTag, HfThrowable, HfThrower, HfTurret, HfUnit, HfVehicleMotion,
+    HfWeaponCharge, HfWeaponCustomization, HfWeaponData, HfWeaponHeat, HfWeaponMagazine,
+    HfWeaponReload, HfWeaponRounds, HfWeaponWindUp, HfWieldable,
 };
 
 /// An entity component record generated from `hellforge_components.h`.
 ///
-/// This is implemented only for the 50 component records, not for the
+/// This is implemented only for the 54 component records, not for the
 /// settings-table rows the header also generates.
 ///
 /// # Safety
@@ -85,6 +86,7 @@ impl_components! {
     HfWeaponReload => "WeaponReloadComponentData",
     HfWeaponRounds => "WeaponRoundsComponentData",
     HfArcWeapon => "ArcWeaponComponentData",
+    HfSprayWeapon => "SprayWeaponComponentData",
     HfHiveMind => "HiveMindComponentData",
     HfOrbitalAbility => "OrbitalAbilityComponentData",
     HfRotation => "RotationComponentData",
@@ -107,6 +109,9 @@ impl_components! {
     HfWieldable => "WieldableComponentData",
     HfAttachable => "AttachableComponentData",
     HfWeaponCustomization => "WeaponCustomizationComponentData",
+    HfAiEnemy => "AiEnemyComponentData",
+    HfLocomotion => "LocomotionComponentData",
+    HfStatusEffectReceiver => "StatusEffectReceiverComponentData",
 }
 
 impl HellForgeApi {
@@ -149,5 +154,29 @@ impl HellForgeApi {
         let (address, stride) = self.component_record(T::NAME, resource)?;
 
         Some((unsafe { &*(address as *const T) }, stride))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn spray_weapon_matches_the_header() {
+        assert_eq!(HfSprayWeapon::NAME, "SprayWeaponComponentData");
+        assert_eq!(size_of::<HfSprayWeapon>(), 224);
+        assert_eq!(std::mem::offset_of!(HfSprayWeapon, link_radius), 16);
+        assert_eq!(std::mem::offset_of!(HfSprayWeapon, projectile), 196);
+        assert_eq!(std::mem::offset_of!(HfSprayWeapon, damage), 200);
+    }
+
+    #[test]
+    fn sdk_20_components_are_wrapped() {
+        assert_eq!(HfAiEnemy::NAME, "AiEnemyComponentData");
+        assert_eq!(HfLocomotion::NAME, "LocomotionComponentData");
+        assert_eq!(
+            HfStatusEffectReceiver::NAME,
+            "StatusEffectReceiverComponentData"
+        );
     }
 }
